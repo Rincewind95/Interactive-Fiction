@@ -4,24 +4,35 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by Milos on 05/11/2016.
+ * Standard engine
  */
 public class Engine
 {
     private int time; // the current time step of the game
-    private String start_message;
-    private Command prev_command;  // command previously input by the player
+    private String start_message;  // the message to be displayed when the game is intially loaded
     private ArrayList<Room> rooms; // list of the rooms in the game on all levels
     private ArrayList<Item> items; // list of all possible items in the game
 
+    private ArrayList<Command> prev_commands; // a list of all previous player commands
+    private ArrayList<String> prev_steps;     // a list of all previously satisfied steps
+
+    private ArrayList<StoryStep> steps; // a list of all possible story steps
 
     public Engine(String story_loc)
     {
+        // game initialisation
+        time = 1;
+        prev_commands = new ArrayList<>();
+        prev_steps = new ArrayList<>();
+        prev_steps.add("start");
+
+        rooms = new ArrayList<>();
+        items = new ArrayList<>();
+
         // TODO load story from the story_loc
 
-
-        // game initialisation
-        time = 0;
+        start_message = "Welcome to the test game!";
+        System.out.println(start_message);
 
     }
 
@@ -32,6 +43,11 @@ public class Engine
             return false;
         }
 
+        return true;
+    }
+
+    private boolean checkConstraints()
+    {
         return true;
     }
 
@@ -48,17 +64,17 @@ public class Engine
         // main input loop
         while (gameRunning)
         {
-
-            System.out.print("[" + eng.getTime() + "]: ");
+            System.out.print("[" + eng.getTime() + "] ");
             String userInput = scanner.nextLine();
 
             // temporary input parsing (there will be an intermediate parser step here later)
             Command command = new Command(userInput);
 
+            // modify the engines internal state with the command
             gameRunning = eng.executeCommand(command);
 
-            // response generation
-
+            // check constraints and generate response
+            gameRunning = eng.checkConstraints();
         }
 
         scanner.close();

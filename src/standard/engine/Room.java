@@ -16,7 +16,5 @@ public class Room
 
     private ArrayList<Item> items; // list of all items currently contained in the room
 
-    private int first_visited; // time step in which the room was first visited
-
 
 }
