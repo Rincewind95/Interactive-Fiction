@@ -70,11 +70,18 @@ public class Engine
             // temporary input parsing (there will be an intermediate parser step here later)
             Command command = new Command(userInput);
 
+            if(command.getType() == Command.Type.badcomm)
+            {
+                // the command was not understood by the engine so we print, "I don't understand..." with no time advanced in between
+                System.out.println("I don't understand...");
+                continue;
+            }
+
             // modify the engines internal state with the command
             gameRunning = eng.executeCommand(command);
 
             // check constraints and generate response
-            gameRunning = eng.checkConstraints();
+            gameRunning = gameRunning && eng.checkConstraints();
         }
 
         scanner.close();
@@ -83,15 +90,5 @@ public class Engine
     public int getTime()
     {
         return time;
-    }
-
-    public void setTime(int newTime)
-    {
-        time = newTime;
-    }
-
-    public void advanceTime()
-    {
-        time++;
     }
 }

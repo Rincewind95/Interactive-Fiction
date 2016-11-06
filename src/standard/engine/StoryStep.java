@@ -12,7 +12,7 @@ public class StoryStep
     String step_id;                      // the steps identifier
     ArrayList<Condition> conditions;     // the set of preconditions which ALL need to be met for the consequences to be triggered
     ArrayList<Consequence> consequences; // the set of consequences which are triggered when all the conditions are met
-    Message message;                     // the message printed when the step is activated
+    String message;                      // the message printed when the step is activated
     boolean activated;                   // true if the step has been activated once (We only allow steps to be activated once!)
 
     ArrayList<StoryStep> child_steps;  // a list of steps which are direct descendants of the current step
