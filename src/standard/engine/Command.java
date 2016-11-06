@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Command
 {
-    public static enum Type {take, drop, use, combine, inventory, examine, move, look, brief, wait, save, history, load, restart, exit, special}
+    public static enum Type {take, drop, use, useon, combine, inventory, examine, move, look, brief, wait, save, history, load, restart, exit, special}
     private Type type;
     private ArrayList<Argument> args;
 

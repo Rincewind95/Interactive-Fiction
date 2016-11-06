@@ -17,6 +17,7 @@ public class StoryStep
 
     ArrayList<StoryStep> child_steps;  // a list of steps which are direct descendants of the current step
     ArrayList<StoryStep> parent_steps; // a list of steps which are direct predecessors of the current step
+    boolean Ands;                      // true if the node requires all the parent_steps to be true, false if it requires at least one
 }
 
 

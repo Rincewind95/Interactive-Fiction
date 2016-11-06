@@ -5,6 +5,7 @@ package standard.engine;
  */
 public class Item extends Argument
 {
+    private String item_id;   // the unique identifier of the item used to refer to it
     private boolean takeable; // true if the item can be taken from its respective room (if the item is not fixed in place)
     private boolean in_game;  // true if the item is currently in the game (has been produced, or has not been removed)
     private String location;  // the location of the item (inv or room_id)
