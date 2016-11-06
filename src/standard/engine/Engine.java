@@ -1,5 +1,6 @@
 package standard.engine;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -7,28 +8,74 @@ import java.util.Scanner;
  */
 public class Engine
 {
-    public static void main(String [] args)
+    private int time; // the current time step of the game
+    private String start_message;
+    private Command prev_command;  // command previously input by the player
+    private ArrayList<Room> rooms; // list of the rooms in the game on all levels
+    private ArrayList<Item> items; // list of all possible items in the game
+
+
+    public Engine(String story_loc)
     {
-        byte[] test = new byte[10000];
-        System.out.println("test");
+        // TODO load story from the story_loc
 
 
+        // game initialisation
+        time = 0;
+
+    }
+
+    private boolean executeCommand(Command command)
+    {
+        if(command.getType() == Command.Type.exit)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    public static void main(String[] args)
+    {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Please input the location of the story file to be loaded...");
+        String story_location = scanner.nextLine();
 
-        while (true) {
+        System.out.println("Game initialising...\n");
+        Engine eng = new Engine(story_location);
+        boolean gameRunning = true;
 
-            System.out.print("Enter something : ");
-            String input = scanner.nextLine();
+        // main input loop
+        while (gameRunning)
+        {
 
-            if ("q".equals(input)) {
-                System.out.println("Exit!");
-                break;
-            }
+            System.out.print("[" + eng.getTime() + "]: ");
+            String userInput = scanner.nextLine();
 
-            System.out.println("input : " + input);
-            System.out.println("-----------\n");
+            // temporary input parsing (there will be an intermediate parser step here later)
+            Command command = new Command(userInput);
+
+            gameRunning = eng.executeCommand(command);
+
+            // response generation
+
         }
 
         scanner.close();
+    }
+
+    public int getTime()
+    {
+        return time;
+    }
+
+    public void setTime(int newTime)
+    {
+        time = newTime;
+    }
+
+    public void advanceTime()
+    {
+        time++;
     }
 }
