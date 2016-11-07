@@ -22,6 +22,8 @@ public class Engine
     private HashSet<String> special;          // a map of all possible special commands
     private ArrayList<StoryStep> steps;       // a list of all possible story steps
 
+    private Player player;                    // the star of the show
+
     public Engine(String story_loc)
     {
         // game initialisation
@@ -36,7 +38,6 @@ public class Engine
 
         special = new HashSet<>();
         steps = new ArrayList<>();
-
 
         // TODO load story from the story_loc
         // for now the loading will be manual
