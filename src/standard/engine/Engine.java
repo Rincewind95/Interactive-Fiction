@@ -33,17 +33,21 @@ public class Engine
 
         start_message = "Welcome to the test game!";
         System.out.println(start_message);
-
     }
 
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
+
+        // may want to repeat this bit until a game is successfully loaded or exit has been input
         System.out.println("Please input the location of the story file to be loaded...");
         String story_location = scanner.nextLine();
 
-        System.out.println("Game initialising...\n");
+        System.out.println("Attempting to load story file...\n");
         Engine eng = new Engine(story_location);
+        // --------------------------------------------------------------------------------------
+
+        // start the game once the engine is loaded
         boolean gameRunning = true;
 
         // main input loop
