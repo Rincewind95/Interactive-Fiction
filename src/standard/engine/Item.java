@@ -3,7 +3,7 @@ package standard.engine;
 /**
  * Created by Milos on 06/11/2016.
  */
-public class Item extends Argument
+public class Item
 {
     private String item_id;   // the unique identifier of the item used to refer to it
     private boolean takeable; // true if the item can be taken from its respective room (if the item is not fixed in place)
