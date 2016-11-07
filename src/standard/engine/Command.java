@@ -190,6 +190,11 @@ public class Command
         System.out.print("\n");
     }
 
+    public String getOriginal()
+    {
+        return original;
+    }
+
     public ArrayList<String> getArgs()
     {
         return args;

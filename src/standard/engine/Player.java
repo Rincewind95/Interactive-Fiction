@@ -40,4 +40,22 @@ public class Player
     {
         return location;
     }
+
+    public String listInventory()
+    {
+        String inv = "";
+        if(!inventory.isEmpty())
+        {
+            inv += "Your inventory contains the following items:";
+            for (Item item: inventory)
+            {
+                inv += "\n" + item.getItem_id();
+            }
+        }
+        else
+        {
+            inv += "Your inventory is empty.";
+        }
+        return inv;
+    }
 }

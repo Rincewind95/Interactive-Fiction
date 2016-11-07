@@ -77,14 +77,18 @@ public class Engine
             // modify the engines internal state with the command and determine the outcome
             response resp = eng.executeCommand(command);
             // test the outcome
+
+            // the command is valid so we add it to the list of previous commands
+            if(resp != response.badinput)
+                eng.prev_commands.add(command);
+
+            // now we determine what to do next
             if (resp == response.exit) break;
             else if (resp == response.badinput ||
                     resp == response.skip) continue;
 
-            // the command is valid so we add it to the list of previous commands
-            eng.prev_commands.add(command);
-
-            // check constraints and generate response
+            // we advance time, check constraints and potentially generate another response
+            eng.advanceTime();
             gameRunning = eng.checkConstraints();
         }
 
@@ -111,7 +115,7 @@ public class Engine
                         toTake.getLocation() == player.getLocation())
                     {
                         // if the player is in the same room as the item, and does not have the item he can take it
-                        System.out.println("You pick up " + toTake.getItem_id());
+                        System.out.println(toTake.getItem_id() + " picked up.");
                         // move the item to the players inventory
                         player.giveItem(toTake);
                         toTake.setLocation(Item.flag.inv);
@@ -134,7 +138,7 @@ public class Engine
                     if(player.hasItem(toDrop))
                     {
                         // if the player has the item
-                        System.out.println("You drop " + toDrop.getItem_id());
+                        System.out.println(toDrop.getItem_id() + " dropped.");
                         // remove the item from the players inventory
                         player.removeItem(toDrop);
                         // add the item to the room the player is in
@@ -242,25 +246,33 @@ public class Engine
                 break;
             case save:
                 break;
+            case restart:
+                break;
+            case history:
+                System.out.println(getHistory());
+                resp = response.skip;
+                break;
             case inventory:
+                System.out.println(player.listInventory());
+                resp = response.skip;
                 break;
             case look:
                 System.out.println(player.getLocation().getLookInfo());
                 resp = response.skip;
                 break;
             case brief:
+                System.out.println(player.getLocation().getBrief());
+                resp = response.skip;
                 break;
             case wait:
-                break;
-            case history:
-                break;
-            case restart:
+                System.out.println("Time passes.");
                 break;
 
             case empty:
                 resp = response.badinput;
                 break;
             case exit:
+                System.out.println("Game terminating...");
                 resp = response.exit;
                 break;
             case badcomm:
@@ -269,14 +281,8 @@ public class Engine
         }
 
         // write responses if the command was bad
-        switch (resp)
-        {
-            case badinput:
-                System.out.println("I don't understand...");
-                break;
-            case exit:
-                System.out.println("Game terminating...");
-        }
+        if(resp == response.badinput)
+            System.out.println("I don't understand...");
         return resp;
     }
 
@@ -288,6 +294,30 @@ public class Engine
     public int getTime()
     {
         return time;
+    }
+
+    public void advanceTime()
+    {
+        time++;
+    }
+
+    public String getHistory()
+    {
+        String hist = "";
+        if(!prev_commands.isEmpty())
+        {
+            hist += "The previous commands have been:";
+            int t = 1;
+            for(Command com : prev_commands)
+            {
+                hist += "\n[" + t + "]: " + com.getOriginal();
+            }
+        }
+        else
+        {
+            hist += "There is no history.";
+        }
+        return hist;
     }
 
     // enumerates the possible response types which can be generated when processing user commands
