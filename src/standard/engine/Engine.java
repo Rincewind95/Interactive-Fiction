@@ -74,6 +74,8 @@ public class Engine
 
     private response executeCommand(Command command)
     {
+        command.printCmd();
+
         switch (command.getType())
         {
             case empty:

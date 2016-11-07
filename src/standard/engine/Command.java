@@ -68,7 +68,7 @@ public class Command
                     args.add(tokens[1]);
                     for(int i = 2; i < tokens.length; i++)
                     {
-                        if (tokens[i] == "on")
+                        if (tokens[i].equals("on"))
                         {
                             // take this as sign o useon
                             type = Type.useon;
@@ -77,7 +77,7 @@ public class Command
                                 // add the second argument if one such exists
                                 String result = tokens[i+1];
                                 for(int j = i+2; j < tokens.length; j++)
-                                    result.concat(" " + tokens[j]);
+                                    result += " " + tokens[j];
                                 args.add(result);
                                 break;
                             }
@@ -91,7 +91,7 @@ public class Command
                         }
                         else
                         {
-                            args.get(0).concat(" " + tokens[i]);
+                            args.set(0, args.get(0) + " " + tokens[i]);
                         }
                     }
                 } else
@@ -111,14 +111,14 @@ public class Command
                     args.add(tokens[1]);
                     for(int i = 2; i < tokens.length; i++)
                     {
-                        if (tokens[i] == "with")
+                        if (tokens[i].equals("with"))
                         {
                             if (tokens.length > i + 1)
                             {
                                 // add the second argument if one such exists
                                 String result = tokens[i+1];
                                 for(int j = i+2; j < tokens.length; j++)
-                                    result.concat(" " + tokens[j]);
+                                    result += " " + tokens[j];
                                 args.add(result);
                                 success = true;
                                 break;
@@ -126,7 +126,7 @@ public class Command
                         }
                         else
                         {
-                            args.get(0).concat(" " + tokens[i]);
+                            args.set(0, args.get(0) + " " + tokens[i]);
                         }
                     }
                 }
@@ -144,7 +144,7 @@ public class Command
                 {
                     String result = tokens[1];
                     for(int i = 2; i < tokens.length; i++)
-                        result.concat(" " + tokens[i]);
+                        result += " " + tokens[i];
                     args.add(result);
                 } else
                 {
@@ -155,7 +155,7 @@ public class Command
                 break;
 
             case move:case load: case save:
-                // we only expect a single other token (either a cardinal direction, or load/save file location
+                // we only expect a single other token (either a cardinal direction, or load/save file location)
                 if(tokens.length == 2)
                     args.add(tokens[1]);
                 else
@@ -174,8 +174,19 @@ public class Command
         return type;
     }
 
-    public static enum Type
+    public enum Type
     {
         take, drop, use, useon, combine, inventory, examine, move, look, brief, wait, save, load, history, restart, exit, special, empty, badcomm
+    }
+
+    public void printCmd()
+    {
+        System.out.print(type);
+        if(args != null)
+            for (String arg:args)
+            {
+                System.out.print(" [" + arg + "]");
+            }
+        System.out.print("\n");
     }
 }
