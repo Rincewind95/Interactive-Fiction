@@ -97,7 +97,6 @@ public class Engine
 
     private response executeCommand(Command command)
     {
-        command.printCmd();
         Command.Type type = command.getType();
         ArrayList<String> args = command.getArgs();
 
@@ -242,11 +241,22 @@ public class Engine
                 }
                 else resp = response.badinput;
                 break;
+            case special:
+                if(!special.contains(args.get(0)))
+                {
+                    // the command is not special
+                    resp = response.badinput;
+                }
+                break;
             case load:
+                // TODO implement load, save and restart mechanics
+                resp = response.skip;
                 break;
             case save:
+                resp = response.skip;
                 break;
             case restart:
+                resp = response.skip;
                 break;
             case history:
                 System.out.println(getHistory());
@@ -301,6 +311,11 @@ public class Engine
         time++;
     }
 
+    public Player getPlayer()
+    {
+        return player;
+    }
+
     public String getHistory()
     {
         String hist = "";
@@ -318,6 +333,23 @@ public class Engine
             hist += "There is no history.";
         }
         return hist;
+    }
+
+    public Room findRoom(String room_id)
+    {
+        return findroom.get(room_id);
+    }
+
+    public Item findItem(String item_id)
+    {
+        return finditem.get(item_id);
+    }
+
+    public Command getPrevCommand()
+    {
+        if(prev_commands.size() == 0)
+            return null;
+        return prev_commands.get(prev_commands.size()-1);
     }
 
     // enumerates the possible response types which can be generated when processing user commands
