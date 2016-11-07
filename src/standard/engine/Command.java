@@ -189,4 +189,9 @@ public class Command
             }
         System.out.print("\n");
     }
+
+    public ArrayList<String> getArgs()
+    {
+        return args;
+    }
 }

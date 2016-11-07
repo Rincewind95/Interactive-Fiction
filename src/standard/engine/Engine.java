@@ -2,6 +2,7 @@ package standard.engine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Scanner;
 
 /**
@@ -10,12 +11,15 @@ import java.util.Scanner;
 public class Engine
 {
     private int time;                         // the current time step of the game
-    private String start_message;             // the message to be displayed when the game is intially loaded
+    private StoryStep start;                  // the initial story step, true from the start (the only one of the sort)
     private ArrayList<Room> rooms;            // list of the rooms in the game on all levels
     private ArrayList<Item> items;            // list of all possible items in the game
+    private HashMap<String, Room> findroom;   // quicksearch for rooms via their id
+    private HashMap<String, Item> finditem;   // quicksearch for items via their id
+
     private ArrayList<Command> prev_commands; // a list of all previous player commands
-    private ArrayList<String> prev_steps;     // a list of all previously satisfied steps
-    private HashMap<String, Boolean> special; // a map of all possible special commands
+    private ArrayList<StoryStep> prev_steps;  // a list of all previously satisfied steps
+    private HashSet<String> special;          // a map of all possible special commands
     private ArrayList<StoryStep> steps;       // a list of all possible story steps
 
     public Engine(String story_loc)
@@ -24,15 +28,25 @@ public class Engine
         time = 1;
         prev_commands = new ArrayList<>();
         prev_steps = new ArrayList<>();
-        prev_steps.add("start");
 
         rooms = new ArrayList<>();
         items = new ArrayList<>();
+        findroom = new HashMap<>();
+        finditem = new HashMap<>();
+
+        special = new HashSet<>();
+        steps = new ArrayList<>();
+
 
         // TODO load story from the story_loc
+        // for now the loading will be manual
 
-        start_message = "Welcome to the test game!";
+        String start_message = "Welcome to the test game!";
+        start = new StoryStep("start", start_message, true);
         System.out.println(start_message);
+        steps.add(start);
+        prev_steps.add(start);
+
     }
 
     public static void main(String[] args)
@@ -75,18 +89,69 @@ public class Engine
     private response executeCommand(Command command)
     {
         command.printCmd();
+        Command.Type type = command.getType();
+        ArrayList<String> args = command.getArgs();
 
-        switch (command.getType())
+        response resp = response.good;
+
+        switch (type)
         {
+            case take:
+                // first test for input validity
+                if (finditem.containsKey(args.get(0)))
+                {
+
+                }
+                else resp = response.skip;
+                break;
+            case drop:
+                break;
+            case use:
+                break;
+            case combine:
+                break;
+            case examine:
+                break;
+            case move:
+                break;
+            case load:
+                break;
+            case save:
+                break;
+            case inventory:
+                break;
+            case look:
+                break;
+            case brief:
+                break;
+            case wait:
+                break;
+            case history:
+                break;
+            case restart:
+                break;
+
             case empty:
-                System.out.println("Please talk with me...");
-                return response.skip;
+                resp = response.skip;
+                break;
+            case exit:
+                resp = response.exit;
+                break;
+            case badcomm:
+                resp = response.skip;
+                break;
+        }
+
+        // write responses if the command was bad
+        switch (resp)
+        {
+            case skip:
+                System.out.println("I don't understand...");
+                break;
             case exit:
                 System.out.println("Game terminating...");
-                return response.exit;
-            default:
-                return response.skip;
         }
+        return resp;
     }
 
     private boolean checkConstraints()
