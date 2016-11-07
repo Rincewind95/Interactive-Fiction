@@ -1,7 +1,6 @@
 package standard.engine;
 
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.TreeSet;
 
 /**
  * Created by Milos on 06/11/2016.
@@ -9,12 +8,12 @@ import java.util.HashSet;
 public class Player
 {
     Room location;
-    HashSet<Item> inventory;
+    TreeSet<Item> inventory;
 
     public Player(Room loc)
     {
         location = loc;
-        inventory = new HashSet<>();
+        inventory = new TreeSet<>();
     }
 
     public boolean hasItem(Item i)
@@ -37,7 +36,7 @@ public class Player
         location = r;
     }
 
-    public Room locate()
+    public Room getLocation()
     {
         return location;
     }

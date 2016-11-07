@@ -10,19 +10,19 @@ import java.util.Scanner;
  */
 public class Engine
 {
-    private int time;                         // the current time step of the game
     private StoryStep start;                  // the initial story step, true from the start (the only one of the sort)
     private ArrayList<Room> rooms;            // list of the rooms in the game on all levels
     private ArrayList<Item> items;            // list of all possible items in the game
-    private HashMap<String, Room> findroom;   // quicksearch for rooms via their id
-    private HashMap<String, Item> finditem;   // quicksearch for items via their id
+    private HashMap<String, Room> findroom;   // quick search for rooms via their id
+    private HashMap<String, Item> finditem;   // quick search for items via their id
 
-    private ArrayList<Command> prev_commands; // a list of all previous player commands
-    private ArrayList<StoryStep> prev_steps;  // a list of all previously satisfied steps
     private HashSet<String> special;          // a map of all possible special commands
     private ArrayList<StoryStep> steps;       // a list of all possible story steps
-
     private Player player;                    // the star of the show
+
+    private int time;                         // the current time step of the game
+    private ArrayList<Command> prev_commands; // a list of all previous player commands
+    private ArrayList<StoryStep> prev_steps;  // a list of all previously satisfied steps
 
     public Engine(String story_loc)
     {
@@ -78,7 +78,11 @@ public class Engine
             response resp = eng.executeCommand(command);
             // test the outcome
             if (resp == response.exit) break;
-            else if (resp == response.skip) continue;
+            else if (resp == response.badinput ||
+                    resp == response.skip) continue;
+
+            // the command is valid so we add it to the list of previous commands
+            eng.prev_commands.add(command);
 
             // check constraints and generate response
             gameRunning = eng.checkConstraints();
@@ -101,19 +105,138 @@ public class Engine
                 // first test for input validity
                 if (finditem.containsKey(args.get(0)))
                 {
-
+                    Item toTake = finditem.get(args.get(0));
+                    if(!player.hasItem(toTake) &&
+                        toTake.getLocationFlag() == Item.flag.room &&
+                        toTake.getLocation() == player.getLocation())
+                    {
+                        // if the player is in the same room as the item, and does not have the item he can take it
+                        System.out.println("You pick up " + toTake.getItem_id());
+                        // move the item to the players inventory
+                        player.giveItem(toTake);
+                        toTake.setLocation(Item.flag.inv);
+                        // remove the item from its room
+                        toTake.getLocation().removeItem(toTake);
+                    }
+                    else
+                    {
+                        // the conditions were not satisfied, so we print that nothing can be done
+                        resp = response.badinput;
+                    }
                 }
-                else resp = response.skip;
+                else resp = response.badinput;
                 break;
             case drop:
+                // first test for input validity
+                if (finditem.containsKey(args.get(0)))
+                {
+                    Item toDrop = finditem.get(args.get(0));
+                    if(player.hasItem(toDrop))
+                    {
+                        // if the player has the item
+                        System.out.println("You drop " + toDrop.getItem_id());
+                        // remove the item from the players inventory
+                        player.removeItem(toDrop);
+                        // add the item to the room the player is in
+                        toDrop.setLocation(Item.flag.room);
+                        toDrop.setLocation(player.getLocation());
+                        player.getLocation().addItem(toDrop);
+                    }
+                    else
+                    {
+                        // the conditions were not satisfied, so we print that nothing can be done
+                        resp = response.badinput;
+                    }
+                }
+                else resp = response.badinput;
                 break;
             case use:
+                // first test for input validity
+                if (finditem.containsKey(args.get(0)))
+                {
+                    Item toUse = finditem.get(args.get(0));
+                    if(!player.hasItem(toUse) && !player.getLocation().containsItem(toUse))
+                    {
+                        // the player does not have the item and it is not in the room, so we print that nothing can be done
+                        resp = response.badinput;
+                    }
+                }
+                else resp = response.badinput;
+                break;
+            case useon:
+                // first test for input validity
+                if (finditem.containsKey(args.get(0)) && finditem.containsKey(args.get(1)))
+                {
+                    Item useItem = finditem.get(args.get(0));
+                    Item onItem = finditem.get(args.get(0));
+                    if(!player.hasItem(useItem) || !player.getLocation().containsItem(onItem))
+                    {
+                        // conditions were not met so fail
+                        resp = response.badinput;
+                    }
+                }
+                else resp = response.badinput;
                 break;
             case combine:
+                // first test for input validity
+                if (finditem.containsKey(args.get(0)) && finditem.containsKey(args.get(1)))
+                {
+                    Item fir = finditem.get(args.get(0));
+                    Item sec = finditem.get(args.get(0));
+                    if(!player.hasItem(fir) || !player.hasItem(sec))
+                    {
+                        // conditions were not met so fail
+                        resp = response.badinput;
+                    }
+                }
+                else resp = response.badinput;
                 break;
             case examine:
+                // first test for input validity
+                if (finditem.containsKey(args.get(0)))
+                {
+                    Item toExamine = finditem.get(args.get(0));
+                    if(!player.hasItem(toExamine) && !player.getLocation().containsItem(toExamine))
+                    {
+                        // the player does not have the item and it is not in the room, so we print that nothing can be done
+                        resp = response.badinput;
+                    }
+                }
+                else resp = response.badinput;
                 break;
             case move:
+                // first test for input validity
+                if (args.get(0) == "N" ||
+                    args.get(0) == "E" ||
+                    args.get(0) == "S" ||
+                    args.get(0) == "W")
+                {
+                    String dir = args.get(0);
+                    Room cur = player.getLocation();
+                    if(cur.hasPathInDir(dir))
+                    {
+                        Room room = cur.getPathInDir(dir);
+                        player.moveTo(room);
+                        if(room.wasVisited())
+                            System.out.println(room.getBrief());
+                        else
+                        {
+                            room.visit();
+                            System.out.println(room.getDescription());
+                        }
+                    }
+                    else if(cur.hasDeadEndInDir(dir))
+                    {
+                        // write the dead end message if there is one
+                        System.out.println(cur.getDeadEndInDir(dir));
+                    }
+                    else
+                    {
+                        // write the default message if nothing else works
+                        System.out.println("You cannot go there.");
+                    }
+                }
+                else resp = response.badinput;
                 break;
             case load:
                 break;
@@ -122,6 +245,8 @@ public class Engine
             case inventory:
                 break;
             case look:
+                System.out.println(player.getLocation().getLookInfo());
+                resp = response.skip;
                 break;
             case brief:
                 break;
@@ -133,20 +258,20 @@ public class Engine
                 break;
 
             case empty:
-                resp = response.skip;
+                resp = response.badinput;
                 break;
             case exit:
                 resp = response.exit;
                 break;
             case badcomm:
-                resp = response.skip;
+                resp = response.badinput;
                 break;
         }
 
         // write responses if the command was bad
         switch (resp)
         {
-            case skip:
+            case badinput:
                 System.out.println("I don't understand...");
                 break;
             case exit:
@@ -168,6 +293,6 @@ public class Engine
     // enumerates the possible response types which can be generated when processing user commands
     private enum response
     {
-        good, skip, exit
+        good, skip, badinput, load, save, restart, exit
     }
 }
