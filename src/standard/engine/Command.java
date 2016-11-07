@@ -9,6 +9,8 @@ public class Command
 {
     private Type type;
     private ArrayList<Argument> args;
+    private String original;
+
     public Command(Type type, ArrayList<Argument> args)
     {
         this.type = type;
@@ -25,7 +27,10 @@ public class Command
 
         if(tokens.length == 0)
         {
-
+            // the input was empty
+            type = Type.empty;
+            args = null;
+            return;
         }
         switch (tokens[0])
         {
@@ -73,7 +78,9 @@ public class Command
 
             case "save":
                 type = Type.save;
-                args = null;
+                args = new ArrayList<>();
+                //if(tokens.length == 2)
+                //    args.add()
                 break;
 
             case "inventory": type = Type.inventory; args = null; break;
@@ -84,9 +91,13 @@ public class Command
             case   "restart": type = Type.restart;   args = null; break;
             case      "exit": type = Type.exit;      args = null; break;
 
-            // TODO special
+            // TODO special commands
 
-            default: type = Type.badcomm; args = null; break;
+            default:
+                type = Type.special;
+                args = new ArrayList<>();
+                args.add(null);
+                break;
         }
     }
 
@@ -97,6 +108,6 @@ public class Command
 
     public static enum Type
     {
-        take, drop, use, useon, combine, inventory, examine, move, look, brief, wait, save, load, history, restart, exit, special, badcomm
+        take, drop, use, useon, combine, inventory, examine, move, look, brief, wait, save, load, history, restart, exit, special, empty
     }
 }

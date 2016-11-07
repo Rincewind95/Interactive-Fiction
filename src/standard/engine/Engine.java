@@ -1,6 +1,7 @@
 package standard.engine;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -8,15 +9,14 @@ import java.util.Scanner;
  */
 public class Engine
 {
-    private int time; // the current time step of the game
-    private String start_message;  // the message to be displayed when the game is intially loaded
-    private ArrayList<Room> rooms; // list of the rooms in the game on all levels
-    private ArrayList<Item> items; // list of all possible items in the game
-
+    private int time;                         // the current time step of the game
+    private String start_message;             // the message to be displayed when the game is intially loaded
+    private ArrayList<Room> rooms;            // list of the rooms in the game on all levels
+    private ArrayList<Item> items;            // list of all possible items in the game
     private ArrayList<Command> prev_commands; // a list of all previous player commands
     private ArrayList<String> prev_steps;     // a list of all previously satisfied steps
-
-    private ArrayList<StoryStep> steps; // a list of all possible story steps
+    private HashMap<String, Boolean> special; // a map of all possible special commands
+    private ArrayList<StoryStep> steps;       // a list of all possible story steps
 
     public Engine(String story_loc)
     {
@@ -34,21 +34,6 @@ public class Engine
         start_message = "Welcome to the test game!";
         System.out.println(start_message);
 
-    }
-
-    private boolean executeCommand(Command command)
-    {
-        if(command.getType() == Command.Type.exit)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    private boolean checkConstraints()
-    {
-        return true;
     }
 
     public static void main(String[] args)
@@ -70,25 +55,47 @@ public class Engine
             // temporary input parsing (there will be an intermediate parser step here later)
             Command command = new Command(userInput);
 
-            if(command.getType() == Command.Type.badcomm)
-            {
-                // the command was not understood by the engine so we print, "I don't understand..." with no time advanced in between
-                System.out.println("I don't understand...");
-                continue;
-            }
-
-            // modify the engines internal state with the command
-            gameRunning = eng.executeCommand(command);
+            // modify the engines internal state with the command and determine the outcome
+            response resp = eng.executeCommand(command);
+            // test the outcome
+            if (resp == response.exit) break;
+            else if (resp == response.skip) continue;
 
             // check constraints and generate response
-            gameRunning = gameRunning && eng.checkConstraints();
+            gameRunning = eng.checkConstraints();
         }
 
         scanner.close();
     }
 
+    private response executeCommand(Command command)
+    {
+        switch (command.getType())
+        {
+            case empty:
+                System.out.println("Please talk with me...");
+                return response.skip;
+            case exit:
+                System.out.println("Game terminating...");
+                return response.exit;
+            default:
+                return response.skip;
+        }
+    }
+
+    private boolean checkConstraints()
+    {
+        return true;
+    }
+
     public int getTime()
     {
         return time;
+    }
+
+    // enumerates the possible response types which can be generated when processing user commands
+    private enum response
+    {
+        good, skip, exit
     }
 }
