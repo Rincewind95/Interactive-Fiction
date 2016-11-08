@@ -39,32 +39,100 @@ public class Consequence
         args.add(arg4);
     }
 
-    // evaluates the correctness of the condition on a given engine
-    public void invoke(Engine eng)
+    // invokes the consequence
+    public Effect invoke(Engine eng)
     {
+        Effect effect = Effect.procede;
+        Player player = eng.getPlayer();
+        Room room, roomfrom, roomto;
+        Item item;
+        String dirfrom, dirto;
         switch (type)
         {
-            case none:
-                break;
             case teleport:
+                room = eng.findRoom(args.get(0));
+                player.moveTo(room);
                 break;
             case add_item_to_inv:
+                item = eng.findItem(args.get(0));
+                if(item.getLocationFlag() == Item.flag.room)
+                {
+                    room = item.getLocation();
+                    room.removeItem(item);
+                    item.setLocation(Item.flag.inv);
+                    player.giveItem(item);
+                }
+                else if(item.getLocationFlag() == Item.flag.prod)
+                {
+                    item.setLocation(Item.flag.inv);
+                    player.giveItem(item);
+                }
                 break;
             case remove_item_from_inv:
+                item = eng.findItem(args.get(0));
+                if(player.hasItem(item))
+                {
+                    room = player.getLocation();
+                    item.setLocation(room);
+                    item.setLocation(Item.flag.room);
+                    player.removeItem(item);
+                }
                 break;
             case kill:
+                effect = Effect.kill;
                 break;
             case win:
+                effect = Effect.win;
                 break;
             case add_item_to_room:
+                item = eng.findItem(args.get(0));
+                roomto = eng.findRoom(args.get(1));
+                roomfrom = item.getLocation();
+                if(item.getLocationFlag() == Item.flag.room
+                    && roomfrom != roomto)
+                {
+                    roomto.addItem(item);
+                    roomfrom.removeItem(item);
+                    item.setLocation(roomto);
+                }
+                else if(item.getLocationFlag() == Item.flag.prod)
+                {
+                    item.setLocation(Item.flag.room);
+                    item.setLocation(roomto);
+                }
+                else if(item.getLocationFlag() == Item.flag.inv)
+                {
+                    item.setLocation(Item.flag.room);
+                    item.setLocation(roomto);
+                    player.removeItem(item);
+                    roomto.addItem(item);
+                }
                 break;
             case remove_item_from_room:
+                item = eng.findItem(args.get(0));
+                room = eng.findRoom(args.get(1));
+                if(item.getLocationFlag() == Item.flag.room)
+                {
+                    room.removeItem(item);
+                    item.setLocation(Item.flag.prod);
+                }
                 break;
             case add_connector:
+                roomfrom = eng.findRoom(args.get(0));
+                dirfrom  = args.get(1);
+                roomto   = eng.findRoom(args.get(2));
+                dirto    = args.get(3);
+                Room.createPath(roomfrom, dirfrom, roomto, dirto);
                 break;
             case remove_connector:
+                roomfrom = eng.findRoom(args.get(0));
+                dirfrom  = args.get(1);
+                roomto   = eng.findRoom(args.get(2));
+                dirto    = args.get(3);
+                Room.removePath(roomfrom, dirfrom, roomto, dirto);
                 break;
         }
+        return effect;
     }
 
     public void printCons()
@@ -98,5 +166,9 @@ public class Consequence
     public enum ConsType
     {
         none, teleport, add_item_to_inv, remove_item_from_inv, kill, win, add_item_to_room, remove_item_from_room, add_connector, remove_connector
+    }
+    public enum Effect
+    {
+        procede, win, kill
     }
 }
