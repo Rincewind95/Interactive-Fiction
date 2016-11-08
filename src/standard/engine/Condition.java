@@ -10,10 +10,39 @@ public class Condition
     private CondType type;          // the type of the condition
     private ArrayList<String> args; // a list of the arguments the condition has
 
-    // parses the condition and inputs it
-    public Condition(String unparsed)
+    // input creator
+    public Condition(String str_type) throws BadConditionException
     {
+        switch (str_type)
+        {
+            case    "plir": type = CondType.player_in_room;        break;
+            case   "plnir": type = CondType.player_not_in_room;    break;
+            case   "plilv": type = CondType.player_on_level;       break;
+            case    "itir": type = CondType.item_in_room;          break;
+            case   "itnir": type = CondType.item_not_in_room;      break;
+            case   "itinv": type = CondType.item_in_inventory;     break;
+            case  "itninv": type = CondType.item_not_in_inventory; break;
+            case "combine": type = CondType.con_combine;           break;
+            case "examine": type = CondType.con_examine;           break;
+            case     "use": type = CondType.con_use;               break;
+            case   "useon": type = CondType.con_useon;             break;
+            case    "move": type = CondType.con_move;              break;
+            case "special": type = CondType.con_special;           break;
+            default: throw new BadConditionException("bad condition type" + str_type);
+        }
+        args = new ArrayList<>();
+    }
 
+    public Condition(String str_type, String arg1) throws BadConditionException
+    {
+        this(str_type);
+        args.add(arg1);
+    }
+
+    public Condition(String str_type, String arg1, String arg2) throws BadConditionException
+    {
+        this(str_type, arg1);
+        args.add(arg2);
     }
 
     // evaluates the correctness of the condition on a given engine
@@ -71,9 +100,9 @@ public class Condition
                 break;
             case con_useon:
                 resp = com != null
-                    && com.getType() == Command.Type.useon
-                    && com.getArgs().get(0).equals(args.get(0))
-                    && com.getArgs().get(1).equals(args.get(1));
+                        && com.getType() == Command.Type.useon
+                        && com.getArgs().get(0).equals(args.get(0))
+                        && com.getArgs().get(1).equals(args.get(1));
                 break;
             case con_move:
                 resp = com != null
@@ -88,6 +117,17 @@ public class Condition
         }
 
         return resp;
+    }
+
+    public void printCond()
+    {
+        System.out.print(type);
+        if (args != null)
+            for (String arg : args)
+            {
+                System.out.print(" [" + arg + "]");
+            }
+        System.out.print("\n");
     }
 
     /*

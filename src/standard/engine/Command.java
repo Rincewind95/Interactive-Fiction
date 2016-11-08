@@ -16,9 +16,7 @@ public class Command
     public Command(String input)
     {
         // extract the separate words (ignoring all whitespace)
-        String noSpaces = input.replaceAll(" +", " ");
-        if(noSpaces != null && noSpaces.startsWith(" "))
-            noSpaces = noSpaces.replaceFirst(" +", "");
+        String noSpaces = Utility.removeWhiteSpace(input);
         String[] tokens = noSpaces.split("\\s");
 
         // save a space-corrected version of the original

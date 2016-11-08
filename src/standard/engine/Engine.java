@@ -74,6 +74,16 @@ public class Engine
             // temporary input parsing (there will be an intermediate parser step here later)
             Command command = new Command(userInput);
 
+            System.out.println(Utility.pre_tokenise("   step\n" +
+                    "{\n" +
+                    "\t[examine     mirror];\n" +
+                    "\t[and];\n" +
+                    "\t[start](0);\n" +
+                    "\tplir [          the bar];\n" +
+                    "\tnone;\n" +
+                    "\t\"You try to observe your reflection in the mirror, however it is shattered beyond recognition. All the pieces are still there, forming a pretty mosaic...\";\n" +
+                    "}"));
+
             // modify the engines internal state with the command and determine the outcome
             response resp = eng.executeCommand(command);
             // test the outcome

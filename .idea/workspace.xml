@@ -5,19 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/standard/engine/StoryInterpreter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/standard/engine/Utility.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/standard/engine/BadConditionException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/standard/engine/BadConsequenceException.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Command$1.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Command$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Command$Type.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Command$Type.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Command.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Command.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Condition.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Condition.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Engine$1.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Engine$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Engine$response.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Engine$response.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Engine.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Engine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Item.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Item.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Player.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Player.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Room.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Room.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/StoryStep.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/StoryStep.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Command.java" afterPath="$PROJECT_DIR$/src/standard/engine/Command.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Condition.java" afterPath="$PROJECT_DIR$/src/standard/engine/Condition.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Consequence.java" afterPath="$PROJECT_DIR$/src/standard/engine/Consequence.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Engine.java" afterPath="$PROJECT_DIR$/src/standard/engine/Engine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/StoryInterpreter.java" afterPath="$PROJECT_DIR$/src/standard/engine/StoryInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Utility.java" afterPath="$PROJECT_DIR$/src/standard/engine/Utility.java" />
     </list>
     <ignored path="InteractiveFiction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,25 +45,38 @@
       <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/standard/engine/Command.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="12" selection-end-column="35" />
+            <state relative-caret-position="187">
+              <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7105#7106#0" expanded="true" />
-                <element signature="e#7136#7137#0" expanded="true" />
-                <element signature="e#7182#7183#0" expanded="true" />
-                <element signature="e#7209#7210#0" expanded="true" />
+                <element signature="e#6996#6997#0" expanded="true" />
+                <element signature="e#7027#7028#0" expanded="true" />
+                <element signature="e#7073#7074#0" expanded="true" />
+                <element signature="e#7100#7101#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Consequence.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Consequence.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/standard/engine/Consequence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+            <state relative-caret-position="396">
+              <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BadConsequenceException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/standard/engine/BadConsequenceException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+              <folding>
+                <element signature="e#181#182#0" expanded="true" />
+                <element signature="e#211#212#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,31 +84,45 @@
       <file leaf-file-name="Engine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/standard/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="190" column="58" selection-start-line="190" selection-start-column="58" selection-end-line="190" selection-end-column="58" />
+            <state relative-caret-position="485">
+              <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#11858#11859#0" expanded="true" />
-                <element signature="e#11885#11886#0" expanded="true" />
-                <element signature="e#11981#11982#0" expanded="true" />
-                <element signature="e#12003#12004#0" expanded="true" />
-                <element signature="e#12040#12041#0" expanded="true" />
-                <element signature="e#12069#12070#0" expanded="true" />
-                <element signature="e#12557#12558#0" expanded="true" />
-                <element signature="e#12601#12602#0" expanded="true" />
-                <element signature="e#12649#12650#0" expanded="true" />
-                <element signature="e#12693#12694#0" expanded="true" />
+                <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
+                <element signature="e#12379#12380#0" expanded="true" />
+                <element signature="e#12406#12407#0" expanded="true" />
+                <element signature="e#12502#12503#0" expanded="true" />
+                <element signature="e#12524#12525#0" expanded="true" />
+                <element signature="e#12561#12562#0" expanded="true" />
+                <element signature="e#12590#12591#0" expanded="true" />
+                <element signature="e#13078#13079#0" expanded="true" />
+                <element signature="e#13122#13123#0" expanded="true" />
+                <element signature="e#13170#13171#0" expanded="true" />
+                <element signature="e#13214#13215#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Condition.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Condition.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/standard/engine/Condition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BadConditionException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/standard/engine/BadConditionException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="10" selection-end-column="5" />
+              <folding>
+                <element signature="e#211#212#0" expanded="true" />
+                <element signature="e#241#242#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -99,8 +130,8 @@
       <file leaf-file-name="Utility.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/standard/engine/Utility.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+            <state relative-caret-position="572">
+              <caret line="26" column="65" selection-start-line="26" selection-start-column="65" selection-end-line="26" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -109,8 +140,8 @@
       <file leaf-file-name="StoryInterpreter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/standard/engine/StoryInterpreter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+            <state relative-caret-position="204">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -157,41 +188,6 @@
                 <element signature="e#3102#3103#0" expanded="true" />
                 <element signature="e#3155#3156#0" expanded="true" />
                 <element signature="e#3195#3196#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Special.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/standard/engine/Special.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/standard/engine/Item.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="41">
-              <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
-              <folding>
-                <element signature="e#902#903#0" expanded="true" />
-                <element signature="e#932#933#0" expanded="true" />
-                <element signature="e#974#975#0" expanded="true" />
-                <element signature="e#1008#1009#0" expanded="true" />
-                <element signature="e#1066#1067#0" expanded="true" />
-                <element signature="e#1112#1113#0" expanded="true" />
-                <element signature="e#1157#1158#0" expanded="true" />
-                <element signature="e#1192#1193#0" expanded="true" />
-                <element signature="e#1233#1234#0" expanded="true" />
-                <element signature="e#1269#1270#0" expanded="true" />
-                <element signature="e#1306#1307#0" expanded="true" />
-                <element signature="e#1337#1338#0" expanded="true" />
-                <element signature="e#1482#1483#0" expanded="true" />
-                <element signature="e#1513#1514#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -249,11 +245,16 @@
         <option value="$PROJECT_DIR$/src/standard/engine/StoryStep.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/Item.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/Room.java" />
-        <option value="$PROJECT_DIR$/src/standard/engine/Command.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/Player.java" />
+        <option value="$PROJECT_DIR$/src/standard/engine/BadCommandException.java" />
+        <option value="$PROJECT_DIR$/src/standard/engine/BadConditionException.java" />
+        <option value="$PROJECT_DIR$/src/standard/engine/Command.java" />
+        <option value="$PROJECT_DIR$/src/standard/engine/StoryInterpreter.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/Engine.java" />
-        <option value="$PROJECT_DIR$/src/standard/engine/Condition.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/Utility.java" />
+        <option value="$PROJECT_DIR$/src/standard/engine/BadConsequenceException.java" />
+        <option value="$PROJECT_DIR$/src/standard/engine/Condition.java" />
+        <option value="$PROJECT_DIR$/src/standard/engine/Consequence.java" />
       </list>
     </option>
   </component>
@@ -333,7 +334,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="D:/!!!M/!MILOS/Cambridge/Part II project Interactive Fiction" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -626,7 +627,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -816,68 +817,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/standard/engine/Consequence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/standard/engine/StoryInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+        <state relative-caret-position="204">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/standard/engine/Engine.java">
+    <entry file="file://$PROJECT_DIR$/src/standard/engine/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="190" column="58" selection-start-line="190" selection-start-column="58" selection-end-line="190" selection-end-column="58" />
+        <state relative-caret-position="572">
+          <caret line="26" column="65" selection-start-line="26" selection-start-column="65" selection-end-line="26" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/standard/engine/BadConditionException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="10" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11858#11859#0" expanded="true" />
-            <element signature="e#11885#11886#0" expanded="true" />
-            <element signature="e#11981#11982#0" expanded="true" />
-            <element signature="e#12003#12004#0" expanded="true" />
-            <element signature="e#12040#12041#0" expanded="true" />
-            <element signature="e#12069#12070#0" expanded="true" />
-            <element signature="e#12557#12558#0" expanded="true" />
-            <element signature="e#12601#12602#0" expanded="true" />
-            <element signature="e#12649#12650#0" expanded="true" />
-            <element signature="e#12693#12694#0" expanded="true" />
+            <element signature="e#211#212#0" expanded="true" />
+            <element signature="e#241#242#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/standard/engine/BadConsequenceException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+          <folding>
+            <element signature="e#181#182#0" expanded="true" />
+            <element signature="e#211#212#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/standard/engine/Command.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="12" selection-end-column="35" />
+        <state relative-caret-position="187">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7105#7106#0" expanded="true" />
-            <element signature="e#7136#7137#0" expanded="true" />
-            <element signature="e#7182#7183#0" expanded="true" />
-            <element signature="e#7209#7210#0" expanded="true" />
+            <element signature="e#6996#6997#0" expanded="true" />
+            <element signature="e#7027#7028#0" expanded="true" />
+            <element signature="e#7073#7074#0" expanded="true" />
+            <element signature="e#7100#7101#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/standard/engine/Utility.java">
+    <entry file="file://$PROJECT_DIR$/src/standard/engine/Engine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding />
+        <state relative-caret-position="485">
+          <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
+            <element signature="e#12379#12380#0" expanded="true" />
+            <element signature="e#12406#12407#0" expanded="true" />
+            <element signature="e#12502#12503#0" expanded="true" />
+            <element signature="e#12524#12525#0" expanded="true" />
+            <element signature="e#12561#12562#0" expanded="true" />
+            <element signature="e#12590#12591#0" expanded="true" />
+            <element signature="e#13078#13079#0" expanded="true" />
+            <element signature="e#13122#13123#0" expanded="true" />
+            <element signature="e#13170#13171#0" expanded="true" />
+            <element signature="e#13214#13215#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/standard/engine/Condition.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/standard/engine/Consequence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="46" column="22" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="22" />
           <folding />
         </state>
       </provider>
