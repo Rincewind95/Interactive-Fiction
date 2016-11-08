@@ -383,6 +383,11 @@ public class Engine
         return prev_commands.get(prev_commands.size()-1);
     }
 
+    public void waitTime(int t)
+    {
+        time += t;
+    }
+
     // enumerates the possible response types which can be generated when processing user commands
     private enum response
     {
