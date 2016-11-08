@@ -1,5 +1,7 @@
 package standard.engine;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,7 +26,7 @@ public class Engine
     private ArrayList<Command> prev_commands; // a list of all previous player commands
     private ArrayList<StoryStep> prev_steps;  // a list of all previously satisfied steps
 
-    public Engine(String story_loc)
+    public Engine()
     {
         // game initialisation
         time = 1;
@@ -54,12 +56,41 @@ public class Engine
     {
         Scanner scanner = new Scanner(System.in);
 
-        // may want to repeat this bit until a game is successfully loaded or exit has been input
+        // repeat until a game is successfully loaded or exit has been input
         System.out.println("Please input the location of the story file to be loaded...");
-        String story_location = scanner.nextLine();
+        String story = "";
+        boolean badLocation = true;
+        while(badLocation)
+        {
+            try
+            {
+                String story_location = scanner.nextLine();
+                if(story_location.equals("abort"))
+                    return;
+                System.out.println("Attempting to load story file...");
+                story = new Scanner(new File(story_location)).useDelimiter("\\Z").next();
+                badLocation = false;
+            } catch (IOException e)
+            {
+                System.out.println("The file could not be found, please input a different location or input \"abort\"...");
+            }
+        }
 
-        System.out.println("Attempting to load story file...\n");
-        Engine eng = new Engine(story_location);
+        Engine eng = null;
+        while(eng == null)
+        {
+            // repeatedly interpret the story until the engine is
+            StoryInterpreter interpreter = new StoryInterpreter(story);
+            eng = interpreter.getEngine();
+            if(eng == null)
+            {
+                System.out.println("The story file is corrupt!\nTo reinterpret the story file press enter or type \"abort\" to quit.\n" +
+                                                               "--------------------------------------------------------------------");
+                String procede = scanner.nextLine();
+                if(procede.equals("abort"))
+                    return;
+            }
+        }
         // --------------------------------------------------------------------------------------
 
         // start the game once the engine is loaded
@@ -73,16 +104,6 @@ public class Engine
 
             // temporary input parsing (there will be an intermediate parser step here later)
             Command command = new Command(userInput);
-
-            System.out.println(Utility.pre_tokenise("   step\n" +
-                    "{\n" +
-                    "\t[examine     mirror];\n" +
-                    "\t[and];\n" +
-                    "\t[start](0);\n" +
-                    "\tplir [          the bar];\n" +
-                    "\tnone;\n" +
-                    "\t\"You try to observe your reflection in the mirror, however it is shattered beyond recognition. All the pieces are still there, forming a pretty mosaic...\";\n" +
-                    "}"));
 
             // modify the engines internal state with the command and determine the outcome
             response resp = eng.executeCommand(command);

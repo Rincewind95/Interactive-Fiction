@@ -1,7 +1,5 @@
 package standard.engine;
 
-import com.sun.deploy.util.StringUtils;
-
 import java.util.ArrayList;
 
 /**
