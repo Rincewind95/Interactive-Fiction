@@ -12,13 +12,13 @@ fragment SEMICOLON: ';';
 fragment DOUBLEQUOT: '"';
 
 // main rule identifiers
-fragment MESSAGE: 'message';
-fragment WELCOME: 'welcome';
-fragment ROOM: 'room';
-fragment ITEM: 'item';
-fragment PLAYER: 'player';
-fragment SPECIAL: 'special';
-fragment STEP: 'step';
+fragment MESSAGE_: 'message';
+fragment WELCOME_: 'welcome';
+fragment ROOM_: 'room';
+fragment ITEM_: 'item';
+fragment PLAYER_: 'player';
+fragment SPECIAL_: 'special';
+fragment STEP_: 'step';
 
 // room related cardinal directions
 N: 'N';
@@ -87,11 +87,11 @@ all: message all
    | step all
    |;
 
-welcome: OPEN_PAREN_CURLY message_text CLOS_PAREN_CURLY;
+welcome: WELCOME_ OPEN_PAREN_CURLY message_text CLOS_PAREN_CURLY;
 
-message: MESSAGE OPEN_PAREN_CURLY message_id SEMICOLON message_text SEMICOLON CLOS_PAREN_CURLY;
+message: MESSAGE_ OPEN_PAREN_CURLY message_id SEMICOLON message_text SEMICOLON CLOS_PAREN_CURLY;
 
-room: ROOM OPEN_PAREN_CURLY room_id SEMICOLON level_id SEMICOLON exits SEMICOLON brief SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
+room: ROOM_ OPEN_PAREN_CURLY room_id SEMICOLON level_id SEMICOLON exits SEMICOLON brief SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
 
 exits: exit
      | exit COMMA exits;
@@ -108,7 +108,7 @@ brief: message_text
 description: message_text
            | message_id;
 
-item: ITEM OPEN_PAREN_CURLY item_id SEMICOLON mobility SEMICOLON location SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
+item: ITEM_ OPEN_PAREN_CURLY item_id SEMICOLON mobility SEMICOLON location SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
 
 mobility: TAKEABLE
         | FIXED;
@@ -117,13 +117,13 @@ location: room_id
         | INVENTORY
         | PRODUCED;
 
-player: PLAYER OPEN_PAREN_CURLY room_id SEMICOLON CLOS_PAREN_CURLY;
+player: PLAYER_ OPEN_PAREN_CURLY room_id SEMICOLON CLOS_PAREN_CURLY;
 
 special_id: ID;
-special: SPECIAL OPEN_PAREN_CURLY special_id SEMICOLON CLOS_PAREN_CURLY;
+special: SPECIAL_ OPEN_PAREN_CURLY special_id SEMICOLON CLOS_PAREN_CURLY;
 
 step_id: ID;
-step: STEP OPEN_PAREN_CURLY step_id SEMICOLON gate_type SEMICOLON required_steps SEMICOLON conditions SEMICOLON consequences SEMICOLON report CLOS_PAREN_CURLY;
+step: STEP_ OPEN_PAREN_CURLY step_id SEMICOLON gate_type SEMICOLON required_steps SEMICOLON conditions SEMICOLON consequences SEMICOLON report CLOS_PAREN_CURLY;
 
 step_before: step_id TIME;
 
