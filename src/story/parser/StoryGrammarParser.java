@@ -47,13 +47,13 @@ public class StoryGrammarParser extends Parser {
 
 	private static final String[] _LITERAL_NAMES = {
 		null, "'{'", "'}'", "'['", "']'", "'('", "')'", "','", "';'", "'\"'", 
-		"'message'", "'welcome'", "'room'", "'item'", "'player'", "'special'", 
-		"'step'", "'_N'", "'_E'", "'_S'", "'_W'", "'_takeable'", "'_fixed'", "'_inv'", 
-		"'_prod'", null, null, "'_plir'", "'_plnir'", "'_plilv'", "'_itir'", "'_itnir'", 
-		"'_itinv'", "'_itninv'", "'_combine'", "'_examine'", "'_use'", "'_useon'", 
-		"'_move'", "'_special'", "'_none'", "'_jmp'", "'_additinv'", "'_rmitinv'", 
-		"'_kill'", "'_win'", "'_additr'", "'_rmitfr'", "'_addcon'", "'_rmcon'", 
-		"'_wait'"
+		"'_message'", "'_welcome'", "'_room'", "'_item'", "'_player'", "'_special_command'", 
+		"'_step'", "'_N'", "'_E'", "'_S'", "'_W'", "'_takeable'", "'_fixed'", 
+		"'_inv'", "'_prod'", null, null, "'_plir'", "'_plnir'", "'_plilv'", "'_itir'", 
+		"'_itnir'", "'_itinv'", "'_itninv'", "'_combine'", "'_examine'", "'_use'", 
+		"'_useon'", "'_move'", "'_special'", "'_none'", "'_jmp'", "'_additinv'", 
+		"'_rmitinv'", "'_kill'", "'_win'", "'_additr'", "'_rmitfr'", "'_addcon'", 
+		"'_rmcon'", "'_wait'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "OPEN_PAREN_CURLY", "CLOS_PAREN_CURLY", "OPEN_PAREN_BLOCK", "CLOS_PAREN_BLOCK", 

@@ -12,13 +12,13 @@ SEMICOLON: ';';
 DOUBLEQUOT: '"';
 
 // main rule identifiers
-MESSAGE_: 'message';
-WELCOME_: 'welcome';
-ROOM_: 'room';
-ITEM_: 'item';
-PLAYER_: 'player';
-SPECIAL_: 'special';
-STEP_: 'step';
+MESSAGE_: '_message';
+WELCOME_: '_welcome';
+ROOM_: '_room';
+ITEM_: '_item';
+PLAYER_: '_player';
+SPECIAL_: '_special_command';
+STEP_: '_step';
 
 // room related cardinal directions
 N: '_N';
