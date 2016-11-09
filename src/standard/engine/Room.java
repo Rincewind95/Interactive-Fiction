@@ -14,19 +14,18 @@ public class Room
     private HashMap<String, String> dead_end; // a map of messages which are printed if one tries to go in a dead end (defaults to "Cannot go there")
     private boolean visited;                  // true if the room was ever visited
 
-    private String brief;       // message printed upon first entry to the room
-    private String description; // short description printed upon consequent entries
-
+    private Message brief;       // message printed upon first entry to the room
+    private Message description; // short description printed upon consequent entries
     private HashSet<Item> items; // list of all items currently contained in the room
 
-    public Room(String room_id, String level_id)
+    public Room()
     {
-        this.room_id = room_id;
-        this.level_id = level_id;
+        room_id = "";
+        level_id = "";
         leads_to = new HashMap<>();
         dead_end = new HashMap<>();
-        brief = "";
-        description = "";
+        brief = null;
+        description = null;
         items = new HashSet<>();
         visited = false;
     }
@@ -48,6 +47,11 @@ public class Room
             r1.leads_to.remove(dir1, r2);
             r2.leads_to.remove(dir2, r1);
         }
+    }
+
+    public void setVisited(boolean visited)
+    {
+        this.visited = visited;
     }
 
     public boolean wasVisited()
@@ -75,9 +79,19 @@ public class Room
         return level_id;
     }
 
+    public void setLevel_id(String level_id)
+    {
+        this.level_id = level_id;
+    }
+
     public String getRoom_id()
     {
         return room_id;
+    }
+
+    public void setRoom_id(String room_id)
+    {
+        this.room_id = room_id;
     }
 
     public boolean containsItem(Item i)
@@ -95,22 +109,37 @@ public class Room
         items.remove(i);
     }
 
-    public void addBrief(String brief)
+    public void addBrief(Message brief)
     {
         this.brief = brief;
     }
 
-    public String getBrief()
+    public Message getBriefMsg()
     {
         return brief;
     }
 
-    public void addDescription(String desc)
+    public String getBrief()
+    {
+        return brief.getMsg();
+    }
+
+    public void setBrief(Message brief)
+    {
+        this.brief = brief;
+    }
+
+    public void addDescription(Message desc)
     {
         description = desc;
     }
 
     public String getDescription()
+    {
+        return description.getMsg();
+    }
+
+    public Message getDescriptionMsg()
     {
         return description;
     }
@@ -142,10 +171,10 @@ public class Room
         info += description;
         info += "\n\n";
 
-        if(!items.isEmpty())
+        if (!items.isEmpty())
         {
             info += "This room contains the following items:";
-            for (Item item: items)
+            for (Item item : items)
             {
                 info += "\n" + item.getItem_id();
             }
@@ -156,10 +185,10 @@ public class Room
         }
 
         info += "\n";
-        if(!leads_to.isEmpty())
+        if (!leads_to.isEmpty())
         {
             info += "\nThis room has the following exits:";
-            for (String dir: leads_to.keySet())
+            for (String dir : leads_to.keySet())
             {
                 info += "\nTo the " + dir + ": " + leads_to.get(dir).getRoom_id();
             }

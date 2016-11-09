@@ -29,4 +29,11 @@ public class Utility
         moded = removeWhiteSpace(moded);
         return moded;
     }
+
+    public static String strip_block_paren(String input)
+    {
+        String res = input.replace("[", "");
+        res = res.replace("]", "");
+        return res;
+    }
 }

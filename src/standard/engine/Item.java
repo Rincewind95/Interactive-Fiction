@@ -9,7 +9,7 @@ public class Item
     private boolean takeable;   // true if the item can be taken from its respective room (if the item is not fixed in place)
     private flag location_flag; // flag that determines the location of the item (room if its in a room, inv for inventory and prod means it will be produced later)
     private Room location;      // the location of the item (room_id, inv of null (if the item has not yet been produced))
-    private String description; // items short description
+    private Message description; // items short description
 
     public Item(String item_id, boolean takeable)
     {
@@ -17,7 +17,7 @@ public class Item
         this.takeable = takeable;
         location_flag = flag.prod;
         location = null;
-        description = "";
+        description = null;
     }
 
     public String getItem_id()
@@ -27,10 +27,15 @@ public class Item
 
     public String getDescription()
     {
+        return description.getMsg();
+    }
+
+    public Message getDescriptionMsg()
+    {
         return description;
     }
 
-    public void setDescription(String description)
+    public void setDescription(Message description)
     {
         this.description = description;
     }

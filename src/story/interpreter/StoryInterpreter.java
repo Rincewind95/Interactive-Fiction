@@ -22,7 +22,6 @@ public class StoryInterpreter
     {
         try
         {
-            System.out.println(story_loc);
             eng = null;
             this.story_loc = story_loc;
             ANTLRInputStream in = new ANTLRInputStream(new FileInputStream(story_loc));
