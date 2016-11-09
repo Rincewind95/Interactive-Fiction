@@ -25,9 +25,17 @@ public class StoryInterpreter
             eng = null;
             this.story_loc = story_loc;
             ANTLRInputStream in = new ANTLRInputStream(new FileInputStream(story_loc));
+            StoryTreeErrorListener listener = new StoryTreeErrorListener();
+
             StoryGrammarLexer lexer = new StoryGrammarLexer(in);
+            lexer.removeErrorListeners();
+            lexer.addErrorListener(listener);
+
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             StoryGrammarParser parser = new StoryGrammarParser(tokens);
+            parser.removeErrorListeners();
+            parser.addErrorListener(listener);
+
             ParseTree tree = parser.story_elements();
 
             StoryTreeVisitor visitor = new StoryTreeVisitor();
