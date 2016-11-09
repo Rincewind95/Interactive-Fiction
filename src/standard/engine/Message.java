@@ -8,7 +8,7 @@ public class Message
     private String msg;
     private String msg_id;
 
-    public Message(String msg, String msg_id)
+    public Message(String msg_id, String msg)
     {
         this.msg = msg;
         this.msg_id = msg_id;

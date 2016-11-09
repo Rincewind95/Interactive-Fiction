@@ -5,19 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/standard/engine/Message.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Engine$1.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Engine$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Engine$response.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Engine$response.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Engine.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Engine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Utility.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Utility.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/runnable/MainExecutor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Item$flag.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Item$flag.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Item.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Item.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Room.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Room.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/StoryStep.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/StoryStep.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/interpreter/StoryInterpreter.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/interpreter/StoryInterpreter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/interpreter/StoryTreeVisitor.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/interpreter/StoryTreeVisitor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$BriefContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$BriefContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConditionContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConditionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConditionsContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConditionsContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConsequenceContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConsequenceContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConsequencesContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConsequencesContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$DescriptionContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$DescriptionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$DirectionContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$DirectionContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ExitContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ExitContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ExitsContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ExitsContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Gate_typeContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Gate_typeContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ItemContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ItemContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$LocationContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$LocationContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$MobilityContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$MobilityContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ReportContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ReportContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Required_stepsContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Required_stepsContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$SpecialContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$SpecialContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Special_idContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Special_idContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$StepContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$StepContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Step_beforeContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Step_beforeContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Step_idContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Step_idContext.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Item.java" afterPath="$PROJECT_DIR$/src/standard/engine/Item.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Room.java" afterPath="$PROJECT_DIR$/src/standard/engine/Room.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/StoryStep.java" afterPath="$PROJECT_DIR$/src/standard/engine/StoryStep.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Utility.java" afterPath="$PROJECT_DIR$/src/standard/engine/Utility.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java" afterPath="$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/grammars/StoryGrammar.g4" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/grammars/StoryGrammar.g4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Engine.java" afterPath="$PROJECT_DIR$/src/standard/engine/Engine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Message.java" afterPath="$PROJECT_DIR$/src/standard/engine/Message.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4" afterPath="$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/story/interpreter/StoryTreeVisitor.java" afterPath="$PROJECT_DIR$/src/story/interpreter/StoryTreeVisitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/story/parser/StoryGrammarParser.java" afterPath="$PROJECT_DIR$/src/story/parser/StoryGrammarParser.java" />
     </list>
     <ignored path="InteractiveFiction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,93 +60,286 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/standard/engine/Player.java">
+      <file leaf-file-name="StoryGrammar.g4" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="56" column="44" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
+            <state relative-caret-position="364">
+              <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Room.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/standard/engine/Room.java">
+      <file leaf-file-name="StoryGrammarBaseVisitor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarBaseVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="323">
+              <caret line="19" column="87" selection-start-line="19" selection-start-column="86" selection-end-line="19" selection-end-column="99" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractParseTreeVisitor.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.5.2-1/antlr4-runtime-4.5.2-1.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
               <folding>
-                <element signature="docComment;class#Room#0" expanded="false" />
-                <element signature="method#Room#0;class#Room#0" expanded="false" />
-                <element signature="method#createPath#0;class#Room#0" expanded="false" />
-                <element signature="method#removePath#0;class#Room#0" expanded="false" />
-                <element signature="method#getLookInfo#0;class#Room#0" expanded="false" />
+                <element signature="e#537#538#0" expanded="true" />
+                <element signature="e#577#578#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/standard/engine/Item.java">
+      <file leaf-file-name="ParseTree.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.5.2-1/antlr4-runtime-4.5.2-1.jar!/org/antlr/v4/runtime/tree/ParseTree.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+            <state relative-caret-position="119">
+              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StoryInterpreter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="463">
+              <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="86" />
               <folding>
-                <element signature="e#977#978#0" expanded="true" />
-                <element signature="e#1020#1021#0" expanded="true" />
-                <element signature="e#1066#1067#0" expanded="true" />
-                <element signature="e#1100#1101#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Special.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/standard/engine/Special.java">
+      <file leaf-file-name="StoryGrammarParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StoryStep.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/standard/engine/StoryStep.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Consequence.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/standard/engine/Consequence.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2748">
-              <caret line="164" column="116" selection-start-line="164" selection-start-column="116" selection-end-line="164" selection-end-column="116" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Condition.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/standard/engine/Condition.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2601">
-              <caret line="153" column="59" selection-start-line="153" selection-start-column="44" selection-end-line="153" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/standard/engine/Command.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1715">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="171">
+              <caret line="375" column="27" selection-start-line="375" selection-start-column="21" selection-end-line="375" selection-end-column="27" />
+              <folding>
+                <element signature="initializer##0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="docComment;field#tokenNames#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="initializer##1;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="e#4664#4673#0" expanded="false" />
+                <element signature="method#getGrammarFileName#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#getRuleNames#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#getSerializedATN#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#getATN#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#StoryGrammarParser#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#ID#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="e#6333#6334#0" expanded="false" />
+                <element signature="method#getRuleIndex#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#enterRule#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#exitRule#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#accept#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#level_id#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#ID#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="e#7693#7694#0" expanded="false" />
+                <element signature="method#getRuleIndex#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#enterRule#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#exitRule#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#accept#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#item_id#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#ID#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#getRuleIndex#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#enterRule#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#exitRule#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#accept#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#room_id#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#ID#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#getRuleIndex#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#enterRule#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#exitRule#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#accept#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#message_id#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#QUOTED_TEXT#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#getRuleIndex#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#enterRule#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#exitRule#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#accept#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#message_text#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#getRuleIndex#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#enterRule#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#exitRule#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#story_elements#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#WELCOME_#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#OPEN_PAREN_CURLY#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#SEMICOLON#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#CLOS_PAREN_CURLY#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#getRuleIndex#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#enterRule#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#exitRule#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#accept#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#welcome#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#MESSAGE_#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#OPEN_PAREN_CURLY#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#SEMICOLON#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#CLOS_PAREN_CURLY#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#getRuleIndex#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#enterRule#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#exitRule#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#accept#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#message#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#ROOM_#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#OPEN_PAREN_CURLY#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#SEMICOLON#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#CLOS_PAREN_CURLY#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#getRuleIndex#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#enterRule#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#exitRule#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#accept#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="method#room#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="class#ExitsContext#0;class#StoryGrammarParser#0" expanded="false" />
+                <element signature="e#22609#22610#0" expanded="true" />
+                <element signature="e#22659#22660#0" expanded="true" />
+                <element signature="e#22694#22695#0" expanded="true" />
+                <element signature="e#22745#22746#0" expanded="true" />
+                <element signature="e#22866#22867#0" expanded="true" />
+                <element signature="e#22919#22920#0" expanded="true" />
+                <element signature="e#22988#22989#0" expanded="true" />
+                <element signature="e#23025#23026#0" expanded="true" />
+                <element signature="e#24492#24493#0" expanded="true" />
+                <element signature="e#24548#24549#0" expanded="true" />
+                <element signature="e#24584#24585#0" expanded="true" />
+                <element signature="e#24638#24639#0" expanded="true" />
+                <element signature="e#24684#24685#0" expanded="true" />
+                <element signature="e#24743#24744#0" expanded="true" />
+                <element signature="e#24785#24786#0" expanded="true" />
+                <element signature="e#24842#24843#0" expanded="true" />
+                <element signature="e#24910#24911#0" expanded="true" />
+                <element signature="e#24947#24948#0" expanded="true" />
+                <element signature="e#26922#26923#0" expanded="true" />
+                <element signature="e#26959#26960#0" expanded="true" />
+                <element signature="e#28399#28400#0" expanded="true" />
+                <element signature="e#28458#28459#0" expanded="true" />
+                <element signature="e#28500#28501#0" expanded="true" />
+                <element signature="e#28557#28558#0" expanded="true" />
+                <element signature="e#28626#28627#0" expanded="true" />
+                <element signature="e#28663#28664#0" expanded="true" />
+                <element signature="e#30126#30127#0" expanded="true" />
+                <element signature="e#30185#30186#0" expanded="true" />
+                <element signature="e#30227#30228#0" expanded="true" />
+                <element signature="e#30284#30285#0" expanded="true" />
+                <element signature="e#30359#30360#0" expanded="true" />
+                <element signature="e#30396#30397#0" expanded="true" />
+                <element signature="e#32078#32079#0" expanded="true" />
+                <element signature="e#32132#32133#0" expanded="true" />
+                <element signature="e#32265#32266#0" expanded="true" />
+                <element signature="e#32322#32323#0" expanded="true" />
+                <element signature="e#32360#32361#0" expanded="true" />
+                <element signature="e#32415#32416#0" expanded="true" />
+                <element signature="e#32453#32454#0" expanded="true" />
+                <element signature="e#32508#32509#0" expanded="true" />
+                <element signature="e#32552#32553#0" expanded="true" />
+                <element signature="e#32610#32611#0" expanded="true" />
+                <element signature="e#32780#32781#0" expanded="true" />
+                <element signature="e#32817#32818#0" expanded="true" />
+                <element signature="e#34594#34595#0" expanded="true" />
+                <element signature="e#34631#34632#0" expanded="true" />
+                <element signature="e#35988#35989#0" expanded="true" />
+                <element signature="e#36042#36043#0" expanded="true" />
+                <element signature="e#36288#36289#0" expanded="true" />
+                <element signature="e#36325#36326#0" expanded="true" />
+                <element signature="e#38027#38028#0" expanded="true" />
+                <element signature="e#38064#38065#0" expanded="true" />
+                <element signature="e#39501#39502#0" expanded="true" />
+                <element signature="e#39558#39559#0" expanded="true" />
+                <element signature="e#39819#39820#0" expanded="true" />
+                <element signature="e#39856#39857#0" expanded="true" />
+                <element signature="e#41353#41354#0" expanded="true" />
+                <element signature="e#41390#41391#0" expanded="true" />
+                <element signature="e#42785#42786#0" expanded="true" />
+                <element signature="e#42839#42840#0" expanded="true" />
+                <element signature="e#42972#42973#0" expanded="true" />
+                <element signature="e#43029#43030#0" expanded="true" />
+                <element signature="e#43069#43070#0" expanded="true" />
+                <element signature="e#43125#43126#0" expanded="true" />
+                <element signature="e#43175#43176#0" expanded="true" />
+                <element signature="e#43236#43237#0" expanded="true" />
+                <element signature="e#43278#43279#0" expanded="true" />
+                <element signature="e#43335#43336#0" expanded="true" />
+                <element signature="e#43381#43382#0" expanded="true" />
+                <element signature="e#43440#43441#0" expanded="true" />
+                <element signature="e#43474#43475#0" expanded="true" />
+                <element signature="e#43527#43528#0" expanded="true" />
+                <element signature="e#43697#43698#0" expanded="true" />
+                <element signature="e#43734#43735#0" expanded="true" />
+                <element signature="e#45464#45465#0" expanded="true" />
+                <element signature="e#45518#45519#0" expanded="true" />
+                <element signature="e#45671#45672#0" expanded="true" />
+                <element signature="e#45708#45709#0" expanded="true" />
+                <element signature="e#47015#47016#0" expanded="true" />
+                <element signature="e#47072#47073#0" expanded="true" />
+                <element signature="e#47121#47122#0" expanded="true" />
+                <element signature="e#47179#47180#0" expanded="true" />
+                <element signature="e#47300#47301#0" expanded="true" />
+                <element signature="e#47353#47354#0" expanded="true" />
+                <element signature="e#47431#47432#0" expanded="true" />
+                <element signature="e#47468#47469#0" expanded="true" />
+                <element signature="e#49042#49043#0" expanded="true" />
+                <element signature="e#49097#49098#0" expanded="true" />
+                <element signature="e#49142#49143#0" expanded="true" />
+                <element signature="e#49198#49199#0" expanded="true" />
+                <element signature="e#49319#49320#0" expanded="true" />
+                <element signature="e#49372#49373#0" expanded="true" />
+                <element signature="e#49446#49447#0" expanded="true" />
+                <element signature="e#49483#49484#0" expanded="true" />
+                <element signature="e#51104#51105#0" expanded="true" />
+                <element signature="e#51158#51159#0" expanded="true" />
+                <element signature="e#51402#51403#0" expanded="true" />
+                <element signature="e#51457#51458#0" expanded="true" />
+                <element signature="e#51593#51594#0" expanded="true" />
+                <element signature="e#51646#51647#0" expanded="true" />
+                <element signature="e#51687#51688#0" expanded="true" />
+                <element signature="e#51741#51742#0" expanded="true" />
+                <element signature="e#52541#52542#0" expanded="true" />
+                <element signature="e#52597#52598#0" expanded="true" />
+                <element signature="e#52731#52732#0" expanded="true" />
+                <element signature="e#52788#52789#0" expanded="true" />
+                <element signature="e#52861#52862#0" expanded="true" />
+                <element signature="e#52898#52899#0" expanded="true" />
+                <element signature="e#56383#56384#0" expanded="true" />
+                <element signature="e#56440#56441#0" expanded="true" />
+                <element signature="e#56489#56490#0" expanded="true" />
+                <element signature="e#56547#56548#0" expanded="true" />
+                <element signature="e#56668#56669#0" expanded="true" />
+                <element signature="e#56721#56722#0" expanded="true" />
+                <element signature="e#56797#56798#0" expanded="true" />
+                <element signature="e#56834#56835#0" expanded="true" />
+                <element signature="e#58551#58552#0" expanded="true" />
+                <element signature="e#58604#58605#0" expanded="true" />
+                <element signature="e#58645#58646#0" expanded="true" />
+                <element signature="e#58699#58700#0" expanded="true" />
+                <element signature="e#58835#58836#0" expanded="true" />
+                <element signature="e#58889#58890#0" expanded="true" />
+                <element signature="e#59509#59510#0" expanded="true" />
+                <element signature="e#59564#59565#0" expanded="true" />
+                <element signature="e#59609#59610#0" expanded="true" />
+                <element signature="e#59665#59666#0" expanded="true" />
+                <element signature="e#59998#59999#0" expanded="true" />
+                <element signature="e#60035#60036#0" expanded="true" />
+                <element signature="e#63208#63209#0" expanded="true" />
+                <element signature="e#63267#63268#0" expanded="true" />
+                <element signature="e#63309#63310#0" expanded="true" />
+                <element signature="e#63366#63367#0" expanded="true" />
+                <element signature="e#63436#63437#0" expanded="true" />
+                <element signature="e#63473#63474#0" expanded="true" />
+                <element signature="e#65132#65133#0" expanded="true" />
+                <element signature="e#65169#65170#0" expanded="true" />
+                <element signature="initializer##2;class#StoryGrammarParser#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -132,8 +347,8 @@
       <file leaf-file-name="Engine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/standard/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1651">
-              <caret line="111" column="45" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
+            <state relative-caret-position="-115">
+              <caret line="54" column="49" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
               <folding>
                 <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
                 <element signature="method#getHistory#0;class#Engine#0" expanded="false" />
@@ -143,12 +358,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Utility.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/standard/engine/Utility.java">
+      <file leaf-file-name="MainExecutor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/runnable/MainExecutor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="42" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="42" />
-              <folding />
+            <state relative-caret-position="208">
+              <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StoryTreeVisitor.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/story/interpreter/StoryTreeVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1457#1458#0" expanded="true" />
+                <element signature="e#1484#1485#0" expanded="true" />
+                <element signature="e#1833#1834#0" expanded="true" />
+                <element signature="e#1860#1861#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/standard/engine/Message.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+              <folding>
+                <element signature="e#356#357#0" expanded="true" />
+                <element signature="e#386#387#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -195,24 +441,25 @@
         <option value="$PROJECT_DIR$/src/story/GrammarParser.java" />
         <option value="$PROJECT_DIR$/src/story/parser/GrammarParser.java" />
         <option value="$PROJECT_DIR$/src/story/grammars/Grammar.g4" />
-        <option value="$PROJECT_DIR$/src/story/parser/StoryGrammarBaseVisitor.java" />
         <option value="$PROJECT_DIR$/src/story/parser/StoryGrammarParser.java" />
         <option value="$PROJECT_DIR$/src/story/parser/StoryGrammarLexer.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/StoryInterpreter.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/CriteriaEvaluator.java" />
         <option value="$PROJECT_DIR$/src/story/parser/CriteriaEvaluator.java" />
-        <option value="$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4" />
         <option value="$PROJECT_DIR$/src/story/parser/StoryInterpreter.java" />
         <option value="$PROJECT_DIR$/src/story/interpreter/StoryTreeListener.java" />
         <option value="$PROJECT_DIR$/src/story/interpreter/StoryTreeErrorListener.java" />
-        <option value="$PROJECT_DIR$/src/standard/engine/Engine.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/Utility.java" />
-        <option value="$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java" />
-        <option value="$PROJECT_DIR$/src/story/interpreter/StoryTreeVisitor.java" />
-        <option value="$PROJECT_DIR$/src/standard/engine/Message.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/Item.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/StoryStep.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/Room.java" />
+        <option value="$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java" />
+        <option value="$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4" />
+        <option value="$PROJECT_DIR$/src/story/parser/StoryGrammarBaseVisitor.java" />
+        <option value="$PROJECT_DIR$/src/standard/engine/Message.java" />
+        <option value="$PROJECT_DIR$/src/runnable/MainExecutor.java" />
+        <option value="$PROJECT_DIR$/src/standard/engine/Engine.java" />
+        <option value="$PROJECT_DIR$/src/story/interpreter/StoryTreeVisitor.java" />
       </list>
     </option>
   </component>
@@ -359,6 +606,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="InteractiveFiction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="InteractiveFiction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="runnable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -656,7 +921,7 @@
     </configuration>
     <configuration default="false" name="Standard Engine" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="standard.engine.Engine" />
+      <option name="MAIN_CLASS_NAME" value="runnable.MainExecutor" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -707,7 +972,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49573562" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936078" sideWeight="0.496875" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -743,7 +1008,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -752,221 +1017,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4658">
-          <caret line="276" column="71" selection-start-line="276" selection-start-column="57" selection-end-line="276" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#4720#4721#0" expanded="true" />
-            <element signature="e#4744#4745#0" expanded="true" />
-            <element signature="e#4794#4795#0" expanded="true" />
-            <element signature="e#4818#4819#0" expanded="true" />
-            <element signature="e#5446#5447#0" expanded="true" />
-            <element signature="e#5483#5484#0" expanded="true" />
-            <element signature="e#6815#6816#0" expanded="true" />
-            <element signature="e#6852#6853#0" expanded="true" />
-            <element signature="e#8175#8176#0" expanded="true" />
-            <element signature="e#8212#8213#0" expanded="true" />
-            <element signature="e#9541#9542#0" expanded="true" />
-            <element signature="e#9578#9579#0" expanded="true" />
-            <element signature="e#10956#10957#0" expanded="true" />
-            <element signature="e#10993#10994#0" expanded="true" />
-            <element signature="e#12268#12269#0" expanded="true" />
-            <element signature="e#12322#12323#0" expanded="true" />
-            <element signature="e#12358#12359#0" expanded="true" />
-            <element signature="e#12408#12409#0" expanded="true" />
-            <element signature="e#12443#12444#0" expanded="true" />
-            <element signature="e#12494#12495#0" expanded="true" />
-            <element signature="e#12530#12531#0" expanded="true" />
-            <element signature="e#12580#12581#0" expanded="true" />
-            <element signature="e#12615#12616#0" expanded="true" />
-            <element signature="e#12666#12667#0" expanded="true" />
-            <element signature="e#12708#12709#0" expanded="true" />
-            <element signature="e#12761#12762#0" expanded="true" />
-            <element signature="e#12802#12803#0" expanded="true" />
-            <element signature="e#12856#12857#0" expanded="true" />
-            <element signature="e#12898#12899#0" expanded="true" />
-            <element signature="e#12951#12952#0" expanded="true" />
-            <element signature="e#12992#12993#0" expanded="true" />
-            <element signature="e#13046#13047#0" expanded="true" />
-            <element signature="e#13082#13083#0" expanded="true" />
-            <element signature="e#13132#13133#0" expanded="true" />
-            <element signature="e#13167#13168#0" expanded="true" />
-            <element signature="e#13218#13219#0" expanded="true" />
-            <element signature="e#13296#13297#0" expanded="true" />
-            <element signature="e#13333#13334#0" expanded="true" />
-            <element signature="e#15600#15601#0" expanded="true" />
-            <element signature="e#15654#15655#0" expanded="true" />
-            <element signature="e#15787#15788#0" expanded="true" />
-            <element signature="e#15844#15845#0" expanded="true" />
-            <element signature="e#15880#15881#0" expanded="true" />
-            <element signature="e#15934#15935#0" expanded="true" />
-            <element signature="e#15978#15979#0" expanded="true" />
-            <element signature="e#16036#16037#0" expanded="true" />
-            <element signature="e#16209#16210#0" expanded="true" />
-            <element signature="e#16246#16247#0" expanded="true" />
-            <element signature="e#17962#17963#0" expanded="true" />
-            <element signature="e#18019#18020#0" expanded="true" />
-            <element signature="e#18152#18153#0" expanded="true" />
-            <element signature="e#18209#18210#0" expanded="true" />
-            <element signature="e#18255#18256#0" expanded="true" />
-            <element signature="e#18314#18315#0" expanded="true" />
-            <element signature="e#18487#18488#0" expanded="true" />
-            <element signature="e#18524#18525#0" expanded="true" />
-            <element signature="e#20160#20161#0" expanded="true" />
-            <element signature="e#20214#20215#0" expanded="true" />
-            <element signature="e#20347#20348#0" expanded="true" />
-            <element signature="e#20404#20405#0" expanded="true" />
-            <element signature="e#20442#20443#0" expanded="true" />
-            <element signature="e#20497#20498#0" expanded="true" />
-            <element signature="e#20529#20530#0" expanded="true" />
-            <element signature="e#20581#20582#0" expanded="true" />
-            <element signature="e#20613#20614#0" expanded="true" />
-            <element signature="e#20665#20666#0" expanded="true" />
-            <element signature="e#20709#20710#0" expanded="true" />
-            <element signature="e#20767#20768#0" expanded="true" />
-            <element signature="e#20937#20938#0" expanded="true" />
-            <element signature="e#20974#20975#0" expanded="true" />
-            <element signature="e#22603#22604#0" expanded="true" />
-            <element signature="e#22654#22655#0" expanded="true" />
-            <element signature="e#22766#22767#0" expanded="true" />
-            <element signature="e#22818#22819#0" expanded="true" />
-            <element signature="e#22887#22888#0" expanded="true" />
-            <element signature="e#22924#22925#0" expanded="true" />
-            <element signature="e#24428#24429#0" expanded="true" />
-            <element signature="e#24484#24485#0" expanded="true" />
-            <element signature="e#24520#24521#0" expanded="true" />
-            <element signature="e#24574#24575#0" expanded="true" />
-            <element signature="e#24620#24621#0" expanded="true" />
-            <element signature="e#24679#24680#0" expanded="true" />
-            <element signature="e#24721#24722#0" expanded="true" />
-            <element signature="e#24778#24779#0" expanded="true" />
-            <element signature="e#24846#24847#0" expanded="true" />
-            <element signature="e#24883#24884#0" expanded="true" />
-            <element signature="e#26858#26859#0" expanded="true" />
-            <element signature="e#26895#26896#0" expanded="true" />
-            <element signature="e#28335#28336#0" expanded="true" />
-            <element signature="e#28394#28395#0" expanded="true" />
-            <element signature="e#28436#28437#0" expanded="true" />
-            <element signature="e#28493#28494#0" expanded="true" />
-            <element signature="e#28562#28563#0" expanded="true" />
-            <element signature="e#28599#28600#0" expanded="true" />
-            <element signature="e#30062#30063#0" expanded="true" />
-            <element signature="e#30121#30122#0" expanded="true" />
-            <element signature="e#30163#30164#0" expanded="true" />
-            <element signature="e#30220#30221#0" expanded="true" />
-            <element signature="e#30295#30296#0" expanded="true" />
-            <element signature="e#30332#30333#0" expanded="true" />
-            <element signature="e#32014#32015#0" expanded="true" />
-            <element signature="e#32068#32069#0" expanded="true" />
-            <element signature="e#32201#32202#0" expanded="true" />
-            <element signature="e#32258#32259#0" expanded="true" />
-            <element signature="e#32296#32297#0" expanded="true" />
-            <element signature="e#32351#32352#0" expanded="true" />
-            <element signature="e#32389#32390#0" expanded="true" />
-            <element signature="e#32444#32445#0" expanded="true" />
-            <element signature="e#32488#32489#0" expanded="true" />
-            <element signature="e#32546#32547#0" expanded="true" />
-            <element signature="e#32716#32717#0" expanded="true" />
-            <element signature="e#32753#32754#0" expanded="true" />
-            <element signature="e#34530#34531#0" expanded="true" />
-            <element signature="e#34567#34568#0" expanded="true" />
-            <element signature="e#35924#35925#0" expanded="true" />
-            <element signature="e#35978#35979#0" expanded="true" />
-            <element signature="e#36224#36225#0" expanded="true" />
-            <element signature="e#36261#36262#0" expanded="true" />
-            <element signature="e#37963#37964#0" expanded="true" />
-            <element signature="e#38000#38001#0" expanded="true" />
-            <element signature="e#39437#39438#0" expanded="true" />
-            <element signature="e#39494#39495#0" expanded="true" />
-            <element signature="e#39755#39756#0" expanded="true" />
-            <element signature="e#39792#39793#0" expanded="true" />
-            <element signature="e#41289#41290#0" expanded="true" />
-            <element signature="e#41326#41327#0" expanded="true" />
-            <element signature="e#42721#42722#0" expanded="true" />
-            <element signature="e#42775#42776#0" expanded="true" />
-            <element signature="e#42908#42909#0" expanded="true" />
-            <element signature="e#42965#42966#0" expanded="true" />
-            <element signature="e#43005#43006#0" expanded="true" />
-            <element signature="e#43061#43062#0" expanded="true" />
-            <element signature="e#43111#43112#0" expanded="true" />
-            <element signature="e#43172#43173#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43271#43272#0" expanded="true" />
-            <element signature="e#43317#43318#0" expanded="true" />
-            <element signature="e#43376#43377#0" expanded="true" />
-            <element signature="e#43410#43411#0" expanded="true" />
-            <element signature="e#43463#43464#0" expanded="true" />
-            <element signature="e#43633#43634#0" expanded="true" />
-            <element signature="e#43670#43671#0" expanded="true" />
-            <element signature="e#45400#45401#0" expanded="true" />
-            <element signature="e#45454#45455#0" expanded="true" />
-            <element signature="e#45607#45608#0" expanded="true" />
-            <element signature="e#45644#45645#0" expanded="true" />
-            <element signature="e#46945#46946#0" expanded="true" />
-            <element signature="e#47003#47004#0" expanded="true" />
-            <element signature="e#47133#47134#0" expanded="true" />
-            <element signature="e#47194#47195#0" expanded="true" />
-            <element signature="e#47272#47273#0" expanded="true" />
-            <element signature="e#47309#47310#0" expanded="true" />
-            <element signature="e#48923#48924#0" expanded="true" />
-            <element signature="e#48979#48980#0" expanded="true" />
-            <element signature="e#49101#49102#0" expanded="true" />
-            <element signature="e#49158#49159#0" expanded="true" />
-            <element signature="e#49232#49233#0" expanded="true" />
-            <element signature="e#49269#49270#0" expanded="true" />
-            <element signature="e#50932#50933#0" expanded="true" />
-            <element signature="e#50986#50987#0" expanded="true" />
-            <element signature="e#51230#51231#0" expanded="true" />
-            <element signature="e#51285#51286#0" expanded="true" />
-            <element signature="e#51421#51422#0" expanded="true" />
-            <element signature="e#51474#51475#0" expanded="true" />
-            <element signature="e#51515#51516#0" expanded="true" />
-            <element signature="e#51569#51570#0" expanded="true" />
-            <element signature="e#52369#52370#0" expanded="true" />
-            <element signature="e#52425#52426#0" expanded="true" />
-            <element signature="e#52559#52560#0" expanded="true" />
-            <element signature="e#52616#52617#0" expanded="true" />
-            <element signature="e#52689#52690#0" expanded="true" />
-            <element signature="e#52726#52727#0" expanded="true" />
-            <element signature="e#56205#56206#0" expanded="true" />
-            <element signature="e#56263#56264#0" expanded="true" />
-            <element signature="e#56389#56390#0" expanded="true" />
-            <element signature="e#56448#56449#0" expanded="true" />
-            <element signature="e#56524#56525#0" expanded="true" />
-            <element signature="e#56561#56562#0" expanded="true" />
-            <element signature="e#58323#58324#0" expanded="true" />
-            <element signature="e#58376#58377#0" expanded="true" />
-            <element signature="e#58417#58418#0" expanded="true" />
-            <element signature="e#58471#58472#0" expanded="true" />
-            <element signature="e#58607#58608#0" expanded="true" />
-            <element signature="e#58661#58662#0" expanded="true" />
-            <element signature="e#59281#59282#0" expanded="true" />
-            <element signature="e#59336#59337#0" expanded="true" />
-            <element signature="e#59381#59382#0" expanded="true" />
-            <element signature="e#59437#59438#0" expanded="true" />
-            <element signature="e#59770#59771#0" expanded="true" />
-            <element signature="e#59807#59808#0" expanded="true" />
-            <element signature="e#62980#62981#0" expanded="true" />
-            <element signature="e#63039#63040#0" expanded="true" />
-            <element signature="e#63081#63082#0" expanded="true" />
-            <element signature="e#63138#63139#0" expanded="true" />
-            <element signature="e#63208#63209#0" expanded="true" />
-            <element signature="e#63245#63246#0" expanded="true" />
-            <element signature="e#64904#64905#0" expanded="true" />
-            <element signature="e#64941#64942#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/standard/engine/Consequence.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2754">
@@ -1020,9 +1070,9 @@
             <element signature="e#4744#4745#0" expanded="true" />
             <element signature="e#4794#4795#0" expanded="true" />
             <element signature="e#4818#4819#0" expanded="true" />
-            <element signature="e#5446#5447#0" expanded="true" />
+            <element signature="e#6333#6334#0" expanded="false" />
             <element signature="e#5483#5484#0" expanded="true" />
-            <element signature="e#6815#6816#0" expanded="true" />
+            <element signature="e#7693#7694#0" expanded="false" />
             <element signature="e#6852#6853#0" expanded="true" />
             <element signature="e#8175#8176#0" expanded="true" />
             <element signature="e#8212#8213#0" expanded="true" />
@@ -1030,26 +1080,26 @@
             <element signature="e#9578#9579#0" expanded="true" />
             <element signature="e#10956#10957#0" expanded="true" />
             <element signature="e#10993#10994#0" expanded="true" />
-            <element signature="e#12268#12269#0" expanded="true" />
-            <element signature="e#12322#12323#0" expanded="true" />
             <element signature="e#12358#12359#0" expanded="true" />
             <element signature="e#12408#12409#0" expanded="true" />
-            <element signature="e#12443#12444#0" expanded="true" />
+            <element signature="e#12358#12359#0" expanded="true" />
             <element signature="e#12494#12495#0" expanded="true" />
-            <element signature="e#12530#12531#0" expanded="true" />
+            <element signature="e#12443#12444#0" expanded="true" />
             <element signature="e#12580#12581#0" expanded="true" />
-            <element signature="e#12615#12616#0" expanded="true" />
+            <element signature="e#12530#12531#0" expanded="true" />
             <element signature="e#12666#12667#0" expanded="true" />
-            <element signature="e#12708#12709#0" expanded="true" />
+            <element signature="e#12615#12616#0" expanded="true" />
             <element signature="e#12761#12762#0" expanded="true" />
-            <element signature="e#12802#12803#0" expanded="true" />
+            <element signature="e#12708#12709#0" expanded="true" />
             <element signature="e#12856#12857#0" expanded="true" />
-            <element signature="e#12898#12899#0" expanded="true" />
+            <element signature="e#12802#12803#0" expanded="true" />
             <element signature="e#12951#12952#0" expanded="true" />
+            <element signature="e#12898#12899#0" expanded="true" />
+            <element signature="e#13046#13047#0" expanded="true" />
             <element signature="e#12992#12993#0" expanded="true" />
             <element signature="e#13046#13047#0" expanded="true" />
             <element signature="e#13082#13083#0" expanded="true" />
-            <element signature="e#13132#13133#0" expanded="true" />
+            <element signature="e#13218#13219#0" expanded="true" />
             <element signature="e#13167#13168#0" expanded="true" />
             <element signature="e#13218#13219#0" expanded="true" />
             <element signature="e#13296#13297#0" expanded="true" />
@@ -1057,9 +1107,9 @@
             <element signature="e#15600#15601#0" expanded="true" />
             <element signature="e#15654#15655#0" expanded="true" />
             <element signature="e#15787#15788#0" expanded="true" />
-            <element signature="e#15844#15845#0" expanded="true" />
-            <element signature="e#15880#15881#0" expanded="true" />
             <element signature="e#15934#15935#0" expanded="true" />
+            <element signature="e#15880#15881#0" expanded="true" />
+            <element signature="e#16036#16037#0" expanded="true" />
             <element signature="e#15978#15979#0" expanded="true" />
             <element signature="e#16036#16037#0" expanded="true" />
             <element signature="e#16209#16210#0" expanded="true" />
@@ -1075,145 +1125,145 @@
             <element signature="e#20160#20161#0" expanded="true" />
             <element signature="e#20214#20215#0" expanded="true" />
             <element signature="e#20347#20348#0" expanded="true" />
-            <element signature="e#20404#20405#0" expanded="true" />
+            <element signature="e#20497#20498#0" expanded="true" />
             <element signature="e#20442#20443#0" expanded="true" />
             <element signature="e#20497#20498#0" expanded="true" />
-            <element signature="e#20529#20530#0" expanded="true" />
-            <element signature="e#20581#20582#0" expanded="true" />
+            <element signature="e#20613#20614#0" expanded="true" />
+            <element signature="e#20665#20666#0" expanded="true" />
             <element signature="e#20613#20614#0" expanded="true" />
             <element signature="e#20665#20666#0" expanded="true" />
             <element signature="e#20709#20710#0" expanded="true" />
             <element signature="e#20767#20768#0" expanded="true" />
             <element signature="e#20937#20938#0" expanded="true" />
             <element signature="e#20974#20975#0" expanded="true" />
-            <element signature="e#22603#22604#0" expanded="true" />
-            <element signature="e#22654#22655#0" expanded="true" />
-            <element signature="e#22766#22767#0" expanded="true" />
-            <element signature="e#22818#22819#0" expanded="true" />
-            <element signature="e#22887#22888#0" expanded="true" />
-            <element signature="e#22924#22925#0" expanded="true" />
-            <element signature="e#24428#24429#0" expanded="true" />
-            <element signature="e#24484#24485#0" expanded="true" />
-            <element signature="e#24520#24521#0" expanded="true" />
-            <element signature="e#24574#24575#0" expanded="true" />
-            <element signature="e#24620#24621#0" expanded="true" />
-            <element signature="e#24679#24680#0" expanded="true" />
-            <element signature="e#24721#24722#0" expanded="true" />
-            <element signature="e#24778#24779#0" expanded="true" />
-            <element signature="e#24846#24847#0" expanded="true" />
-            <element signature="e#24883#24884#0" expanded="true" />
-            <element signature="e#26858#26859#0" expanded="true" />
-            <element signature="e#26895#26896#0" expanded="true" />
-            <element signature="e#28335#28336#0" expanded="true" />
-            <element signature="e#28394#28395#0" expanded="true" />
-            <element signature="e#28436#28437#0" expanded="true" />
-            <element signature="e#28493#28494#0" expanded="true" />
-            <element signature="e#28562#28563#0" expanded="true" />
-            <element signature="e#28599#28600#0" expanded="true" />
-            <element signature="e#30062#30063#0" expanded="true" />
-            <element signature="e#30121#30122#0" expanded="true" />
-            <element signature="e#30163#30164#0" expanded="true" />
-            <element signature="e#30220#30221#0" expanded="true" />
-            <element signature="e#30295#30296#0" expanded="true" />
-            <element signature="e#30332#30333#0" expanded="true" />
-            <element signature="e#32014#32015#0" expanded="true" />
-            <element signature="e#32068#32069#0" expanded="true" />
-            <element signature="e#32201#32202#0" expanded="true" />
-            <element signature="e#32258#32259#0" expanded="true" />
-            <element signature="e#32296#32297#0" expanded="true" />
-            <element signature="e#32351#32352#0" expanded="true" />
-            <element signature="e#32389#32390#0" expanded="true" />
-            <element signature="e#32444#32445#0" expanded="true" />
-            <element signature="e#32488#32489#0" expanded="true" />
-            <element signature="e#32546#32547#0" expanded="true" />
-            <element signature="e#32716#32717#0" expanded="true" />
-            <element signature="e#32753#32754#0" expanded="true" />
-            <element signature="e#34530#34531#0" expanded="true" />
-            <element signature="e#34567#34568#0" expanded="true" />
-            <element signature="e#35924#35925#0" expanded="true" />
-            <element signature="e#35978#35979#0" expanded="true" />
-            <element signature="e#36224#36225#0" expanded="true" />
-            <element signature="e#36261#36262#0" expanded="true" />
-            <element signature="e#37963#37964#0" expanded="true" />
-            <element signature="e#38000#38001#0" expanded="true" />
-            <element signature="e#39437#39438#0" expanded="true" />
-            <element signature="e#39494#39495#0" expanded="true" />
-            <element signature="e#39755#39756#0" expanded="true" />
-            <element signature="e#39792#39793#0" expanded="true" />
-            <element signature="e#41289#41290#0" expanded="true" />
-            <element signature="e#41326#41327#0" expanded="true" />
-            <element signature="e#42721#42722#0" expanded="true" />
-            <element signature="e#42775#42776#0" expanded="true" />
-            <element signature="e#42908#42909#0" expanded="true" />
-            <element signature="e#42965#42966#0" expanded="true" />
-            <element signature="e#43005#43006#0" expanded="true" />
-            <element signature="e#43061#43062#0" expanded="true" />
-            <element signature="e#43111#43112#0" expanded="true" />
-            <element signature="e#43172#43173#0" expanded="true" />
-            <element signature="e#43214#43215#0" expanded="true" />
-            <element signature="e#43271#43272#0" expanded="true" />
-            <element signature="e#43317#43318#0" expanded="true" />
-            <element signature="e#43376#43377#0" expanded="true" />
-            <element signature="e#43410#43411#0" expanded="true" />
-            <element signature="e#43463#43464#0" expanded="true" />
-            <element signature="e#43633#43634#0" expanded="true" />
-            <element signature="e#43670#43671#0" expanded="true" />
-            <element signature="e#45400#45401#0" expanded="true" />
-            <element signature="e#45454#45455#0" expanded="true" />
-            <element signature="e#45607#45608#0" expanded="true" />
-            <element signature="e#45644#45645#0" expanded="true" />
-            <element signature="e#46945#46946#0" expanded="true" />
-            <element signature="e#47003#47004#0" expanded="true" />
-            <element signature="e#47133#47134#0" expanded="true" />
-            <element signature="e#47194#47195#0" expanded="true" />
-            <element signature="e#47272#47273#0" expanded="true" />
-            <element signature="e#47309#47310#0" expanded="true" />
-            <element signature="e#48923#48924#0" expanded="true" />
-            <element signature="e#48979#48980#0" expanded="true" />
-            <element signature="e#49101#49102#0" expanded="true" />
-            <element signature="e#49158#49159#0" expanded="true" />
-            <element signature="e#49232#49233#0" expanded="true" />
-            <element signature="e#49269#49270#0" expanded="true" />
-            <element signature="e#50932#50933#0" expanded="true" />
-            <element signature="e#50986#50987#0" expanded="true" />
-            <element signature="e#51230#51231#0" expanded="true" />
-            <element signature="e#51285#51286#0" expanded="true" />
-            <element signature="e#51421#51422#0" expanded="true" />
-            <element signature="e#51474#51475#0" expanded="true" />
-            <element signature="e#51515#51516#0" expanded="true" />
-            <element signature="e#51569#51570#0" expanded="true" />
-            <element signature="e#52369#52370#0" expanded="true" />
-            <element signature="e#52425#52426#0" expanded="true" />
-            <element signature="e#52559#52560#0" expanded="true" />
-            <element signature="e#52616#52617#0" expanded="true" />
-            <element signature="e#52689#52690#0" expanded="true" />
-            <element signature="e#52726#52727#0" expanded="true" />
-            <element signature="e#56205#56206#0" expanded="true" />
-            <element signature="e#56263#56264#0" expanded="true" />
-            <element signature="e#56389#56390#0" expanded="true" />
-            <element signature="e#56448#56449#0" expanded="true" />
-            <element signature="e#56524#56525#0" expanded="true" />
-            <element signature="e#56561#56562#0" expanded="true" />
-            <element signature="e#58323#58324#0" expanded="true" />
-            <element signature="e#58376#58377#0" expanded="true" />
-            <element signature="e#58417#58418#0" expanded="true" />
-            <element signature="e#58471#58472#0" expanded="true" />
-            <element signature="e#58607#58608#0" expanded="true" />
-            <element signature="e#58661#58662#0" expanded="true" />
-            <element signature="e#59281#59282#0" expanded="true" />
-            <element signature="e#59336#59337#0" expanded="true" />
-            <element signature="e#59381#59382#0" expanded="true" />
-            <element signature="e#59437#59438#0" expanded="true" />
-            <element signature="e#59770#59771#0" expanded="true" />
-            <element signature="e#59807#59808#0" expanded="true" />
-            <element signature="e#62980#62981#0" expanded="true" />
-            <element signature="e#63039#63040#0" expanded="true" />
-            <element signature="e#63081#63082#0" expanded="true" />
-            <element signature="e#63138#63139#0" expanded="true" />
-            <element signature="e#63208#63209#0" expanded="true" />
-            <element signature="e#63245#63246#0" expanded="true" />
-            <element signature="e#64904#64905#0" expanded="true" />
-            <element signature="e#64941#64942#0" expanded="true" />
+            <element signature="e#22609#22610#0" expanded="true" />
+            <element signature="e#22745#22746#0" expanded="true" />
+            <element signature="e#22783#22784#0" expanded="true" />
+            <element signature="e#22919#22920#0" expanded="true" />
+            <element signature="e#22988#22989#0" expanded="true" />
+            <element signature="e#23025#23026#0" expanded="true" />
+            <element signature="e#24492#24493#0" expanded="true" />
+            <element signature="e#24548#24549#0" expanded="true" />
+            <element signature="e#24584#24585#0" expanded="true" />
+            <element signature="e#24638#24639#0" expanded="true" />
+            <element signature="e#24684#24685#0" expanded="true" />
+            <element signature="e#24743#24744#0" expanded="true" />
+            <element signature="e#24785#24786#0" expanded="true" />
+            <element signature="e#24842#24843#0" expanded="true" />
+            <element signature="e#24910#24911#0" expanded="true" />
+            <element signature="e#24947#24948#0" expanded="true" />
+            <element signature="e#26922#26923#0" expanded="true" />
+            <element signature="e#26959#26960#0" expanded="true" />
+            <element signature="e#28399#28400#0" expanded="true" />
+            <element signature="e#28458#28459#0" expanded="true" />
+            <element signature="e#28500#28501#0" expanded="true" />
+            <element signature="e#28557#28558#0" expanded="true" />
+            <element signature="e#28626#28627#0" expanded="true" />
+            <element signature="e#28663#28664#0" expanded="true" />
+            <element signature="e#30126#30127#0" expanded="true" />
+            <element signature="e#30185#30186#0" expanded="true" />
+            <element signature="e#30227#30228#0" expanded="true" />
+            <element signature="e#30284#30285#0" expanded="true" />
+            <element signature="e#30359#30360#0" expanded="true" />
+            <element signature="e#30396#30397#0" expanded="true" />
+            <element signature="e#32078#32079#0" expanded="true" />
+            <element signature="e#32132#32133#0" expanded="true" />
+            <element signature="e#32265#32266#0" expanded="true" />
+            <element signature="e#32322#32323#0" expanded="true" />
+            <element signature="e#32360#32361#0" expanded="true" />
+            <element signature="e#32415#32416#0" expanded="true" />
+            <element signature="e#32453#32454#0" expanded="true" />
+            <element signature="e#32508#32509#0" expanded="true" />
+            <element signature="e#32857#32858#0" expanded="false" />
+            <element signature="e#32610#32611#0" expanded="true" />
+            <element signature="e#32780#32781#0" expanded="true" />
+            <element signature="e#32817#32818#0" expanded="true" />
+            <element signature="e#34594#34595#0" expanded="true" />
+            <element signature="e#34631#34632#0" expanded="true" />
+            <element signature="e#35988#35989#0" expanded="true" />
+            <element signature="e#36042#36043#0" expanded="true" />
+            <element signature="e#36288#36289#0" expanded="true" />
+            <element signature="e#36737#36738#0" expanded="false" />
+            <element signature="e#38027#38028#0" expanded="true" />
+            <element signature="e#38482#38483#0" expanded="false" />
+            <element signature="e#39501#39502#0" expanded="true" />
+            <element signature="e#39558#39559#0" expanded="true" />
+            <element signature="e#39819#39820#0" expanded="true" />
+            <element signature="e#40265#40266#0" expanded="false" />
+            <element signature="e#41353#41354#0" expanded="true" />
+            <element signature="e#41390#41391#0" expanded="true" />
+            <element signature="e#42785#42786#0" expanded="true" />
+            <element signature="e#42839#42840#0" expanded="true" />
+            <element signature="e#42972#42973#0" expanded="true" />
+            <element signature="e#43335#43336#0" expanded="true" />
+            <element signature="e#43069#43070#0" expanded="true" />
+            <element signature="e#43440#43441#0" expanded="true" />
+            <element signature="e#43175#43176#0" expanded="true" />
+            <element signature="e#43527#43528#0" expanded="true" />
+            <element signature="e#43278#43279#0" expanded="true" />
+            <element signature="e#43335#43336#0" expanded="true" />
+            <element signature="e#43381#43382#0" expanded="true" />
+            <element signature="e#43440#43441#0" expanded="true" />
+            <element signature="e#43474#43475#0" expanded="true" />
+            <element signature="e#43965#43966#0" expanded="false" />
+            <element signature="e#43697#43698#0" expanded="true" />
+            <element signature="e#44134#44135#0" expanded="false" />
+            <element signature="e#45464#45465#0" expanded="true" />
+            <element signature="e#45953#45954#0" expanded="false" />
+            <element signature="e#45671#45672#0" expanded="true" />
+            <element signature="e#46129#46130#0" expanded="false" />
+            <element signature="e#47015#47016#0" expanded="true" />
+            <element signature="e#47072#47073#0" expanded="true" />
+            <element signature="e#47217#47218#0" expanded="true" />
+            <element signature="e#47263#47264#0" expanded="true" />
+            <element signature="e#47431#47432#0" expanded="true" />
+            <element signature="e#47468#47469#0" expanded="true" />
+            <element signature="e#49042#49043#0" expanded="true" />
+            <element signature="e#49097#49098#0" expanded="true" />
+            <element signature="e#49236#49237#0" expanded="true" />
+            <element signature="e#49282#49283#0" expanded="true" />
+            <element signature="e#49446#49447#0" expanded="true" />
+            <element signature="e#49483#49484#0" expanded="true" />
+            <element signature="e#51104#51105#0" expanded="true" />
+            <element signature="e#51457#51458#0" expanded="true" />
+            <element signature="e#51402#51403#0" expanded="true" />
+            <element signature="e#51457#51458#0" expanded="true" />
+            <element signature="e#51593#51594#0" expanded="true" />
+            <element signature="e#51646#51647#0" expanded="true" />
+            <element signature="e#51687#51688#0" expanded="true" />
+            <element signature="e#51741#51742#0" expanded="true" />
+            <element signature="e#52541#52542#0" expanded="true" />
+            <element signature="e#52597#52598#0" expanded="true" />
+            <element signature="e#52731#52732#0" expanded="true" />
+            <element signature="e#52788#52789#0" expanded="true" />
+            <element signature="e#52861#52862#0" expanded="true" />
+            <element signature="e#53139#53140#0" expanded="false" />
+            <element signature="e#56383#56384#0" expanded="true" />
+            <element signature="e#56440#56441#0" expanded="true" />
+            <element signature="e#56585#56586#0" expanded="true" />
+            <element signature="e#56631#56632#0" expanded="true" />
+            <element signature="e#56797#56798#0" expanded="true" />
+            <element signature="e#56834#56835#0" expanded="true" />
+            <element signature="e#58551#58552#0" expanded="true" />
+            <element signature="e#58604#58605#0" expanded="true" />
+            <element signature="e#58645#58646#0" expanded="true" />
+            <element signature="e#58699#58700#0" expanded="true" />
+            <element signature="e#58835#58836#0" expanded="true" />
+            <element signature="e#58889#58890#0" expanded="true" />
+            <element signature="e#59509#59510#0" expanded="true" />
+            <element signature="e#59564#59565#0" expanded="true" />
+            <element signature="e#59609#59610#0" expanded="true" />
+            <element signature="e#59665#59666#0" expanded="true" />
+            <element signature="e#59998#59999#0" expanded="true" />
+            <element signature="e#60035#60036#0" expanded="true" />
+            <element signature="e#63309#63310#0" expanded="true" />
+            <element signature="e#63267#63268#0" expanded="true" />
+            <element signature="e#63309#63310#0" expanded="true" />
+            <element signature="e#63366#63367#0" expanded="true" />
+            <element signature="e#63436#63437#0" expanded="true" />
+            <element signature="e#63473#63474#0" expanded="true" />
+            <element signature="e#65132#65133#0" expanded="true" />
+            <element signature="e#65169#65170#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1292,31 +1342,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarLexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding>
-            <element signature="e#4604#4605#0" expanded="true" />
-            <element signature="e#4628#4629#0" expanded="true" />
-            <element signature="e#4678#4679#0" expanded="true" />
-            <element signature="e#4702#4703#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="384" column="7" selection-start-line="384" selection-start-column="7" selection-end-line="385" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -1345,310 +1374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="139" column="68" selection-start-line="139" selection-start-column="68" selection-end-line="139" selection-end-column="68" />
-          <folding>
-            <element signature="initializer##0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="docComment;field#tokenNames#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="initializer##1;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="e#4664#4673#0" expanded="false" />
-            <element signature="method#getGrammarFileName#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleNames#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getSerializedATN#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getATN#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#StoryGrammarParser#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ID#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#level_id#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ID#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#item_id#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ID#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#room_id#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ID#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#message_id#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#QUOTED_TEXT#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#message_text#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#story_elements#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#WELCOME_#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#OPEN_PAREN_CURLY#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#SEMICOLON#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#CLOS_PAREN_CURLY#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#welcome#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#MESSAGE_#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#OPEN_PAREN_CURLY#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#SEMICOLON#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#CLOS_PAREN_CURLY#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#message#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ROOM_#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#OPEN_PAREN_CURLY#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#SEMICOLON#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#CLOS_PAREN_CURLY#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#room#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#ExitsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#COMMA#0;class#ExitsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#ExitsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#ExitsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#ExitsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#ExitsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exits#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#ExitContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#ExitContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#ExitContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#ExitContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#ExitContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exit#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#DirectionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#N#0;class#DirectionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#E#0;class#DirectionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#W#0;class#DirectionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#S#0;class#DirectionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#DirectionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#DirectionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#DirectionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#DirectionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#direction#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#BriefContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#BriefContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#BriefContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#BriefContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#BriefContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#brief#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#DescriptionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#DescriptionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#DescriptionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#DescriptionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#DescriptionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#description#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#ItemContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ITEM_#0;class#ItemContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#OPEN_PAREN_CURLY#0;class#ItemContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#SEMICOLON#0;class#ItemContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#CLOS_PAREN_CURLY#0;class#ItemContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#ItemContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#ItemContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#ItemContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#ItemContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#item#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#MobilityContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#TAKEABLE#0;class#MobilityContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#FIXED#0;class#MobilityContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#MobilityContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#MobilityContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#MobilityContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#MobilityContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#mobility#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#LocationContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#INVENTORY#0;class#LocationContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#PRODUCED#0;class#LocationContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#LocationContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#LocationContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#LocationContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#LocationContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#location#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#Special_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ID#0;class#Special_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#Special_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#Special_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#Special_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#Special_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#special_id#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#SpecialContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#SPECIAL_#0;class#SpecialContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#OPEN_PAREN_CURLY#0;class#SpecialContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#SEMICOLON#0;class#SpecialContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#CLOS_PAREN_CURLY#0;class#SpecialContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#SpecialContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#SpecialContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#SpecialContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#SpecialContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#special#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#Step_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ID#0;class#Step_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#Step_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#Step_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#Step_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#Step_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#step_id#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#StepContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#STEP_#0;class#StepContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#OPEN_PAREN_CURLY#0;class#StepContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#SEMICOLON#0;class#StepContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#CLOS_PAREN_CURLY#0;class#StepContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#StepContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#StepContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#StepContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#StepContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#step#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#Step_beforeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#TIME#0;class#Step_beforeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#Step_beforeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#Step_beforeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#Step_beforeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#Step_beforeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#step_before#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#Required_stepsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#COMMA#0;class#Required_stepsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#Required_stepsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#Required_stepsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#Required_stepsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#Required_stepsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#required_steps#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#ConditionsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#COMMA#0;class#ConditionsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#ConditionsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#ConditionsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#ConditionsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#ConditionsContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#conditions#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#PLAYER_IN_ROOM#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#PLAYER_NOT_IN_ROOM#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#PLAYER_ON_LEVEL#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ITEM_IN_ROOM#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ITEM_NOT_IN_ROOM#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ITEM_IN_INVENTORY#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ITEM_NOT_IN_INVENTORY#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#CON_COMBINE#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#CON_EXAMINE#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#CON_USE#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#CON_USEON#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#CON_MOVE#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#CON_SPECIAL#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#ConditionContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#condition#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#ConsequencesContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#COMMA#0;class#ConsequencesContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#ConsequencesContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#ConsequencesContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#ConsequencesContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#ConsequencesContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#consequences#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#NONE#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#TELEPORT#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ADD_ITEM_TO_INV#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#REMOVE_ITEM_FROM_INV#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#KILL#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#WIN#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ADD_ITEM_TO_ROOM#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#REMOVE_ITEM_FROM_ROOM#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ADD_CONNECTOR#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#REMOVE_CONNECTOR#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#WAIT#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#TIME#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#ConsequenceContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#consequence#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#ReportContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#ReportContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#ReportContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#ReportContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#ReportContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#report#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="class#Gate_typeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ANDING#0;class#Gate_typeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#ORING#0;class#Gate_typeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#getRuleIndex#0;class#Gate_typeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#enterRule#0;class#Gate_typeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#exitRule#0;class#Gate_typeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#accept#0;class#Gate_typeContext#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="method#gate_type#0;class#StoryGrammarParser#0" expanded="false" />
-            <element signature="initializer##2;class#StoryGrammarParser#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarBaseVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="91" selection-start-line="19" selection-start-column="91" selection-end-line="19" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.5.2-1/antlr4-runtime-4.5.2-1.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/story/interpreter/StoryTreeVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#398#399#0" expanded="true" />
-            <element signature="e#432#433#0" expanded="true" />
-            <element signature="e#473#474#0" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/standard/engine/BadConsequenceException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1656,31 +1381,6 @@
           <folding>
             <element signature="e#181#182#0" expanded="true" />
             <element signature="e#211#212#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="108" column="24" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/standard/engine/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="e#288#289#0" expanded="true" />
-            <element signature="e#314#315#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
-            <element signature="e#386#387#0" expanded="true" />
-            <element signature="e#423#424#0" expanded="true" />
-            <element signature="e#452#453#0" expanded="true" />
-            <element signature="e#500#501#0" expanded="true" />
-            <element signature="e#536#537#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1760,10 +1460,319 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/standard/engine/Condition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarLexer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="382" column="6" selection-start-line="382" selection-start-column="5" selection-end-line="382" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarBaseVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="87" selection-start-line="19" selection-start-column="86" selection-end-line="19" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="375" column="27" selection-start-line="375" selection-start-column="21" selection-end-line="375" selection-end-column="27" />
+          <folding>
+            <element signature="initializer##0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="docComment;field#tokenNames#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="initializer##1;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="e#4664#4673#0" expanded="false" />
+            <element signature="method#getGrammarFileName#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#getRuleNames#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#getSerializedATN#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#getATN#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#StoryGrammarParser#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#ID#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="e#6333#6334#0" expanded="false" />
+            <element signature="method#getRuleIndex#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#enterRule#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#exitRule#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#accept#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#level_id#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#ID#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="e#7693#7694#0" expanded="false" />
+            <element signature="method#getRuleIndex#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#enterRule#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#exitRule#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#accept#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#item_id#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#ID#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#getRuleIndex#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#enterRule#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#exitRule#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#accept#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#room_id#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#ID#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#getRuleIndex#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#enterRule#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#exitRule#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#accept#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#message_id#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#QUOTED_TEXT#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#getRuleIndex#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#enterRule#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#exitRule#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#accept#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#message_text#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#getRuleIndex#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#enterRule#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#exitRule#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#story_elements#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#WELCOME_#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#OPEN_PAREN_CURLY#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#SEMICOLON#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#CLOS_PAREN_CURLY#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#getRuleIndex#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#enterRule#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#exitRule#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#accept#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#welcome#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#MESSAGE_#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#OPEN_PAREN_CURLY#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#SEMICOLON#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#CLOS_PAREN_CURLY#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#getRuleIndex#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#enterRule#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#exitRule#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#accept#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#message#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#ROOM_#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#OPEN_PAREN_CURLY#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#SEMICOLON#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#CLOS_PAREN_CURLY#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#getRuleIndex#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#enterRule#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#exitRule#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#accept#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="method#room#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="class#ExitsContext#0;class#StoryGrammarParser#0" expanded="false" />
+            <element signature="e#22609#22610#0" expanded="true" />
+            <element signature="e#22659#22660#0" expanded="true" />
+            <element signature="e#22694#22695#0" expanded="true" />
+            <element signature="e#22745#22746#0" expanded="true" />
+            <element signature="e#22866#22867#0" expanded="true" />
+            <element signature="e#22919#22920#0" expanded="true" />
+            <element signature="e#22988#22989#0" expanded="true" />
+            <element signature="e#23025#23026#0" expanded="true" />
+            <element signature="e#24492#24493#0" expanded="true" />
+            <element signature="e#24548#24549#0" expanded="true" />
+            <element signature="e#24584#24585#0" expanded="true" />
+            <element signature="e#24638#24639#0" expanded="true" />
+            <element signature="e#24684#24685#0" expanded="true" />
+            <element signature="e#24743#24744#0" expanded="true" />
+            <element signature="e#24785#24786#0" expanded="true" />
+            <element signature="e#24842#24843#0" expanded="true" />
+            <element signature="e#24910#24911#0" expanded="true" />
+            <element signature="e#24947#24948#0" expanded="true" />
+            <element signature="e#26922#26923#0" expanded="true" />
+            <element signature="e#26959#26960#0" expanded="true" />
+            <element signature="e#28399#28400#0" expanded="true" />
+            <element signature="e#28458#28459#0" expanded="true" />
+            <element signature="e#28500#28501#0" expanded="true" />
+            <element signature="e#28557#28558#0" expanded="true" />
+            <element signature="e#28626#28627#0" expanded="true" />
+            <element signature="e#28663#28664#0" expanded="true" />
+            <element signature="e#30126#30127#0" expanded="true" />
+            <element signature="e#30185#30186#0" expanded="true" />
+            <element signature="e#30227#30228#0" expanded="true" />
+            <element signature="e#30284#30285#0" expanded="true" />
+            <element signature="e#30359#30360#0" expanded="true" />
+            <element signature="e#30396#30397#0" expanded="true" />
+            <element signature="e#32078#32079#0" expanded="true" />
+            <element signature="e#32132#32133#0" expanded="true" />
+            <element signature="e#32265#32266#0" expanded="true" />
+            <element signature="e#32322#32323#0" expanded="true" />
+            <element signature="e#32360#32361#0" expanded="true" />
+            <element signature="e#32415#32416#0" expanded="true" />
+            <element signature="e#32453#32454#0" expanded="true" />
+            <element signature="e#32508#32509#0" expanded="true" />
+            <element signature="e#32552#32553#0" expanded="true" />
+            <element signature="e#32610#32611#0" expanded="true" />
+            <element signature="e#32780#32781#0" expanded="true" />
+            <element signature="e#32817#32818#0" expanded="true" />
+            <element signature="e#34594#34595#0" expanded="true" />
+            <element signature="e#34631#34632#0" expanded="true" />
+            <element signature="e#35988#35989#0" expanded="true" />
+            <element signature="e#36042#36043#0" expanded="true" />
+            <element signature="e#36288#36289#0" expanded="true" />
+            <element signature="e#36325#36326#0" expanded="true" />
+            <element signature="e#38027#38028#0" expanded="true" />
+            <element signature="e#38064#38065#0" expanded="true" />
+            <element signature="e#39501#39502#0" expanded="true" />
+            <element signature="e#39558#39559#0" expanded="true" />
+            <element signature="e#39819#39820#0" expanded="true" />
+            <element signature="e#39856#39857#0" expanded="true" />
+            <element signature="e#41353#41354#0" expanded="true" />
+            <element signature="e#41390#41391#0" expanded="true" />
+            <element signature="e#42785#42786#0" expanded="true" />
+            <element signature="e#42839#42840#0" expanded="true" />
+            <element signature="e#42972#42973#0" expanded="true" />
+            <element signature="e#43029#43030#0" expanded="true" />
+            <element signature="e#43069#43070#0" expanded="true" />
+            <element signature="e#43125#43126#0" expanded="true" />
+            <element signature="e#43175#43176#0" expanded="true" />
+            <element signature="e#43236#43237#0" expanded="true" />
+            <element signature="e#43278#43279#0" expanded="true" />
+            <element signature="e#43335#43336#0" expanded="true" />
+            <element signature="e#43381#43382#0" expanded="true" />
+            <element signature="e#43440#43441#0" expanded="true" />
+            <element signature="e#43474#43475#0" expanded="true" />
+            <element signature="e#43527#43528#0" expanded="true" />
+            <element signature="e#43697#43698#0" expanded="true" />
+            <element signature="e#43734#43735#0" expanded="true" />
+            <element signature="e#45464#45465#0" expanded="true" />
+            <element signature="e#45518#45519#0" expanded="true" />
+            <element signature="e#45671#45672#0" expanded="true" />
+            <element signature="e#45708#45709#0" expanded="true" />
+            <element signature="e#47015#47016#0" expanded="true" />
+            <element signature="e#47072#47073#0" expanded="true" />
+            <element signature="e#47121#47122#0" expanded="true" />
+            <element signature="e#47179#47180#0" expanded="true" />
+            <element signature="e#47300#47301#0" expanded="true" />
+            <element signature="e#47353#47354#0" expanded="true" />
+            <element signature="e#47431#47432#0" expanded="true" />
+            <element signature="e#47468#47469#0" expanded="true" />
+            <element signature="e#49042#49043#0" expanded="true" />
+            <element signature="e#49097#49098#0" expanded="true" />
+            <element signature="e#49142#49143#0" expanded="true" />
+            <element signature="e#49198#49199#0" expanded="true" />
+            <element signature="e#49319#49320#0" expanded="true" />
+            <element signature="e#49372#49373#0" expanded="true" />
+            <element signature="e#49446#49447#0" expanded="true" />
+            <element signature="e#49483#49484#0" expanded="true" />
+            <element signature="e#51104#51105#0" expanded="true" />
+            <element signature="e#51158#51159#0" expanded="true" />
+            <element signature="e#51402#51403#0" expanded="true" />
+            <element signature="e#51457#51458#0" expanded="true" />
+            <element signature="e#51593#51594#0" expanded="true" />
+            <element signature="e#51646#51647#0" expanded="true" />
+            <element signature="e#51687#51688#0" expanded="true" />
+            <element signature="e#51741#51742#0" expanded="true" />
+            <element signature="e#52541#52542#0" expanded="true" />
+            <element signature="e#52597#52598#0" expanded="true" />
+            <element signature="e#52731#52732#0" expanded="true" />
+            <element signature="e#52788#52789#0" expanded="true" />
+            <element signature="e#52861#52862#0" expanded="true" />
+            <element signature="e#52898#52899#0" expanded="true" />
+            <element signature="e#56383#56384#0" expanded="true" />
+            <element signature="e#56440#56441#0" expanded="true" />
+            <element signature="e#56489#56490#0" expanded="true" />
+            <element signature="e#56547#56548#0" expanded="true" />
+            <element signature="e#56668#56669#0" expanded="true" />
+            <element signature="e#56721#56722#0" expanded="true" />
+            <element signature="e#56797#56798#0" expanded="true" />
+            <element signature="e#56834#56835#0" expanded="true" />
+            <element signature="e#58551#58552#0" expanded="true" />
+            <element signature="e#58604#58605#0" expanded="true" />
+            <element signature="e#58645#58646#0" expanded="true" />
+            <element signature="e#58699#58700#0" expanded="true" />
+            <element signature="e#58835#58836#0" expanded="true" />
+            <element signature="e#58889#58890#0" expanded="true" />
+            <element signature="e#59509#59510#0" expanded="true" />
+            <element signature="e#59564#59565#0" expanded="true" />
+            <element signature="e#59609#59610#0" expanded="true" />
+            <element signature="e#59665#59666#0" expanded="true" />
+            <element signature="e#59998#59999#0" expanded="true" />
+            <element signature="e#60035#60036#0" expanded="true" />
+            <element signature="e#63208#63209#0" expanded="true" />
+            <element signature="e#63267#63268#0" expanded="true" />
+            <element signature="e#63309#63310#0" expanded="true" />
+            <element signature="e#63366#63367#0" expanded="true" />
+            <element signature="e#63436#63437#0" expanded="true" />
+            <element signature="e#63473#63474#0" expanded="true" />
+            <element signature="e#65132#65133#0" expanded="true" />
+            <element signature="e#65169#65170#0" expanded="true" />
+            <element signature="initializer##2;class#StoryGrammarParser#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.5.2-1/antlr4-runtime-4.5.2-1.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding>
+            <element signature="e#537#538#0" expanded="true" />
+            <element signature="e#577#578#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.5.2-1/antlr4-runtime-4.5.2-1.jar!/org/antlr/v4/runtime/tree/ParseTree.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/standard/engine/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+          <folding>
+            <element signature="e#356#357#0" expanded="true" />
+            <element signature="e#386#387#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/runnable/MainExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/standard/engine/Engine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1651">
-          <caret line="111" column="45" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
+        <state relative-caret-position="-115">
+          <caret line="54" column="49" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
           <folding>
             <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
             <element signature="method#getHistory#0;class#Engine#0" expanded="false" />
@@ -1772,11 +1781,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/standard/engine/Condition.java">
+    <entry file="file://$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2601">
-          <caret line="153" column="59" selection-start-line="153" selection-start-column="44" selection-end-line="153" selection-end-column="59" />
-          <folding />
+        <state relative-caret-position="463">
+          <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="86" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/story/interpreter/StoryTreeVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1457#1458#0" expanded="true" />
+            <element signature="e#1484#1485#0" expanded="true" />
+            <element signature="e#1833#1834#0" expanded="true" />
+            <element signature="e#1860#1861#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

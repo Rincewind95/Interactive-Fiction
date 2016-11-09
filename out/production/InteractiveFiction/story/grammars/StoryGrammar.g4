@@ -77,15 +77,6 @@ message_id: ID;
 message_text: QUOTED_TEXT;
 
 story_elements: welcome (room|item|message|special|step)*;
-/*   welcome all
-   | message all
-   | room all
-   | item all
-   | player all
-   | special all
-   | step all
-   | '<EOF>';
-*/
 
 welcome: WELCOME_ OPEN_PAREN_CURLY step_id SEMICOLON room_id SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
 
@@ -93,8 +84,7 @@ message: MESSAGE_ OPEN_PAREN_CURLY message_id SEMICOLON message_text SEMICOLON C
 
 room: ROOM_ OPEN_PAREN_CURLY room_id SEMICOLON level_id SEMICOLON exits SEMICOLON brief SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
 
-exits: exit
-     | exit COMMA exits;
+exits: exit (COMMA exit)*;
 
 exit: direction room_id
     | direction message_text
@@ -125,11 +115,9 @@ step: STEP_ OPEN_PAREN_CURLY step_id SEMICOLON gate_type SEMICOLON required_step
 
 step_before: step_id TIME;
 
-required_steps: step_before
-              | step_before COMMA required_steps;
+required_steps: step_before (COMMA step_before)*;
 
-conditions: condition
-          | condition COMMA conditions;
+conditions: condition (COMMA condition)*;
 
 condition: PLAYER_IN_ROOM room_id
          | PLAYER_NOT_IN_ROOM room_id
@@ -145,8 +133,7 @@ condition: PLAYER_IN_ROOM room_id
          | CON_MOVE direction
          | CON_SPECIAL special_id;
 
-consequences: consequence
-            | consequence COMMA consequences;
+consequences: consequence (COMMA consequence)*;
 
 consequence: NONE
            | TELEPORT room_id

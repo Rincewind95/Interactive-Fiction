@@ -14,19 +14,21 @@ import java.util.Scanner;
  */
 public class Engine
 {
-    private StoryStep start;                  // the initial story step, true from the start (the only one of the sort)
-    private ArrayList<Room> rooms;            // list of the rooms in the game on all levels
-    private ArrayList<Item> items;            // list of all possible items in the game
-    private HashMap<String, Room> findroom;   // quick search for rooms via their id
-    private HashMap<String, Item> finditem;   // quick search for items via their id
+    private StoryStep start;                   // the initial story step, true from the start (the only one of the sort)
+    private ArrayList<Room> rooms;             // list of the rooms in the game on all levels
+    private ArrayList<Item> items;             // list of all possible items in the game
+    private HashMap<String, Room> findroom;    // quick search for rooms via their id
+    private HashMap<String, Item> finditem;    // quick search for items via their id
 
-    private HashSet<String> special;          // a map of all possible special commands
-    private ArrayList<StoryStep> steps;       // a list of all possible story steps
-    private Player player;                    // the star of the show
+    private HashMap<String, Message> messages; // used during engine creation to link the messages
 
-    private int time;                         // the current time step of the game
-    private ArrayList<Command> prev_commands; // a list of all previous player commands
-    private ArrayList<StoryStep> prev_steps;  // a list of all previously satisfied steps
+    private HashSet<String> special;           // a map of all possible special commands
+    private ArrayList<StoryStep> steps;        // a list of all possible story steps
+    private Player player;                     // the star of the show
+
+    private int time;                          // the current time step of the game
+    private ArrayList<Command> prev_commands;  // a list of all previous player commands
+    private ArrayList<StoryStep> prev_steps;   // a list of all previously satisfied steps
 
     public Engine()
     {
@@ -39,6 +41,7 @@ public class Engine
         items = new ArrayList<>();
         findroom = new HashMap<>();
         finditem = new HashMap<>();
+        messages = new HashMap<>();
 
         special = new HashSet<>();
         steps = new ArrayList<>();
@@ -47,46 +50,9 @@ public class Engine
         player = null;
     }
 
-    public static void main(String[] args)
+    public void start()
     {
         Scanner scanner = new Scanner(System.in);
-
-        // repeat until a game is successfully loaded or exit has been input
-        System.out.println("Please input the location of the story file to be loaded...");
-        String test = "", story_location = "";
-        boolean badLocation = true;
-        while(badLocation)
-        {
-            try
-            {
-                story_location = scanner.nextLine();
-                if(story_location.equals("abort"))
-                    return;
-                System.out.println("Attempting to load story file...");
-                new Scanner(new File(story_location)).next(); // test if the file is there
-                badLocation = false;
-            } catch (IOException e)
-            {
-                System.out.println("The file could not be found, please input a different location or input \"abort\"...");
-            }
-        }
-
-        Engine eng = null;
-        while(eng == null)
-        {
-            // repeatedly interpret the story until the engine is
-            StoryInterpreter interpreter = new StoryInterpreter(story_location);
-            eng = interpreter.getEngine();
-            if(eng == null)
-            {
-                System.out.println("The story file is corrupt!\nTo reinterpret the story file press enter or type \"abort\" to quit.\n" +
-                                                               "--------------------------------------------------------------------");
-                String procede = scanner.nextLine();
-                if(procede.equals("abort"))
-                    return;
-            }
-        }
-        // --------------------------------------------------------------------------------------
 
         // start the game once the engine is loaded
         boolean gameRunning = true;
@@ -94,28 +60,28 @@ public class Engine
         // main input loop
         while (gameRunning)
         {
-            System.out.print("[" + eng.getTime() + "] ");
+            System.out.print("[" + time + "] ");
             String userInput = scanner.nextLine();
 
             // temporary input parsing (there will be an intermediate parser step here later)
             Command command = new Command(userInput);
 
             // modify the engines internal state with the command and determine the outcome
-            response resp = eng.executeCommand(command);
+            response resp = executeCommand(command);
             // test the outcome
 
             // the command is valid so we add it to the list of previous commands
-            if(resp != response.badinput)
-                eng.prev_commands.add(command);
+            if(resp != Engine.response.badinput)
+                prev_commands.add(command);
 
             // now we determine what to do next
-            if (resp == response.exit) break;
-            else if (resp == response.badinput ||
-                    resp == response.skip) continue;
+            if (resp == Engine.response.exit) break;
+            else if (resp == Engine.response.badinput ||
+                    resp == Engine.response.skip) continue;
 
             // we advance time, check constraints and potentially generate another response
-            eng.advanceTime();
-            gameRunning = eng.checkConstraints();
+            advanceTime();
+            gameRunning = checkConstraints();
         }
 
         scanner.close();
