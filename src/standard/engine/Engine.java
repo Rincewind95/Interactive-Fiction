@@ -30,7 +30,7 @@ public class Engine
 
     public Engine()
     {
-        // game initialisation
+        // empty game initialisation
         time = 1;
         prev_commands = new ArrayList<>();
         prev_steps = new ArrayList<>();
@@ -43,15 +43,8 @@ public class Engine
         special = new HashSet<>();
         steps = new ArrayList<>();
 
-        // TODO load story from the story_loc
-        // for now the loading will be manual
-
-        String start_message = "Welcome to the test game!";
-        start = new StoryStep("start", start_message, true);
-        System.out.println(start_message);
-        steps.add(start);
-        prev_steps.add(start);
-
+        start = null;
+        player = null;
     }
 
     public static void main(String[] args)
@@ -60,17 +53,17 @@ public class Engine
 
         // repeat until a game is successfully loaded or exit has been input
         System.out.println("Please input the location of the story file to be loaded...");
-        String story = "";
+        String test = "", story_location = "";
         boolean badLocation = true;
         while(badLocation)
         {
             try
             {
-                String story_location = scanner.nextLine();
+                story_location = scanner.nextLine();
                 if(story_location.equals("abort"))
                     return;
                 System.out.println("Attempting to load story file...");
-                story = new Scanner(new File(story_location)).useDelimiter("\\Z").next();
+                new Scanner(new File(story_location)).next(); // test if the file is there
                 badLocation = false;
             } catch (IOException e)
             {
@@ -82,7 +75,7 @@ public class Engine
         while(eng == null)
         {
             // repeatedly interpret the story until the engine is
-            StoryInterpreter interpreter = new StoryInterpreter(story);
+            StoryInterpreter interpreter = new StoryInterpreter(story_location);
             eng = interpreter.getEngine();
             if(eng == null)
             {

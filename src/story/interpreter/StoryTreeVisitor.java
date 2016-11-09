@@ -24,7 +24,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
 
     @Override
     public Void visitStory_elements(StoryGrammarParser.Story_elementsContext ctx) {
-        System.out.println("Method name:" + ctx.getText());
+        System.out.println("Story elements found!");
         return super.visitStory_elements(ctx);
     }
 }

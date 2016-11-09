@@ -16,7 +16,6 @@ MESSAGE_: '_message';
 WELCOME_: '_welcome';
 ROOM_: '_room';
 ITEM_: '_item';
-PLAYER_: '_player';
 SPECIAL_: '_special_command';
 STEP_: '_step';
 
@@ -77,17 +76,18 @@ room_id: ID;
 message_id: ID;
 message_text: QUOTED_TEXT;
 
-start_rule: welcome all;
-
-all: message all
+story_elements: welcome (room|item|message|special|step)*;
+/*   welcome all
+   | message all
    | room all
    | item all
    | player all
    | special all
    | step all
-   |;
+   | '<EOF>';
+*/
 
-welcome: WELCOME_ OPEN_PAREN_CURLY message_text CLOS_PAREN_CURLY;
+welcome: WELCOME_ OPEN_PAREN_CURLY step_id SEMICOLON room_id SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
 
 message: MESSAGE_ OPEN_PAREN_CURLY message_id SEMICOLON message_text SEMICOLON CLOS_PAREN_CURLY;
 
@@ -116,8 +116,6 @@ mobility: TAKEABLE
 location: room_id
         | INVENTORY
         | PRODUCED;
-
-player: PLAYER_ OPEN_PAREN_CURLY room_id SEMICOLON CLOS_PAREN_CURLY;
 
 special_id: ID;
 special: SPECIAL_ OPEN_PAREN_CURLY special_id SEMICOLON CLOS_PAREN_CURLY;
