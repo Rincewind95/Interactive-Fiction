@@ -41,17 +41,11 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitMessage_text(StoryGrammarParser.Message_textContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link StoryGrammarParser#start_rule}.
+	 * Visit a parse tree produced by {@link StoryGrammarParser#story_elements}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitStart_rule(StoryGrammarParser.Start_ruleContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link StoryGrammarParser#all}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitAll(StoryGrammarParser.AllContext ctx);
+	T visitStory_elements(StoryGrammarParser.Story_elementsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#welcome}.
 	 * @param ctx the parse tree
@@ -118,12 +112,6 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLocation(StoryGrammarParser.LocationContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link StoryGrammarParser#player}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPlayer(StoryGrammarParser.PlayerContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#special_id}.
 	 * @param ctx the parse tree

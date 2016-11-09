@@ -76,25 +76,13 @@ public class StoryGrammarBaseListener implements StoryGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStart_rule(StoryGrammarParser.Start_ruleContext ctx) { }
+	@Override public void enterStory_elements(StoryGrammarParser.Story_elementsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStart_rule(StoryGrammarParser.Start_ruleContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAll(StoryGrammarParser.AllContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAll(StoryGrammarParser.AllContext ctx) { }
+	@Override public void exitStory_elements(StoryGrammarParser.Story_elementsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -227,18 +215,6 @@ public class StoryGrammarBaseListener implements StoryGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitLocation(StoryGrammarParser.LocationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterPlayer(StoryGrammarParser.PlayerContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitPlayer(StoryGrammarParser.PlayerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

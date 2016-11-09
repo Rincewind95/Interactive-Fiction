@@ -19,35 +19,35 @@ public class StoryGrammarParser extends Parser {
 	public static final int
 		OPEN_PAREN_CURLY=1, CLOS_PAREN_CURLY=2, OPEN_PAREN_BLOCK=3, CLOS_PAREN_BLOCK=4, 
 		OPEN_PAREN_ROUND=5, CLOS_PAREN_ROUND=6, COMMA=7, SEMICOLON=8, DOUBLEQUOT=9, 
-		MESSAGE_=10, WELCOME_=11, ROOM_=12, ITEM_=13, PLAYER_=14, SPECIAL_=15, 
-		STEP_=16, N=17, E=18, S=19, W=20, TAKEABLE=21, FIXED=22, INVENTORY=23, 
-		PRODUCED=24, ANDING=25, ORING=26, PLAYER_IN_ROOM=27, PLAYER_NOT_IN_ROOM=28, 
-		PLAYER_ON_LEVEL=29, ITEM_IN_ROOM=30, ITEM_NOT_IN_ROOM=31, ITEM_IN_INVENTORY=32, 
-		ITEM_NOT_IN_INVENTORY=33, CON_COMBINE=34, CON_EXAMINE=35, CON_USE=36, 
-		CON_USEON=37, CON_MOVE=38, CON_SPECIAL=39, NONE=40, TELEPORT=41, ADD_ITEM_TO_INV=42, 
-		REMOVE_ITEM_FROM_INV=43, KILL=44, WIN=45, ADD_ITEM_TO_ROOM=46, REMOVE_ITEM_FROM_ROOM=47, 
-		ADD_CONNECTOR=48, REMOVE_CONNECTOR=49, WAIT=50, QUOTED_TEXT=51, ALPHANUMERIC=52, 
-		NUMERIC=53, ID=54, TIME=55, WS=56;
+		MESSAGE_=10, WELCOME_=11, ROOM_=12, ITEM_=13, SPECIAL_=14, STEP_=15, N=16, 
+		E=17, S=18, W=19, TAKEABLE=20, FIXED=21, INVENTORY=22, PRODUCED=23, ANDING=24, 
+		ORING=25, PLAYER_IN_ROOM=26, PLAYER_NOT_IN_ROOM=27, PLAYER_ON_LEVEL=28, 
+		ITEM_IN_ROOM=29, ITEM_NOT_IN_ROOM=30, ITEM_IN_INVENTORY=31, ITEM_NOT_IN_INVENTORY=32, 
+		CON_COMBINE=33, CON_EXAMINE=34, CON_USE=35, CON_USEON=36, CON_MOVE=37, 
+		CON_SPECIAL=38, NONE=39, TELEPORT=40, ADD_ITEM_TO_INV=41, REMOVE_ITEM_FROM_INV=42, 
+		KILL=43, WIN=44, ADD_ITEM_TO_ROOM=45, REMOVE_ITEM_FROM_ROOM=46, ADD_CONNECTOR=47, 
+		REMOVE_CONNECTOR=48, WAIT=49, QUOTED_TEXT=50, ALPHANUMERIC=51, NUMERIC=52, 
+		ID=53, TIME=54, WS=55;
 	public static final int
 		RULE_level_id = 0, RULE_item_id = 1, RULE_room_id = 2, RULE_message_id = 3, 
-		RULE_message_text = 4, RULE_start_rule = 5, RULE_all = 6, RULE_welcome = 7, 
-		RULE_message = 8, RULE_room = 9, RULE_exits = 10, RULE_exit = 11, RULE_direction = 12, 
-		RULE_brief = 13, RULE_description = 14, RULE_item = 15, RULE_mobility = 16, 
-		RULE_location = 17, RULE_player = 18, RULE_special_id = 19, RULE_special = 20, 
-		RULE_step_id = 21, RULE_step = 22, RULE_step_before = 23, RULE_required_steps = 24, 
-		RULE_conditions = 25, RULE_condition = 26, RULE_consequences = 27, RULE_consequence = 28, 
-		RULE_report = 29, RULE_gate_type = 30;
+		RULE_message_text = 4, RULE_story_elements = 5, RULE_welcome = 6, RULE_message = 7, 
+		RULE_room = 8, RULE_exits = 9, RULE_exit = 10, RULE_direction = 11, RULE_brief = 12, 
+		RULE_description = 13, RULE_item = 14, RULE_mobility = 15, RULE_location = 16, 
+		RULE_special_id = 17, RULE_special = 18, RULE_step_id = 19, RULE_step = 20, 
+		RULE_step_before = 21, RULE_required_steps = 22, RULE_conditions = 23, 
+		RULE_condition = 24, RULE_consequences = 25, RULE_consequence = 26, RULE_report = 27, 
+		RULE_gate_type = 28;
 	public static final String[] ruleNames = {
-		"level_id", "item_id", "room_id", "message_id", "message_text", "start_rule", 
-		"all", "welcome", "message", "room", "exits", "exit", "direction", "brief", 
-		"description", "item", "mobility", "location", "player", "special_id", 
-		"special", "step_id", "step", "step_before", "required_steps", "conditions", 
-		"condition", "consequences", "consequence", "report", "gate_type"
+		"level_id", "item_id", "room_id", "message_id", "message_text", "story_elements", 
+		"welcome", "message", "room", "exits", "exit", "direction", "brief", "description", 
+		"item", "mobility", "location", "special_id", "special", "step_id", "step", 
+		"step_before", "required_steps", "conditions", "condition", "consequences", 
+		"consequence", "report", "gate_type"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
 		null, "'{'", "'}'", "'['", "']'", "'('", "')'", "','", "';'", "'\"'", 
-		"'_message'", "'_welcome'", "'_room'", "'_item'", "'_player'", "'_special_command'", 
+		"'_message'", "'_welcome'", "'_room'", "'_item'", "'_special_command'", 
 		"'_step'", "'_N'", "'_E'", "'_S'", "'_W'", "'_takeable'", "'_fixed'", 
 		"'_inv'", "'_prod'", null, null, "'_plir'", "'_plnir'", "'_plilv'", "'_itir'", 
 		"'_itnir'", "'_itinv'", "'_itninv'", "'_combine'", "'_examine'", "'_use'", 
@@ -58,9 +58,9 @@ public class StoryGrammarParser extends Parser {
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "OPEN_PAREN_CURLY", "CLOS_PAREN_CURLY", "OPEN_PAREN_BLOCK", "CLOS_PAREN_BLOCK", 
 		"OPEN_PAREN_ROUND", "CLOS_PAREN_ROUND", "COMMA", "SEMICOLON", "DOUBLEQUOT", 
-		"MESSAGE_", "WELCOME_", "ROOM_", "ITEM_", "PLAYER_", "SPECIAL_", "STEP_", 
-		"N", "E", "S", "W", "TAKEABLE", "FIXED", "INVENTORY", "PRODUCED", "ANDING", 
-		"ORING", "PLAYER_IN_ROOM", "PLAYER_NOT_IN_ROOM", "PLAYER_ON_LEVEL", "ITEM_IN_ROOM", 
+		"MESSAGE_", "WELCOME_", "ROOM_", "ITEM_", "SPECIAL_", "STEP_", "N", "E", 
+		"S", "W", "TAKEABLE", "FIXED", "INVENTORY", "PRODUCED", "ANDING", "ORING", 
+		"PLAYER_IN_ROOM", "PLAYER_NOT_IN_ROOM", "PLAYER_ON_LEVEL", "ITEM_IN_ROOM", 
 		"ITEM_NOT_IN_ROOM", "ITEM_IN_INVENTORY", "ITEM_NOT_IN_INVENTORY", "CON_COMBINE", 
 		"CON_EXAMINE", "CON_USE", "CON_USEON", "CON_MOVE", "CON_SPECIAL", "NONE", 
 		"TELEPORT", "ADD_ITEM_TO_INV", "REMOVE_ITEM_FROM_INV", "KILL", "WIN", 
@@ -143,7 +143,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(62);
+			setState(58);
 			match(ID);
 			}
 		}
@@ -185,7 +185,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(64);
+			setState(60);
 			match(ID);
 			}
 		}
@@ -227,7 +227,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(66);
+			setState(62);
 			match(ID);
 			}
 		}
@@ -269,7 +269,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(68);
+			setState(64);
 			match(ID);
 			}
 		}
@@ -311,7 +311,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(70);
+			setState(66);
 			match(QUOTED_TEXT);
 			}
 		}
@@ -326,163 +326,113 @@ public class StoryGrammarParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Start_ruleContext extends ParserRuleContext {
+	public static class Story_elementsContext extends ParserRuleContext {
 		public WelcomeContext welcome() {
 			return getRuleContext(WelcomeContext.class,0);
 		}
-		public AllContext all() {
-			return getRuleContext(AllContext.class,0);
+		public List<RoomContext> room() {
+			return getRuleContexts(RoomContext.class);
 		}
-		public Start_ruleContext(ParserRuleContext parent, int invokingState) {
+		public RoomContext room(int i) {
+			return getRuleContext(RoomContext.class,i);
+		}
+		public List<ItemContext> item() {
+			return getRuleContexts(ItemContext.class);
+		}
+		public ItemContext item(int i) {
+			return getRuleContext(ItemContext.class,i);
+		}
+		public List<MessageContext> message() {
+			return getRuleContexts(MessageContext.class);
+		}
+		public MessageContext message(int i) {
+			return getRuleContext(MessageContext.class,i);
+		}
+		public List<SpecialContext> special() {
+			return getRuleContexts(SpecialContext.class);
+		}
+		public SpecialContext special(int i) {
+			return getRuleContext(SpecialContext.class,i);
+		}
+		public List<StepContext> step() {
+			return getRuleContexts(StepContext.class);
+		}
+		public StepContext step(int i) {
+			return getRuleContext(StepContext.class,i);
+		}
+		public Story_elementsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_start_rule; }
+		@Override public int getRuleIndex() { return RULE_story_elements; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof StoryGrammarListener ) ((StoryGrammarListener)listener).enterStart_rule(this);
+			if ( listener instanceof StoryGrammarListener ) ((StoryGrammarListener)listener).enterStory_elements(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof StoryGrammarListener ) ((StoryGrammarListener)listener).exitStart_rule(this);
+			if ( listener instanceof StoryGrammarListener ) ((StoryGrammarListener)listener).exitStory_elements(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof StoryGrammarVisitor ) return ((StoryGrammarVisitor<? extends T>)visitor).visitStart_rule(this);
+			if ( visitor instanceof StoryGrammarVisitor ) return ((StoryGrammarVisitor<? extends T>)visitor).visitStory_elements(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final Start_ruleContext start_rule() throws RecognitionException {
-		Start_ruleContext _localctx = new Start_ruleContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_start_rule);
+	public final Story_elementsContext story_elements() throws RecognitionException {
+		Story_elementsContext _localctx = new Story_elementsContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_story_elements);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(72);
+			setState(68);
 			welcome();
-			setState(73);
-			all();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class AllContext extends ParserRuleContext {
-		public MessageContext message() {
-			return getRuleContext(MessageContext.class,0);
-		}
-		public AllContext all() {
-			return getRuleContext(AllContext.class,0);
-		}
-		public RoomContext room() {
-			return getRuleContext(RoomContext.class,0);
-		}
-		public ItemContext item() {
-			return getRuleContext(ItemContext.class,0);
-		}
-		public PlayerContext player() {
-			return getRuleContext(PlayerContext.class,0);
-		}
-		public SpecialContext special() {
-			return getRuleContext(SpecialContext.class,0);
-		}
-		public StepContext step() {
-			return getRuleContext(StepContext.class,0);
-		}
-		public AllContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_all; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof StoryGrammarListener ) ((StoryGrammarListener)listener).enterAll(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof StoryGrammarListener ) ((StoryGrammarListener)listener).exitAll(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof StoryGrammarVisitor ) return ((StoryGrammarVisitor<? extends T>)visitor).visitAll(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final AllContext all() throws RecognitionException {
-		AllContext _localctx = new AllContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_all);
-		try {
-			setState(94);
-			switch (_input.LA(1)) {
-			case MESSAGE_:
-				enterOuterAlt(_localctx, 1);
+			setState(76);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MESSAGE_) | (1L << ROOM_) | (1L << ITEM_) | (1L << SPECIAL_) | (1L << STEP_))) != 0)) {
 				{
-				setState(75);
-				message();
-				setState(76);
-				all();
+				setState(74);
+				switch (_input.LA(1)) {
+				case ROOM_:
+					{
+					setState(69);
+					room();
+					}
+					break;
+				case ITEM_:
+					{
+					setState(70);
+					item();
+					}
+					break;
+				case MESSAGE_:
+					{
+					setState(71);
+					message();
+					}
+					break;
+				case SPECIAL_:
+					{
+					setState(72);
+					special();
+					}
+					break;
+				case STEP_:
+					{
+					setState(73);
+					step();
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
 				}
-				break;
-			case ROOM_:
-				enterOuterAlt(_localctx, 2);
-				{
+				}
 				setState(78);
-				room();
-				setState(79);
-				all();
-				}
-				break;
-			case ITEM_:
-				enterOuterAlt(_localctx, 3);
-				{
-				setState(81);
-				item();
-				setState(82);
-				all();
-				}
-				break;
-			case PLAYER_:
-				enterOuterAlt(_localctx, 4);
-				{
-				setState(84);
-				player();
-				setState(85);
-				all();
-				}
-				break;
-			case SPECIAL_:
-				enterOuterAlt(_localctx, 5);
-				{
-				setState(87);
-				special();
-				setState(88);
-				all();
-				}
-				break;
-			case STEP_:
-				enterOuterAlt(_localctx, 6);
-				{
-				setState(90);
-				step();
-				setState(91);
-				all();
-				}
-				break;
-			case EOF:
-				enterOuterAlt(_localctx, 7);
-				{
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -499,8 +449,18 @@ public class StoryGrammarParser extends Parser {
 	public static class WelcomeContext extends ParserRuleContext {
 		public TerminalNode WELCOME_() { return getToken(StoryGrammarParser.WELCOME_, 0); }
 		public TerminalNode OPEN_PAREN_CURLY() { return getToken(StoryGrammarParser.OPEN_PAREN_CURLY, 0); }
-		public Message_textContext message_text() {
-			return getRuleContext(Message_textContext.class,0);
+		public Step_idContext step_id() {
+			return getRuleContext(Step_idContext.class,0);
+		}
+		public List<TerminalNode> SEMICOLON() { return getTokens(StoryGrammarParser.SEMICOLON); }
+		public TerminalNode SEMICOLON(int i) {
+			return getToken(StoryGrammarParser.SEMICOLON, i);
+		}
+		public Room_idContext room_id() {
+			return getRuleContext(Room_idContext.class,0);
+		}
+		public DescriptionContext description() {
+			return getRuleContext(DescriptionContext.class,0);
 		}
 		public TerminalNode CLOS_PAREN_CURLY() { return getToken(StoryGrammarParser.CLOS_PAREN_CURLY, 0); }
 		public WelcomeContext(ParserRuleContext parent, int invokingState) {
@@ -524,17 +484,27 @@ public class StoryGrammarParser extends Parser {
 
 	public final WelcomeContext welcome() throws RecognitionException {
 		WelcomeContext _localctx = new WelcomeContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_welcome);
+		enterRule(_localctx, 12, RULE_welcome);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(96);
+			setState(79);
 			match(WELCOME_);
-			setState(97);
+			setState(80);
 			match(OPEN_PAREN_CURLY);
-			setState(98);
-			message_text();
-			setState(99);
+			setState(81);
+			step_id();
+			setState(82);
+			match(SEMICOLON);
+			setState(83);
+			room_id();
+			setState(84);
+			match(SEMICOLON);
+			setState(85);
+			description();
+			setState(86);
+			match(SEMICOLON);
+			setState(87);
 			match(CLOS_PAREN_CURLY);
 			}
 		}
@@ -584,23 +554,23 @@ public class StoryGrammarParser extends Parser {
 
 	public final MessageContext message() throws RecognitionException {
 		MessageContext _localctx = new MessageContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_message);
+		enterRule(_localctx, 14, RULE_message);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(101);
+			setState(89);
 			match(MESSAGE_);
-			setState(102);
+			setState(90);
 			match(OPEN_PAREN_CURLY);
-			setState(103);
+			setState(91);
 			message_id();
-			setState(104);
+			setState(92);
 			match(SEMICOLON);
-			setState(105);
+			setState(93);
 			message_text();
-			setState(106);
+			setState(94);
 			match(SEMICOLON);
-			setState(107);
+			setState(95);
 			match(CLOS_PAREN_CURLY);
 			}
 		}
@@ -659,35 +629,35 @@ public class StoryGrammarParser extends Parser {
 
 	public final RoomContext room() throws RecognitionException {
 		RoomContext _localctx = new RoomContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_room);
+		enterRule(_localctx, 16, RULE_room);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(109);
+			setState(97);
 			match(ROOM_);
-			setState(110);
+			setState(98);
 			match(OPEN_PAREN_CURLY);
-			setState(111);
+			setState(99);
 			room_id();
-			setState(112);
+			setState(100);
 			match(SEMICOLON);
-			setState(113);
+			setState(101);
 			level_id();
-			setState(114);
+			setState(102);
 			match(SEMICOLON);
-			setState(115);
+			setState(103);
 			exits();
-			setState(116);
+			setState(104);
 			match(SEMICOLON);
-			setState(117);
+			setState(105);
 			brief();
-			setState(118);
+			setState(106);
 			match(SEMICOLON);
-			setState(119);
+			setState(107);
 			description();
-			setState(120);
+			setState(108);
 			match(SEMICOLON);
-			setState(121);
+			setState(109);
 			match(CLOS_PAREN_CURLY);
 			}
 		}
@@ -731,26 +701,26 @@ public class StoryGrammarParser extends Parser {
 
 	public final ExitsContext exits() throws RecognitionException {
 		ExitsContext _localctx = new ExitsContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_exits);
+		enterRule(_localctx, 18, RULE_exits);
 		try {
-			setState(128);
+			setState(116);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(123);
+				setState(111);
 				exit();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(124);
+				setState(112);
 				exit();
-				setState(125);
+				setState(113);
 				match(COMMA);
-				setState(126);
+				setState(114);
 				exits();
 				}
 				break;
@@ -801,35 +771,35 @@ public class StoryGrammarParser extends Parser {
 
 	public final ExitContext exit() throws RecognitionException {
 		ExitContext _localctx = new ExitContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_exit);
+		enterRule(_localctx, 20, RULE_exit);
 		try {
-			setState(139);
+			setState(127);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(130);
+				setState(118);
 				direction();
-				setState(131);
+				setState(119);
 				room_id();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(133);
+				setState(121);
 				direction();
-				setState(134);
+				setState(122);
 				message_text();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(136);
+				setState(124);
 				direction();
-				setState(137);
+				setState(125);
 				message_id();
 				}
 				break;
@@ -872,12 +842,12 @@ public class StoryGrammarParser extends Parser {
 
 	public final DirectionContext direction() throws RecognitionException {
 		DirectionContext _localctx = new DirectionContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_direction);
+		enterRule(_localctx, 22, RULE_direction);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(141);
+			setState(129);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << N) | (1L << E) | (1L << S) | (1L << W))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -925,21 +895,21 @@ public class StoryGrammarParser extends Parser {
 
 	public final BriefContext brief() throws RecognitionException {
 		BriefContext _localctx = new BriefContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_brief);
+		enterRule(_localctx, 24, RULE_brief);
 		try {
-			setState(145);
+			setState(133);
 			switch (_input.LA(1)) {
 			case QUOTED_TEXT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(143);
+				setState(131);
 				message_text();
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(144);
+				setState(132);
 				message_id();
 				}
 				break;
@@ -986,21 +956,21 @@ public class StoryGrammarParser extends Parser {
 
 	public final DescriptionContext description() throws RecognitionException {
 		DescriptionContext _localctx = new DescriptionContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_description);
+		enterRule(_localctx, 26, RULE_description);
 		try {
-			setState(149);
+			setState(137);
 			switch (_input.LA(1)) {
 			case QUOTED_TEXT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(147);
+				setState(135);
 				message_text();
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(148);
+				setState(136);
 				message_id();
 				}
 				break;
@@ -1060,31 +1030,31 @@ public class StoryGrammarParser extends Parser {
 
 	public final ItemContext item() throws RecognitionException {
 		ItemContext _localctx = new ItemContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_item);
+		enterRule(_localctx, 28, RULE_item);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(151);
+			setState(139);
 			match(ITEM_);
-			setState(152);
+			setState(140);
 			match(OPEN_PAREN_CURLY);
-			setState(153);
+			setState(141);
 			item_id();
-			setState(154);
+			setState(142);
 			match(SEMICOLON);
-			setState(155);
+			setState(143);
 			mobility();
-			setState(156);
+			setState(144);
 			match(SEMICOLON);
-			setState(157);
+			setState(145);
 			location();
-			setState(158);
+			setState(146);
 			match(SEMICOLON);
-			setState(159);
+			setState(147);
 			description();
-			setState(160);
+			setState(148);
 			match(SEMICOLON);
-			setState(161);
+			setState(149);
 			match(CLOS_PAREN_CURLY);
 			}
 		}
@@ -1123,12 +1093,12 @@ public class StoryGrammarParser extends Parser {
 
 	public final MobilityContext mobility() throws RecognitionException {
 		MobilityContext _localctx = new MobilityContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_mobility);
+		enterRule(_localctx, 30, RULE_mobility);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(163);
+			setState(151);
 			_la = _input.LA(1);
 			if ( !(_la==TAKEABLE || _la==FIXED) ) {
 			_errHandler.recoverInline(this);
@@ -1175,89 +1145,33 @@ public class StoryGrammarParser extends Parser {
 
 	public final LocationContext location() throws RecognitionException {
 		LocationContext _localctx = new LocationContext(_ctx, getState());
-		enterRule(_localctx, 34, RULE_location);
+		enterRule(_localctx, 32, RULE_location);
 		try {
-			setState(168);
+			setState(156);
 			switch (_input.LA(1)) {
 			case ID:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(165);
+				setState(153);
 				room_id();
 				}
 				break;
 			case INVENTORY:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(166);
+				setState(154);
 				match(INVENTORY);
 				}
 				break;
 			case PRODUCED:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(167);
+				setState(155);
 				match(PRODUCED);
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class PlayerContext extends ParserRuleContext {
-		public TerminalNode PLAYER_() { return getToken(StoryGrammarParser.PLAYER_, 0); }
-		public TerminalNode OPEN_PAREN_CURLY() { return getToken(StoryGrammarParser.OPEN_PAREN_CURLY, 0); }
-		public Room_idContext room_id() {
-			return getRuleContext(Room_idContext.class,0);
-		}
-		public TerminalNode SEMICOLON() { return getToken(StoryGrammarParser.SEMICOLON, 0); }
-		public TerminalNode CLOS_PAREN_CURLY() { return getToken(StoryGrammarParser.CLOS_PAREN_CURLY, 0); }
-		public PlayerContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_player; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof StoryGrammarListener ) ((StoryGrammarListener)listener).enterPlayer(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof StoryGrammarListener ) ((StoryGrammarListener)listener).exitPlayer(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof StoryGrammarVisitor ) return ((StoryGrammarVisitor<? extends T>)visitor).visitPlayer(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final PlayerContext player() throws RecognitionException {
-		PlayerContext _localctx = new PlayerContext(_ctx, getState());
-		enterRule(_localctx, 36, RULE_player);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(170);
-			match(PLAYER_);
-			setState(171);
-			match(OPEN_PAREN_CURLY);
-			setState(172);
-			room_id();
-			setState(173);
-			match(SEMICOLON);
-			setState(174);
-			match(CLOS_PAREN_CURLY);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1294,11 +1208,11 @@ public class StoryGrammarParser extends Parser {
 
 	public final Special_idContext special_id() throws RecognitionException {
 		Special_idContext _localctx = new Special_idContext(_ctx, getState());
-		enterRule(_localctx, 38, RULE_special_id);
+		enterRule(_localctx, 34, RULE_special_id);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(176);
+			setState(158);
 			match(ID);
 			}
 		}
@@ -1342,19 +1256,19 @@ public class StoryGrammarParser extends Parser {
 
 	public final SpecialContext special() throws RecognitionException {
 		SpecialContext _localctx = new SpecialContext(_ctx, getState());
-		enterRule(_localctx, 40, RULE_special);
+		enterRule(_localctx, 36, RULE_special);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(178);
+			setState(160);
 			match(SPECIAL_);
-			setState(179);
+			setState(161);
 			match(OPEN_PAREN_CURLY);
-			setState(180);
+			setState(162);
 			special_id();
-			setState(181);
+			setState(163);
 			match(SEMICOLON);
-			setState(182);
+			setState(164);
 			match(CLOS_PAREN_CURLY);
 			}
 		}
@@ -1392,11 +1306,11 @@ public class StoryGrammarParser extends Parser {
 
 	public final Step_idContext step_id() throws RecognitionException {
 		Step_idContext _localctx = new Step_idContext(_ctx, getState());
-		enterRule(_localctx, 42, RULE_step_id);
+		enterRule(_localctx, 38, RULE_step_id);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(184);
+			setState(166);
 			match(ID);
 			}
 		}
@@ -1458,39 +1372,39 @@ public class StoryGrammarParser extends Parser {
 
 	public final StepContext step() throws RecognitionException {
 		StepContext _localctx = new StepContext(_ctx, getState());
-		enterRule(_localctx, 44, RULE_step);
+		enterRule(_localctx, 40, RULE_step);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(186);
+			setState(168);
 			match(STEP_);
-			setState(187);
+			setState(169);
 			match(OPEN_PAREN_CURLY);
-			setState(188);
+			setState(170);
 			step_id();
-			setState(189);
+			setState(171);
 			match(SEMICOLON);
-			setState(190);
+			setState(172);
 			gate_type();
-			setState(191);
+			setState(173);
 			match(SEMICOLON);
-			setState(192);
+			setState(174);
 			required_steps();
-			setState(193);
+			setState(175);
 			match(SEMICOLON);
-			setState(194);
+			setState(176);
 			conditions();
-			setState(195);
+			setState(177);
 			match(SEMICOLON);
-			setState(196);
+			setState(178);
 			consequences();
-			setState(197);
+			setState(179);
 			match(SEMICOLON);
-			setState(198);
+			setState(180);
 			report();
-			setState(199);
+			setState(181);
 			match(SEMICOLON);
-			setState(200);
+			setState(182);
 			match(CLOS_PAREN_CURLY);
 			}
 		}
@@ -1531,13 +1445,13 @@ public class StoryGrammarParser extends Parser {
 
 	public final Step_beforeContext step_before() throws RecognitionException {
 		Step_beforeContext _localctx = new Step_beforeContext(_ctx, getState());
-		enterRule(_localctx, 46, RULE_step_before);
+		enterRule(_localctx, 42, RULE_step_before);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(202);
+			setState(184);
 			step_id();
-			setState(203);
+			setState(185);
 			match(TIME);
 			}
 		}
@@ -1581,26 +1495,26 @@ public class StoryGrammarParser extends Parser {
 
 	public final Required_stepsContext required_steps() throws RecognitionException {
 		Required_stepsContext _localctx = new Required_stepsContext(_ctx, getState());
-		enterRule(_localctx, 48, RULE_required_steps);
+		enterRule(_localctx, 44, RULE_required_steps);
 		try {
-			setState(210);
+			setState(192);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(205);
+				setState(187);
 				step_before();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(206);
+				setState(188);
 				step_before();
-				setState(207);
+				setState(189);
 				match(COMMA);
-				setState(208);
+				setState(190);
 				required_steps();
 				}
 				break;
@@ -1646,26 +1560,26 @@ public class StoryGrammarParser extends Parser {
 
 	public final ConditionsContext conditions() throws RecognitionException {
 		ConditionsContext _localctx = new ConditionsContext(_ctx, getState());
-		enterRule(_localctx, 50, RULE_conditions);
+		enterRule(_localctx, 46, RULE_conditions);
 		try {
-			setState(217);
+			setState(199);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(212);
+				setState(194);
 				condition();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(213);
+				setState(195);
 				condition();
-				setState(214);
+				setState(196);
 				match(COMMA);
-				setState(215);
+				setState(197);
 				conditions();
 				}
 				break;
@@ -1735,132 +1649,132 @@ public class StoryGrammarParser extends Parser {
 
 	public final ConditionContext condition() throws RecognitionException {
 		ConditionContext _localctx = new ConditionContext(_ctx, getState());
-		enterRule(_localctx, 52, RULE_condition);
+		enterRule(_localctx, 48, RULE_condition);
 		try {
-			setState(253);
+			setState(235);
 			switch (_input.LA(1)) {
 			case PLAYER_IN_ROOM:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(219);
+				setState(201);
 				match(PLAYER_IN_ROOM);
-				setState(220);
+				setState(202);
 				room_id();
 				}
 				break;
 			case PLAYER_NOT_IN_ROOM:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(221);
+				setState(203);
 				match(PLAYER_NOT_IN_ROOM);
-				setState(222);
+				setState(204);
 				room_id();
 				}
 				break;
 			case PLAYER_ON_LEVEL:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(223);
+				setState(205);
 				match(PLAYER_ON_LEVEL);
-				setState(224);
+				setState(206);
 				level_id();
 				}
 				break;
 			case ITEM_IN_ROOM:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(225);
+				setState(207);
 				match(ITEM_IN_ROOM);
-				setState(226);
+				setState(208);
 				item_id();
-				setState(227);
+				setState(209);
 				room_id();
 				}
 				break;
 			case ITEM_NOT_IN_ROOM:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(229);
+				setState(211);
 				match(ITEM_NOT_IN_ROOM);
-				setState(230);
+				setState(212);
 				item_id();
-				setState(231);
+				setState(213);
 				room_id();
 				}
 				break;
 			case ITEM_IN_INVENTORY:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(233);
+				setState(215);
 				match(ITEM_IN_INVENTORY);
-				setState(234);
+				setState(216);
 				item_id();
 				}
 				break;
 			case ITEM_NOT_IN_INVENTORY:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(235);
+				setState(217);
 				match(ITEM_NOT_IN_INVENTORY);
-				setState(236);
+				setState(218);
 				item_id();
 				}
 				break;
 			case CON_COMBINE:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(237);
+				setState(219);
 				match(CON_COMBINE);
-				setState(238);
+				setState(220);
 				item_id();
-				setState(239);
+				setState(221);
 				item_id();
 				}
 				break;
 			case CON_EXAMINE:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(241);
+				setState(223);
 				match(CON_EXAMINE);
-				setState(242);
+				setState(224);
 				item_id();
 				}
 				break;
 			case CON_USE:
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(243);
+				setState(225);
 				match(CON_USE);
-				setState(244);
+				setState(226);
 				item_id();
 				}
 				break;
 			case CON_USEON:
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(245);
+				setState(227);
 				match(CON_USEON);
-				setState(246);
+				setState(228);
 				item_id();
-				setState(247);
+				setState(229);
 				item_id();
 				}
 				break;
 			case CON_MOVE:
 				enterOuterAlt(_localctx, 12);
 				{
-				setState(249);
+				setState(231);
 				match(CON_MOVE);
-				setState(250);
+				setState(232);
 				direction();
 				}
 				break;
 			case CON_SPECIAL:
 				enterOuterAlt(_localctx, 13);
 				{
-				setState(251);
+				setState(233);
 				match(CON_SPECIAL);
-				setState(252);
+				setState(234);
 				special_id();
 				}
 				break;
@@ -1908,26 +1822,26 @@ public class StoryGrammarParser extends Parser {
 
 	public final ConsequencesContext consequences() throws RecognitionException {
 		ConsequencesContext _localctx = new ConsequencesContext(_ctx, getState());
-		enterRule(_localctx, 54, RULE_consequences);
+		enterRule(_localctx, 50, RULE_consequences);
 		try {
-			setState(260);
+			setState(242);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,10,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(255);
+				setState(237);
 				consequence();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(256);
+				setState(238);
 				consequence();
-				setState(257);
+				setState(239);
 				match(COMMA);
-				setState(258);
+				setState(240);
 				consequences();
 				}
 				break;
@@ -1993,116 +1907,116 @@ public class StoryGrammarParser extends Parser {
 
 	public final ConsequenceContext consequence() throws RecognitionException {
 		ConsequenceContext _localctx = new ConsequenceContext(_ctx, getState());
-		enterRule(_localctx, 56, RULE_consequence);
+		enterRule(_localctx, 52, RULE_consequence);
 		try {
-			setState(293);
+			setState(275);
 			switch (_input.LA(1)) {
 			case NONE:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(262);
+				setState(244);
 				match(NONE);
 				}
 				break;
 			case TELEPORT:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(263);
+				setState(245);
 				match(TELEPORT);
-				setState(264);
+				setState(246);
 				room_id();
 				}
 				break;
 			case ADD_ITEM_TO_INV:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(265);
+				setState(247);
 				match(ADD_ITEM_TO_INV);
-				setState(266);
+				setState(248);
 				item_id();
 				}
 				break;
 			case REMOVE_ITEM_FROM_INV:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(267);
+				setState(249);
 				match(REMOVE_ITEM_FROM_INV);
-				setState(268);
+				setState(250);
 				item_id();
 				}
 				break;
 			case KILL:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(269);
+				setState(251);
 				match(KILL);
 				}
 				break;
 			case WIN:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(270);
+				setState(252);
 				match(WIN);
 				}
 				break;
 			case ADD_ITEM_TO_ROOM:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(271);
+				setState(253);
 				match(ADD_ITEM_TO_ROOM);
-				setState(272);
+				setState(254);
 				item_id();
-				setState(273);
+				setState(255);
 				room_id();
 				}
 				break;
 			case REMOVE_ITEM_FROM_ROOM:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(275);
+				setState(257);
 				match(REMOVE_ITEM_FROM_ROOM);
-				setState(276);
+				setState(258);
 				item_id();
-				setState(277);
+				setState(259);
 				room_id();
 				}
 				break;
 			case ADD_CONNECTOR:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(279);
+				setState(261);
 				match(ADD_CONNECTOR);
-				setState(280);
+				setState(262);
 				room_id();
-				setState(281);
+				setState(263);
 				direction();
-				setState(282);
+				setState(264);
 				room_id();
-				setState(283);
+				setState(265);
 				direction();
 				}
 				break;
 			case REMOVE_CONNECTOR:
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(285);
+				setState(267);
 				match(REMOVE_CONNECTOR);
-				setState(286);
+				setState(268);
 				room_id();
-				setState(287);
+				setState(269);
 				direction();
-				setState(288);
+				setState(270);
 				room_id();
-				setState(289);
+				setState(271);
 				direction();
 				}
 				break;
 			case WAIT:
 				enterOuterAlt(_localctx, 11);
 				{
-				setState(291);
+				setState(273);
 				match(WAIT);
-				setState(292);
+				setState(274);
 				match(TIME);
 				}
 				break;
@@ -2149,21 +2063,21 @@ public class StoryGrammarParser extends Parser {
 
 	public final ReportContext report() throws RecognitionException {
 		ReportContext _localctx = new ReportContext(_ctx, getState());
-		enterRule(_localctx, 58, RULE_report);
+		enterRule(_localctx, 54, RULE_report);
 		try {
-			setState(297);
+			setState(279);
 			switch (_input.LA(1)) {
 			case QUOTED_TEXT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(295);
+				setState(277);
 				message_text();
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(296);
+				setState(278);
 				message_id();
 				}
 				break;
@@ -2206,12 +2120,12 @@ public class StoryGrammarParser extends Parser {
 
 	public final Gate_typeContext gate_type() throws RecognitionException {
 		Gate_typeContext _localctx = new Gate_typeContext(_ctx, getState());
-		enterRule(_localctx, 60, RULE_gate_type);
+		enterRule(_localctx, 56, RULE_gate_type);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(299);
+			setState(281);
 			_la = _input.LA(1);
 			if ( !(_la==ANDING || _la==ORING) ) {
 			_errHandler.recoverInline(this);
@@ -2232,106 +2146,100 @@ public class StoryGrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3:\u0130\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\39\u011e\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
-		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\4\37\t\37\4 \t \3\2"+
-		"\3\2\3\3\3\3\3\4\3\4\3\5\3\5\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3"+
-		"\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\ba\n\b\3\t\3"+
-		"\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13"+
-		"\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\5\f"+
-		"\u0083\n\f\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\3\r\5\r\u008e\n\r\3\16\3\16"+
-		"\3\17\3\17\5\17\u0094\n\17\3\20\3\20\5\20\u0098\n\20\3\21\3\21\3\21\3"+
-		"\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\22\3\22\3\23\3\23\3\23\5"+
-		"\23\u00ab\n\23\3\24\3\24\3\24\3\24\3\24\3\24\3\25\3\25\3\26\3\26\3\26"+
-		"\3\26\3\26\3\26\3\27\3\27\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30"+
-		"\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\31\3\31\3\31\3\32\3\32\3\32\3\32"+
-		"\3\32\5\32\u00d5\n\32\3\33\3\33\3\33\3\33\3\33\5\33\u00dc\n\33\3\34\3"+
+		"\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36\3\2\3\2\3\3\3\3\3\4"+
+		"\3\4\3\5\3\5\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3\7\7\7M\n\7\f\7\16\7P\13\7\3"+
+		"\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t"+
+		"\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\13\3\13\3\13"+
+		"\3\13\3\13\5\13w\n\13\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\f\u0082\n"+
+		"\f\3\r\3\r\3\16\3\16\5\16\u0088\n\16\3\17\3\17\5\17\u008c\n\17\3\20\3"+
+		"\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\21\3\21\3\22\3"+
+		"\22\3\22\5\22\u009f\n\22\3\23\3\23\3\24\3\24\3\24\3\24\3\24\3\24\3\25"+
+		"\3\25\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26"+
+		"\3\26\3\26\3\26\3\27\3\27\3\27\3\30\3\30\3\30\3\30\3\30\5\30\u00c3\n\30"+
+		"\3\31\3\31\3\31\3\31\3\31\5\31\u00ca\n\31\3\32\3\32\3\32\3\32\3\32\3\32"+
+		"\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32"+
+		"\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32"+
+		"\5\32\u00ee\n\32\3\33\3\33\3\33\3\33\3\33\5\33\u00f5\n\33\3\34\3\34\3"+
 		"\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3"+
 		"\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3"+
-		"\34\3\34\3\34\3\34\3\34\5\34\u0100\n\34\3\35\3\35\3\35\3\35\3\35\5\35"+
-		"\u0107\n\35\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36"+
-		"\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36\3\36"+
-		"\3\36\3\36\3\36\3\36\3\36\5\36\u0128\n\36\3\37\3\37\5\37\u012c\n\37\3"+
-		" \3 \3 \2\2!\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64"+
-		"\668:<>\2\5\3\2\23\26\3\2\27\30\3\2\33\34\u0137\2@\3\2\2\2\4B\3\2\2\2"+
-		"\6D\3\2\2\2\bF\3\2\2\2\nH\3\2\2\2\fJ\3\2\2\2\16`\3\2\2\2\20b\3\2\2\2\22"+
-		"g\3\2\2\2\24o\3\2\2\2\26\u0082\3\2\2\2\30\u008d\3\2\2\2\32\u008f\3\2\2"+
-		"\2\34\u0093\3\2\2\2\36\u0097\3\2\2\2 \u0099\3\2\2\2\"\u00a5\3\2\2\2$\u00aa"+
-		"\3\2\2\2&\u00ac\3\2\2\2(\u00b2\3\2\2\2*\u00b4\3\2\2\2,\u00ba\3\2\2\2."+
-		"\u00bc\3\2\2\2\60\u00cc\3\2\2\2\62\u00d4\3\2\2\2\64\u00db\3\2\2\2\66\u00ff"+
-		"\3\2\2\28\u0106\3\2\2\2:\u0127\3\2\2\2<\u012b\3\2\2\2>\u012d\3\2\2\2@"+
-		"A\78\2\2A\3\3\2\2\2BC\78\2\2C\5\3\2\2\2DE\78\2\2E\7\3\2\2\2FG\78\2\2G"+
-		"\t\3\2\2\2HI\7\65\2\2I\13\3\2\2\2JK\5\20\t\2KL\5\16\b\2L\r\3\2\2\2MN\5"+
-		"\22\n\2NO\5\16\b\2Oa\3\2\2\2PQ\5\24\13\2QR\5\16\b\2Ra\3\2\2\2ST\5 \21"+
-		"\2TU\5\16\b\2Ua\3\2\2\2VW\5&\24\2WX\5\16\b\2Xa\3\2\2\2YZ\5*\26\2Z[\5\16"+
-		"\b\2[a\3\2\2\2\\]\5.\30\2]^\5\16\b\2^a\3\2\2\2_a\3\2\2\2`M\3\2\2\2`P\3"+
-		"\2\2\2`S\3\2\2\2`V\3\2\2\2`Y\3\2\2\2`\\\3\2\2\2`_\3\2\2\2a\17\3\2\2\2"+
-		"bc\7\r\2\2cd\7\3\2\2de\5\n\6\2ef\7\4\2\2f\21\3\2\2\2gh\7\f\2\2hi\7\3\2"+
-		"\2ij\5\b\5\2jk\7\n\2\2kl\5\n\6\2lm\7\n\2\2mn\7\4\2\2n\23\3\2\2\2op\7\16"+
-		"\2\2pq\7\3\2\2qr\5\6\4\2rs\7\n\2\2st\5\2\2\2tu\7\n\2\2uv\5\26\f\2vw\7"+
-		"\n\2\2wx\5\34\17\2xy\7\n\2\2yz\5\36\20\2z{\7\n\2\2{|\7\4\2\2|\25\3\2\2"+
-		"\2}\u0083\5\30\r\2~\177\5\30\r\2\177\u0080\7\t\2\2\u0080\u0081\5\26\f"+
-		"\2\u0081\u0083\3\2\2\2\u0082}\3\2\2\2\u0082~\3\2\2\2\u0083\27\3\2\2\2"+
-		"\u0084\u0085\5\32\16\2\u0085\u0086\5\6\4\2\u0086\u008e\3\2\2\2\u0087\u0088"+
-		"\5\32\16\2\u0088\u0089\5\n\6\2\u0089\u008e\3\2\2\2\u008a\u008b\5\32\16"+
-		"\2\u008b\u008c\5\b\5\2\u008c\u008e\3\2\2\2\u008d\u0084\3\2\2\2\u008d\u0087"+
-		"\3\2\2\2\u008d\u008a\3\2\2\2\u008e\31\3\2\2\2\u008f\u0090\t\2\2\2\u0090"+
-		"\33\3\2\2\2\u0091\u0094\5\n\6\2\u0092\u0094\5\b\5\2\u0093\u0091\3\2\2"+
-		"\2\u0093\u0092\3\2\2\2\u0094\35\3\2\2\2\u0095\u0098\5\n\6\2\u0096\u0098"+
-		"\5\b\5\2\u0097\u0095\3\2\2\2\u0097\u0096\3\2\2\2\u0098\37\3\2\2\2\u0099"+
-		"\u009a\7\17\2\2\u009a\u009b\7\3\2\2\u009b\u009c\5\4\3\2\u009c\u009d\7"+
-		"\n\2\2\u009d\u009e\5\"\22\2\u009e\u009f\7\n\2\2\u009f\u00a0\5$\23\2\u00a0"+
-		"\u00a1\7\n\2\2\u00a1\u00a2\5\36\20\2\u00a2\u00a3\7\n\2\2\u00a3\u00a4\7"+
-		"\4\2\2\u00a4!\3\2\2\2\u00a5\u00a6\t\3\2\2\u00a6#\3\2\2\2\u00a7\u00ab\5"+
-		"\6\4\2\u00a8\u00ab\7\31\2\2\u00a9\u00ab\7\32\2\2\u00aa\u00a7\3\2\2\2\u00aa"+
-		"\u00a8\3\2\2\2\u00aa\u00a9\3\2\2\2\u00ab%\3\2\2\2\u00ac\u00ad\7\20\2\2"+
-		"\u00ad\u00ae\7\3\2\2\u00ae\u00af\5\6\4\2\u00af\u00b0\7\n\2\2\u00b0\u00b1"+
-		"\7\4\2\2\u00b1\'\3\2\2\2\u00b2\u00b3\78\2\2\u00b3)\3\2\2\2\u00b4\u00b5"+
-		"\7\21\2\2\u00b5\u00b6\7\3\2\2\u00b6\u00b7\5(\25\2\u00b7\u00b8\7\n\2\2"+
-		"\u00b8\u00b9\7\4\2\2\u00b9+\3\2\2\2\u00ba\u00bb\78\2\2\u00bb-\3\2\2\2"+
-		"\u00bc\u00bd\7\22\2\2\u00bd\u00be\7\3\2\2\u00be\u00bf\5,\27\2\u00bf\u00c0"+
-		"\7\n\2\2\u00c0\u00c1\5> \2\u00c1\u00c2\7\n\2\2\u00c2\u00c3\5\62\32\2\u00c3"+
-		"\u00c4\7\n\2\2\u00c4\u00c5\5\64\33\2\u00c5\u00c6\7\n\2\2\u00c6\u00c7\5"+
-		"8\35\2\u00c7\u00c8\7\n\2\2\u00c8\u00c9\5<\37\2\u00c9\u00ca\7\n\2\2\u00ca"+
-		"\u00cb\7\4\2\2\u00cb/\3\2\2\2\u00cc\u00cd\5,\27\2\u00cd\u00ce\79\2\2\u00ce"+
-		"\61\3\2\2\2\u00cf\u00d5\5\60\31\2\u00d0\u00d1\5\60\31\2\u00d1\u00d2\7"+
-		"\t\2\2\u00d2\u00d3\5\62\32\2\u00d3\u00d5\3\2\2\2\u00d4\u00cf\3\2\2\2\u00d4"+
-		"\u00d0\3\2\2\2\u00d5\63\3\2\2\2\u00d6\u00dc\5\66\34\2\u00d7\u00d8\5\66"+
-		"\34\2\u00d8\u00d9\7\t\2\2\u00d9\u00da\5\64\33\2\u00da\u00dc\3\2\2\2\u00db"+
-		"\u00d6\3\2\2\2\u00db\u00d7\3\2\2\2\u00dc\65\3\2\2\2\u00dd\u00de\7\35\2"+
-		"\2\u00de\u0100\5\6\4\2\u00df\u00e0\7\36\2\2\u00e0\u0100\5\6\4\2\u00e1"+
-		"\u00e2\7\37\2\2\u00e2\u0100\5\2\2\2\u00e3\u00e4\7 \2\2\u00e4\u00e5\5\4"+
-		"\3\2\u00e5\u00e6\5\6\4\2\u00e6\u0100\3\2\2\2\u00e7\u00e8\7!\2\2\u00e8"+
-		"\u00e9\5\4\3\2\u00e9\u00ea\5\6\4\2\u00ea\u0100\3\2\2\2\u00eb\u00ec\7\""+
-		"\2\2\u00ec\u0100\5\4\3\2\u00ed\u00ee\7#\2\2\u00ee\u0100\5\4\3\2\u00ef"+
-		"\u00f0\7$\2\2\u00f0\u00f1\5\4\3\2\u00f1\u00f2\5\4\3\2\u00f2\u0100\3\2"+
-		"\2\2\u00f3\u00f4\7%\2\2\u00f4\u0100\5\4\3\2\u00f5\u00f6\7&\2\2\u00f6\u0100"+
-		"\5\4\3\2\u00f7\u00f8\7\'\2\2\u00f8\u00f9\5\4\3\2\u00f9\u00fa\5\4\3\2\u00fa"+
-		"\u0100\3\2\2\2\u00fb\u00fc\7(\2\2\u00fc\u0100\5\32\16\2\u00fd\u00fe\7"+
-		")\2\2\u00fe\u0100\5(\25\2\u00ff\u00dd\3\2\2\2\u00ff\u00df\3\2\2\2\u00ff"+
-		"\u00e1\3\2\2\2\u00ff\u00e3\3\2\2\2\u00ff\u00e7\3\2\2\2\u00ff\u00eb\3\2"+
-		"\2\2\u00ff\u00ed\3\2\2\2\u00ff\u00ef\3\2\2\2\u00ff\u00f3\3\2\2\2\u00ff"+
-		"\u00f5\3\2\2\2\u00ff\u00f7\3\2\2\2\u00ff\u00fb\3\2\2\2\u00ff\u00fd\3\2"+
-		"\2\2\u0100\67\3\2\2\2\u0101\u0107\5:\36\2\u0102\u0103\5:\36\2\u0103\u0104"+
-		"\7\t\2\2\u0104\u0105\58\35\2\u0105\u0107\3\2\2\2\u0106\u0101\3\2\2\2\u0106"+
-		"\u0102\3\2\2\2\u01079\3\2\2\2\u0108\u0128\7*\2\2\u0109\u010a\7+\2\2\u010a"+
-		"\u0128\5\6\4\2\u010b\u010c\7,\2\2\u010c\u0128\5\4\3\2\u010d\u010e\7-\2"+
-		"\2\u010e\u0128\5\4\3\2\u010f\u0128\7.\2\2\u0110\u0128\7/\2\2\u0111\u0112"+
-		"\7\60\2\2\u0112\u0113\5\4\3\2\u0113\u0114\5\6\4\2\u0114\u0128\3\2\2\2"+
-		"\u0115\u0116\7\61\2\2\u0116\u0117\5\4\3\2\u0117\u0118\5\6\4\2\u0118\u0128"+
-		"\3\2\2\2\u0119\u011a\7\62\2\2\u011a\u011b\5\6\4\2\u011b\u011c\5\32\16"+
-		"\2\u011c\u011d\5\6\4\2\u011d\u011e\5\32\16\2\u011e\u0128\3\2\2\2\u011f"+
-		"\u0120\7\63\2\2\u0120\u0121\5\6\4\2\u0121\u0122\5\32\16\2\u0122\u0123"+
-		"\5\6\4\2\u0123\u0124\5\32\16\2\u0124\u0128\3\2\2\2\u0125\u0126\7\64\2"+
-		"\2\u0126\u0128\79\2\2\u0127\u0108\3\2\2\2\u0127\u0109\3\2\2\2\u0127\u010b"+
-		"\3\2\2\2\u0127\u010d\3\2\2\2\u0127\u010f\3\2\2\2\u0127\u0110\3\2\2\2\u0127"+
-		"\u0111\3\2\2\2\u0127\u0115\3\2\2\2\u0127\u0119\3\2\2\2\u0127\u011f\3\2"+
-		"\2\2\u0127\u0125\3\2\2\2\u0128;\3\2\2\2\u0129\u012c\5\n\6\2\u012a\u012c"+
-		"\5\b\5\2\u012b\u0129\3\2\2\2\u012b\u012a\3\2\2\2\u012c=\3\2\2\2\u012d"+
-		"\u012e\t\4\2\2\u012e?\3\2\2\2\16`\u0082\u008d\u0093\u0097\u00aa\u00d4"+
-		"\u00db\u00ff\u0106\u0127\u012b";
+		"\34\5\34\u0116\n\34\3\35\3\35\5\35\u011a\n\35\3\36\3\36\3\36\2\2\37\2"+
+		"\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:\2\5\3\2\22"+
+		"\25\3\2\26\27\3\2\32\33\u0126\2<\3\2\2\2\4>\3\2\2\2\6@\3\2\2\2\bB\3\2"+
+		"\2\2\nD\3\2\2\2\fF\3\2\2\2\16Q\3\2\2\2\20[\3\2\2\2\22c\3\2\2\2\24v\3\2"+
+		"\2\2\26\u0081\3\2\2\2\30\u0083\3\2\2\2\32\u0087\3\2\2\2\34\u008b\3\2\2"+
+		"\2\36\u008d\3\2\2\2 \u0099\3\2\2\2\"\u009e\3\2\2\2$\u00a0\3\2\2\2&\u00a2"+
+		"\3\2\2\2(\u00a8\3\2\2\2*\u00aa\3\2\2\2,\u00ba\3\2\2\2.\u00c2\3\2\2\2\60"+
+		"\u00c9\3\2\2\2\62\u00ed\3\2\2\2\64\u00f4\3\2\2\2\66\u0115\3\2\2\28\u0119"+
+		"\3\2\2\2:\u011b\3\2\2\2<=\7\67\2\2=\3\3\2\2\2>?\7\67\2\2?\5\3\2\2\2@A"+
+		"\7\67\2\2A\7\3\2\2\2BC\7\67\2\2C\t\3\2\2\2DE\7\64\2\2E\13\3\2\2\2FN\5"+
+		"\16\b\2GM\5\22\n\2HM\5\36\20\2IM\5\20\t\2JM\5&\24\2KM\5*\26\2LG\3\2\2"+
+		"\2LH\3\2\2\2LI\3\2\2\2LJ\3\2\2\2LK\3\2\2\2MP\3\2\2\2NL\3\2\2\2NO\3\2\2"+
+		"\2O\r\3\2\2\2PN\3\2\2\2QR\7\r\2\2RS\7\3\2\2ST\5(\25\2TU\7\n\2\2UV\5\6"+
+		"\4\2VW\7\n\2\2WX\5\34\17\2XY\7\n\2\2YZ\7\4\2\2Z\17\3\2\2\2[\\\7\f\2\2"+
+		"\\]\7\3\2\2]^\5\b\5\2^_\7\n\2\2_`\5\n\6\2`a\7\n\2\2ab\7\4\2\2b\21\3\2"+
+		"\2\2cd\7\16\2\2de\7\3\2\2ef\5\6\4\2fg\7\n\2\2gh\5\2\2\2hi\7\n\2\2ij\5"+
+		"\24\13\2jk\7\n\2\2kl\5\32\16\2lm\7\n\2\2mn\5\34\17\2no\7\n\2\2op\7\4\2"+
+		"\2p\23\3\2\2\2qw\5\26\f\2rs\5\26\f\2st\7\t\2\2tu\5\24\13\2uw\3\2\2\2v"+
+		"q\3\2\2\2vr\3\2\2\2w\25\3\2\2\2xy\5\30\r\2yz\5\6\4\2z\u0082\3\2\2\2{|"+
+		"\5\30\r\2|}\5\n\6\2}\u0082\3\2\2\2~\177\5\30\r\2\177\u0080\5\b\5\2\u0080"+
+		"\u0082\3\2\2\2\u0081x\3\2\2\2\u0081{\3\2\2\2\u0081~\3\2\2\2\u0082\27\3"+
+		"\2\2\2\u0083\u0084\t\2\2\2\u0084\31\3\2\2\2\u0085\u0088\5\n\6\2\u0086"+
+		"\u0088\5\b\5\2\u0087\u0085\3\2\2\2\u0087\u0086\3\2\2\2\u0088\33\3\2\2"+
+		"\2\u0089\u008c\5\n\6\2\u008a\u008c\5\b\5\2\u008b\u0089\3\2\2\2\u008b\u008a"+
+		"\3\2\2\2\u008c\35\3\2\2\2\u008d\u008e\7\17\2\2\u008e\u008f\7\3\2\2\u008f"+
+		"\u0090\5\4\3\2\u0090\u0091\7\n\2\2\u0091\u0092\5 \21\2\u0092\u0093\7\n"+
+		"\2\2\u0093\u0094\5\"\22\2\u0094\u0095\7\n\2\2\u0095\u0096\5\34\17\2\u0096"+
+		"\u0097\7\n\2\2\u0097\u0098\7\4\2\2\u0098\37\3\2\2\2\u0099\u009a\t\3\2"+
+		"\2\u009a!\3\2\2\2\u009b\u009f\5\6\4\2\u009c\u009f\7\30\2\2\u009d\u009f"+
+		"\7\31\2\2\u009e\u009b\3\2\2\2\u009e\u009c\3\2\2\2\u009e\u009d\3\2\2\2"+
+		"\u009f#\3\2\2\2\u00a0\u00a1\7\67\2\2\u00a1%\3\2\2\2\u00a2\u00a3\7\20\2"+
+		"\2\u00a3\u00a4\7\3\2\2\u00a4\u00a5\5$\23\2\u00a5\u00a6\7\n\2\2\u00a6\u00a7"+
+		"\7\4\2\2\u00a7\'\3\2\2\2\u00a8\u00a9\7\67\2\2\u00a9)\3\2\2\2\u00aa\u00ab"+
+		"\7\21\2\2\u00ab\u00ac\7\3\2\2\u00ac\u00ad\5(\25\2\u00ad\u00ae\7\n\2\2"+
+		"\u00ae\u00af\5:\36\2\u00af\u00b0\7\n\2\2\u00b0\u00b1\5.\30\2\u00b1\u00b2"+
+		"\7\n\2\2\u00b2\u00b3\5\60\31\2\u00b3\u00b4\7\n\2\2\u00b4\u00b5\5\64\33"+
+		"\2\u00b5\u00b6\7\n\2\2\u00b6\u00b7\58\35\2\u00b7\u00b8\7\n\2\2\u00b8\u00b9"+
+		"\7\4\2\2\u00b9+\3\2\2\2\u00ba\u00bb\5(\25\2\u00bb\u00bc\78\2\2\u00bc-"+
+		"\3\2\2\2\u00bd\u00c3\5,\27\2\u00be\u00bf\5,\27\2\u00bf\u00c0\7\t\2\2\u00c0"+
+		"\u00c1\5.\30\2\u00c1\u00c3\3\2\2\2\u00c2\u00bd\3\2\2\2\u00c2\u00be\3\2"+
+		"\2\2\u00c3/\3\2\2\2\u00c4\u00ca\5\62\32\2\u00c5\u00c6\5\62\32\2\u00c6"+
+		"\u00c7\7\t\2\2\u00c7\u00c8\5\60\31\2\u00c8\u00ca\3\2\2\2\u00c9\u00c4\3"+
+		"\2\2\2\u00c9\u00c5\3\2\2\2\u00ca\61\3\2\2\2\u00cb\u00cc\7\34\2\2\u00cc"+
+		"\u00ee\5\6\4\2\u00cd\u00ce\7\35\2\2\u00ce\u00ee\5\6\4\2\u00cf\u00d0\7"+
+		"\36\2\2\u00d0\u00ee\5\2\2\2\u00d1\u00d2\7\37\2\2\u00d2\u00d3\5\4\3\2\u00d3"+
+		"\u00d4\5\6\4\2\u00d4\u00ee\3\2\2\2\u00d5\u00d6\7 \2\2\u00d6\u00d7\5\4"+
+		"\3\2\u00d7\u00d8\5\6\4\2\u00d8\u00ee\3\2\2\2\u00d9\u00da\7!\2\2\u00da"+
+		"\u00ee\5\4\3\2\u00db\u00dc\7\"\2\2\u00dc\u00ee\5\4\3\2\u00dd\u00de\7#"+
+		"\2\2\u00de\u00df\5\4\3\2\u00df\u00e0\5\4\3\2\u00e0\u00ee\3\2\2\2\u00e1"+
+		"\u00e2\7$\2\2\u00e2\u00ee\5\4\3\2\u00e3\u00e4\7%\2\2\u00e4\u00ee\5\4\3"+
+		"\2\u00e5\u00e6\7&\2\2\u00e6\u00e7\5\4\3\2\u00e7\u00e8\5\4\3\2\u00e8\u00ee"+
+		"\3\2\2\2\u00e9\u00ea\7\'\2\2\u00ea\u00ee\5\30\r\2\u00eb\u00ec\7(\2\2\u00ec"+
+		"\u00ee\5$\23\2\u00ed\u00cb\3\2\2\2\u00ed\u00cd\3\2\2\2\u00ed\u00cf\3\2"+
+		"\2\2\u00ed\u00d1\3\2\2\2\u00ed\u00d5\3\2\2\2\u00ed\u00d9\3\2\2\2\u00ed"+
+		"\u00db\3\2\2\2\u00ed\u00dd\3\2\2\2\u00ed\u00e1\3\2\2\2\u00ed\u00e3\3\2"+
+		"\2\2\u00ed\u00e5\3\2\2\2\u00ed\u00e9\3\2\2\2\u00ed\u00eb\3\2\2\2\u00ee"+
+		"\63\3\2\2\2\u00ef\u00f5\5\66\34\2\u00f0\u00f1\5\66\34\2\u00f1\u00f2\7"+
+		"\t\2\2\u00f2\u00f3\5\64\33\2\u00f3\u00f5\3\2\2\2\u00f4\u00ef\3\2\2\2\u00f4"+
+		"\u00f0\3\2\2\2\u00f5\65\3\2\2\2\u00f6\u0116\7)\2\2\u00f7\u00f8\7*\2\2"+
+		"\u00f8\u0116\5\6\4\2\u00f9\u00fa\7+\2\2\u00fa\u0116\5\4\3\2\u00fb\u00fc"+
+		"\7,\2\2\u00fc\u0116\5\4\3\2\u00fd\u0116\7-\2\2\u00fe\u0116\7.\2\2\u00ff"+
+		"\u0100\7/\2\2\u0100\u0101\5\4\3\2\u0101\u0102\5\6\4\2\u0102\u0116\3\2"+
+		"\2\2\u0103\u0104\7\60\2\2\u0104\u0105\5\4\3\2\u0105\u0106\5\6\4\2\u0106"+
+		"\u0116\3\2\2\2\u0107\u0108\7\61\2\2\u0108\u0109\5\6\4\2\u0109\u010a\5"+
+		"\30\r\2\u010a\u010b\5\6\4\2\u010b\u010c\5\30\r\2\u010c\u0116\3\2\2\2\u010d"+
+		"\u010e\7\62\2\2\u010e\u010f\5\6\4\2\u010f\u0110\5\30\r\2\u0110\u0111\5"+
+		"\6\4\2\u0111\u0112\5\30\r\2\u0112\u0116\3\2\2\2\u0113\u0114\7\63\2\2\u0114"+
+		"\u0116\78\2\2\u0115\u00f6\3\2\2\2\u0115\u00f7\3\2\2\2\u0115\u00f9\3\2"+
+		"\2\2\u0115\u00fb\3\2\2\2\u0115\u00fd\3\2\2\2\u0115\u00fe\3\2\2\2\u0115"+
+		"\u00ff\3\2\2\2\u0115\u0103\3\2\2\2\u0115\u0107\3\2\2\2\u0115\u010d\3\2"+
+		"\2\2\u0115\u0113\3\2\2\2\u0116\67\3\2\2\2\u0117\u011a\5\n\6\2\u0118\u011a"+
+		"\5\b\5\2\u0119\u0117\3\2\2\2\u0119\u0118\3\2\2\2\u011a9\3\2\2\2\u011b"+
+		"\u011c\t\4\2\2\u011c;\3\2\2\2\17LNv\u0081\u0087\u008b\u009e\u00c2\u00c9"+
+		"\u00ed\u00f4\u0115\u0119";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -58,25 +58,15 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 */
 	void exitMessage_text(StoryGrammarParser.Message_textContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StoryGrammarParser#start_rule}.
+	 * Enter a parse tree produced by {@link StoryGrammarParser#story_elements}.
 	 * @param ctx the parse tree
 	 */
-	void enterStart_rule(StoryGrammarParser.Start_ruleContext ctx);
+	void enterStory_elements(StoryGrammarParser.Story_elementsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StoryGrammarParser#start_rule}.
+	 * Exit a parse tree produced by {@link StoryGrammarParser#story_elements}.
 	 * @param ctx the parse tree
 	 */
-	void exitStart_rule(StoryGrammarParser.Start_ruleContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link StoryGrammarParser#all}.
-	 * @param ctx the parse tree
-	 */
-	void enterAll(StoryGrammarParser.AllContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link StoryGrammarParser#all}.
-	 * @param ctx the parse tree
-	 */
-	void exitAll(StoryGrammarParser.AllContext ctx);
+	void exitStory_elements(StoryGrammarParser.Story_elementsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#welcome}.
 	 * @param ctx the parse tree
@@ -187,16 +177,6 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLocation(StoryGrammarParser.LocationContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link StoryGrammarParser#player}.
-	 * @param ctx the parse tree
-	 */
-	void enterPlayer(StoryGrammarParser.PlayerContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link StoryGrammarParser#player}.
-	 * @param ctx the parse tree
-	 */
-	void exitPlayer(StoryGrammarParser.PlayerContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#special_id}.
 	 * @param ctx the parse tree

@@ -15,8 +15,7 @@ public class StoryInterpreter
 
     public StoryInterpreter(String story)
     {
-        System.out.println(Utility.pre_tokenise(story));
-        //eng = new Engine();
+        
     }
 
     public Engine getEngine()
