@@ -161,6 +161,30 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitCondition(StoryGrammarParser.ConditionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#single_arg_cnd}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSingle_arg_cnd(StoryGrammarParser.Single_arg_cndContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#single_arg_cnd_type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSingle_arg_cnd_type(StoryGrammarParser.Single_arg_cnd_typeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#double_arg_cnd}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDouble_arg_cnd(StoryGrammarParser.Double_arg_cndContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#double_arg_cnd_type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDouble_arg_cnd_type(StoryGrammarParser.Double_arg_cnd_typeContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#consequences}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -172,12 +196,6 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitConsequence(StoryGrammarParser.ConsequenceContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link StoryGrammarParser#report}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitReport(StoryGrammarParser.ReportContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#gate_type}.
 	 * @param ctx the parse tree

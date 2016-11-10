@@ -258,6 +258,46 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 */
 	void exitCondition(StoryGrammarParser.ConditionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#single_arg_cnd}.
+	 * @param ctx the parse tree
+	 */
+	void enterSingle_arg_cnd(StoryGrammarParser.Single_arg_cndContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#single_arg_cnd}.
+	 * @param ctx the parse tree
+	 */
+	void exitSingle_arg_cnd(StoryGrammarParser.Single_arg_cndContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#single_arg_cnd_type}.
+	 * @param ctx the parse tree
+	 */
+	void enterSingle_arg_cnd_type(StoryGrammarParser.Single_arg_cnd_typeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#single_arg_cnd_type}.
+	 * @param ctx the parse tree
+	 */
+	void exitSingle_arg_cnd_type(StoryGrammarParser.Single_arg_cnd_typeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#double_arg_cnd}.
+	 * @param ctx the parse tree
+	 */
+	void enterDouble_arg_cnd(StoryGrammarParser.Double_arg_cndContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#double_arg_cnd}.
+	 * @param ctx the parse tree
+	 */
+	void exitDouble_arg_cnd(StoryGrammarParser.Double_arg_cndContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#double_arg_cnd_type}.
+	 * @param ctx the parse tree
+	 */
+	void enterDouble_arg_cnd_type(StoryGrammarParser.Double_arg_cnd_typeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#double_arg_cnd_type}.
+	 * @param ctx the parse tree
+	 */
+	void exitDouble_arg_cnd_type(StoryGrammarParser.Double_arg_cnd_typeContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#consequences}.
 	 * @param ctx the parse tree
 	 */
@@ -277,16 +317,6 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConsequence(StoryGrammarParser.ConsequenceContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link StoryGrammarParser#report}.
-	 * @param ctx the parse tree
-	 */
-	void enterReport(StoryGrammarParser.ReportContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link StoryGrammarParser#report}.
-	 * @param ctx the parse tree
-	 */
-	void exitReport(StoryGrammarParser.ReportContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#gate_type}.
 	 * @param ctx the parse tree

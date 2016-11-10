@@ -7,6 +7,8 @@ import standard.engine.*;
 import story.parser.StoryGrammarBaseVisitor;
 import story.parser.StoryGrammarParser;
 
+import java.util.ArrayList;
+
 /**
  * Creates an engine from a parse tree
  */
@@ -99,6 +101,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         for (StoryGrammarParser.ExitContext ex : ctx.exits().exit())
             addExitTo(r, ex);
 
+        eng.addRoom(room_id, r);
         return null;
     }
 
@@ -181,5 +184,63 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
     {
         return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
     }
+
+    @Override
+    public Void visitStep(StoryGrammarParser.StepContext ctx)
+    {
+        String step_id = parseStep_id(ctx.step_id());
+        Boolean ander = false;
+        if(ctx.gate_type().ANDING() == null)
+        {
+            ander = true;
+        }
+        Message msg = parseDescription(ctx.description());
+
+        StoryStep step = new StoryStep(step_id, msg, ander);
+
+        parseRequiredSteps(step, ctx.required_steps());
+        parseConditions(step, ctx.conditions());
+
+        eng.addStep(step_id, step);
+        return null;
+    }
+
+    public void parseRequiredSteps(StoryStep step, StoryGrammarParser.Required_stepsContext ctx)
+    {
+        for(StoryGrammarParser.Step_beforeContext st : ctx.step_before())
+        {
+            String step_id = parseStep_id(st.step_id());
+            step.addParent(new StoryStep(step_id));
+        }
+    }
+
+    public void parseConditions(StoryStep step, StoryGrammarParser.ConditionsContext ctx)
+    {
+        for(StoryGrammarParser.ConditionContext cnd : ctx.condition())
+        {
+            String type = null;
+            ArrayList<String> args = new ArrayList<>();
+            if(cnd.single_arg_cnd() != null)
+            {
+                StoryGrammarParser.Single_arg_cndContext cmd_ctx = cnd.single_arg_cnd();
+                type = Utility.strip_special_chars(cmd_ctx.single_arg_cnd_type().getText());
+                args.add(parseItem_id(cmd_ctx.item_id()));
+            }
+            else if(cnd.double_arg_cnd() != null)
+            {
+                StoryGrammarParser.Double_arg_cndContext cmd_ctx = cnd.double_arg_cnd();
+                type = Utility.strip_special_chars(cmd_ctx.double_arg_cnd_type().getText());
+                args.add(parseItem_id(cmd_ctx.item_id()));
+                args.add(parseRoom_id(cmd_ctx.room_id()));
+            }
+            else
+            {
+                type = Utility.strip_special_chars(cnd.CON_MOVE().getText());
+                args.add(Utility.strip_special_chars(cnd.CON_MOVE().getText()));
+            }
+            step.addCondition(new Condition(type, args));
+        }
+    }
+
     //-----------------------------------------------------------------
 }

@@ -5,44 +5,45 @@ import java.util.ArrayList;
 /**
  * Created by Milos on 06/11/2016.
  */
-public class Condition
+public class Condition implements Comparable
 {
     private CondType type;          // the type of the condition
     private ArrayList<String> args; // a list of the arguments the condition has
 
     // input creator
-    public Condition(String str_type) throws BadConditionException
+    public Condition(String str_type, ArrayList<String> args)
     {
-        switch (str_type)
+        type = CondType.valueOf(str_type);
+        this.args = args;
+    }
+
+    @Override
+    public int compareTo(Object o)
+    {
+        if(o instanceof Condition)
         {
-            case    "plir": type = CondType.player_in_room;        break;
-            case   "plnir": type = CondType.player_not_in_room;    break;
-            case   "plilv": type = CondType.player_on_level;       break;
-            case    "itir": type = CondType.item_in_room;          break;
-            case   "itnir": type = CondType.item_not_in_room;      break;
-            case   "itinv": type = CondType.item_in_inventory;     break;
-            case  "itninv": type = CondType.item_not_in_inventory; break;
-            case "combine": type = CondType.con_combine;           break;
-            case "examine": type = CondType.con_examine;           break;
-            case     "use": type = CondType.con_use;               break;
-            case   "useon": type = CondType.con_useon;             break;
-            case    "move": type = CondType.con_move;              break;
-            case "special": type = CondType.con_special;           break;
-            default: throw new BadConditionException("bad condition type" + str_type);
+            Condition cnd = (Condition) o;
+            if(type.toString().compareTo(cnd.type.toString()) == 0)
+            {
+                int i = 0;
+                for(; i < args.size() && i < cnd.args.size(); i++)
+                {
+                    if(args.get(i).compareTo(cnd.args.get(i)) != 0)
+                    {
+                        return args.get(i).compareTo(cnd.args.get(i));
+                    }
+                }
+                if(i < args.size())
+                    return 1;
+                else if(i < cnd.args.size())
+                return 0;
+            }
+            else
+            {
+                return type.toString().compareTo(cnd.type.toString());
+            }
         }
-        args = new ArrayList<>();
-    }
-
-    public Condition(String str_type, String arg1) throws BadConditionException
-    {
-        this(str_type);
-        args.add(arg1);
-    }
-
-    public Condition(String str_type, String arg1, String arg2) throws BadConditionException
-    {
-        this(str_type, arg1);
-        args.add(arg2);
+        return -1;
     }
 
     // evaluates the correctness of the condition on a given engine
@@ -55,61 +56,61 @@ public class Condition
         Command com = eng.getPrevCommand();
         switch (type)
         {
-            case player_in_room:
+            case plir:
                 resp = player.getLocation() == eng.findRoom(args.get(0));
                 break;
-            case player_not_in_room:
+            case plnir:
                 resp = player.getLocation() != eng.findRoom(args.get(0));
                 break;
-            case player_on_level:
+            case plilv:
                 resp = player.getLocation().getLevel_id().equals(args.get(0));
                 break;
-            case item_in_room:
+            case itir:
                 item = eng.findItem(args.get(0));
                 room = eng.findRoom(args.get(1));
                 resp = room.containsItem(item);
                 break;
-            case item_not_in_room:
+            case itnir:
                 item = eng.findItem(args.get(0));
                 room = eng.findRoom(args.get(1));
                 resp = !room.containsItem(item);
                 break;
-            case item_in_inventory:
+            case itinv:
                 item = eng.findItem(args.get(0));
                 resp = player.hasItem(item);
                 break;
-            case item_not_in_inventory:
+            case itninv:
                 item = eng.findItem(args.get(0));
                 resp = !player.hasItem(item);
                 break;
-            case con_combine:
+            case combine:
                 resp = com != null
                         && com.getType() == Command.Type.combine
                         && com.getArgs().get(0).equals(args.get(0))
                         && com.getArgs().get(1).equals(args.get(1));
                 break;
-            case con_examine:
+            case examine:
                 resp = com != null
                         && com.getType() == Command.Type.examine
                         && com.getArgs().get(0).equals(args.get(0));
                 break;
-            case con_use:
+            case use:
                 resp = com != null
                         && com.getType() == Command.Type.use
                         && com.getArgs().get(0).equals(args.get(0));
                 break;
-            case con_useon:
+            case useon:
                 resp = com != null
                         && com.getType() == Command.Type.useon
                         && com.getArgs().get(0).equals(args.get(0))
                         && com.getArgs().get(1).equals(args.get(1));
                 break;
-            case con_move:
+            case move:
                 resp = com != null
                         && com.getType() == Command.Type.move
                         && com.getArgs().get(0).equals(args.get(0));
                 break;
-            case con_special:
+            case special:
                 resp = com != null
                         && com.getType() == Command.Type.special
                         && com.getArgs().get(0).equals(args.get(0));
@@ -133,24 +134,24 @@ public class Condition
     /*
         Locational:
             player_in_room        - plir [room_id]              – player in [room_id]
-            player_not_in_room    - plnir [room_id]             – player not in [room_id]
-            player_on_level       - plilv [level_id]            – player on [level_id]
-            item_in_room          - itir ([item_id],[room_id])  – [item_id] in [room_id]
-            item_not_in_room      - itnir ([item_id],[room_id]) – [item_id] not in [room_id]
-            item_in_inventory     - itinv [item_id]             – [item_id] in inv
-            item_not_in_inventory - itninv [item_id]            – [item_id] not in inv
+            plnir    - plnir [room_id]             – player not in [room_id]
+            plilv       - plilv [level_id]            – player on [level_id]
+            itir          - itir ([item_id],[room_id])  – [item_id] in [room_id]
+            itnir      - itnir ([item_id],[room_id]) – [item_id] not in [room_id]
+            itinv     - itinv [item_id]             – [item_id] in inv
+            itninv - itninv [item_id]            – [item_id] not in inv
 
         Previous command:
-            con_combine - combine([item_id1], [item_id2])
-            con_examine - examine [item_id]
-            con_use     - use [item_id]
-            con_useon   - useon ([item_id1], [item_id2])
-            con_move    - move [direction]
-            con_special - [special_id]
+            combine - combine([item_id1], [item_id2])
+            examine - examine [item_id]
+            use     - use [item_id]
+            useon   - useon ([item_id1], [item_id2])
+            move    - move [direction]
+            special - [special_id]
     */
 
     public enum CondType
     {
-        player_in_room, player_not_in_room, player_on_level, item_in_room, item_not_in_room, item_in_inventory, item_not_in_inventory, con_combine, con_examine, con_use, con_useon, con_move, con_special
+        plir, plnir, plilv, itir, itnir, itinv, itninv, combine, examine, use, useon, move, special
     }
 }

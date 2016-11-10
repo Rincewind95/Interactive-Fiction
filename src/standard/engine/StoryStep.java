@@ -5,7 +5,7 @@ import java.util.TreeSet;
 /**
  * Created by Milos on 06/11/2016.
  */
-public class StoryStep
+public class StoryStep implements Comparable
 {
     // parent_steps are a list of parent steps which need to be satisfied + the conditions for the step to be enacted
     String step_id;                    // the steps identifier
@@ -14,20 +14,36 @@ public class StoryStep
     Message message;                   // the message printed when the step is activated
     TreeSet<StoryStep> child_steps;    // a list of steps which are direct descendants of the current step
     TreeSet<StoryStep> parent_steps;   // a list of steps which are direct predecessors of the current step
-    boolean Ands;                      // true if the node requires all the parent_steps to be true, false if it requires at least one
+    boolean ands;                      // true if the node requires all the parent_steps to be true, false if it requires at least one
     boolean satisfied;                 // true if the step is always satisfied
 
-    // creates an empty story step
-    public StoryStep()
+    // placeholder step creator
+    public StoryStep(String step_id)
     {
-        step_id = "";
+        this.step_id = step_id;
+    }
+
+    // creates a bare story step
+    public StoryStep(String step_id, Message message, boolean ands)
+    {
+        this.step_id = step_id;
         conditions = new TreeSet<>();
         consequences = new TreeSet<>();
-        message = null;
+        this.message = message;
         child_steps = new TreeSet<>();
         parent_steps = new TreeSet<>();
-        Ands = true;
+        this.ands = ands;
         satisfied = false;
+    }
+
+    @Override
+    public int compareTo(Object o)
+    {
+        if(o instanceof StoryStep)
+        {
+            return ((StoryStep) o).step_id.compareTo(step_id);
+        }
+        return -1;
     }
 
     public void satisfy()
@@ -67,12 +83,12 @@ public class StoryStep
 
     public boolean ands()
     {
-        return Ands;
+        return ands;
     }
 
     public void setAnds(boolean ands)
     {
-        Ands = ands;
+        ands = ands;
     }
 
     public void addChild(StoryStep child)

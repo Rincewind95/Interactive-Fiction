@@ -110,7 +110,7 @@ special_id: ID;
 special: SPECIAL_ OPEN_PAREN_CURLY special_id SEMICOLON CLOS_PAREN_CURLY;
 
 step_id: ID;
-step: STEP_ OPEN_PAREN_CURLY step_id SEMICOLON gate_type SEMICOLON required_steps SEMICOLON conditions SEMICOLON consequences SEMICOLON report SEMICOLON CLOS_PAREN_CURLY;
+step: STEP_ OPEN_PAREN_CURLY step_id SEMICOLON gate_type SEMICOLON required_steps SEMICOLON conditions SEMICOLON consequences SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
 
 step_before: step_id TIME;
 
@@ -118,19 +118,25 @@ required_steps: step_before (COMMA step_before)*;
 
 conditions: condition (COMMA condition)*;
 
-condition: PLAYER_IN_ROOM room_id
-         | PLAYER_NOT_IN_ROOM room_id
-         | PLAYER_ON_LEVEL level_id
-         | ITEM_IN_ROOM item_id room_id
-         | ITEM_NOT_IN_ROOM item_id room_id
-         | ITEM_IN_INVENTORY item_id
-         | ITEM_NOT_IN_INVENTORY item_id
-         | CON_COMBINE item_id item_id
-         | CON_EXAMINE item_id
-         | CON_USE item_id
-         | CON_USEON item_id item_id
-         | CON_MOVE direction
-         | CON_SPECIAL special_id;
+condition: single_arg_cnd
+         | double_arg_cnd
+         | CON_MOVE direction;
+
+single_arg_cnd: single_arg_cnd_type item_id;
+single_arg_cnd_type: PLAYER_IN_ROOM
+                   | PLAYER_NOT_IN_ROOM
+                   | PLAYER_ON_LEVEL
+                   | ITEM_IN_INVENTORY
+                   | ITEM_NOT_IN_INVENTORY
+                   | CON_EXAMINE
+                   | CON_USE
+                   | CON_SPECIAL;
+
+double_arg_cnd: double_arg_cnd_type item_id room_id;
+double_arg_cnd_type: ITEM_IN_ROOM
+                   | ITEM_NOT_IN_ROOM
+                   | CON_COMBINE
+                   | CON_USEON;
 
 consequences: consequence (COMMA consequence)*;
 
@@ -145,8 +151,5 @@ consequence: NONE
            | ADD_CONNECTOR room_id direction room_id direction
            | REMOVE_CONNECTOR room_id direction room_id direction
            | WAIT TIME;
-
-report: message_text
-      | message_id;
 
 gate_type: ANDING | ORING;

@@ -316,6 +316,54 @@ public class StoryGrammarBaseListener implements StoryGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSingle_arg_cnd(StoryGrammarParser.Single_arg_cndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSingle_arg_cnd(StoryGrammarParser.Single_arg_cndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSingle_arg_cnd_type(StoryGrammarParser.Single_arg_cnd_typeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSingle_arg_cnd_type(StoryGrammarParser.Single_arg_cnd_typeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDouble_arg_cnd(StoryGrammarParser.Double_arg_cndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDouble_arg_cnd(StoryGrammarParser.Double_arg_cndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDouble_arg_cnd_type(StoryGrammarParser.Double_arg_cnd_typeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDouble_arg_cnd_type(StoryGrammarParser.Double_arg_cnd_typeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterConsequences(StoryGrammarParser.ConsequencesContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -335,18 +383,6 @@ public class StoryGrammarBaseListener implements StoryGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitConsequence(StoryGrammarParser.ConsequenceContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterReport(StoryGrammarParser.ReportContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitReport(StoryGrammarParser.ReportContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
