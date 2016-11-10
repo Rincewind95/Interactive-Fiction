@@ -146,10 +146,10 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         Room location = null;
         if(ctx.location().INVENTORY() != null)
         {
-            flag = Item.flag.valueOf(ctx.location().INVENTORY().toString());
+            flag = Item.flag.valueOf(Utility.strip_special_chars(ctx.location().INVENTORY().toString()));
         }else if(ctx.location().PRODUCED() != null)
         {
-            flag = Item.flag.valueOf(ctx.location().INVENTORY().toString());
+            flag = Item.flag.valueOf(Utility.strip_special_chars(ctx.location().PRODUCED().toString()));
         }
         else
         {
@@ -162,10 +162,18 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         return null;
     }
 
-    //----------------------Special-related----------------------------
+    //----------------------special-related----------------------------
     public String parseSpecial_id(StoryGrammarParser.Special_idContext ctx)
     {
         return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
+    }
+
+    @Override
+    public Void visitSpecial(StoryGrammarParser.SpecialContext ctx)
+    {
+        String special_id = parseSpecial_id(ctx.special_id());
+        eng.addSpecial(special_id);
+        return null;
     }
 
     //----------------------Step----related----------------------------
