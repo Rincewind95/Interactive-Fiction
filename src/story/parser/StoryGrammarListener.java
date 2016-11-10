@@ -318,6 +318,76 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 */
 	void exitConsequence(StoryGrammarParser.ConsequenceContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#no_arg_cons}.
+	 * @param ctx the parse tree
+	 */
+	void enterNo_arg_cons(StoryGrammarParser.No_arg_consContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#no_arg_cons}.
+	 * @param ctx the parse tree
+	 */
+	void exitNo_arg_cons(StoryGrammarParser.No_arg_consContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#single_arg_cons}.
+	 * @param ctx the parse tree
+	 */
+	void enterSingle_arg_cons(StoryGrammarParser.Single_arg_consContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#single_arg_cons}.
+	 * @param ctx the parse tree
+	 */
+	void exitSingle_arg_cons(StoryGrammarParser.Single_arg_consContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#single_arg_cons_type}.
+	 * @param ctx the parse tree
+	 */
+	void enterSingle_arg_cons_type(StoryGrammarParser.Single_arg_cons_typeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#single_arg_cons_type}.
+	 * @param ctx the parse tree
+	 */
+	void exitSingle_arg_cons_type(StoryGrammarParser.Single_arg_cons_typeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#double_arg_cons}.
+	 * @param ctx the parse tree
+	 */
+	void enterDouble_arg_cons(StoryGrammarParser.Double_arg_consContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#double_arg_cons}.
+	 * @param ctx the parse tree
+	 */
+	void exitDouble_arg_cons(StoryGrammarParser.Double_arg_consContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#double_arg_cons_type}.
+	 * @param ctx the parse tree
+	 */
+	void enterDouble_arg_cons_type(StoryGrammarParser.Double_arg_cons_typeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#double_arg_cons_type}.
+	 * @param ctx the parse tree
+	 */
+	void exitDouble_arg_cons_type(StoryGrammarParser.Double_arg_cons_typeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#four_arg_cons}.
+	 * @param ctx the parse tree
+	 */
+	void enterFour_arg_cons(StoryGrammarParser.Four_arg_consContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#four_arg_cons}.
+	 * @param ctx the parse tree
+	 */
+	void exitFour_arg_cons(StoryGrammarParser.Four_arg_consContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#four_arg_cons_type}.
+	 * @param ctx the parse tree
+	 */
+	void enterFour_arg_cons_type(StoryGrammarParser.Four_arg_cons_typeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#four_arg_cons_type}.
+	 * @param ctx the parse tree
+	 */
+	void exitFour_arg_cons_type(StoryGrammarParser.Four_arg_cons_typeContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#gate_type}.
 	 * @param ctx the parse tree
 	 */

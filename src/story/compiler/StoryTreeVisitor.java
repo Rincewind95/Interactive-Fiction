@@ -8,6 +8,7 @@ import story.parser.StoryGrammarBaseVisitor;
 import story.parser.StoryGrammarParser;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Creates an engine from a parse tree
@@ -107,7 +108,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
 
     public void addExitTo(Room r, StoryGrammarParser.ExitContext ctx)
     {
-        String dir = Utility.strip_special_chars(ctx.direction().getText());
+        String dir = parseDirection(ctx.direction());
 
         String room_id = parseRoom_id(ctx.room_id());
         Message msg = parseDescription(ctx.description());
@@ -122,6 +123,11 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
             // add a placeholder for the message
             r.addDeadEnd(dir, msg);
         }
+    }
+
+    public String parseDirection(StoryGrammarParser.DirectionContext ctx)
+    {
+        return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
     }
 
     //----------------------Item----related----------------------------
@@ -200,6 +206,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
 
         parseRequiredSteps(step, ctx.required_steps());
         parseConditions(step, ctx.conditions());
+        parseConsequences(step, ctx.consequences());
 
         eng.addStep(step_id, step);
         return null;
@@ -235,10 +242,55 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
             }
             else
             {
+                // move case
                 type = Utility.strip_special_chars(cnd.CON_MOVE().getText());
                 args.add(Utility.strip_special_chars(cnd.CON_MOVE().getText()));
             }
             step.addCondition(new Condition(type, args));
+        }
+    }
+
+    public void parseConsequences(StoryStep step, StoryGrammarParser.ConsequencesContext ctx)
+    {
+        for(StoryGrammarParser.ConsequenceContext cns : ctx.consequence())
+        {
+            String type = null;
+            ArrayList<String> args = new ArrayList<>();
+            if (cns.no_arg_cons() != null)
+            {
+                type = Utility.strip_special_chars(cns.no_arg_cons().getText());
+            }
+            else if(cns.single_arg_cons() != null)
+            {
+                StoryGrammarParser.Single_arg_consContext cmd_ctx = cns.single_arg_cons();
+                type = Utility.strip_special_chars(cmd_ctx.single_arg_cons_type().getText());
+                args.add(parseItem_id(cmd_ctx.item_id()));
+            }
+            else if(cns.double_arg_cons() != null)
+            {
+                StoryGrammarParser.Double_arg_consContext cmd_ctx = cns.double_arg_cons();
+                type = Utility.strip_special_chars(cmd_ctx.double_arg_cons_type().getText());
+                args.add(parseItem_id(cmd_ctx.item_id()));
+                args.add(parseRoom_id(cmd_ctx.room_id()));
+            }
+            else if(cns.four_arg_cons() != null)
+            {
+                StoryGrammarParser.Four_arg_consContext cmd_ctx = cns.four_arg_cons();
+                type = Utility.strip_special_chars(cmd_ctx.four_arg_cons_type().getText());
+                List<StoryGrammarParser.DirectionContext> dirs = cmd_ctx.direction();
+                List<StoryGrammarParser.Room_idContext> rooms = cmd_ctx.room_id();
+                args.add(parseRoom_id(rooms.get(0)));
+                args.add(parseDirection(dirs.get(0)));
+                args.add(parseRoom_id(rooms.get(1)));
+                args.add(parseDirection(dirs.get(1)));
+            }
+            else
+            {
+                // time case
+                type = Utility.strip_special_chars(cns.WAIT().getText());
+                args.add(Utility.strip_special_chars(cns.TIME().getText()));
+            }
+            step.addConsequence(new Consequence(type, args));
         }
     }
 

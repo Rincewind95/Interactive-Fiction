@@ -5,39 +5,45 @@ import java.util.ArrayList;
 /**
  * Created by Milos on 06/11/2016.
  */
-public class Consequence
+public class Consequence implements Comparable
 {
     private ConsType type;          // the type of the condition
     private ArrayList<String> args; // a list of the arguments the condition has
 
     // input creator
-    public Consequence(String str_type) throws BadConsequenceException
+    public Consequence(String str_type, ArrayList<String> args)
     {
-        switch (str_type)
-        {
-            case    "none": type = ConsType.none;                  break;
-            case     "jmp": type = ConsType.teleport;              break;
-            case "additin": type = ConsType.add_item_to_inv;       break;
-            case "rmitinv": type = ConsType.remove_item_from_inv;  break;
-            case    "kill": type = ConsType.kill;                  break;
-            case     "win": type = ConsType.win;                   break;
-            case  "additr": type = ConsType.add_item_to_room;      break;
-            case  "rmitfr": type = ConsType.remove_item_from_room; break;
-            case  "addcon": type = ConsType.add_connector;         break;
-            case   "rmcon": type = ConsType.remove_connector;      break;
-            case    "wait": type = ConsType.wait;                  break;
-            default: throw new BadConsequenceException("bad consequence type: " + str_type);
-        }
-        args = new ArrayList<>();
+        type = ConsType.valueOf(str_type);
+        this.args = args;
     }
 
-    public Consequence(String str_type, String arg1, String arg2, String arg3, String arg4) throws BadConsequenceException
+    @Override
+    public int compareTo(Object o)
     {
-        this(str_type);
-        args.add(arg1);
-        args.add(arg2);
-        args.add(arg3);
-        args.add(arg4);
+        if(o instanceof Consequence)
+        {
+            Consequence cnd = (Consequence) o;
+            if(type.toString().compareTo(cnd.type.toString()) == 0)
+            {
+                int i = 0;
+                for(; i < args.size() && i < cnd.args.size(); i++)
+                {
+                    if(args.get(i).compareTo(cnd.args.get(i)) != 0)
+                    {
+                        return args.get(i).compareTo(cnd.args.get(i));
+                    }
+                }
+                if(i < args.size())
+                    return 1;
+                else if(i < cnd.args.size())
+                    return 0;
+            }
+            else
+            {
+                return type.toString().compareTo(cnd.type.toString());
+            }
+        }
+        return -1;
     }
 
     // invokes the consequence
@@ -50,11 +56,11 @@ public class Consequence
         String dirfrom, dirto;
         switch (type)
         {
-            case teleport:
+            case jmp:
                 room = eng.findRoom(args.get(0));
                 player.moveTo(room);
                 break;
-            case add_item_to_inv:
+            case additinv:
                 item = eng.findItem(args.get(0));
                 if(item.getLocationFlag() == Item.flag.room)
                 {
@@ -69,7 +75,7 @@ public class Consequence
                     player.giveItem(item);
                 }
                 break;
-            case remove_item_from_inv:
+            case rmitinv:
                 item = eng.findItem(args.get(0));
                 if(player.hasItem(item))
                 {
@@ -85,7 +91,7 @@ public class Consequence
             case win:
                 effect = Effect.win;
                 break;
-            case add_item_to_room:
+            case additr:
                 item = eng.findItem(args.get(0));
                 roomto = eng.findRoom(args.get(1));
                 roomfrom = item.getLocation();
@@ -109,7 +115,7 @@ public class Consequence
                     roomto.addItem(item);
                 }
                 break;
-            case remove_item_from_room:
+            case rmitfr:
                 item = eng.findItem(args.get(0));
                 room = eng.findRoom(args.get(1));
                 if(item.getLocationFlag() == Item.flag.room)
@@ -118,14 +124,14 @@ public class Consequence
                     item.setLocation(Item.flag.prod);
                 }
                 break;
-            case add_connector:
+            case addcon:
                 roomfrom = eng.findRoom(args.get(0));
                 dirfrom  = args.get(1);
                 roomto   = eng.findRoom(args.get(2));
                 dirto    = args.get(3);
                 Room.createPath(roomfrom, dirfrom, roomto, dirto);
                 break;
-            case remove_connector:
+            case rmcon:
                 roomfrom = eng.findRoom(args.get(0));
                 dirfrom  = args.get(1);
                 roomto   = eng.findRoom(args.get(2));
@@ -154,23 +160,24 @@ public class Consequence
     Empty
         none                  - none
     Player
-        teleport              - jmp [room_id]      – teleport player to [room_id]
-        add_item_to_inv       - additinv [item_id] – adds [item_id] to inventory
-        remove_item_from_inv  - rmitinv [item_id]  – removes [item_id] from inventory
+        jmp                   - jmp [room_id]      – jmp player to [room_id]
+        additinv              - additinv [item_id] – adds [item_id] to inventory
+        rmitinv               - rmitinv [item_id]  – removes [item_id] from inventory
         kill                  - kill               - kills the player and the game terminates
         win                   - win                - player wins and the game terminates
     Room
-        add_item_to_room      - additr [item_id] [room_id]                             – adds [item_id] to [room_id]
-        remove_item_from_room - rmitfr [item_id] [room_id]                             – removes [item_id] from [room_id]
-        add_connector         - addcon [room_id1] [direction1] [room_id2] [direction2] – adds connector between rooms
-        remove_connector      - rmcon  [room_id1] [direction1] [room_id2] [direction2] – removes connector between rooms if the connector exists
+        additr                - additr [item_id] [room_id]                             – adds [item_id] to [room_id]
+        rmitfr                - rmitfr [item_id] [room_id]                             – removes [item_id] from [room_id]
+        addcon                - addcon [room_id1] [direction1] [room_id2] [direction2] – adds connector between rooms
+        rmcon                 - rmcon  [room_id1] [direction1] [room_id2] [direction2] – removes connector between rooms if the connector exists
 
     */
 
     public enum ConsType
     {
-        none, teleport, add_item_to_inv, remove_item_from_inv, kill, win, add_item_to_room, remove_item_from_room, add_connector, remove_connector, wait
+        none, jmp, additinv, rmitinv, kill, win, additr, rmitfr, addcon, rmcon, wait
     }
+
     public enum Effect
     {
         procede, win, kill

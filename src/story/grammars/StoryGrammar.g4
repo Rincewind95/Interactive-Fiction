@@ -140,16 +140,23 @@ double_arg_cnd_type: ITEM_IN_ROOM
 
 consequences: consequence (COMMA consequence)*;
 
-consequence: NONE
-           | TELEPORT room_id
-           | ADD_ITEM_TO_INV item_id
-           | REMOVE_ITEM_FROM_INV item_id
-           | KILL
-           | WIN
-           | ADD_ITEM_TO_ROOM item_id room_id
-           | REMOVE_ITEM_FROM_ROOM item_id room_id
-           | ADD_CONNECTOR room_id direction room_id direction
-           | REMOVE_CONNECTOR room_id direction room_id direction
+consequence: no_arg_cons
+           | single_arg_cons
+           | double_arg_cons
+           | four_arg_cons
            | WAIT TIME;
+no_arg_cons: NONE
+           | KILL
+           | WIN;
+single_arg_cons: single_arg_cons_type item_id;
+single_arg_cons_type: TELEPORT
+                    | ADD_ITEM_TO_INV
+                    | REMOVE_ITEM_FROM_INV;
+double_arg_cons: double_arg_cons_type item_id room_id;
+double_arg_cons_type: ADD_ITEM_TO_ROOM
+                    | REMOVE_ITEM_FROM_ROOM;
+four_arg_cons: four_arg_cons_type room_id direction room_id direction;
+four_arg_cons_type: ADD_CONNECTOR
+                  | REMOVE_CONNECTOR;
 
 gate_type: ANDING | ORING;

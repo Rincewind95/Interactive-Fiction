@@ -197,6 +197,48 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitConsequence(StoryGrammarParser.ConsequenceContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#no_arg_cons}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNo_arg_cons(StoryGrammarParser.No_arg_consContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#single_arg_cons}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSingle_arg_cons(StoryGrammarParser.Single_arg_consContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#single_arg_cons_type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSingle_arg_cons_type(StoryGrammarParser.Single_arg_cons_typeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#double_arg_cons}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDouble_arg_cons(StoryGrammarParser.Double_arg_consContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#double_arg_cons_type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDouble_arg_cons_type(StoryGrammarParser.Double_arg_cons_typeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#four_arg_cons}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFour_arg_cons(StoryGrammarParser.Four_arg_consContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#four_arg_cons_type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFour_arg_cons_type(StoryGrammarParser.Four_arg_cons_typeContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#gate_type}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

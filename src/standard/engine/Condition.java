@@ -133,13 +133,13 @@ public class Condition implements Comparable
 
     /*
         Locational:
-            player_in_room        - plir [room_id]              – player in [room_id]
-            plnir    - plnir [room_id]             – player not in [room_id]
-            plilv       - plilv [level_id]            – player on [level_id]
-            itir          - itir ([item_id],[room_id])  – [item_id] in [room_id]
-            itnir      - itnir ([item_id],[room_id]) – [item_id] not in [room_id]
-            itinv     - itinv [item_id]             – [item_id] in inv
-            itninv - itninv [item_id]            – [item_id] not in inv
+            plir    - plir [room_id]              – player in [room_id]
+            plnir   - plnir [room_id]             – player not in [room_id]
+            plilv   - plilv [level_id]            – player on [level_id]
+            itir    - itir ([item_id],[room_id])  – [item_id] in [room_id]
+            itnir   - itnir ([item_id],[room_id]) – [item_id] not in [room_id]
+            itinv   - itinv [item_id]             – [item_id] in inv
+            itninv  - itninv [item_id]            – [item_id] not in inv
 
         Previous command:
             combine - combine([item_id1], [item_id2])
