@@ -1,8 +1,7 @@
 package runnable;
 
-import standard.engine.Command;
 import standard.engine.Engine;
-import story.interpreter.StoryInterpreter;
+import story.compiler.StoryCompiler;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +24,7 @@ public class MainExecutor
         {
             try
             {
-                story_location = scanner.nextLine();
+                story_location = "C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Testing\\simple_story.txt";//scanner.nextLine();
                 if(story_location.equals("abort"))
                     return;
                 System.out.println("Attempting to load story file...");
@@ -40,13 +39,12 @@ public class MainExecutor
         Engine eng = null;
         while(eng == null)
         {
-            // repeatedly interpret the story until the engine is
-            StoryInterpreter interpreter = new StoryInterpreter(story_location);
-            eng = interpreter.getEngine();
+            // repeatedly compile the story until the engine is non null
+            eng = StoryCompiler.complieStory(story_location);
             if(eng == null)
             {
-                System.out.println("The story file is corrupt!\nTo reinterpret the story file press enter or type \"abort\" to quit.\n" +
-                        "--------------------------------------------------------------------");
+                System.out.println("Compilation failed!\nTo reinterpret the story file press enter or type \"abort\" to quit.\n" +
+                                                        "----------------------------------------------------------------");
                 String procede = scanner.nextLine();
                 if(procede.equals("abort"))
                     return;

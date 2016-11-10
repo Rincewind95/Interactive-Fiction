@@ -1,9 +1,6 @@
-package story.interpreter;
+package story.compiler;
 
-import com.sun.xml.internal.bind.v2.model.core.ID;
-import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.TerminalNode;
 import standard.engine.Engine;
 import standard.engine.Message;
 import standard.engine.Utility;
@@ -11,7 +8,7 @@ import story.parser.StoryGrammarBaseVisitor;
 import story.parser.StoryGrammarParser;
 
 /**
- * Created by Milos on 09/11/2016.
+ * Creates an engine from a parse tree
  */
 public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Boolean>
 {
@@ -37,7 +34,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Boolean>
         for (int i = 0; i < n; i++)
         {
             ParseTree c = ctx.getChild(i);
-            Boolean childResult = visit(c);
+            Boolean childResult = c.accept(this);
             if (childResult != null)
                 result = result && childResult;
         }
@@ -49,7 +46,10 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Boolean>
     @Override
     public Boolean visitWelcome(StoryGrammarParser.WelcomeContext ctx)
     {
+        String step_id = parseStep_id(ctx.step_id());
+        String room_id = parseRoom_id(ctx.room_id());
         Message desc = parseDescription(ctx.description());
+        eng.setWelcome(step_id, room_id, desc);
         return true;
     }
 
@@ -99,6 +99,20 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Boolean>
         return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
     }
 
+    public String parseLevel_id(StoryGrammarParser.Level_idContext ctx)
+    {
+        return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
+    }
+
+    @Override
+    public Boolean visitRoom(StoryGrammarParser.RoomContext ctx)
+    {
+        String room_id = parseRoom_id(ctx.room_id());
+        String level_ = parseLevel_id(ctx.level_id());
+
+        return true;
+    }
+
     //----------------------Item----related----------------------------
     public String parseItem_id(StoryGrammarParser.Item_idContext ctx)
     {
@@ -122,5 +136,6 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Boolean>
     {
         return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
     }
+    //----------------------Error---related----------------------------
     //-----------------------------------------------------------------
 }

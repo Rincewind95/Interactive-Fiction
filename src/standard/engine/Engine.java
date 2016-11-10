@@ -1,10 +1,5 @@
 package standard.engine;
 
-import com.sun.org.apache.xml.internal.security.algorithms.MessageDigestAlgorithm;
-import story.interpreter.StoryInterpreter;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -117,13 +112,6 @@ public class Engine
     public void addStep(String step_id, StoryStep step)
     {
         findstep.put(step_id, step);
-    }
-
-    // links the various ids in the engine together
-    public boolean link()
-    {
-        // TODO link engine
-        return true;
     }
     //----------------------------------------------------------
 

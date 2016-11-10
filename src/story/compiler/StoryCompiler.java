@@ -1,4 +1,4 @@
-package story.interpreter;
+package story.compiler;
 
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.ParseTree;
@@ -9,21 +9,16 @@ import story.parser.StoryGrammarParser;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-
 /**
- * Created by Milos on 07/11/2016.
+ * Compiles a story from a given file
  */
-public class StoryInterpreter
+public class StoryCompiler
 {
-    private Engine eng; // the engine to be created
-    private String story_loc;  // the location of the story file
-
-    public StoryInterpreter(String story_loc)
+    public static Engine complieStory(String story_loc)
     {
+        Engine eng = null;
         try
         {
-            eng = null;
-            this.story_loc = story_loc;
             ANTLRInputStream in = new ANTLRInputStream(new FileInputStream(story_loc));
             StoryGrammarLexer lexer = new StoryGrammarLexer(in);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -37,21 +32,15 @@ public class StoryInterpreter
                 eng = visitor.extractEngine();
             else
             {
-                eng = null;
-                return;
+                return null;
             }
-            if(!eng.link())
-                eng = null;
+
+            eng = StoryLinker.linkEngine(eng);
         }
         catch (IOException error)
         {
-            System.out.println("fail!");
-            eng = null;
+            return null;
         }
-    }
-
-    public Engine getEngine()
-    {
         return eng;
     }
 }

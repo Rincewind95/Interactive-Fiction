@@ -18,15 +18,20 @@ public class Room
     private Message description; // short description printed upon consequent entries
     private HashSet<Item> items; // list of all items currently contained in the room
 
-    public Room()
+    public Room(String room_id,
+                String level_id,
+                HashMap<String, Room> leads_to,
+                HashMap<String, String> dead_end,
+                Message brief,
+                Message description)
     {
-        room_id = "";
-        level_id = "";
-        leads_to = new HashMap<>();
-        dead_end = new HashMap<>();
-        brief = null;
-        description = null;
-        items = new HashSet<>();
+        this.room_id = room_id;
+        this.level_id = level_id;
+        this.leads_to = leads_to;
+        this.dead_end = dead_end;
+        this.brief = brief;
+        this.description = description;
+        this.items = new HashSet<>();
         visited = false;
     }
 
