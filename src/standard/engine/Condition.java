@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Milos on 06/11/2016.
  */
-public class Condition
+public class Condition extends MasterContainer
 {
     private CondType type;          // the type of the condition
     private ArrayList<String> args; // a list of the arguments the condition has

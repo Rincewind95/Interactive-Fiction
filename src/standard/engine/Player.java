@@ -5,7 +5,7 @@ import java.util.TreeSet;
 /**
  * Created by Milos on 06/11/2016.
  */
-public class Player
+public class Player extends MasterContainer
 {
     Room location;
     TreeSet<Item> inventory;

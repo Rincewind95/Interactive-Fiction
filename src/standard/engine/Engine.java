@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * Standard engine
  */
-public class Engine
+public class Engine extends MasterContainer
 {
     private String start_id;                     // the identifier of the first, necessarily satisfied story step (where to begin the story)
     private String start_location_id;            // the starting location id of the player

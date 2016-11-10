@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Command issues by user on the command line
  */
-public class Command
+public class Command extends MasterContainer
 {
     private Type type;
     private ArrayList<String> args;
