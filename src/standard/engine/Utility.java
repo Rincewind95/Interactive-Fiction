@@ -30,10 +30,19 @@ public class Utility
         return moded;
     }
 
-    public static String strip_block_paren(String input)
+    public static String strip_special_chars(String input)
     {
         String res = input.replace("[", "");
         res = res.replace("]", "");
+        res = res.replace("(", "");
+        res = res.replace(")", "");
+        res = res.replace("_", "");
+        return res;
+    }
+
+    public static String strip_quotes(String input)
+    {
+        String res = input.replace("\"", "");
         return res;
     }
 }

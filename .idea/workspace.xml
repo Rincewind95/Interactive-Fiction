@@ -5,41 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/runnable/MainExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Item$flag.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Item$flag.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Item.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Item.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Room.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/Room.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/StoryStep.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/standard/engine/StoryStep.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/interpreter/StoryInterpreter.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/interpreter/StoryInterpreter.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/interpreter/StoryTreeVisitor.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/interpreter/StoryTreeVisitor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$BriefContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$BriefContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConditionContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConditionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConditionsContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConditionsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConsequenceContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConsequenceContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConsequencesContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ConsequencesContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$DescriptionContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$DescriptionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$DirectionContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$DirectionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ExitContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ExitContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ExitsContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ExitsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Gate_typeContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Gate_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ItemContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ItemContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$LocationContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$LocationContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$MobilityContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$MobilityContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ReportContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$ReportContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Required_stepsContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Required_stepsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$SpecialContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$SpecialContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Special_idContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Special_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$StepContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$StepContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Step_beforeContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Step_beforeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Step_idContext.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser$Step_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser.class" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/parser/StoryGrammarParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/InteractiveFiction/story/grammars/StoryGrammar.g4" afterPath="$PROJECT_DIR$/out/production/InteractiveFiction/story/grammars/StoryGrammar.g4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Engine.java" afterPath="$PROJECT_DIR$/src/standard/engine/Engine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Message.java" afterPath="$PROJECT_DIR$/src/standard/engine/Message.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4" afterPath="$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/standard/engine/Utility.java" afterPath="$PROJECT_DIR$/src/standard/engine/Utility.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java" afterPath="$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/story/interpreter/StoryTreeVisitor.java" afterPath="$PROJECT_DIR$/src/story/interpreter/StoryTreeVisitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/story/parser/StoryGrammarParser.java" afterPath="$PROJECT_DIR$/src/story/parser/StoryGrammarParser.java" />
     </list>
     <ignored path="InteractiveFiction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,293 +32,22 @@
       <file leaf-file-name="StoryGrammar.g4" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
+            <state relative-caret-position="472">
+              <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StoryGrammarBaseVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarBaseVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="87" selection-start-line="19" selection-start-column="86" selection-end-line="19" selection-end-column="99" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractParseTreeVisitor.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.5.2-1/antlr4-runtime-4.5.2-1.jar!/org/antlr/v4/runtime/tree/AbstractParseTreeVisitor.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-              <folding>
-                <element signature="e#537#538#0" expanded="true" />
-                <element signature="e#577#578#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParseTree.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/antlr/antlr4-runtime/4.5.2-1/antlr4-runtime-4.5.2-1.jar!/org/antlr/v4/runtime/tree/ParseTree.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StoryInterpreter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="463">
-              <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="86" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StoryGrammarParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/story/parser/StoryGrammarParser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="375" column="27" selection-start-line="375" selection-start-column="21" selection-end-line="375" selection-end-column="27" />
-              <folding>
-                <element signature="initializer##0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="docComment;field#tokenNames#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="initializer##1;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="e#4664#4673#0" expanded="false" />
-                <element signature="method#getGrammarFileName#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#getRuleNames#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#getSerializedATN#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#getATN#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#StoryGrammarParser#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#ID#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="e#6333#6334#0" expanded="false" />
-                <element signature="method#getRuleIndex#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#enterRule#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#exitRule#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#accept#0;class#Level_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#level_id#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#ID#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="e#7693#7694#0" expanded="false" />
-                <element signature="method#getRuleIndex#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#enterRule#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#exitRule#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#accept#0;class#Item_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#item_id#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#ID#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#getRuleIndex#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#enterRule#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#exitRule#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#accept#0;class#Room_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#room_id#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#ID#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#getRuleIndex#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#enterRule#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#exitRule#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#accept#0;class#Message_idContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#message_id#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#QUOTED_TEXT#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#getRuleIndex#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#enterRule#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#exitRule#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#accept#0;class#Message_textContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#message_text#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#getRuleIndex#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#enterRule#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#exitRule#0;class#Story_elementsContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#story_elements#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#WELCOME_#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#OPEN_PAREN_CURLY#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#SEMICOLON#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#CLOS_PAREN_CURLY#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#getRuleIndex#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#enterRule#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#exitRule#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#accept#0;class#WelcomeContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#welcome#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#MESSAGE_#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#OPEN_PAREN_CURLY#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#SEMICOLON#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#CLOS_PAREN_CURLY#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#getRuleIndex#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#enterRule#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#exitRule#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#accept#0;class#MessageContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#message#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#ROOM_#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#OPEN_PAREN_CURLY#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#SEMICOLON#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#CLOS_PAREN_CURLY#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#getRuleIndex#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#enterRule#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#exitRule#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#accept#0;class#RoomContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="method#room#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="class#ExitsContext#0;class#StoryGrammarParser#0" expanded="false" />
-                <element signature="e#22609#22610#0" expanded="true" />
-                <element signature="e#22659#22660#0" expanded="true" />
-                <element signature="e#22694#22695#0" expanded="true" />
-                <element signature="e#22745#22746#0" expanded="true" />
-                <element signature="e#22866#22867#0" expanded="true" />
-                <element signature="e#22919#22920#0" expanded="true" />
-                <element signature="e#22988#22989#0" expanded="true" />
-                <element signature="e#23025#23026#0" expanded="true" />
-                <element signature="e#24492#24493#0" expanded="true" />
-                <element signature="e#24548#24549#0" expanded="true" />
-                <element signature="e#24584#24585#0" expanded="true" />
-                <element signature="e#24638#24639#0" expanded="true" />
-                <element signature="e#24684#24685#0" expanded="true" />
-                <element signature="e#24743#24744#0" expanded="true" />
-                <element signature="e#24785#24786#0" expanded="true" />
-                <element signature="e#24842#24843#0" expanded="true" />
-                <element signature="e#24910#24911#0" expanded="true" />
-                <element signature="e#24947#24948#0" expanded="true" />
-                <element signature="e#26922#26923#0" expanded="true" />
-                <element signature="e#26959#26960#0" expanded="true" />
-                <element signature="e#28399#28400#0" expanded="true" />
-                <element signature="e#28458#28459#0" expanded="true" />
-                <element signature="e#28500#28501#0" expanded="true" />
-                <element signature="e#28557#28558#0" expanded="true" />
-                <element signature="e#28626#28627#0" expanded="true" />
-                <element signature="e#28663#28664#0" expanded="true" />
-                <element signature="e#30126#30127#0" expanded="true" />
-                <element signature="e#30185#30186#0" expanded="true" />
-                <element signature="e#30227#30228#0" expanded="true" />
-                <element signature="e#30284#30285#0" expanded="true" />
-                <element signature="e#30359#30360#0" expanded="true" />
-                <element signature="e#30396#30397#0" expanded="true" />
-                <element signature="e#32078#32079#0" expanded="true" />
-                <element signature="e#32132#32133#0" expanded="true" />
-                <element signature="e#32265#32266#0" expanded="true" />
-                <element signature="e#32322#32323#0" expanded="true" />
-                <element signature="e#32360#32361#0" expanded="true" />
-                <element signature="e#32415#32416#0" expanded="true" />
-                <element signature="e#32453#32454#0" expanded="true" />
-                <element signature="e#32508#32509#0" expanded="true" />
-                <element signature="e#32552#32553#0" expanded="true" />
-                <element signature="e#32610#32611#0" expanded="true" />
-                <element signature="e#32780#32781#0" expanded="true" />
-                <element signature="e#32817#32818#0" expanded="true" />
-                <element signature="e#34594#34595#0" expanded="true" />
-                <element signature="e#34631#34632#0" expanded="true" />
-                <element signature="e#35988#35989#0" expanded="true" />
-                <element signature="e#36042#36043#0" expanded="true" />
-                <element signature="e#36288#36289#0" expanded="true" />
-                <element signature="e#36325#36326#0" expanded="true" />
-                <element signature="e#38027#38028#0" expanded="true" />
-                <element signature="e#38064#38065#0" expanded="true" />
-                <element signature="e#39501#39502#0" expanded="true" />
-                <element signature="e#39558#39559#0" expanded="true" />
-                <element signature="e#39819#39820#0" expanded="true" />
-                <element signature="e#39856#39857#0" expanded="true" />
-                <element signature="e#41353#41354#0" expanded="true" />
-                <element signature="e#41390#41391#0" expanded="true" />
-                <element signature="e#42785#42786#0" expanded="true" />
-                <element signature="e#42839#42840#0" expanded="true" />
-                <element signature="e#42972#42973#0" expanded="true" />
-                <element signature="e#43029#43030#0" expanded="true" />
-                <element signature="e#43069#43070#0" expanded="true" />
-                <element signature="e#43125#43126#0" expanded="true" />
-                <element signature="e#43175#43176#0" expanded="true" />
-                <element signature="e#43236#43237#0" expanded="true" />
-                <element signature="e#43278#43279#0" expanded="true" />
-                <element signature="e#43335#43336#0" expanded="true" />
-                <element signature="e#43381#43382#0" expanded="true" />
-                <element signature="e#43440#43441#0" expanded="true" />
-                <element signature="e#43474#43475#0" expanded="true" />
-                <element signature="e#43527#43528#0" expanded="true" />
-                <element signature="e#43697#43698#0" expanded="true" />
-                <element signature="e#43734#43735#0" expanded="true" />
-                <element signature="e#45464#45465#0" expanded="true" />
-                <element signature="e#45518#45519#0" expanded="true" />
-                <element signature="e#45671#45672#0" expanded="true" />
-                <element signature="e#45708#45709#0" expanded="true" />
-                <element signature="e#47015#47016#0" expanded="true" />
-                <element signature="e#47072#47073#0" expanded="true" />
-                <element signature="e#47121#47122#0" expanded="true" />
-                <element signature="e#47179#47180#0" expanded="true" />
-                <element signature="e#47300#47301#0" expanded="true" />
-                <element signature="e#47353#47354#0" expanded="true" />
-                <element signature="e#47431#47432#0" expanded="true" />
-                <element signature="e#47468#47469#0" expanded="true" />
-                <element signature="e#49042#49043#0" expanded="true" />
-                <element signature="e#49097#49098#0" expanded="true" />
-                <element signature="e#49142#49143#0" expanded="true" />
-                <element signature="e#49198#49199#0" expanded="true" />
-                <element signature="e#49319#49320#0" expanded="true" />
-                <element signature="e#49372#49373#0" expanded="true" />
-                <element signature="e#49446#49447#0" expanded="true" />
-                <element signature="e#49483#49484#0" expanded="true" />
-                <element signature="e#51104#51105#0" expanded="true" />
-                <element signature="e#51158#51159#0" expanded="true" />
-                <element signature="e#51402#51403#0" expanded="true" />
-                <element signature="e#51457#51458#0" expanded="true" />
-                <element signature="e#51593#51594#0" expanded="true" />
-                <element signature="e#51646#51647#0" expanded="true" />
-                <element signature="e#51687#51688#0" expanded="true" />
-                <element signature="e#51741#51742#0" expanded="true" />
-                <element signature="e#52541#52542#0" expanded="true" />
-                <element signature="e#52597#52598#0" expanded="true" />
-                <element signature="e#52731#52732#0" expanded="true" />
-                <element signature="e#52788#52789#0" expanded="true" />
-                <element signature="e#52861#52862#0" expanded="true" />
-                <element signature="e#52898#52899#0" expanded="true" />
-                <element signature="e#56383#56384#0" expanded="true" />
-                <element signature="e#56440#56441#0" expanded="true" />
-                <element signature="e#56489#56490#0" expanded="true" />
-                <element signature="e#56547#56548#0" expanded="true" />
-                <element signature="e#56668#56669#0" expanded="true" />
-                <element signature="e#56721#56722#0" expanded="true" />
-                <element signature="e#56797#56798#0" expanded="true" />
-                <element signature="e#56834#56835#0" expanded="true" />
-                <element signature="e#58551#58552#0" expanded="true" />
-                <element signature="e#58604#58605#0" expanded="true" />
-                <element signature="e#58645#58646#0" expanded="true" />
-                <element signature="e#58699#58700#0" expanded="true" />
-                <element signature="e#58835#58836#0" expanded="true" />
-                <element signature="e#58889#58890#0" expanded="true" />
-                <element signature="e#59509#59510#0" expanded="true" />
-                <element signature="e#59564#59565#0" expanded="true" />
-                <element signature="e#59609#59610#0" expanded="true" />
-                <element signature="e#59665#59666#0" expanded="true" />
-                <element signature="e#59998#59999#0" expanded="true" />
-                <element signature="e#60035#60036#0" expanded="true" />
-                <element signature="e#63208#63209#0" expanded="true" />
-                <element signature="e#63267#63268#0" expanded="true" />
-                <element signature="e#63309#63310#0" expanded="true" />
-                <element signature="e#63366#63367#0" expanded="true" />
-                <element signature="e#63436#63437#0" expanded="true" />
-                <element signature="e#63473#63474#0" expanded="true" />
-                <element signature="e#65132#65133#0" expanded="true" />
-                <element signature="e#65169#65170#0" expanded="true" />
-                <element signature="initializer##2;class#StoryGrammarParser#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Engine.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Engine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/standard/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-115">
-              <caret line="54" column="49" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
+            <state relative-caret-position="340">
+              <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
               <folding>
+                <element signature="method#start#0;class#Engine#0" expanded="false" />
+                <element signature="e#3364#3365#0" expanded="true" />
+                <element signature="e#3408#3409#0" expanded="true" />
                 <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
                 <element signature="method#getHistory#0;class#Engine#0" expanded="false" />
                 <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
@@ -358,42 +56,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainExecutor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/runnable/MainExecutor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StoryTreeVisitor.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StoryTreeVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/story/interpreter/StoryTreeVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+            <state relative-caret-position="255">
+              <caret line="51" column="59" selection-start-line="51" selection-start-column="59" selection-end-line="51" selection-end-column="59" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1457#1458#0" expanded="true" />
-                <element signature="e#1484#1485#0" expanded="true" />
-                <element signature="e#1833#1834#0" expanded="true" />
-                <element signature="e#1860#1861#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/standard/engine/Message.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-              <folding>
-                <element signature="e#356#357#0" expanded="true" />
-                <element signature="e#386#387#0" expanded="true" />
+                <element signature="docComment;class#StoryTreeVisitor#0" expanded="false" />
+                <element signature="method#visitStory_elements#0;class#StoryTreeVisitor#0" expanded="false" />
+                <element signature="method#visitMessage#0;class#StoryTreeVisitor#0" expanded="false" />
+                <element signature="method#parseBrief#0;class#StoryTreeVisitor#0" expanded="false" />
+                <element signature="method#parseDescription#0;class#StoryTreeVisitor#0" expanded="false" />
+                <element signature="method#parseMessage_id#0;class#StoryTreeVisitor#0" expanded="false" />
+                <element signature="method#parseMessage_text#0;class#StoryTreeVisitor#0" expanded="false" />
+                <element signature="method#parseRoom_id#0;class#StoryTreeVisitor#0" expanded="false" />
+                <element signature="method#parseItem_id#0;class#StoryTreeVisitor#0" expanded="false" />
+                <element signature="method#parseSpecial_id#0;class#StoryTreeVisitor#0" expanded="false" />
+                <element signature="method#parseStep_id#0;class#StoryTreeVisitor#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -449,17 +128,17 @@
         <option value="$PROJECT_DIR$/src/story/parser/StoryInterpreter.java" />
         <option value="$PROJECT_DIR$/src/story/interpreter/StoryTreeListener.java" />
         <option value="$PROJECT_DIR$/src/story/interpreter/StoryTreeErrorListener.java" />
-        <option value="$PROJECT_DIR$/src/standard/engine/Utility.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/Item.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/StoryStep.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/Room.java" />
-        <option value="$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java" />
         <option value="$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4" />
         <option value="$PROJECT_DIR$/src/story/parser/StoryGrammarBaseVisitor.java" />
         <option value="$PROJECT_DIR$/src/standard/engine/Message.java" />
         <option value="$PROJECT_DIR$/src/runnable/MainExecutor.java" />
-        <option value="$PROJECT_DIR$/src/standard/engine/Engine.java" />
+        <option value="$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java" />
+        <option value="$PROJECT_DIR$/src/standard/engine/Utility.java" />
         <option value="$PROJECT_DIR$/src/story/interpreter/StoryTreeVisitor.java" />
+        <option value="$PROJECT_DIR$/src/standard/engine/Engine.java" />
       </list>
     </option>
   </component>
@@ -1030,6 +709,9 @@
         <state relative-caret-position="2907">
           <caret line="387" column="16" selection-start-line="387" selection-start-column="16" selection-end-line="387" selection-end-column="16" />
           <folding>
+            <element signature="method#start#0;class#Engine#0" expanded="false" />
+            <element signature="e#3364#3365#0" expanded="true" />
+            <element signature="e#3408#3409#0" expanded="true" />
             <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
             <element signature="method#getHistory#0;class#Engine#0" expanded="false" />
             <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
@@ -1281,6 +963,9 @@
         <state relative-caret-position="2907">
           <caret line="387" column="16" selection-start-line="387" selection-start-column="16" selection-end-line="387" selection-end-column="16" />
           <folding>
+            <element signature="method#start#0;class#Engine#0" expanded="false" />
+            <element signature="e#3364#3365#0" expanded="true" />
+            <element signature="e#3408#3409#0" expanded="true" />
             <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
             <element signature="method#getHistory#0;class#Engine#0" expanded="false" />
             <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
@@ -1397,14 +1082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/standard/engine/Utility.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="42" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -1740,14 +1417,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="107" column="19" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/standard/engine/Message.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1769,38 +1438,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/standard/engine/Engine.java">
+    <entry file="file://$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-115">
-          <caret line="54" column="49" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
+        <state relative-caret-position="460">
+          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
           <folding>
-            <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
-            <element signature="method#getHistory#0;class#Engine#0" expanded="false" />
-            <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/story/interpreter/StoryInterpreter.java">
+    <entry file="file://$PROJECT_DIR$/src/standard/engine/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="86" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="242">
+          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/story/grammars/StoryGrammar.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="472">
+          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/story/interpreter/StoryTreeVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+        <state relative-caret-position="255">
+          <caret line="51" column="59" selection-start-line="51" selection-start-column="59" selection-end-line="51" selection-end-column="59" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1457#1458#0" expanded="true" />
-            <element signature="e#1484#1485#0" expanded="true" />
-            <element signature="e#1833#1834#0" expanded="true" />
-            <element signature="e#1860#1861#0" expanded="true" />
+            <element signature="docComment;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#visitStory_elements#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#visitMessage#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseBrief#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseDescription#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseMessage_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseMessage_text#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseRoom_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseItem_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseSpecial_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseStep_id#0;class#StoryTreeVisitor#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/standard/engine/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="27" column="37" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="37" />
+          <folding>
+            <element signature="method#start#0;class#Engine#0" expanded="false" />
+            <element signature="e#3364#3365#0" expanded="true" />
+            <element signature="e#3408#3409#0" expanded="true" />
+            <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
+            <element signature="method#getHistory#0;class#Engine#0" expanded="false" />
+            <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
           </folding>
         </state>
       </provider>

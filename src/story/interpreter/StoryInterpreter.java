@@ -33,9 +33,15 @@ public class StoryInterpreter
             StoryTreeVisitor visitor = new StoryTreeVisitor();
 
             // evaluate the tree
-            visitor.visit(tree);
-
-            eng = visitor.extractEngine();
+            if(visitor.visit(tree))
+                eng = visitor.extractEngine();
+            else
+            {
+                eng = null;
+                return;
+            }
+            if(!eng.link())
+                eng = null;
         }
         catch (IOException error)
         {

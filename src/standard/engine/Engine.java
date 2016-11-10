@@ -14,21 +14,23 @@ import java.util.Scanner;
  */
 public class Engine
 {
-    private StoryStep start;                   // the initial story step, true from the start (the only one of the sort)
-    private ArrayList<Room> rooms;             // list of the rooms in the game on all levels
-    private ArrayList<Item> items;             // list of all possible items in the game
-    private HashMap<String, Room> findroom;    // quick search for rooms via their id
-    private HashMap<String, Item> finditem;    // quick search for items via their id
+    private String start_id;
+    private StoryStep start;                     // the initial story step, true from the start (the only one of the sort)
+    private ArrayList<Room> rooms;               // list of the rooms in the game on all levels
+    private ArrayList<Item> items;               // list of all possible items in the game
+    private HashMap<String, Room> findroom;      // quick search for rooms via their id
+    private HashMap<String, Item> finditem;      // quick search for items via their id
 
-    private HashMap<String, Message> messages; // used during engine creation to link the messages
+    private HashMap<String, Message> findmsg;    // used during engine creation to link the messages
 
-    private HashSet<String> special;           // a map of all possible special commands
-    private ArrayList<StoryStep> steps;        // a list of all possible story steps
-    private Player player;                     // the star of the show
+    private HashSet<String> special;             // a map of all possible special commands
+    private ArrayList<StoryStep> steps;          // a list of all possible story steps
+    private HashMap<String, StoryStep> findstep; // quick search for steps via their id
+    private Player player;                       // the star of the show
 
-    private int time;                          // the current time step of the game
-    private ArrayList<Command> prev_commands;  // a list of all previous player commands
-    private ArrayList<StoryStep> prev_steps;   // a list of all previously satisfied steps
+    private int time;                            // the current time step of the game
+    private ArrayList<Command> prev_commands;    // a list of all previous player commands
+    private ArrayList<StoryStep> prev_steps;     // a list of all previously satisfied steps
 
     public Engine()
     {
@@ -41,7 +43,7 @@ public class Engine
         items = new ArrayList<>();
         findroom = new HashMap<>();
         finditem = new HashMap<>();
-        messages = new HashMap<>();
+        findmsg = new HashMap<>();
 
         special = new HashSet<>();
         steps = new ArrayList<>();
@@ -86,6 +88,20 @@ public class Engine
 
         scanner.close();
     }
+
+    //------------------Parser-Related-Bit----------------------
+    public void addMessage(String message_id, Message msg)
+    {
+        findmsg.put(message_id, msg);
+    }
+
+    // links the various ids in the engine together
+    public boolean link()
+    {
+        // TODO link engine
+        return true;
+    }
+    //----------------------------------------------------------
 
     private response executeCommand(Command command)
     {

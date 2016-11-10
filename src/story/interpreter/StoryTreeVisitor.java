@@ -1,7 +1,9 @@
 package story.interpreter;
 
+import com.sun.xml.internal.bind.v2.model.core.ID;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.TerminalNode;
 import standard.engine.Engine;
 import standard.engine.Message;
 import standard.engine.Utility;
@@ -36,20 +38,71 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Boolean>
         {
             ParseTree c = ctx.getChild(i);
             Boolean childResult = visit(c);
-            if(childResult != null)
+            if (childResult != null)
                 result = result && childResult;
         }
 
         return result;
     }
 
+    //----------------------Welcome-related----------------------------
     @Override
     public Boolean visitWelcome(StoryGrammarParser.WelcomeContext ctx)
     {
-        System.out.println("Step id is: " + Utility.strip_block_paren(ctx.step_id().getText()));
-        System.out.println("Message id is: " + ctx.description());
-        parseMessage(ctx.description());
+        Message desc = parseDescription(ctx.description());
         return true;
+    }
+
+    //----------------------Message-related----------------------------
+    @Override
+    public Boolean visitMessage(StoryGrammarParser.MessageContext ctx)
+    {
+        // create the message
+        String id = parseMessage_id(ctx.message_id());
+        String text = parseMessage_text(ctx.message_text());
+        Message msg = new Message(id, text);
+
+        // and save it for the linking
+        eng.addMessage(id, msg);
+        return true;
+    }
+
+    public Message parseBrief(StoryGrammarParser.BriefContext ctx)
+    {
+        // create a placeholder message and return it
+        String id = parseMessage_id(ctx.message_id());
+        String text = parseMessage_text(ctx.message_text());
+        return new Message(id, text);
+    }
+
+    public Message parseDescription(StoryGrammarParser.DescriptionContext ctx)
+    {
+        // create a placeholder message and return it
+        String id = parseMessage_id(ctx.message_id());
+        String text = parseMessage_text(ctx.message_text());
+        return new Message(id, text);
+    }
+
+    public String parseMessage_id(StoryGrammarParser.Message_idContext ctx)
+    {
+        return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
+    }
+
+    public String parseMessage_text(StoryGrammarParser.Message_textContext ctx)
+    {
+        return ctx == null ? null : Utility.strip_quotes(ctx.getText());
+    }
+
+    //----------------------Room----related----------------------------
+    public String parseRoom_id(StoryGrammarParser.Room_idContext ctx)
+    {
+        return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
+    }
+
+    //----------------------Item----related----------------------------
+    public String parseItem_id(StoryGrammarParser.Item_idContext ctx)
+    {
+        return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
     }
 
     @Override
@@ -58,18 +111,16 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Boolean>
         return true;
     }
 
-    @Override
-    public Boolean visitMessage(StoryGrammarParser.MessageContext ctx)
+    //----------------------Special-related----------------------------
+    public String parseSpecial_id(StoryGrammarParser.Special_idContext ctx)
     {
-        String id   = ctx.message_id().getText();
-        String text = ctx.message_text().getText();
-        Message msg = new Message(id, text);
-
-        return true;
+        return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
     }
 
-    public Message parseMessage(StoryGrammarParser.DescriptionContext ctx)
+    //----------------------Step----related----------------------------
+    public String parseStep_id(StoryGrammarParser.Step_idContext ctx)
     {
-        return null;
+        return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
     }
+    //-----------------------------------------------------------------
 }
