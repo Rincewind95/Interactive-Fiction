@@ -3,7 +3,7 @@ package standard.engine;
 /**
  * Created by Milos on 09/11/2016.
  */
-public class Message extends MasterContainer
+public class Message
 {
     private String msg;
     private String msg_id;

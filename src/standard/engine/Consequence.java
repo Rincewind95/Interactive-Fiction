@@ -1,13 +1,11 @@
 package standard.engine;
 
-import javafx.beans.binding.IntegerBinding;
-
 import java.util.ArrayList;
 
 /**
  * Created by Milos on 06/11/2016.
  */
-public class Consequence extends MasterContainer
+public class Consequence
 {
     private ConsType type;          // the type of the condition
     private ArrayList<String> args; // a list of the arguments the condition has

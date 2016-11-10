@@ -1,12 +1,11 @@
 package standard.engine;
 
-import java.util.ArrayList;
 import java.util.TreeSet;
 
 /**
  * Created by Milos on 06/11/2016.
  */
-public class StoryStep extends MasterContainer
+public class StoryStep
 {
     // parent_steps are a list of parent steps which need to be satisfied + the conditions for the step to be enacted
     String step_id;                    // the steps identifier

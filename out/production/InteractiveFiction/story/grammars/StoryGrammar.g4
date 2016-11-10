@@ -87,8 +87,7 @@ room: ROOM_ OPEN_PAREN_CURLY room_id SEMICOLON level_id SEMICOLON exits SEMICOLO
 exits: exit (COMMA exit)*;
 
 exit: direction room_id
-    | direction message_text
-    | direction message_id;
+    | direction description;
 
 direction: N|E|W|S;
 

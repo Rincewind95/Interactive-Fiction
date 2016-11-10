@@ -6,29 +6,33 @@ import java.util.HashSet;
 /**
  * Created by Milos on 06/11/2016.
  */
-public class Room extends MasterContainer
+public class Room
 {
-    private String room_id;                   // the unique name of the room
-    private String level_id;                  // the unique name of the level the room is located on
-    private HashMap<String, Room> leads_to;   // the rooms that can be accessed from the N,E,S,W passages of the room
-    private HashMap<String, String> dead_end; // a map of messages which are printed if one tries to go in a dead end (defaults to "Cannot go there")
-    private boolean visited;                  // true if the room was ever visited
+    private String room_id;                    // the unique name of the room
+    private String level_id;                   // the unique name of the level the room is located on
+    private HashMap<String, Room> leads_to;    // the rooms that can be accessed from the N,E,S,W passages of the room
+    private HashMap<String, Message> dead_end; // a map of messages which are printed if one tries to go in a dead end (defaults to "Cannot go there")
+    private boolean visited;                   // true if the room was ever visited
 
     private Message brief;       // message printed upon first entry to the room
     private Message description; // short description printed upon consequent entries
     private HashSet<Item> items; // list of all items currently contained in the room
 
+    public Room(String room_id)
+    {
+        // placeholder constructor
+        this.room_id = room_id;
+    }
+
     public Room(String room_id,
                 String level_id,
-                HashMap<String, Room> leads_to,
-                HashMap<String, String> dead_end,
                 Message brief,
                 Message description)
     {
         this.room_id = room_id;
         this.level_id = level_id;
-        this.leads_to = leads_to;
-        this.dead_end = dead_end;
+        this.leads_to = new HashMap<>();
+        this.dead_end = new HashMap<>();
         this.brief = brief;
         this.description = description;
         this.items = new HashSet<>();
@@ -154,7 +158,7 @@ public class Room extends MasterContainer
         leads_to.put(dir, r);
     }
 
-    public void addDeadEnd(String dir, String message)
+    public void addDeadEnd(String dir, Message message)
     {
         dead_end.put(dir, message);
     }
@@ -166,7 +170,7 @@ public class Room extends MasterContainer
 
     public String getDeadEndInDir(String dir)
     {
-        return dead_end.get(dir);
+        return dead_end.get(dir).getMsg();
     }
 
     public String getLookInfo()

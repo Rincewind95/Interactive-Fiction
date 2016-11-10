@@ -43,8 +43,8 @@ public class MainExecutor
             eng = StoryCompiler.complieStory(story_location);
             if(eng == null)
             {
-                System.out.println("Compilation failed!\nTo reinterpret the story file press enter or type \"abort\" to quit.\n" +
-                                                        "----------------------------------------------------------------");
+                System.out.println("To recompile the story file press enter or type \"abort\" to quit.\n" +
+                                   "---------------------------------------------------------------");
                 String procede = scanner.nextLine();
                 if(procede.equals("abort"))
                     return;

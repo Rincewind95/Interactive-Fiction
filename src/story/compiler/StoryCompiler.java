@@ -25,15 +25,17 @@ public class StoryCompiler
             StoryGrammarParser parser = new StoryGrammarParser(tokens);
 
             ParseTree tree = parser.story_elements();
-            StoryTreeVisitor visitor = new StoryTreeVisitor();
-
-            // evaluate the tree
-            if(visitor.visit(tree))
-                eng = visitor.extractEngine();
-            else
+            if(parser.getNumberOfSyntaxErrors() > 0)
             {
+                // fail and report error count
+                System.out.println("Parsing failed!\nNumber of syntax errors: " + parser.getNumberOfSyntaxErrors());
                 return null;
             }
+
+            StoryTreeVisitor visitor = new StoryTreeVisitor();
+            // evaluate the tree
+            visitor.visit(tree);
+            eng = visitor.extractEngine();
 
             eng = StoryLinker.linkEngine(eng);
         }
