@@ -11,13 +11,13 @@ public class Item
     private Room location;      // the location of the item (room_id, inv of null (if the item has not yet been produced))
     private Message description; // items short description
 
-    public Item(String item_id, boolean takeable)
+    public Item(String item_id, boolean takeable, flag location_flag, Room location, Message description)
     {
         this.item_id = item_id;
         this.takeable = takeable;
-        location_flag = flag.prod;
-        location = null;
-        description = null;
+        this.location_flag = location_flag;
+        this.location = location;
+        this.description = description;
     }
 
     public String getItem_id()

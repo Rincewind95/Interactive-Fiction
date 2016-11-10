@@ -3,10 +3,7 @@ package story.compiler;
 import com.sun.deploy.security.ruleset.RuleId;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.tool.Rule;
-import standard.engine.Engine;
-import standard.engine.Message;
-import standard.engine.Room;
-import standard.engine.Utility;
+import standard.engine.*;
 import story.parser.StoryGrammarBaseVisitor;
 import story.parser.StoryGrammarParser;
 
@@ -63,7 +60,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
     public Message parseDescription(StoryGrammarParser.DescriptionContext ctx)
     {
         // create a placeholder message and return it
-        if(ctx == null)
+        if (ctx == null)
             return null;
         String id = parseMessage_id(ctx.message_id());
         String text = parseMessage_text(ctx.message_text());
@@ -99,7 +96,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         Message brief = parseBrief(ctx.brief());
         Message description = parseDescription(ctx.description());
         Room r = new Room(room_id, level_id, brief, description);
-        for(StoryGrammarParser.ExitContext ex : ctx.exits().exit())
+        for (StoryGrammarParser.ExitContext ex : ctx.exits().exit())
             addExitTo(r, ex);
 
         return null;
@@ -112,7 +109,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         String room_id = parseRoom_id(ctx.room_id());
         Message msg = parseDescription(ctx.description());
 
-        if(room_id != null)
+        if (room_id != null)
         {
             // add a placeholder room
             r.addPathTo(dir, new Room(room_id));
@@ -120,7 +117,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         else
         {
             // add a placeholder for the message
-            r.addDescription(msg);
+            r.addDeadEnd(dir, msg);
         }
     }
 
@@ -133,6 +130,35 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
     @Override
     public Void visitItem(StoryGrammarParser.ItemContext ctx)
     {
+        String item_id = parseItem_id(ctx.item_id());
+        String mobility = Utility.strip_special_chars(ctx.mobility().getText());
+        Boolean takeable = false;
+        switch (mobility)
+        {
+            case "takeable":
+                takeable = true;
+                break;
+            default:
+                takeable = false;
+                break;
+        }
+        Item.flag flag;
+        Room location = null;
+        if(ctx.location().INVENTORY() != null)
+        {
+            flag = Item.flag.valueOf(ctx.location().INVENTORY().toString());
+        }else if(ctx.location().PRODUCED() != null)
+        {
+            flag = Item.flag.valueOf(ctx.location().INVENTORY().toString());
+        }
+        else
+        {
+            flag = Item.flag.room;
+            location = new Room(parseRoom_id(ctx.location().room_id()));
+        }
+
+        Message description = parseDescription(ctx.description());
+        eng.addItem(item_id, new Item(item_id, takeable, flag, location, description));
         return null;
     }
 
@@ -147,6 +173,5 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
     {
         return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
     }
-    //----------------------Error---related----------------------------
     //-----------------------------------------------------------------
 }
