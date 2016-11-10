@@ -1,5 +1,6 @@
 package standard.engine;
 
+import com.sun.org.apache.xml.internal.security.algorithms.MessageDigestAlgorithm;
 import story.interpreter.StoryInterpreter;
 
 import java.io.File;
@@ -14,19 +15,16 @@ import java.util.Scanner;
  */
 public class Engine
 {
-    private String start_id;
-    private StoryStep start;                     // the initial story step, true from the start (the only one of the sort)
-    private ArrayList<Room> rooms;               // list of the rooms in the game on all levels
-    private ArrayList<Item> items;               // list of all possible items in the game
-    private HashMap<String, Room> findroom;      // quick search for rooms via their id
-    private HashMap<String, Item> finditem;      // quick search for items via their id
-
-    private HashMap<String, Message> findmsg;    // used during engine creation to link the messages
-
-    private HashSet<String> special;             // a map of all possible special commands
-    private ArrayList<StoryStep> steps;          // a list of all possible story steps
-    private HashMap<String, StoryStep> findstep; // quick search for steps via their id
+    private String start_id;                     // the identifier of the first, necessarily satisfied story step (where to begin the story)
+    private String start_location_id;            // the starting location id of the player
+    private Message welcome;                     // the welcome message played at the start
     private Player player;                       // the star of the show
+
+    private HashMap<String, Room> findroom;      // a map of the rooms in the game on all levels
+    private HashMap<String, Item> finditem;      // a map of all possible items in the game
+    private HashSet<String> findspecial;         // a map of all possible special commands
+    private HashMap<String, Message> findmsg;    // used during engine creation to link the messages
+    private HashMap<String, StoryStep> findstep; // a map of all possible steps in the game
 
     private int time;                            // the current time step of the game
     private ArrayList<Command> prev_commands;    // a list of all previous player commands
@@ -35,21 +33,20 @@ public class Engine
     public Engine()
     {
         // empty game initialisation
+        start_id = null;
+        start_location_id = null;
+        welcome = null;
+        player = null;
+
+        findroom = new HashMap<>();
+        finditem = new HashMap<>();
+        findspecial = new HashSet<>();
+        findmsg = new HashMap<>();
+        findstep = new HashMap<>();
+
         time = 1;
         prev_commands = new ArrayList<>();
         prev_steps = new ArrayList<>();
-
-        rooms = new ArrayList<>();
-        items = new ArrayList<>();
-        findroom = new HashMap<>();
-        finditem = new HashMap<>();
-        findmsg = new HashMap<>();
-
-        special = new HashSet<>();
-        steps = new ArrayList<>();
-
-        start = null;
-        player = null;
     }
 
     public void start()
@@ -90,9 +87,36 @@ public class Engine
     }
 
     //------------------Parser-Related-Bit----------------------
+    public void setWelcome(String start_id, String room_id, Message welcome)
+    {
+        this.start_id = start_id;
+        start_location_id = room_id;
+        this.welcome = welcome;
+    }
+
+    public void addRoom(String room_id, Room room)
+    {
+        findroom.put(room_id, room);
+    }
+
+    public void addItem(String item_id, Item item)
+    {
+        finditem.put(item_id, item);
+    }
+
+    public void addSpecial(String special_id)
+    {
+        findspecial.add(special_id);
+    }
+
     public void addMessage(String message_id, Message msg)
     {
         findmsg.put(message_id, msg);
+    }
+
+    public void addStep(String step_id, StoryStep step)
+    {
+        findstep.put(step_id, step);
     }
 
     // links the various ids in the engine together
@@ -250,7 +274,7 @@ public class Engine
                 else resp = response.badinput;
                 break;
             case special:
-                if(!special.contains(args.get(0)))
+                if(!findspecial.contains(args.get(0)))
                 {
                     // the command is not special
                     resp = response.badinput;

@@ -12,10 +12,11 @@ public class StoryStep
     String step_id;                    // the steps identifier
     TreeSet<Condition> conditions;     // the set of preconditions which ALL need to be met for the consequences to be triggered
     TreeSet<Consequence> consequences; // the set of consequences which are triggered when all the conditions are met
-    Message message;                    // the message printed when the step is activated
+    Message message;                   // the message printed when the step is activated
     TreeSet<StoryStep> child_steps;    // a list of steps which are direct descendants of the current step
     TreeSet<StoryStep> parent_steps;   // a list of steps which are direct predecessors of the current step
     boolean Ands;                      // true if the node requires all the parent_steps to be true, false if it requires at least one
+    boolean satisfied;                 // true if the step is always satisfied
 
     // creates an empty story step
     public StoryStep()
@@ -27,6 +28,12 @@ public class StoryStep
         child_steps = new TreeSet<>();
         parent_steps = new TreeSet<>();
         Ands = true;
+        satisfied = false;
+    }
+
+    public void satisfy()
+    {
+        satisfied = true;
     }
 
     public TreeSet<StoryStep> getChildren()
