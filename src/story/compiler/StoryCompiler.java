@@ -37,7 +37,8 @@ public class StoryCompiler
             visitor.visit(tree);
             eng = visitor.extractEngine();
 
-            eng = StoryLinker.linkEngine(eng);
+            StoryLinker linker = new StoryLinker();
+            eng = linker.linkEngine(eng);
         }
         catch (IOException error)
         {

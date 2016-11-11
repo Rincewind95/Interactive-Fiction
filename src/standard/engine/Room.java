@@ -17,7 +17,6 @@ public class Room
     private Message brief;       // message printed upon first entry to the room
     private Message description; // short description printed upon consequent entries
     private HashSet<Item> items; // list of all items currently contained in the room
-
     public Room(String room_id)
     {
         // placeholder constructor
@@ -138,7 +137,7 @@ public class Room
         this.brief = brief;
     }
 
-    public void addDescription(Message desc)
+    public void setDescription(Message desc)
     {
         description = desc;
     }
