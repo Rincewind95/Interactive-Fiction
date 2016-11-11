@@ -13,8 +13,8 @@ public class Command
 
     public Command(String input)
     {
-        // extract the separate words (ignoring all whitespace)
-        String noSpaces = Utility.removeWhiteSpace(input);
+        // extract the separate words (ignoring all whitespace and lowercasing the input beforehand)
+        String noSpaces = Utility.removeWhiteSpace(input.toLowerCase());
         String[] tokens = noSpaces.split("\\s");
 
         // save a space-corrected version of the original

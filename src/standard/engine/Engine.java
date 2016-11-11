@@ -92,8 +92,13 @@ public class Engine
                     gameRunning = false;
                     break;
             }
-            String final_out_to_user = out_to_user + final_out.getValue();
-            if(final_out_to_user.equals(""))
+
+            String final_out_to_user = out_to_user;
+            if(!final_out.getValue().equals(""))
+            {
+                final_out_to_user = final_out.getValue();
+            }
+            else if(final_out_to_user.equals(""))
             {
                 final_out_to_user = "Nothing happens.";
             }
@@ -102,71 +107,6 @@ public class Engine
 
         scanner.close();
     }
-
-    //------------------Parser-Related-Bit----------------------
-    public void setWelcome(String start_id, String room_id, Message welcome)
-    {
-        this.start_id = start_id;
-        start_location_id = room_id;
-        this.welcome = welcome;
-    }
-
-    public void addRoom(String room_id, Room room)
-    {
-        findroom.put(room_id, room);
-    }
-
-    public void addItem(String item_id, Item item)
-    {
-        finditem.put(item_id, item);
-    }
-
-    public void addSpecial(String special_id)
-    {
-        findspecial.add(special_id);
-    }
-
-    public void addMessage(String message_id, Message msg)
-    {
-        findmsg.put(message_id, msg);
-    }
-
-    public void addStep(String step_id, StoryStep step)
-    {
-        findstep.put(step_id, step);
-    }
-
-    //------------------Linker-Related-Bit----------------------
-    public Set<String> getRoomKeySet()
-    {
-        return findroom.keySet();
-    }
-
-    public Set<String> getItemKeySet()
-    {
-        return finditem.keySet();
-    }
-
-    public Set<String> getStepKeySet()
-    {
-        return findstep.keySet();
-    }
-
-    public void makePlayer(Room initial)
-    {
-        player = new Player(initial);
-    }
-
-    public String getStartLocation()
-    {
-        return start_location_id;
-    }
-
-    public String getStart_id()
-    {
-        return start_id;
-    }
-    //----------------------------------------------------------
 
     private Pair<response, String> executeCommand(Command command)
     {
@@ -402,6 +342,71 @@ public class Engine
         return new Pair<>(Consequence.Effect.procede, out);
     }
 
+    //------------------Parser-Related-Bit----------------------
+    public void setWelcome(String start_id, String room_id, Message welcome)
+    {
+        this.start_id = start_id;
+        start_location_id = room_id;
+        this.welcome = welcome;
+    }
+
+    public void addRoom(String room_id, Room room)
+    {
+        findroom.put(room_id, room);
+    }
+
+    public void addItem(String item_id, Item item)
+    {
+        finditem.put(item_id, item);
+    }
+
+    public void addSpecial(String special_id)
+    {
+        findspecial.add(special_id);
+    }
+
+    public void addMessage(String message_id, Message msg)
+    {
+        findmsg.put(message_id, msg);
+    }
+
+    public void addStep(String step_id, StoryStep step)
+    {
+        findstep.put(step_id, step);
+    }
+
+    //------------------Linker-Related-Bit----------------------
+    public Set<String> getRoomKeySet()
+    {
+        return findroom.keySet();
+    }
+
+    public Set<String> getItemKeySet()
+    {
+        return finditem.keySet();
+    }
+
+    public Set<String> getStepKeySet()
+    {
+        return findstep.keySet();
+    }
+
+    public void makePlayer(Room initial)
+    {
+        player = new Player(initial);
+    }
+
+    public String getStartLocation()
+    {
+        return start_location_id;
+    }
+
+    public String getStart_id()
+    {
+        return start_id;
+    }
+    //----------------------------------------------------------
+
     public int getTime()
     {
         return time;
@@ -420,19 +425,24 @@ public class Engine
     public String getHistory()
     {
         String hist = "";
+        int dashcnt = 0;
         if (!prev_commands.isEmpty())
         {
-            hist += "The previous commands have been:";
+            hist += "History:";
             int t = 1;
             for (Pair<Command, Integer> com : prev_commands)
             {
-                hist += "\n[" + com.getValue() + "]: " + com.getKey().getOriginal();
+                hist += "\n> [" + com.getValue() + "] " + com.getKey().getOriginal();
+                dashcnt = Math.max(dashcnt, 5 + com.getValue().toString().length() + com.getKey().getOriginal().length());
             }
         }
         else
         {
-            hist += "There is no history.";
+            hist += "No historic commands available.";
+            dashcnt = 31;
         }
+        hist +=   "\n";
+        for(int i = 0; i < dashcnt; i++) hist += "-";
         return hist;
     }
 

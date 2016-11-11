@@ -84,13 +84,14 @@ public class StoryLinker
             }
 
             // TODO check links for all the conditions and consequences
+            // TODO check story consistency
         }
 
         if(error_cnt == 0)
             return eng;
 
         // report the errors and empty the linker error state
-        System.err.println(error_report + "Linking failed!\nNumber of errors: " + error_cnt);
+        System.out.println(error_report + "Linking failed!\nNumber of errors: " + error_cnt);
         error_cnt = 0;
         error_report = "";
         return null;

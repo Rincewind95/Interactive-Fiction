@@ -195,33 +195,32 @@ public class Room
         String info = "";
 
         info += getDescription();
-        info += "\n\n";
+        info += "\n";
 
         if (!items.isEmpty())
         {
-            info += "This room contains the following items:";
+            info += "The following items are here:";
             for (String item_id : items.keySet())
             {
-                info += "\n" + item_id;
+                info += "\n- " + item_id + " " +(items.get(item_id).isTakeable() ? "(take-able)": "(fixed)");
             }
         }
         else
         {
-            info += "This room contains no items.";
+            info += "There are no items here.";
         }
 
-        info += "\n";
         if (!leads_to.isEmpty())
         {
-            info += "\nThis room has the following exits:";
+            info += "\nThe exits are:";
             for (String dir : leads_to.keySet())
             {
-                info += "\nTo the " + dir + ": " + leads_to.get(dir).getRoom_id();
+                info += "\n-> " + dir + ": " + leads_to.get(dir).getRoom_id();
             }
         }
         else
         {
-            info += "\nThis room has no immediate exits.";
+            info += "\nThere are no immediate exits from here.";
         }
         return info;
     }

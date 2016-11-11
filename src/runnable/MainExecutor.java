@@ -24,7 +24,7 @@ public class MainExecutor
         {
             try
             {
-                story_location = "C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Testing\\simple_story.txt";//scanner.nextLine();
+                story_location = scanner.nextLine(); // "C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Testing\\simple_story.txt";
                 if(story_location.equals("abort"))
                     return;
                 System.out.println("Attempting to load story file...");
@@ -50,6 +50,8 @@ public class MainExecutor
                     return;
             }
         }
+        System.out.println("Story file successfully loaded...\n" +
+                           "-------------------------------");
         // --------------------------------------------------------------------------------------
 
         eng.start();

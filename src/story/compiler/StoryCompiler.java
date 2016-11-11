@@ -19,6 +19,7 @@ public class StoryCompiler
         Engine eng = null;
         try
         {
+            System.setErr(System.out); // reroute err to out, to get lexer and parser errors
             ANTLRInputStream in = new ANTLRInputStream(new FileInputStream(story_loc));
             StoryGrammarLexer lexer = new StoryGrammarLexer(in);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
