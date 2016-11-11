@@ -1,5 +1,7 @@
 package standard.engine;
 
+import java.util.HashMap;
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -12,8 +14,8 @@ public class StoryStep implements Comparable
     TreeSet<Condition> conditions;     // the set of preconditions which ALL need to be met for the consequences to be triggered
     TreeSet<Consequence> consequences; // the set of consequences which are triggered when all the conditions are met
     Message message;                   // the message printed when the step is activated
-    TreeSet<StoryStep> child_steps;    // a list of steps which are direct descendants of the current step
-    TreeSet<StoryStep> parent_steps;   // a list of steps which are direct predecessors of the current step
+    HashMap<String, StoryStep> child_steps;    // a list of steps which are direct descendants of the current step
+    HashMap<String, StoryStep> parent_steps;   // a list of steps which are direct predecessors of the current step
     boolean ands;                      // true if the node requires all the parent_steps to be true, false if it requires at least one
     boolean satisfied;                 // true if the step is always satisfied
 
@@ -23,6 +25,18 @@ public class StoryStep implements Comparable
         this.step_id = step_id;
     }
 
+    // creator for the start step
+    public StoryStep(String step_id, boolean satisfied)
+    {
+        this.step_id = step_id;
+        this.satisfied = satisfied;
+        message = new Message("start", "initial step");
+        parent_steps = new HashMap<>();
+        child_steps = new HashMap<>();
+        conditions = new TreeSet<>();
+        consequences = new TreeSet<>();
+    }
+
     // creates a bare story step
     public StoryStep(String step_id, Message message, boolean ands)
     {
@@ -30,16 +44,36 @@ public class StoryStep implements Comparable
         conditions = new TreeSet<>();
         consequences = new TreeSet<>();
         this.message = message;
-        child_steps = new TreeSet<>();
-        parent_steps = new TreeSet<>();
+        child_steps = new HashMap<>();
+        parent_steps = new HashMap<>();
         this.ands = ands;
         satisfied = false;
     }
 
+    //------------------Parser-Related-Bit----------------------
+    //------------------Linker-Related-Bit----------------------
+    public Set<String> getChildStepsKeySet()
+    {
+        return child_steps.keySet();
+    }
+    public Set<String> getParentStepsKeySet()
+    {
+        return parent_steps.keySet();
+    }
+    public StoryStep getParent(String parent_id)
+    {
+        return parent_steps.get(parent_id);
+    }
+    public StoryStep getChild(String child_id)
+    {
+        return child_steps.get(child_id);
+    }
+    //----------------------------------------------------------
+
     @Override
     public int compareTo(Object o)
     {
-        if(o instanceof StoryStep)
+        if (o instanceof StoryStep)
         {
             return ((StoryStep) o).step_id.compareTo(step_id);
         }
@@ -51,12 +85,12 @@ public class StoryStep implements Comparable
         satisfied = true;
     }
 
-    public TreeSet<StoryStep> getChildren()
+    public HashMap<String, StoryStep> getChildren()
     {
         return child_steps;
     }
 
-    public TreeSet<StoryStep> getParents()
+    public HashMap<String, StoryStep> getParents()
     {
         return parent_steps;
     }
@@ -91,24 +125,26 @@ public class StoryStep implements Comparable
         ands = ands;
     }
 
-    public void addChild(StoryStep child)
+    public void addChild(String child_id, StoryStep child)
     {
-        child_steps.add(child);
+        child_steps.put(child_id, child);
     }
 
-    public void addParent(StoryStep parent)
+    public void addParent(String parent_id, StoryStep parent)
     {
-        parent_steps.add(parent);
+        parent_steps.put(parent_id, parent);
     }
 
     public void addCondition(Condition cond)
     {
-        conditions.add(cond);
+        if (!conditions.contains(cond))
+            conditions.add(cond);
     }
 
     public void addConsequence(Consequence cons)
     {
-        consequences.add(cons);
+        if (!consequences.contains(cons))
+            consequences.add(cons);
     }
 }
 

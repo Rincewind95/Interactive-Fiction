@@ -1,5 +1,6 @@
 package story.compiler;
 
+import com.sun.org.apache.xerces.internal.impl.xpath.XPath;
 import standard.engine.*;
 
 import java.util.Set;
@@ -22,6 +23,9 @@ public class StoryLinker
     {
         // first create the player
         eng.makePlayer(linkRoom(new Room(eng.getStartLocation()), "player", eng));
+
+        // and the initial step
+        eng.addStep(eng.getStart_id(), new StoryStep(eng.getStart_id(), true));
 
         // first link up the rooms
         Set<String> roomKeySet = eng.getRoomKeySet();
@@ -70,7 +74,18 @@ public class StoryLinker
         for(String step_id : stepKeySet)
         {
             StoryStep curr_step = eng.findStep(step_id);
-    
+            curr_step.setMessage(linkMessage(curr_step.getMessage(), curr_step.getStep_id(), eng));
+
+            // sort out the parents of the current node (and add it as their child)
+            Set<String> parentStepsKeySet = curr_step.getParentStepsKeySet();
+            for(String parent_step : parentStepsKeySet)
+            {
+                curr_step.addParent(parent_step, linkStep(curr_step.getParent(parent_step), curr_step, eng));
+            }
+
+
+
+            // TODO check links for all the conditions and consequences
         }
 
         if(error_cnt == 0)
@@ -81,6 +96,19 @@ public class StoryLinker
         error_cnt = 0;
         error_report = "";
         return null;
+    }
+
+    private StoryStep linkStep(StoryStep parent, StoryStep child, Engine eng)
+    {
+        if(!eng.hasStep(parent.getStep_id()))
+        {
+            recordLinkerError(parent.getStep_id(), child.getStep_id());
+            return null;
+        }
+        parent = eng.findStep(parent.getStep_id());
+        parent.addChild(child.getStep_id(), child);
+        return parent;
+
     }
 
     private Message linkMessage(Message msg, String parent_id, Engine eng)

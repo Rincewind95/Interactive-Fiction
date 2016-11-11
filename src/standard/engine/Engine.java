@@ -11,13 +11,11 @@ public class Engine
     private String start_location_id;            // the starting location id of the player
     private Message welcome;                     // the welcome message played at the start
     private Player player;                       // the star of the show
-
     private HashMap<String, Room> findroom;      // a map of the rooms in the game on all levels
     private HashMap<String, Item> finditem;      // a map of all possible items in the game
     private HashSet<String> findspecial;         // a map of all possible special commands
     private HashMap<String, Message> findmsg;    // used during engine creation to link the messages
     private HashMap<String, StoryStep> findstep; // a map of all possible steps in the game
-
     private int time;                            // the current time step of the game
     private ArrayList<Command> prev_commands;    // a list of all previous player commands
     private ArrayList<StoryStep> prev_steps;     // a list of all previously satisfied steps
@@ -47,7 +45,8 @@ public class Engine
 
         // start the game once the engine is loaded
         boolean gameRunning = true;
-
+        System.out.println(welcome.getMsg());
+        System.out.println(player.getLocation().getBrief());
         // main input loop
         while (gameRunning)
         {
@@ -134,6 +133,11 @@ public class Engine
     public String getStartLocation()
     {
         return start_location_id;
+    }
+
+    public String getStart_id()
+    {
+        return start_id;
     }
     //----------------------------------------------------------
 

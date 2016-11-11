@@ -217,7 +217,8 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         for(StoryGrammarParser.Step_beforeContext st : ctx.step_before())
         {
             String step_id = parseStep_id(st.step_id());
-            step.addParent(new StoryStep(step_id));
+
+            step.addParent(step_id, new StoryStep(step_id));
         }
     }
 
@@ -246,6 +247,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
                 type = Utility.strip_special_chars(cnd.CON_MOVE().getText());
                 args.add(Utility.strip_special_chars(cnd.CON_MOVE().getText()));
             }
+
             step.addCondition(new Condition(type, args));
         }
     }
