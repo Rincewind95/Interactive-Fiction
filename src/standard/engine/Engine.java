@@ -1,5 +1,7 @@
 package standard.engine;
 
+import javafx.util.Pair;
+
 import java.util.*;
 
 /**
@@ -7,18 +9,18 @@ import java.util.*;
  */
 public class Engine
 {
-    private String start_id;                     // the identifier of the first, necessarily satisfied story step (where to begin the story)
-    private String start_location_id;            // the starting location id of the player
-    private Message welcome;                     // the welcome message played at the start
-    private Player player;                       // the star of the show
-    private HashMap<String, Room> findroom;      // a map of the rooms in the game on all levels
-    private HashMap<String, Item> finditem;      // a map of all possible items in the game
-    private HashSet<String> findspecial;         // a map of all possible special commands
-    private HashMap<String, Message> findmsg;    // used during engine creation to link the messages
-    private HashMap<String, StoryStep> findstep; // a map of all possible steps in the game
-    private int time;                            // the current time step of the game
-    private ArrayList<Command> prev_commands;    // a list of all previous player commands
-    private ArrayList<StoryStep> prev_steps;     // a list of all previously satisfied steps
+    private String start_id;                                // the identifier of the first, necessarily satisfied story step (where to begin the story)
+    private String start_location_id;                       // the starting location id of the player
+    private Message welcome;                                // the welcome message played at the start
+    private Player player;                                  // the star of the show
+    private HashMap<String, Room> findroom;                 // a map of the rooms in the game on all levels
+    private HashMap<String, Item> finditem;                 // a map of all possible items in the game
+    private HashSet<String> findspecial;                    // a map of all possible special commands
+    private HashMap<String, Message> findmsg;               // used during engine creation to link the messages
+    private HashMap<String, StoryStep> findstep;            // a map of all possible steps in the game
+    private int time;                                       // the current time step of the game
+    private ArrayList<Pair<Command,Integer>> prev_commands; // a list of all previous player commands
+    private ArrayList<StoryStep> prev_steps;                // a list of all previously satisfied steps
 
     public Engine()
     {
@@ -58,26 +60,44 @@ public class Engine
             Command command = new Command(userInput);
 
             // modify the engines internal state with the command and determine the outcome
-            response resp = executeCommand(command);
+            Pair<response,String> out = executeCommand(command);
+            response resp = out.getKey();
+            String out_to_user = out.getValue();
 
             // the command is valid so we add it to the list of previous commands
             if (resp != Engine.response.badinput)
-                prev_commands.add(command);
+                prev_commands.add(new Pair<>(command, time));
 
             // now we determine what to do next
-            if (resp == Engine.response.exit) break;
+            if (resp == Engine.response.exit)
+            {
+                System.out.println(out_to_user);
+                break;
+            }
             else if (resp == Engine.response.badinput ||
-                    resp == Engine.response.skip) continue;
+                    resp == Engine.response.skip)
+            {
+                System.out.println(out_to_user);
+                continue;
+            }
 
             // we advance time, check constraints and potentially generate another response
             advanceTime();
-            switch (checkConstraints())
+            Pair<Consequence.Effect, String> final_out = checkConstraints();
+            Consequence.Effect eff = final_out.getKey();
+            switch (eff)
             {
                 case kill:
                 case win:
                     gameRunning = false;
                     break;
             }
+            String final_out_to_user = out_to_user + final_out.getValue();
+            if(final_out_to_user.equals(""))
+            {
+                final_out_to_user = "Nothing happens.";
+            }
+            System.out.println(final_out_to_user);
         }
 
         scanner.close();
@@ -148,13 +168,13 @@ public class Engine
     }
     //----------------------------------------------------------
 
-    private response executeCommand(Command command)
+    private Pair<response, String> executeCommand(Command command)
     {
         Command.Type type = command.getType();
         ArrayList<String> args = command.getArgs();
 
         response resp = response.good;
-
+        String out = "";
         switch (type)
         {
             case take:
@@ -168,7 +188,7 @@ public class Engine
                             toTake.isTakeable())
                     {
                         // if the player is in the same room as the item, and does not have the item he can take it
-                        System.out.println(toTake.getItem_id() + " picked up.");
+                        out = toTake.getItem_id() + " picked up.";
                         // move the item to the players inventory
                         player.giveItem(toTake);
                         toTake.setLocationFlag(Item.flag.inv);
@@ -177,7 +197,7 @@ public class Engine
                     }
                     else if(!toTake.isTakeable())
                     {
-                        System.out.println("You cannot take that.");
+                        out = "You cannot take that.";
                     } else
                     {
                         // the conditions were not satisfied, so we print that nothing can be done
@@ -194,7 +214,7 @@ public class Engine
                     if (player.hasItem(toDrop))
                     {
                         // if the player has the item
-                        System.out.println(toDrop.getItem_id() + " dropped.");
+                        out = toDrop.getItem_id() + " dropped.";
                         // remove the item from the players inventory
                         player.removeItem(toDrop);
                         // add the item to the room the player is in
@@ -263,7 +283,7 @@ public class Engine
                     }
                     else
                     {
-                        System.out.println(toExamine.getDescription());
+                        out = toExamine.getDescription();
                     }
                 }
                 else resp = response.badinput;
@@ -284,22 +304,22 @@ public class Engine
                         if (!room.wasVisited())
                         {
                             room.visit();
-                            System.out.println(room.getBrief());
+                            out = room.getBrief();
                         }
                         else
                         {
-                            System.out.println(room.getDescription());
+                            out = room.getDescription();
                         }
                     }
                     else if (cur.hasDeadEndInDir(dir))
                     {
                         // write the dead end message if there is one
-                        System.out.println(cur.getDeadEndInDir(dir));
+                        out = cur.getDeadEndInDir(dir);
                     }
                     else
                     {
                         // write the default message if nothing else works
-                        System.out.println("You cannot go there.");
+                        out = "You cannot go there.";
                     }
                 }
                 else resp = response.badinput;
@@ -322,30 +342,30 @@ public class Engine
                 resp = response.skip;
                 break;
             case history:
-                System.out.println(getHistory());
+                out = getHistory();
                 resp = response.skip;
                 break;
             case inventory:
-                System.out.println(player.listInventory());
+                out = player.listInventory();
                 resp = response.skip;
                 break;
             case look:
-                System.out.println(player.getLocation().getLookInfo());
+                out = player.getLocation().getLookInfo();
                 resp = response.skip;
                 break;
             case brief:
-                System.out.println(player.getLocation().getBrief());
+                out = player.getLocation().getBrief();
                 resp = response.skip;
                 break;
             case wait:
-                System.out.println("Time passes.");
+                out = "Time passes.";
                 break;
 
             case empty:
                 resp = response.badinput;
                 break;
             case exit:
-                System.out.println("Game terminating...");
+                out = "Game terminating...";
                 resp = response.exit;
                 break;
             case badcomm:
@@ -355,16 +375,16 @@ public class Engine
 
         // write responses if the command was bad
         if (resp == response.badinput)
-            System.out.println("I don't understand...");
-        return resp;
+            out = "I don't understand...";
+        return new Pair<>(resp,out);
     }
 
-    private Consequence.Effect checkConstraints()
+    private Pair<Consequence.Effect, String> checkConstraints()
     {
         // currently a primitive solution!
         // TODO upgrade complexity if needed
         // Go through all the steps and check if they are satisfied
-
+        String out = "";
         for (String step_id : findstep.keySet())
         {
             if (step_id == start_id)
@@ -375,12 +395,11 @@ public class Engine
             {
                 curr_step.satisfy();
                 curr_step.setTimestamp(time);
-                System.out.println(curr_step.getMessage().getMsg());
-                return curr_step.invokeConsequences(this);
+                out = curr_step.getMessage().getMsg();
+                return new Pair<>(curr_step.invokeConsequences(this), out);
             }
         }
-        System.out.println("Nothing happens.");
-        return Consequence.Effect.procede;
+        return new Pair<>(Consequence.Effect.procede, out);
     }
 
     public int getTime()
@@ -405,9 +424,9 @@ public class Engine
         {
             hist += "The previous commands have been:";
             int t = 1;
-            for (Command com : prev_commands)
+            for (Pair<Command, Integer> com : prev_commands)
             {
-                hist += "\n[" + t + "]: " + com.getOriginal();
+                hist += "\n[" + com.getValue() + "]: " + com.getKey().getOriginal();
             }
         }
         else
@@ -461,7 +480,7 @@ public class Engine
     {
         if (prev_commands.size() == 0)
             return null;
-        return prev_commands.get(prev_commands.size() - 1);
+        return prev_commands.get(prev_commands.size() - 1).getKey();
     }
 
     public void waitTime(int t)
