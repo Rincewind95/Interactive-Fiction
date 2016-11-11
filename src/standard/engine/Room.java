@@ -2,6 +2,7 @@ package standard.engine;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Milos on 06/11/2016.
@@ -37,6 +38,17 @@ public class Room
         this.items = new HashSet<>();
         visited = false;
     }
+
+    //------------------Linker-Related-Bit----------------------
+    public Set<String> getLeadsToKeySet()
+    {
+        return leads_to.keySet();
+    }
+    public Set<String> getDeadEndKeySet()
+    {
+        return dead_end.keySet();
+    }
+    //----------------------------------------------------------
 
     public static void createPath(Room r1, String dir1, Room r2, String dir2)
     {
@@ -172,11 +184,16 @@ public class Room
         return dead_end.get(dir).getMsg();
     }
 
+    public Message getDeadEndInDirMsg(String dir)
+    {
+        return dead_end.get(dir);
+    }
+
     public String getLookInfo()
     {
         String info = "";
 
-        info += description;
+        info += getDescription();
         info += "\n\n";
 
         if (!items.isEmpty())

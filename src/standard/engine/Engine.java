@@ -84,22 +84,27 @@ public class Engine
         start_location_id = room_id;
         this.welcome = welcome;
     }
+
     public void addRoom(String room_id, Room room)
     {
         findroom.put(room_id, room);
     }
+
     public void addItem(String item_id, Item item)
     {
         finditem.put(item_id, item);
     }
+
     public void addSpecial(String special_id)
     {
         findspecial.add(special_id);
     }
+
     public void addMessage(String message_id, Message msg)
     {
         findmsg.put(message_id, msg);
     }
+
     public void addStep(String step_id, StoryStep step)
     {
         findstep.put(step_id, step);
@@ -110,19 +115,26 @@ public class Engine
     {
         return findroom.keySet();
     }
+
     public Set<String> getItemKeySet()
     {
         return finditem.keySet();
     }
-    public Set<String> getMessageKeySet()
-    {
-        return findmsg.keySet();
-    }
+
     public Set<String> getStepKeySet()
     {
         return findstep.keySet();
     }
 
+    public void makePlayer(Room initial)
+    {
+        player = new Player(initial);
+    }
+
+    public String getStartLocation()
+    {
+        return start_location_id;
+    }
     //----------------------------------------------------------
 
     private response executeCommand(Command command)
@@ -234,15 +246,19 @@ public class Engine
                         // the player does not have the item and it is not in the room, so we print that nothing can be done
                         resp = response.badinput;
                     }
+                    else
+                    {
+                        System.out.println(toExamine.getDescription());
+                    }
                 }
                 else resp = response.badinput;
                 break;
             case move:
                 // first test for input validity
-                if (args.get(0) == "N" ||
-                        args.get(0) == "E" ||
-                        args.get(0) == "S" ||
-                        args.get(0) == "W")
+                if (args.get(0).equals("N") ||
+                        args.get(0).equals("E") ||
+                        args.get(0).equals("S") ||
+                        args.get(0).equals("W"))
                 {
                     String dir = args.get(0);
                     Room cur = player.getLocation();
@@ -250,7 +266,7 @@ public class Engine
                     {
                         Room room = cur.getPathInDir(dir);
                         player.moveTo(room);
-                        if (room.wasVisited())
+                        if (!room.wasVisited())
                             System.out.println(room.getBrief());
                         else
                         {
@@ -369,30 +385,37 @@ public class Engine
     {
         return findroom.get(room_id);
     }
+
     public Item findItem(String item_id)
     {
         return finditem.get(item_id);
     }
+
     public Message findMessage(String msg_id)
     {
         return findmsg.get(msg_id);
     }
+
     public StoryStep findStep(String step_id)
     {
         return findstep.get(step_id);
     }
+
     public boolean hasRoom(String room_id)
     {
         return findroom.containsKey(room_id);
     }
+
     public boolean hasItem(String item_id)
     {
         return finditem.containsKey(item_id);
     }
+
     public boolean hasMessage(String msg_id)
     {
         return findmsg.containsKey(msg_id);
     }
+
     public boolean hasStep(String step_id)
     {
         return findstep.containsKey(step_id);

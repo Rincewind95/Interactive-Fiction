@@ -5,10 +5,10 @@ package standard.engine;
  */
 public class Item
 {
-    private String item_id;     // the unique identifier of the item used to refer to it
-    private boolean takeable;   // true if the item can be taken from its respective room (if the item is not fixed in place)
-    private flag location_flag; // flag that determines the location of the item (room if its in a room, inv for inventory and prod means it will be produced later)
-    private Room location;      // the location of the item (room_id, inv of null (if the item has not yet been produced))
+    private String item_id;      // the unique identifier of the item used to refer to it
+    private boolean takeable;    // true if the item can be taken from its respective room (if the item is not fixed in place)
+    private flag location_flag;  // flag that determines the location of the item (room if its in a room, inv for inventory and prod means it will be produced later)
+    private Room location;       // the location of the item (room_id, inv of null (if the item has not yet been produced))
     private Message description; // items short description
 
     public Item(String item_id, boolean takeable, flag location_flag, Room location, Message description)
