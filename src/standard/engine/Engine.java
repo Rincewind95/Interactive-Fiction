@@ -230,10 +230,10 @@ public class Engine
                 break;
             case move:
                 // first test for input validity
-                if (args.get(0).equals("N") ||
-                        args.get(0).equals("E") ||
-                        args.get(0).equals("S") ||
-                        args.get(0).equals("W"))
+                if (args.get(0).equals("n") ||
+                    args.get(0).equals("e") ||
+                    args.get(0).equals("s") ||
+                    args.get(0).equals("w"))
                 {
                     String dir = args.get(0);
                     Room cur = player.getLocation();

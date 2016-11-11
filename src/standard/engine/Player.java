@@ -48,10 +48,10 @@ public class Player
         String inv = "";
         if(!inventory.isEmpty())
         {
-            inv += "Your inventory contains the following items:";
+            inv += "Your have the following items:";
             for (String item_id: inventory.keySet())
             {
-                inv += "\n" + item_id;
+                inv += "\n- " + item_id;
             }
         }
         else

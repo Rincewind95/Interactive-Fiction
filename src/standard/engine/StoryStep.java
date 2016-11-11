@@ -134,7 +134,7 @@ public class StoryStep implements Comparable
 
     public void setAnds(boolean ands)
     {
-        ands = ands;
+        this.ands = ands;
     }
 
     public void addChild(String child_id, StoryStep child)
@@ -157,7 +157,7 @@ public class StoryStep implements Comparable
         for (String parent_id : parent_steps.keySet())
         {
             StoryStep parent = parent_steps.get(parent_id);
-            boolean parent_sat = parent.isSatisfied() && eng.getTime() - parent.getTimestamp() >= sat_before.get(parent_id);
+            boolean parent_sat = parent.isSatisfied() && (eng.getTime() - parent.getTimestamp() >= sat_before.get(parent_id));
             if (ands)
                 res = res && parent_sat;
             else

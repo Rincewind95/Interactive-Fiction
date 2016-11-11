@@ -128,7 +128,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
 
     public String parseDirection(StoryGrammarParser.DirectionContext ctx)
     {
-        return ctx == null ? null : Utility.strip_special_chars(ctx.getText());
+        return ctx == null ? null : Utility.strip_special_chars(ctx.getText().toLowerCase());
     }
 
     //----------------------Item----related----------------------------
@@ -197,7 +197,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
     {
         String step_id = parseStep_id(ctx.step_id());
         Boolean ander = false;
-        if(ctx.gate_type().ANDING() == null)
+        if(ctx.gate_type().ANDING() != null)
         {
             ander = true;
         }
