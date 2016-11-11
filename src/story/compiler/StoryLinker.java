@@ -62,7 +62,7 @@ public class StoryLinker
             switch (curr_item.getLocationFlag())
             {
                 case room:
-                    curr_item.setLocation(linkRoom(curr_item.getLocation(), item_id, eng));
+                    curr_item.setLocation(linkRoomWithItem(curr_item.getLocation(), curr_item, eng));
                     break;
                 case inv:
                     eng.getPlayer().giveItem(curr_item);
@@ -82,8 +82,6 @@ public class StoryLinker
             {
                 curr_step.addParent(parent_step, linkStep(curr_step.getParent(parent_step), curr_step, eng));
             }
-
-
 
             // TODO check links for all the conditions and consequences
         }
@@ -136,6 +134,18 @@ public class StoryLinker
             return null;
         }
         return eng.findRoom(r.getRoom_id());
+    }
+
+    private Room linkRoomWithItem(Room r, Item i, Engine eng)
+    {
+        if(!eng.hasRoom(r.getRoom_id()))
+        {
+            recordLinkerError(r.getRoom_id(), i.getItem_id());
+            return null;
+        }
+        Room room = eng.findRoom(r.getRoom_id());
+        room.addItem(i);
+        return room;
     }
 
     private void recordLinkerError(String child, String parent)

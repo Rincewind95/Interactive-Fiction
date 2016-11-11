@@ -47,6 +47,7 @@ public class Engine
         boolean gameRunning = true;
         System.out.println(welcome.getMsg());
         System.out.println(player.getLocation().getBrief());
+        findroom.get(start_location_id).visit();
         // main input loop
         while (gameRunning)
         {
@@ -70,7 +71,13 @@ public class Engine
 
             // we advance time, check constraints and potentially generate another response
             advanceTime();
-            gameRunning = checkConstraints();
+            switch (checkConstraints())
+            {
+                case kill:
+                case win:
+                    gameRunning = false;
+                    break;
+            }
         }
 
         scanner.close();
@@ -157,17 +164,21 @@ public class Engine
                     Item toTake = finditem.get(args.get(0));
                     if (!player.hasItem(toTake) &&
                             toTake.getLocationFlag() == Item.flag.room &&
-                            toTake.getLocation() == player.getLocation())
+                            toTake.getLocation() == player.getLocation() &&
+                            toTake.isTakeable())
                     {
                         // if the player is in the same room as the item, and does not have the item he can take it
                         System.out.println(toTake.getItem_id() + " picked up.");
                         // move the item to the players inventory
                         player.giveItem(toTake);
-                        toTake.setLocation(Item.flag.inv);
+                        toTake.setLocationFlag(Item.flag.inv);
                         // remove the item from its room
                         toTake.getLocation().removeItem(toTake);
                     }
-                    else
+                    else if(!toTake.isTakeable())
+                    {
+                        System.out.println("You cannot take that.");
+                    } else
                     {
                         // the conditions were not satisfied, so we print that nothing can be done
                         resp = response.badinput;
@@ -187,7 +198,7 @@ public class Engine
                         // remove the item from the players inventory
                         player.removeItem(toDrop);
                         // add the item to the room the player is in
-                        toDrop.setLocation(Item.flag.room);
+                        toDrop.setLocationFlag(Item.flag.room);
                         toDrop.setLocation(player.getLocation());
                         player.getLocation().addItem(toDrop);
                     }
@@ -217,8 +228,8 @@ public class Engine
                 if (finditem.containsKey(args.get(0)) && finditem.containsKey(args.get(1)))
                 {
                     Item useItem = finditem.get(args.get(0));
-                    Item onItem = finditem.get(args.get(0));
-                    if (!player.hasItem(useItem) || !player.getLocation().containsItem(onItem))
+                    Item onItem = finditem.get(args.get(1));
+                    if (!(player.hasItem(useItem) && player.getLocation().containsItem(onItem)))
                     {
                         // conditions were not met so fail
                         resp = response.badinput;
@@ -271,10 +282,12 @@ public class Engine
                         Room room = cur.getPathInDir(dir);
                         player.moveTo(room);
                         if (!room.wasVisited())
-                            System.out.println(room.getBrief());
-                        else
                         {
                             room.visit();
+                            System.out.println(room.getBrief());
+                        }
+                        else
+                        {
                             System.out.println(room.getDescription());
                         }
                     }
@@ -346,9 +359,28 @@ public class Engine
         return resp;
     }
 
-    private boolean checkConstraints()
+    private Consequence.Effect checkConstraints()
     {
-        return true;
+        // currently a primitive solution!
+        // TODO upgrade complexity if needed
+        // Go through all the steps and check if they are satisfied
+
+        for (String step_id : findstep.keySet())
+        {
+            if (step_id == start_id)
+                continue;
+            StoryStep curr_step = findStep(step_id);
+
+            if (curr_step.canBeSatisfied(this))
+            {
+                curr_step.satisfy();
+                curr_step.setTimestamp(time);
+                System.out.println(curr_step.getMessage().getMsg());
+                return curr_step.invokeConsequences(this);
+            }
+        }
+        System.out.println("Nothing happens.");
+        return Consequence.Effect.procede;
     }
 
     public int getTime()

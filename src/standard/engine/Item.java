@@ -3,7 +3,7 @@ package standard.engine;
 /**
  * Created by Milos on 06/11/2016.
  */
-public class Item
+public class Item implements Comparable
 {
     private String item_id;      // the unique identifier of the item used to refer to it
     private boolean takeable;    // true if the item can be taken from its respective room (if the item is not fixed in place)
@@ -18,6 +18,16 @@ public class Item
         this.location_flag = location_flag;
         this.location = location;
         this.description = description;
+    }
+
+    @Override
+    public int compareTo(Object o)
+    {
+        if (o instanceof Item)
+        {
+            return ((Item) o).item_id.compareTo(item_id);
+        }
+        return -1;
     }
 
     public String getItem_id()
@@ -40,7 +50,7 @@ public class Item
         this.description = description;
     }
 
-    public void setLocation(flag loc)
+    public void setLocationFlag(flag loc)
     {
         location_flag = loc;
     }
@@ -57,7 +67,6 @@ public class Item
 
     public void setLocation(Room r)
     {
-        location_flag = flag.prod;
         location = r;
     }
 

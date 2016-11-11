@@ -1,6 +1,7 @@
 package story.compiler;
 
 import com.sun.deploy.security.ruleset.RuleId;
+import org.antlr.v4.runtime.misc.IntegerList;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.tool.Rule;
 import standard.engine.*;
@@ -219,6 +220,9 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
             String step_id = parseStep_id(st.step_id());
 
             step.addParent(step_id, new StoryStep(step_id));
+            String time = Utility.strip_special_chars(st.TIME().getText());
+            Integer i =  Integer.parseInt(time);
+            step.addSatBefore(step_id, i);
         }
     }
 

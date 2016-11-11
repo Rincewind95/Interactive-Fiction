@@ -17,7 +17,7 @@ public class Room
 
     private Message brief;       // message printed upon first entry to the room
     private Message description; // short description printed upon consequent entries
-    private HashSet<Item> items; // list of all items currently contained in the room
+    private HashMap<String, Item> items; // list of all items currently contained in the room
     public Room(String room_id)
     {
         // placeholder constructor
@@ -35,7 +35,7 @@ public class Room
         this.dead_end = new HashMap<>();
         this.brief = brief;
         this.description = description;
-        this.items = new HashSet<>();
+        this.items = new HashMap<>();
         visited = false;
     }
 
@@ -116,17 +116,18 @@ public class Room
 
     public boolean containsItem(Item i)
     {
-        return items.contains(i);
+        return items.containsKey(i.getItem_id());
     }
 
     public void addItem(Item i)
     {
-        items.add(i);
+        items.put(i.getItem_id(), i);
     }
 
     public void removeItem(Item i)
     {
-        items.remove(i);
+        if(items.containsKey(i.getItem_id()))
+            items.remove(i.getItem_id(), i);
     }
 
     public void addBrief(Message brief)
@@ -199,9 +200,9 @@ public class Room
         if (!items.isEmpty())
         {
             info += "This room contains the following items:";
-            for (Item item : items)
+            for (String item_id : items.keySet())
             {
-                info += "\n" + item.getItem_id();
+                info += "\n" + item_id;
             }
         }
         else

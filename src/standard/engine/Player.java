@@ -1,5 +1,6 @@
 package standard.engine;
 
+import java.util.HashMap;
 import java.util.TreeSet;
 
 /**
@@ -8,27 +9,28 @@ import java.util.TreeSet;
 public class Player
 {
     Room location;
-    TreeSet<Item> inventory;
+    HashMap<String, Item> inventory;
 
     public Player(Room loc)
     {
         location = loc;
-        inventory = new TreeSet<>();
+        inventory = new HashMap<>();
     }
 
     public boolean hasItem(Item i)
     {
-        return inventory.contains(i);
+        return inventory.containsKey(i.getItem_id());
     }
 
     public void giveItem(Item i)
     {
-        inventory.add(i);
+        inventory.put(i.getItem_id(), i);
     }
 
     public void removeItem(Item i)
     {
-        inventory.remove(i);
+        if(inventory.containsKey(i.getItem_id()))
+            inventory.remove(i.getItem_id(), i);
     }
 
     public void moveTo(Room r)
@@ -47,9 +49,9 @@ public class Player
         if(!inventory.isEmpty())
         {
             inv += "Your inventory contains the following items:";
-            for (Item item: inventory)
+            for (String item_id: inventory.keySet())
             {
-                inv += "\n" + item.getItem_id();
+                inv += "\n" + item_id;
             }
         }
         else

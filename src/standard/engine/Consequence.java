@@ -66,12 +66,12 @@ public class Consequence implements Comparable
                 {
                     room = item.getLocation();
                     room.removeItem(item);
-                    item.setLocation(Item.flag.inv);
+                    item.setLocationFlag(Item.flag.inv);
                     player.giveItem(item);
                 }
                 else if(item.getLocationFlag() == Item.flag.prod)
                 {
-                    item.setLocation(Item.flag.inv);
+                    item.setLocationFlag(Item.flag.inv);
                     player.giveItem(item);
                 }
                 break;
@@ -81,7 +81,7 @@ public class Consequence implements Comparable
                 {
                     room = player.getLocation();
                     item.setLocation(room);
-                    item.setLocation(Item.flag.room);
+                    item.setLocationFlag(Item.flag.room);
                     player.removeItem(item);
                 }
                 break;
@@ -104,12 +104,12 @@ public class Consequence implements Comparable
                 }
                 else if(item.getLocationFlag() == Item.flag.prod)
                 {
-                    item.setLocation(Item.flag.room);
+                    item.setLocationFlag(Item.flag.room);
                     item.setLocation(roomto);
                 }
                 else if(item.getLocationFlag() == Item.flag.inv)
                 {
-                    item.setLocation(Item.flag.room);
+                    item.setLocationFlag(Item.flag.room);
                     item.setLocation(roomto);
                     player.removeItem(item);
                     roomto.addItem(item);
@@ -121,7 +121,7 @@ public class Consequence implements Comparable
                 if(item.getLocationFlag() == Item.flag.room)
                 {
                     room.removeItem(item);
-                    item.setLocation(Item.flag.prod);
+                    item.setLocationFlag(Item.flag.prod);
                 }
                 break;
             case addcon:
