@@ -137,6 +137,7 @@ public class StoryLinker
         }
     }
 
+
     private void linkCondition(Condition cond, String parent_id, Engine eng)
     {
         Condition.CondType type = cond.getType();
