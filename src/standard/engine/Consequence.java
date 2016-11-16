@@ -145,6 +145,16 @@ public class Consequence implements Comparable
         return effect;
     }
 
+    public ArrayList<String> getArgs()
+    {
+        return args;
+    }
+
+    public ConsType getType()
+    {
+        return type;
+    }
+
     public void printCons()
     {
         System.out.print(type);

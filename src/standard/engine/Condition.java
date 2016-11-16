@@ -120,6 +120,16 @@ public class Condition implements Comparable
         return resp;
     }
 
+    public ArrayList<String> getArgs()
+    {
+        return args;
+    }
+
+    public CondType getType()
+    {
+        return type;
+    }
+
     public void printCond()
     {
         System.out.print(type);

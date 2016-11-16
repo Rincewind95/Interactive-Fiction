@@ -66,7 +66,7 @@ public class Command
                     {
                         if (tokens[i].equals("on"))
                         {
-                            // take this as sign o useon
+                            // take this as sign of useon
                             type = Type.useon;
                             if (tokens.length > i + 1)
                             {

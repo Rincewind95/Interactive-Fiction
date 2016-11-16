@@ -486,6 +486,11 @@ public class Engine
         return findstep.containsKey(step_id);
     }
 
+    public boolean hasSpecial(String special_id)
+    {
+        return findspecial.contains(special_id);
+    }
+
     public Command getPrevCommand()
     {
         if (prev_commands.size() == 0)

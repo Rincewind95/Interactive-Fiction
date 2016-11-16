@@ -1,5 +1,7 @@
 package standard.engine;
 
+import sun.reflect.generics.tree.Tree;
+
 import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeSet;
@@ -16,7 +18,7 @@ public class StoryStep implements Comparable
     Message message;                           // the message printed when the step is activated
     HashMap<String, StoryStep> child_steps;    // a list of steps which are direct descendants of the current step
     HashMap<String, StoryStep> parent_steps;   // a list of steps which are direct predecessors of the current step
-    HashMap<String, Integer> sat_before;       // a map of times before at least before which the parents need to be satisfied
+    HashMap<String, Integer> sat_before;       // a map of times at least before the parents need to be satisfied
     boolean ands;                              // true if the node requires all the parent_steps to be true, false if it requires at least one
     boolean satisfied;                         // true if the step is always satisfied
     int timestamp;                             // time of satisfaction
@@ -170,6 +172,16 @@ public class StoryStep implements Comparable
     {
         if (!conditions.contains(cond))
             conditions.add(cond);
+    }
+
+    public TreeSet<Condition> getConditions()
+    {
+        return conditions;
+    }
+
+    public TreeSet<Consequence> getConsequences()
+    {
+        return consequences;
     }
 
     public boolean hasConditionsSatisfied(Engine eng)

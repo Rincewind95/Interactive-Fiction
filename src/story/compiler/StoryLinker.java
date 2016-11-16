@@ -3,6 +3,7 @@ package story.compiler;
 import com.sun.org.apache.xerces.internal.impl.xpath.XPath;
 import standard.engine.*;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -83,6 +84,16 @@ public class StoryLinker
                 curr_step.addParent(parent_step, linkStep(curr_step.getParent(parent_step), curr_step, eng));
             }
 
+            for(Condition cond : curr_step.getConditions())
+            {
+                linkCondition(cond, step_id, eng);
+            }
+
+            for(Consequence cons : curr_step.getConsequences())
+            {
+                linkConsequence(cons, step_id, eng);
+            }
+
             // TODO check links for all the conditions and consequences
             // TODO check story consistency
         }
@@ -95,6 +106,98 @@ public class StoryLinker
         error_cnt = 0;
         error_report = "";
         return null;
+    }
+
+    private void linkConsequence(Consequence cons, String parent_id, Engine eng)
+    {
+        Consequence.ConsType type = cons.getType();
+        String constype = type.toString();
+        ArrayList<String> args = cons.getArgs();
+        switch (type)
+        {
+            case jmp:
+                linkStoryRoom(args.get(0), constype, parent_id, eng);
+                break;
+            case additinv:
+            case rmitinv:
+                linkStoryItem(args.get(0), constype, parent_id, eng);
+                break;
+            case additr:
+            case rmitfr:
+                linkStoryItem(args.get(0), constype, parent_id, eng);
+                linkStoryRoom(args.get(1), constype, parent_id, eng);
+                break;
+            case addcon:
+            case rmcon:
+                linkStoryItem(args.get(0), constype, parent_id, eng);
+                linkStoryRoom(args.get(1), constype, parent_id, eng);
+                linkStoryItem(args.get(2), constype, parent_id, eng);
+                linkStoryRoom(args.get(3), constype, parent_id, eng);
+                break;
+        }
+    }
+
+    private void linkCondition(Condition cond, String parent_id, Engine eng)
+    {
+        Condition.CondType type = cond.getType();
+        String condtype = type.toString();
+        ArrayList<String> args = cond.getArgs();
+        switch (type)
+        {
+            case plir:
+            case plnir:
+                linkStoryRoom(args.get(0), condtype, parent_id, eng);
+                break;
+            case itinv:
+            case itninv:
+            case examine:
+            case use:
+                linkStoryItem(args.get(0), condtype, parent_id, eng);
+                break;
+            case special:
+                linkStorySpecial(args.get(0), condtype, parent_id, eng);
+                break;
+            case itir:
+            case itnir:
+                linkStoryItem(args.get(0), condtype, parent_id, eng);
+                linkStoryRoom(args.get(1), condtype, parent_id, eng);
+                break;
+            case combine:
+            case useon:
+                linkStoryItem(args.get(0), condtype, parent_id, eng);
+                linkStoryItem(args.get(1), condtype, parent_id, eng);
+                break;
+        }
+    }
+
+    private void linkStoryItem(String item_id, String type, String parent_id, Engine eng)
+    {
+        if(!eng.hasItem(item_id))
+        {
+            recordStoryStepLinkerError(item_id, type, parent_id);
+        }
+    }
+
+    private void linkStoryRoom(String room_id, String type, String parent_id, Engine eng)
+    {
+        if(!eng.hasRoom(room_id))
+        {
+            recordStoryStepLinkerError(room_id, type, parent_id);
+        }
+    }
+
+    private void linkStorySpecial(String special_id, String type, String parent_id, Engine eng)
+    {
+        if(!eng.hasSpecial(special_id))
+        {
+            recordStoryStepLinkerError(special_id, type, parent_id);
+        }
+    }
+
+    private void recordStoryStepLinkerError(String child, String type, String parent)
+    {
+        error_report += "Dangling reference [" + child + "] for function " + type + " in story step [" + parent + "]\n";
+        error_cnt++;
     }
 
     private StoryStep linkStep(StoryStep parent, StoryStep child, Engine eng)
