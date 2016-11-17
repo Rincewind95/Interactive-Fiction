@@ -1,6 +1,7 @@
 package story.compiler;
 
-import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import standard.engine.Engine;
 import story.parser.StoryGrammarLexer;

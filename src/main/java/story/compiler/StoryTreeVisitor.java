@@ -1,9 +1,5 @@
 package story.compiler;
 
-import com.sun.deploy.security.ruleset.RuleId;
-import org.antlr.v4.runtime.misc.IntegerList;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.tool.Rule;
 import standard.engine.*;
 import story.parser.StoryGrammarBaseVisitor;
 import story.parser.StoryGrammarParser;
