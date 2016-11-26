@@ -1,5 +1,6 @@
 package standard.engine;
 
+import input.parser.NLPparser;
 import javafx.util.Pair;
 
 import java.util.*;
@@ -19,8 +20,9 @@ public class Engine
     private HashMap<String, Message> findmsg;               // used during engine creation to link the messages
     private HashMap<String, StoryStep> findstep;            // a map of all possible steps in the game
     private int time;                                       // the current time step of the game
-    private ArrayList<Pair<Command,Integer>> prev_commands; // a list of all previous player commands
+    private ArrayList<Pair<Command, Integer>> prev_commands; // a list of all previous player commands
     private ArrayList<StoryStep> prev_steps;                // a list of all previously satisfied steps
+    private NLPparser parser;                               // the NLP parser which will parse user input
 
     public Engine()
     {
@@ -56,11 +58,11 @@ public class Engine
             System.out.print("[" + time + "] ");
             String userInput = scanner.nextLine();
 
-            // temporary input parsing (there will be an intermediate parser step here later)
-            Command command = new Command(userInput);
+            // input parsing
+            Command command = parser.parseInput(userInput);
 
             // modify the engines internal state with the command and determine the outcome
-            Pair<response,String> out = executeCommand(command);
+            Pair<response, String> out = executeCommand(command);
             response resp = out.getKey();
             String out_to_user = out.getValue();
 
@@ -94,11 +96,11 @@ public class Engine
             }
 
             String final_out_to_user = out_to_user;
-            if(!final_out.getValue().equals(""))
+            if (!final_out.getValue().equals(""))
             {
                 final_out_to_user = final_out.getValue();
             }
-            else if(final_out_to_user.equals(""))
+            else if (final_out_to_user.equals(""))
             {
                 final_out_to_user = "Nothing happens.";
             }
@@ -135,10 +137,11 @@ public class Engine
                         // remove the item from its room
                         toTake.getLocation().removeItem(toTake);
                     }
-                    else if(!toTake.isTakeable())
+                    else if (!toTake.isTakeable())
                     {
                         out = "You cannot take that.";
-                    } else
+                    }
+                    else
                     {
                         // the conditions were not satisfied, so we print that nothing can be done
                         resp = response.badinput;
@@ -231,9 +234,9 @@ public class Engine
             case move:
                 // first test for input validity
                 if (args.get(0).equals("n") ||
-                    args.get(0).equals("e") ||
-                    args.get(0).equals("s") ||
-                    args.get(0).equals("w"))
+                        args.get(0).equals("e") ||
+                        args.get(0).equals("s") ||
+                        args.get(0).equals("w"))
                 {
                     String dir = args.get(0);
                     Room cur = player.getLocation();
@@ -316,7 +319,7 @@ public class Engine
         // write responses if the command was bad
         if (resp == response.badinput)
             out = "I don't understand...";
-        return new Pair<>(resp,out);
+        return new Pair<>(resp, out);
     }
 
     private Pair<Consequence.Effect, String> checkConstraints()
@@ -375,6 +378,10 @@ public class Engine
         findstep.put(step_id, step);
     }
 
+    public void createParser()
+    {
+        parser = new NLPparser(this);
+    }
     //------------------Linker-Related-Bit----------------------
     public Set<String> getRoomKeySet()
     {

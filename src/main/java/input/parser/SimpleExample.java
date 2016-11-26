@@ -10,7 +10,6 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation;
-import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TreeCoreAnnotations.TreeAnnotation;
 import edu.stanford.nlp.util.CoreMap;
@@ -45,6 +44,9 @@ public class SimpleExample
         // run all Annotators on this text
         pipeline.annotate(document);
 
+        //TokensRegexAnnotator tokenRegex = new TokensRegexAnnotator("C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Testing\\sample_mapping.txt");
+        //tokenRegex.annotate(document);
+
         // these are all the sentences in this document
         // a CoreMap is essentially a Map that uses class objects as keys and has values with custom types
         List<CoreMap> sentences = document.get(SentencesAnnotation.class);
@@ -72,6 +74,8 @@ public class SimpleExample
             // this is the Stanford dependency graph of the current sentence
             SemanticGraph dependencies = sentence.get(CollapsedCCProcessedDependenciesAnnotation.class);
             System.out.println("dependency graph:\n" + dependencies);
+
+
         }
 
         // This is the coreference link graph

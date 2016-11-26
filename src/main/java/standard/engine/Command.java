@@ -11,6 +11,19 @@ public class Command
     private ArrayList<String> args;
     private String original;
 
+    public Command(Type type, String arg1)
+    {
+        this.type = type;
+        args = new ArrayList<>();
+        args.add(arg1);
+    }
+
+    public Command(Type type, String arg1, String arg2)
+    {
+        this(type, arg1);
+        args.add(arg2);
+    }
+
     public Command(String input)
     {
         // extract the separate words (ignoring all whitespace and lowercasing the input beforehand)

@@ -41,6 +41,8 @@ public class StoryCompiler
 
             StoryLinker linker = new StoryLinker();
             eng = linker.linkEngine(eng);
+            if(eng != null)
+                eng.createParser();
         }
         catch (IOException error)
         {
