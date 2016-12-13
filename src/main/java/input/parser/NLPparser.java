@@ -1,6 +1,7 @@
 package input.parser;
 
 import com.google.common.io.Files;
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.tweet.AT;
 import edu.stanford.nlp.dcoref.CorefChain;
 import edu.stanford.nlp.dcoref.CorefCoreAnnotations;
 import edu.stanford.nlp.ling.CoreAnnotations;
@@ -26,7 +27,15 @@ import java.util.*;
 public class NLPparser
 {
     private ArrayList<String> item_compounds;
-    private HashMap<String, HashSet<String>> connectors; // a map of all possible connectors a command takes
+    private Engine eng;
+    private ArrayList<String> twoArgumentWords;                          // the words which take two arguments
+    private HashMap<String, ArrayList<argType>> twoArguments;            // a map of their respective argument types
+    private HashMap<String, HashSet<String>> twoArgumentWordsConnectors; // a map of all possible connector words between the arguments
+    private ArrayList<String> oneArgumentWords;                          // the words which take one argument
+    private HashMap<String, argType> oneArguments;                       // a map of their respective argument types
+    private ArrayList<String> zeroArgumentWords;                         // the map of all the words with no arguments
+
+    private enum argType {item, dir, saveloc} // the possible argument types
 
     private Properties props;
     private StanfordCoreNLP pipeline;
@@ -34,9 +43,25 @@ public class NLPparser
     public NLPparser(Engine eng)
     {
         //item_compounds = new ArrayList<>(eng.getItemKeySet());
-        connectors = new HashMap<>();
-        connectors.put("use", new HashSet<>(Arrays.asList("on", "with")));
-        connectors.put("combine", new HashSet<>(Arrays.asList("and", "with")));
+        this.eng = eng;
+        twoArgumentWords = new ArrayList<>(Arrays.asList("use", "combine"));
+        oneArgumentWords = new ArrayList<>(Arrays.asList("take", "drop", "use", "examine", "move"));
+        zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit"));
+
+        twoArgumentWordsConnectors = new HashMap<>();
+        twoArgumentWordsConnectors.put("use", new HashSet<>(Arrays.asList("on", "with")));
+        twoArgumentWordsConnectors.put("combine", new HashSet<>(Arrays.asList("and", "with")));
+
+        twoArguments = new HashMap<>();
+        twoArguments.put("use", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
+        twoArguments.put("with", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
+
+        oneArguments = new HashMap<>();
+        oneArguments.put("take"   , argType.item);
+        oneArguments.put("drop"   , argType.item);
+        oneArguments.put("use"    , argType.item);
+        oneArguments.put("examine", argType.item);
+        oneArguments.put("move"   , argType.dir);
 
         // creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and coreference resolution
         props = new Properties();
@@ -77,11 +102,6 @@ public class NLPparser
 
             System.out.println("word: " + word + " pos: " + pos + " ne:" + ne + " lem:" + lem);
         }*/
-        /*
-        // this is the parse tree of the current sentence
-        Tree tree = sentence.get(TreeAnnotation.class);
-        System.out.println("parse tree:\n" + tree);
-        */
         // this is the Stanford dependency graph of the current sentence
         SemanticGraph dependencies = sentence.get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
         System.out.println(sentence + "\n" + dependencies);
@@ -89,9 +109,24 @@ public class NLPparser
         // process the sentence and retrieve the command
         // first search for longer commands (useon and combine)
 
-        
+        System.out.println(findIndexedWord(dependencies, "use"));
 
         // TODO do the parsing here
         return res;
+    }
+
+    // finds the indexedWord with the appropriate lemmatization
+    private IndexedWord findIndexedWord(SemanticGraph graph, String word)
+    {
+        IndexedWord res = null;
+        for(int i = 1; i <= graph.size(); i++)
+        {
+            res = graph.getNodeByIndex(i);
+            if(res.get(CoreAnnotations.LemmaAnnotation.class).equals(word))
+            {
+                return res;
+            }
+        }
+        return null;
     }
 }
