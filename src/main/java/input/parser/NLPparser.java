@@ -16,6 +16,7 @@ import edu.stanford.nlp.trees.TreeCoreAnnotations;
 import edu.stanford.nlp.util.CoreMap;
 import standard.engine.Command;
 import standard.engine.Engine;
+import standard.engine.Utility;
 
 import java.io.File;
 import java.nio.charset.Charset;
@@ -30,7 +31,6 @@ public class NLPparser
     private Engine eng;
     private ArrayList<String> twoArgumentWords;                          // the words which take two arguments
     private HashMap<String, ArrayList<argType>> twoArguments;            // a map of their respective argument types
-    private HashMap<String, HashSet<String>> twoArgumentWordsConnectors; // a map of all possible connector words between the arguments
     private ArrayList<String> oneArgumentWords;                          // the words which take one argument
     private HashMap<String, argType> oneArguments;                       // a map of their respective argument types
     private ArrayList<String> zeroArgumentWords;                         // the map of all the words with no arguments
@@ -49,15 +49,10 @@ public class NLPparser
         // sort the item compounds so that we first consider the longest entries
         item_compounds.sort((String s1, String s2) -> s1.length() == s2.length() ? s1.compareTo(s2): s2.length() - s1.length());
 
-        System.out.println(item_compounds);
         this.eng = eng;
         twoArgumentWords = new ArrayList<>(Arrays.asList("use", "combine"));
         oneArgumentWords = new ArrayList<>(Arrays.asList("take", "drop", "use", "examine", "move"));
         zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit"));
-
-        twoArgumentWordsConnectors = new HashMap<>();
-        twoArgumentWordsConnectors.put("use", new HashSet<>(Arrays.asList("on", "with")));
-        twoArgumentWordsConnectors.put("combine", new HashSet<>(Arrays.asList("and", "with")));
 
         twoArguments = new HashMap<>();
         twoArguments.put("use", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
@@ -93,6 +88,9 @@ public class NLPparser
             // if there was no input return a bad command
             return new Command(Command.Type.badcomm);
         }
+
+        // remove all the extra spaces
+        input = Utility.removeWhiteSpace(input);
 
         // find all the occurrences of items in the sentence and map them to "item1", "item2" etc.
         HashMap<String, String> itemMapping = new HashMap<>();
@@ -144,7 +142,27 @@ public class NLPparser
         for(String word : twoArgumentWords)
         {
             IndexedWord verb = findIndexedWord(dependencies, word);
-            System.out.println(verb == null ? "null" :dependencies.getParentList(verb));
+            if(verb == null)
+                continue;
+            HashSet<IndexedWord> parents = null;
+            HashSet<IndexedWord> children = null;
+            HashSet<IndexedWord> siblings = null;
+            if(dependencies.getParent(verb) != null)
+            {
+                parents = new HashSet<>();
+                parents.add(dependencies.getParent(verb));
+                parents.addAll(dependencies.getSiblings(dependencies.getParent(verb)));
+            }
+            siblings = new HashSet<>();
+            siblings.addAll(dependencies.getSiblings(verb));
+            children = new HashSet<>();
+            children.addAll(dependencies.getChildren(verb));
+
+
+
+            System.out.println(parents);
+            System.out.println(siblings);
+            System.out.println(children);
         }
 
         for(String word : oneArgumentWords)
