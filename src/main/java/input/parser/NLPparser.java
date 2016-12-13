@@ -13,6 +13,7 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
+import edu.stanford.nlp.trees.GrammaticalRelation;
 import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.trees.TreeCoreAnnotations;
 import edu.stanford.nlp.util.CoreMap;
@@ -22,6 +23,8 @@ import standard.engine.Utility;
 import sun.security.util.AuthResources_zh_CN;
 
 import java.io.File;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.nio.charset.Charset;
 import java.util.*;
 
@@ -78,9 +81,20 @@ public class NLPparser
         dirMapping.put("w", "w");
 
         // creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and coreference resolution
+
+        // make output of the error stream silent for a moment
+        PrintStream err = System.err;
+        System.setErr(new PrintStream(new OutputStream() {
+            public void write(int b) {
+            }
+        }));
+
         props = new Properties();
         props.put("annotators", "tokenize, ssplit, pos, lemma, ner, parse, dcoref");
         pipeline = new StanfordCoreNLP(props);
+
+        // set the error stream back to its original state
+        System.setErr(err);
     }
 
     public Command parseInput(String input)
@@ -111,6 +125,13 @@ public class NLPparser
             }
         }
 
+        if(input.contains("n't") || input.contains("not"))
+        {
+            // negation is applied somewhere within the command
+            // reject all such inputs
+            return new Command(Command.Type.badcomm);
+        }
+
         // create an empty Annotation just with the given text
         Annotation line = new Annotation(input);
 
@@ -124,7 +145,7 @@ public class NLPparser
 
         // this is the Stanford dependency graph of the current sentence
         SemanticGraph dependencies = sentence.get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
-        System.out.println(sentence + "\n" + dependencies);
+        //System.out.println(sentence + "\n" + dependencies);
 
         // process the sentence and retrieve the command
 
@@ -172,14 +193,14 @@ public class NLPparser
             if(curr_arg == 1 && word.equals("use"))
             {
                 // this means we in fact have use and not useon
-                System.out.println(word + " " + args);
+                //System.out.println(word + " " + args);
                 return new Command(Command.Type.valueOf(word), args);
             }
 
             // otherwise we have useon
             if(word.equals("use"))
                 word = "useon";
-            System.out.println(word + " " + args);
+            // System.out.println(word + " " + args);
             return new Command(Command.Type.valueOf(word), args);
         }
 
@@ -224,7 +245,9 @@ public class NLPparser
                         break;
                 }
             }
-            System.out.println(word + " " + args);
+            if(curr_arg == 0)
+                return new Command(Command.Type.badcomm);
+            // System.out.println(word + " " + args);
             return new Command(Command.Type.valueOf(word), args);
 
         }
@@ -235,7 +258,7 @@ public class NLPparser
             IndexedWord verb = findIndexedWord(dependencies, word);
             if(verb == null)
                 continue;
-            System.out.println(word);
+            // System.out.println(word);
             return new Command(Command.Type.valueOf(word));
         }
 
