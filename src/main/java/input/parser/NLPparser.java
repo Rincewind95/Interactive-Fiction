@@ -45,6 +45,11 @@ public class NLPparser
     public NLPparser(Engine eng)
     {
         //item_compounds = new ArrayList<>(eng.getItemKeySet());
+        item_compounds = new ArrayList<>(Arrays.asList("laser", "beam", "laser beam"));
+        // sort the item compounds so that we first consider the longest entries
+        item_compounds.sort((String s1, String s2) -> s1.length() == s2.length() ? s1.compareTo(s2): s2.length() - s1.length());
+
+        System.out.println(item_compounds);
         this.eng = eng;
         twoArgumentWords = new ArrayList<>(Arrays.asList("use", "combine"));
         oneArgumentWords = new ArrayList<>(Arrays.asList("take", "drop", "use", "examine", "move"));
@@ -88,6 +93,20 @@ public class NLPparser
             // if there was no input return a bad command
             return new Command(Command.Type.badcomm);
         }
+
+        // find all the occurrences of items in the sentence and map them to "item1", "item2" etc.
+        HashMap<String, String> itemMapping = new HashMap<>();
+        int curr_mapping = 1;
+        for(String item : item_compounds)
+        {
+            if(input.contains(item))
+            {
+                itemMapping.put("item" + curr_mapping, item);
+                input = input.replace(item, "item" + curr_mapping);
+                curr_mapping++;
+            }
+        }
+
         // create an empty Annotation just with the given text
         Annotation line = new Annotation(input);
 
@@ -124,7 +143,8 @@ public class NLPparser
         // first search for longer commands which take two arguments (useon and combine)
         for(String word : twoArgumentWords)
         {
-
+            IndexedWord verb = findIndexedWord(dependencies, word);
+            System.out.println(verb == null ? "null" :dependencies.getParentList(verb));
         }
 
         for(String word : oneArgumentWords)
