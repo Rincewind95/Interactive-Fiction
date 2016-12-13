@@ -11,10 +11,15 @@ public class Command
     private ArrayList<String> args;
     private String original;
 
-    public Command(Type type, String arg1)
+    public Command(Type type)
     {
         this.type = type;
         args = new ArrayList<>();
+    }
+
+    public Command(Type type, String arg1)
+    {
+        this(type);
         args.add(arg1);
     }
 
