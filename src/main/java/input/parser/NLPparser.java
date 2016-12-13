@@ -1,6 +1,8 @@
 package input.parser;
 
 import com.google.common.io.Files;
+import com.sun.org.apache.xml.internal.serializer.utils.SerializerMessages_zh_CN;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.tweet.AT;
 import edu.stanford.nlp.dcoref.CorefChain;
 import edu.stanford.nlp.dcoref.CorefCoreAnnotations;
@@ -17,6 +19,7 @@ import edu.stanford.nlp.util.CoreMap;
 import standard.engine.Command;
 import standard.engine.Engine;
 import standard.engine.Utility;
+import sun.security.util.AuthResources_zh_CN;
 
 import java.io.File;
 import java.nio.charset.Charset;
@@ -44,14 +47,14 @@ public class NLPparser
 
     public NLPparser(Engine eng)
     {
-        //item_compounds = new ArrayList<>(eng.getItemKeySet());
-        item_compounds = new ArrayList<>(Arrays.asList("laser", "beam", "laser beam"));
+        item_compounds = new ArrayList<>(eng.getItemKeySet());
+        // item_compounds = new ArrayList<>(Arrays.asList("laser", "beam", "laser beam"));
         // sort the item compounds so that we first consider the longest entries
         item_compounds.sort((String s1, String s2) -> s1.length() == s2.length() ? s1.compareTo(s2): s2.length() - s1.length());
 
         this.eng = eng;
         twoArgumentWords = new ArrayList<>(Arrays.asList("use", "combine"));
-        oneArgumentWords = new ArrayList<>(Arrays.asList("take", "drop", "use", "examine", "move"));
+        oneArgumentWords = new ArrayList<>(Arrays.asList("take", "drop", "examine", "move"));
         zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit"));
 
         twoArguments = new HashMap<>();
@@ -61,7 +64,6 @@ public class NLPparser
         oneArguments = new HashMap<>();
         oneArguments.put("take"   , argType.item);
         oneArguments.put("drop"   , argType.item);
-        oneArguments.put("use"    , argType.item);
         oneArguments.put("examine", argType.item);
         oneArguments.put("move"   , argType.dir);
 
@@ -92,6 +94,10 @@ public class NLPparser
         // remove all the extra spaces
         input = Utility.removeWhiteSpace(input);
 
+        // now test for special commands before any NLP is done
+        if(eng.hasSpecial(input))
+            return new Command(Command.Type.special, new ArrayList<>(Arrays.asList(input)));
+
         // find all the occurrences of items in the sentence and map them to "item1", "item2" etc.
         HashMap<String, String> itemMapping = new HashMap<>();
         int curr_mapping = 1;
@@ -115,22 +121,7 @@ public class NLPparser
         List<CoreMap> sentences = line.get(CoreAnnotations.SentencesAnnotation.class);
         CoreMap sentence = sentences.get(0);
         Command res = null;
-        /*
-        // traversing the words in the current sentence
-        // a CoreLabel is a CoreMap with additional token-specific methods
-        for (CoreLabel token : sentence.get(TokensAnnotation.class))
-        {
-            // this is the text of the token
-            String word = token.get(TextAnnotation.class);
-            // this is the POS tag of the token
-            String pos = token.get(PartOfSpeechAnnotation.class);
-            // this is the NER label of the token
-            String ne = token.get(NamedEntityTagAnnotation.class);
-            // this is the lemmatization of the token
-            String lem = token.get(LemmaAnnotation.class);
 
-            System.out.println("word: " + word + " pos: " + pos + " ne:" + ne + " lem:" + lem);
-        }*/
         // this is the Stanford dependency graph of the current sentence
         SemanticGraph dependencies = sentence.get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
         System.out.println(sentence + "\n" + dependencies);
@@ -144,38 +135,137 @@ public class NLPparser
             IndexedWord verb = findIndexedWord(dependencies, word);
             if(verb == null)
                 continue;
-            HashSet<IndexedWord> parents = null;
-            HashSet<IndexedWord> children = null;
-            HashSet<IndexedWord> siblings = null;
-            if(dependencies.getParent(verb) != null)
+            TreeSet<IndexedWord> parents = getParents(dependencies, verb);
+            TreeSet<IndexedWord> siblings = getSiblings(dependencies, verb);
+            TreeSet<IndexedWord> children = getChildren(dependencies, verb);
+
+            TreeSet<IndexedWord> all = new TreeSet<>();
+            all.addAll(parents);
+            all.addAll(siblings);
+            all.addAll(children);
+
+            // retrieve the arguments
+            int curr_arg = 0;
+            ArrayList<String> args = new ArrayList<>();
+            for(IndexedWord arg : all)
             {
-                parents = new HashSet<>();
-                parents.add(dependencies.getParent(verb));
-                parents.addAll(dependencies.getSiblings(dependencies.getParent(verb)));
+                String lemma = arg.get(CoreAnnotations.LemmaAnnotation.class);
+                switch (twoArguments.get(word).get(curr_arg))
+                {
+                    case item:
+                        if(itemMapping.containsKey(lemma))
+                        {
+                            if(curr_arg == twoArguments.get(word).size())
+                                return new Command(Command.Type.badcomm);
+                            args.add(itemMapping.get(lemma));
+                            curr_arg++;
+                        }
+                        break;
+                }
             }
-            siblings = new HashSet<>();
-            siblings.addAll(dependencies.getSiblings(verb));
-            children = new HashSet<>();
-            children.addAll(dependencies.getChildren(verb));
+            if(curr_arg == 0)
+            {
+                // we have a bad command
+                return new Command(Command.Type.badcomm);
+            }
 
+            if(curr_arg == 1 && word.equals("use"))
+            {
+                // this means we in fact have use and not useon
+                System.out.println(word + " " + args);
+                return new Command(Command.Type.valueOf(word), args);
+            }
 
-
-            System.out.println(parents);
-            System.out.println(siblings);
-            System.out.println(children);
+            // otherwise we have useon
+            if(word.equals("use"))
+                word = "useon";
+            System.out.println(word + " " + args);
+            return new Command(Command.Type.valueOf(word), args);
         }
 
         for(String word : oneArgumentWords)
         {
+            IndexedWord verb = findIndexedWord(dependencies, word);
+            if(verb == null)
+                continue;
+
+            TreeSet<IndexedWord> parents = getParents(dependencies, verb);
+            TreeSet<IndexedWord> children = getChildren(dependencies, verb);
+
+            TreeSet<IndexedWord> all = new TreeSet<>();
+            all.addAll(parents);
+            all.addAll(children);
+
+            // retrieve the arguments
+            ArrayList<String> args = new ArrayList<>();
+            int curr_arg = 0;
+            for(IndexedWord arg : all)
+            {
+                String lemma = arg.get(CoreAnnotations.LemmaAnnotation.class);
+                switch (oneArguments.get(word))
+                {
+                    case item:
+                        if(itemMapping.containsKey(lemma))
+                        {
+                            if(curr_arg == 1)
+                                return new Command(Command.Type.badcomm);
+                            args.add(itemMapping.get(lemma));
+                            curr_arg++;
+                        }
+                        break;
+                    case dir:
+                        if(dirMapping.containsKey(lemma))
+                        {
+                            if(curr_arg == 1)
+                                return new Command(Command.Type.badcomm);
+                            args.add(dirMapping.get(lemma));
+                            curr_arg++;
+                        }
+                        break;
+                }
+            }
+            System.out.println(word + " " + args);
+            return new Command(Command.Type.valueOf(word), args);
 
         }
 
+        // test for zero argument commands
         for(String word : zeroArgumentWords)
         {
-
+            IndexedWord verb = findIndexedWord(dependencies, word);
+            if(verb == null)
+                continue;
+            System.out.println(word);
+            return new Command(Command.Type.valueOf(word));
         }
 
         return new Command(Command.Type.badcomm);
+    }
+
+    private TreeSet<IndexedWord> getParents(SemanticGraph graph, IndexedWord word)
+    {
+        TreeSet<IndexedWord> parents = new TreeSet<>();
+        if(graph.getParent(word) != null)
+        {
+            parents = new TreeSet<>();
+            parents.add(graph.getParent(word));
+            parents.addAll(graph.getSiblings(graph.getParent(word)));
+        }
+        return parents;
+    }
+
+    private TreeSet<IndexedWord> getSiblings(SemanticGraph graph, IndexedWord word)
+    {
+        TreeSet<IndexedWord> siblings = new TreeSet<>();
+        siblings.addAll(graph.getSiblings(word));
+        return siblings;
+    }
+
+    private TreeSet<IndexedWord> getChildren(SemanticGraph graph, IndexedWord word)
+    {
+        TreeSet<IndexedWord> children = new TreeSet<>();
+        children.addAll(graph.getChildren(word));
+        return children;
     }
 
     // finds the indexedWord with the appropriate lemmatization

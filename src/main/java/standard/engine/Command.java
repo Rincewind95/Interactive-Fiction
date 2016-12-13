@@ -16,17 +16,10 @@ public class Command
         this.type = type;
         args = new ArrayList<>();
     }
-
-    public Command(Type type, String arg1)
+    public Command(Type type, ArrayList<String> args)
     {
-        this(type);
-        args.add(arg1);
-    }
-
-    public Command(Type type, String arg1, String arg2)
-    {
-        this(type, arg1);
-        args.add(arg2);
+        this.type = type;
+        this.args = args;
     }
 
     public Command(String input)
