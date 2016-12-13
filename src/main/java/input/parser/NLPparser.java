@@ -37,6 +37,8 @@ public class NLPparser
 
     private enum argType {item, dir, saveloc} // the possible argument types
 
+    private HashMap<String, String> dirMapping; // all the possible direction mappings we take
+
     private Properties props;
     private StanfordCoreNLP pipeline;
 
@@ -54,7 +56,7 @@ public class NLPparser
 
         twoArguments = new HashMap<>();
         twoArguments.put("use", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
-        twoArguments.put("with", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
+        twoArguments.put("combine", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
 
         oneArguments = new HashMap<>();
         oneArguments.put("take"   , argType.item);
@@ -62,6 +64,16 @@ public class NLPparser
         oneArguments.put("use"    , argType.item);
         oneArguments.put("examine", argType.item);
         oneArguments.put("move"   , argType.dir);
+
+        dirMapping = new HashMap<>();
+        dirMapping.put("north", "n");
+        dirMapping.put("east", "e");
+        dirMapping.put("south", "s");
+        dirMapping.put("west", "w");
+        dirMapping.put("n", "n");
+        dirMapping.put("e", "e");
+        dirMapping.put("s", "s");
+        dirMapping.put("w", "w");
 
         // creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and coreference resolution
         props = new Properties();
@@ -107,12 +119,25 @@ public class NLPparser
         System.out.println(sentence + "\n" + dependencies);
 
         // process the sentence and retrieve the command
-        // first search for longer commands (useon and combine)
 
-        System.out.println(findIndexedWord(dependencies, "use"));
 
-        // TODO do the parsing here
-        return res;
+        // first search for longer commands which take two arguments (useon and combine)
+        for(String word : twoArgumentWords)
+        {
+
+        }
+
+        for(String word : oneArgumentWords)
+        {
+
+        }
+
+        for(String word : zeroArgumentWords)
+        {
+
+        }
+
+        return new Command(Command.Type.badcomm);
     }
 
     // finds the indexedWord with the appropriate lemmatization
