@@ -186,15 +186,16 @@ public class Command
         take, drop, use, useon, combine, inventory, examine, move, look, brief, wait, save, load, history, restart, exit, special, empty, badcomm
     }
 
-    public void printCmd()
+    public String cmdToString()
     {
-        System.out.print(type);
+        String res = "";
+        res += type;
         if(args != null)
             for (String arg:args)
             {
-                System.out.print(" [" + arg + "]");
+                res += " [" + arg + "]";
             }
-        System.out.print("\n");
+        return res;
     }
 
     public String getOriginal()
