@@ -112,7 +112,7 @@ public class NLPparser
             }
         }
 
-        if(input.contains("n't") || input.contains("not"))
+        if(input.contains("dont") || input.contains("n't") || input.contains("not"))
         {
             // negation is applied somewhere within the command
             // reject all such inputs

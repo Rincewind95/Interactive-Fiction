@@ -28,8 +28,12 @@ W: '_W';
 // item related
 TAKEABLE: '_takeable';
 FIXED: '_fixed';
-INVENTORY: '_inv';
-PRODUCED: '_prod';
+INVENTORY: '_inv';       // if the item is in inventory
+PRODUCED: '_prod';       // if the item is not yet produced (is not in game yet)
+IN_CONTAINER: '_cont';   // if the item is in a container
+VOLUME: NUMERIC;         // the volume of the item
+IS_CONTAINER: '_iscont'; // item is a container type
+IS_ITEM: '_isitem';      // item is of item type
 
 // step related
 // and vs or
@@ -43,6 +47,8 @@ ITEM_IN_ROOM:   '_itir';
 ITEM_NOT_IN_ROOM:  '_itnir';
 ITEM_IN_INVENTORY:  '_itinv';
 ITEM_NOT_IN_INVENTORY: '_itninv';
+ITEM_IN_CONTAINER: '_iticon';
+ITEM_NOT_IN_CONTAINER: '_itnicon';
 CON_COMBINE:'_combine';
 CON_EXAMINE:'_examine';
 CON_USE:    '_use';
@@ -96,7 +102,7 @@ brief: message_text
 description: message_text
            | message_id;
 
-item: ITEM_ OPEN_PAREN_CURLY item_id SEMICOLON mobility SEMICOLON location SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
+item: ITEM_ OPEN_PAREN_CURLY item_id SEMICOLON mobility SEMICOLON location SEMICOLON VOLUME SEMICOLON itemtype SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
 
 mobility: TAKEABLE
         | FIXED;
@@ -104,6 +110,9 @@ mobility: TAKEABLE
 location: room_id
         | INVENTORY
         | PRODUCED;
+
+itemtype: IS_CONTAINER
+        | IS_ITEM;
 
 special_id: ID;
 special: SPECIAL_ OPEN_PAREN_CURLY special_id SEMICOLON CLOS_PAREN_CURLY;
@@ -134,6 +143,8 @@ single_arg_cnd_type: PLAYER_IN_ROOM
 double_arg_cnd: double_arg_cnd_type item_id room_id;
 double_arg_cnd_type: ITEM_IN_ROOM
                    | ITEM_NOT_IN_ROOM
+                   | ITEM_IN_CONTAINER
+                   | ITEM_NOT_IN_CONTAINER
                    | CON_COMBINE
                    | CON_USEON;
 

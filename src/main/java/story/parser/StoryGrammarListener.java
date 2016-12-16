@@ -178,6 +178,16 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 */
 	void exitLocation(StoryGrammarParser.LocationContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#itemtype}.
+	 * @param ctx the parse tree
+	 */
+	void enterItemtype(StoryGrammarParser.ItemtypeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#itemtype}.
+	 * @param ctx the parse tree
+	 */
+	void exitItemtype(StoryGrammarParser.ItemtypeContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#special_id}.
 	 * @param ctx the parse tree
 	 */

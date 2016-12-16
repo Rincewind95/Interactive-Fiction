@@ -113,6 +113,12 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLocation(StoryGrammarParser.LocationContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#itemtype}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitItemtype(StoryGrammarParser.ItemtypeContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#special_id}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
