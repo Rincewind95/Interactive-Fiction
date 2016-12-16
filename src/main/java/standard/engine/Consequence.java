@@ -57,10 +57,12 @@ public class Consequence implements Comparable
         switch (type)
         {
             case jmp:
+                // teleports the player to the given room
                 room = eng.findRoom(args.get(0));
                 player.moveTo(room);
                 break;
             case additinv:
+                // moves an item to the players inventory if it was not there already
                 item = eng.findItem(args.get(0));
                 if(item.getLocationFlag() == Item.flag.room)
                 {
@@ -76,10 +78,10 @@ public class Consequence implements Comparable
                 }
                 break;
             case rmit:
+                // remove the item from the game by putting it to prod
                 item = eng.findItem(args.get(0));
                 if(item.getLocationFlag() == Item.flag.inv)
                 {
-                    // remove the item from the game completely
                     item.setLocationFlag(Item.flag.prod);
                     player.removeItem(item);
                 }
@@ -97,6 +99,7 @@ public class Consequence implements Comparable
                 effect = Effect.win;
                 break;
             case additr:
+                // moves the item to the given room (wherever the item was before)
                 item = eng.findItem(args.get(0));
                 roomto = eng.findRoom(args.get(1));
                 roomfrom = item.getLocation();
@@ -122,6 +125,7 @@ public class Consequence implements Comparable
                 }
                 break;
             case addcon:
+                // adds a new "connector" between rooms
                 roomfrom = eng.findRoom(args.get(0));
                 dirfrom  = args.get(1);
                 roomto   = eng.findRoom(args.get(2));
@@ -129,6 +133,7 @@ public class Consequence implements Comparable
                 Room.createPath(roomfrom, dirfrom, roomto, dirto);
                 break;
             case rmcon:
+                // removes a "connector" which existed between two rooms
                 roomfrom = eng.findRoom(args.get(0));
                 dirfrom  = args.get(1);
                 roomto   = eng.findRoom(args.get(2));
@@ -169,12 +174,11 @@ public class Consequence implements Comparable
     Player
         jmp                   - jmp [room_id]      – jmp player to [room_id]
         additinv              - additinv [item_id] – adds [item_id] to inventory
-        rmitinv               - rmitinv [item_id]  – removes [item_id] from inventory
+        rmit                  - rmit [item_id]     – removes [item_id] from game
         kill                  - kill               - kills the player and the game terminates
         win                   - win                - player wins and the game terminates
     Room
         additr                - additr [item_id] [room_id]                             – adds [item_id] to [room_id]
-        rmitfr                - rmitfr [item_id] [room_id]                             – removes [item_id] from [room_id]
         addcon                - addcon [room_id1] [direction1] [room_id2] [direction2] – adds connector between rooms
         rmcon                 - rmcon  [room_id1] [direction1] [room_id2] [direction2] – removes connector between rooms if the connector exists
 
