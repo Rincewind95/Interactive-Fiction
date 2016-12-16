@@ -53,11 +53,10 @@ CON_SPECIAL:'_special';
 NONE: '_none';
 TELEPORT: '_jmp';
 ADD_ITEM_TO_INV: '_additinv';
-REMOVE_ITEM_FROM_INV: '_rmitinv';
+REMOVE_ITEM: '_rmit';
 KILL: '_kill';
 WIN: '_win';
 ADD_ITEM_TO_ROOM: '_additr';
-REMOVE_ITEM_FROM_ROOM: '_rmitfr';
 ADD_CONNECTOR: '_addcon';
 REMOVE_CONNECTOR: '_rmcon';
 WAIT: '_wait';
@@ -151,10 +150,9 @@ no_arg_cons: NONE
 single_arg_cons: single_arg_cons_type item_id;
 single_arg_cons_type: TELEPORT
                     | ADD_ITEM_TO_INV
-                    | REMOVE_ITEM_FROM_INV;
+                    | REMOVE_ITEM;
 double_arg_cons: double_arg_cons_type item_id room_id;
-double_arg_cons_type: ADD_ITEM_TO_ROOM
-                    | REMOVE_ITEM_FROM_ROOM;
+double_arg_cons_type: ADD_ITEM_TO_ROOM;
 four_arg_cons: four_arg_cons_type room_id direction room_id direction;
 four_arg_cons_type: ADD_CONNECTOR
                   | REMOVE_CONNECTOR;

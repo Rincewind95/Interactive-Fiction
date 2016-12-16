@@ -75,13 +75,19 @@ public class Consequence implements Comparable
                     player.giveItem(item);
                 }
                 break;
-            case rmitinv:
+            case rmit:
                 item = eng.findItem(args.get(0));
-                if(player.hasItem(item))
+                if(item.getLocationFlag() == Item.flag.inv)
                 {
                     // remove the item from the game completely
                     item.setLocationFlag(Item.flag.prod);
                     player.removeItem(item);
+                }
+                else if(item.getLocationFlag() == Item.flag.room)
+                {
+                    room = item.getLocation();
+                    room.removeItem(item);
+                    item.setLocationFlag(Item.flag.prod);
                 }
                 break;
             case kill:
@@ -113,15 +119,6 @@ public class Consequence implements Comparable
                     item.setLocation(roomto);
                     player.removeItem(item);
                     roomto.addItem(item);
-                }
-                break;
-            case rmitfr:
-                item = eng.findItem(args.get(0));
-                room = eng.findRoom(args.get(1));
-                if(item.getLocationFlag() == Item.flag.room)
-                {
-                    room.removeItem(item);
-                    item.setLocationFlag(Item.flag.prod);
                 }
                 break;
             case addcon:
@@ -185,7 +182,7 @@ public class Consequence implements Comparable
 
     public enum ConsType
     {
-        none, jmp, additinv, rmitinv, kill, win, additr, rmitfr, addcon, rmcon, wait
+        none, jmp, additinv, rmit, kill, win, additr, addcon, rmcon, wait
     }
 
     public enum Effect

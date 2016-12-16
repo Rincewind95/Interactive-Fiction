@@ -118,11 +118,10 @@ public class StoryLinker
                 linkStoryRoom(args.get(0), constype, parent_id, eng);
                 break;
             case additinv:
-            case rmitinv:
+            case rmit:
                 linkStoryItem(args.get(0), constype, parent_id, eng);
                 break;
             case additr:
-            case rmitfr:
                 linkStoryItem(args.get(0), constype, parent_id, eng);
                 linkStoryRoom(args.get(1), constype, parent_id, eng);
                 break;
