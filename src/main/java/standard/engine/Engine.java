@@ -207,7 +207,7 @@ public class Engine
                 if (finditem.containsKey(args.get(0)) && finditem.containsKey(args.get(1)))
                 {
                     Item fir = finditem.get(args.get(0));
-                    Item sec = finditem.get(args.get(0));
+                    Item sec = finditem.get(args.get(1));
                     if (!player.hasItem(fir) || !player.hasItem(sec))
                     {
                         // conditions were not met so fail
@@ -215,6 +215,31 @@ public class Engine
                     }
                 }
                 else resp = response.badinput;
+                break;
+            case putin:
+                // todo implement putin
+                // first test for input validity
+                if(finditem.containsKey(args.get(0)) && finditem.containsKey(args.get(1)))
+                {
+                    Item fir = finditem.get(args.get(0));
+                    Item sec = finditem.get(args.get(1));
+                    if (fir.getVolume() >= sec.getVolume())
+                    {
+                        out = Utility.addThe(fir.getItem_id()) + " is to big to fit into " + Utility.addThe(sec.getItem_id()) + ".";
+                        resp = response.skip;
+                    }
+                    else if(sec.isContainer())
+                    {
+                        fir.moveItem(Item.flag.incont, sec, this);
+                        out = "you put " + Utility.addThe(fir.getItem_id()) + " into " + Utility.addThe(sec.getItem_id()) + ".";
+                        resp = response.skip;
+                    }
+                    else
+                    {
+                        out = Utility.addThe(sec.getItem_id()) + " is not a container.";
+                        resp = response.skip;
+                    }
+                }
                 break;
             case examine:
                 // first test for input validity
@@ -228,7 +253,7 @@ public class Engine
                     }
                     else
                     {
-                        out = toExamine.getDescription();
+                        out = toExamine.getExamination();
                     }
                 }
                 else resp = response.badinput;
@@ -295,7 +320,7 @@ public class Engine
                 resp = response.skip;
                 break;
             case look:
-                out = player.getLocation().getLookInfo();
+                out = player.getLocation().getLookInfo(this);
                 resp = response.skip;
                 break;
             case brief:

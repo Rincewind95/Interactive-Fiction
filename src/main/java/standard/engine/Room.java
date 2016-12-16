@@ -189,7 +189,7 @@ public class Room extends ItemLocation
         return dead_end.get(dir);
     }
 
-    public String getLookInfo()
+    public String getLookInfo(Engine eng)
     {
         String info = "";
 
@@ -198,7 +198,7 @@ public class Room extends ItemLocation
 
         if (!items.isEmpty())
         {
-            info += "The following items are here:";
+            info += "The following items are present:";
             int tab = 0;
             for (String item_id : items.keySet())
             {
@@ -210,6 +210,11 @@ public class Room extends ItemLocation
                 for(int i = 0; i < tab - item_id.length(); i++)
                     info += " ";
                 info += (items.get(item_id).isTakeable() ? "<take-able>": "<fixed>");
+                Item curr = eng.findItem(item_id);
+                for(String item : curr.getContainedKeySet())
+                {
+                    info += "\n\t- " + item + " ";
+                }
             }
         }
         else

@@ -3,6 +3,7 @@ package standard.engine;
 import javafx.util.Pair;
 
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Created by Milos on 06/11/2016.
@@ -159,6 +160,11 @@ public class Item extends ItemLocation implements Comparable
             contained.remove(item.getItem_id());
     }
 
+    public Set<String> getContainedKeySet()
+    {
+        return contained.keySet();
+    }
+
     public boolean contains(Item item)
     {
         return contained.containsKey(item.getItem_id());
@@ -172,5 +178,20 @@ public class Item extends ItemLocation implements Comparable
     public enum flag
     {
         inroom, inv, incont, prod
+    }
+
+    public String getExamination()
+    {
+        String result = "";
+        result += description.getMsg();
+        if(!contained.isEmpty())
+        {
+            result += "\nContains the following:";
+            for(String item : contained.keySet())
+            {
+                result += "\n- "+ item;
+            }
+        }
+        return result;
     }
 }

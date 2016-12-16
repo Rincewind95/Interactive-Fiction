@@ -170,7 +170,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
 
         int volume = Integer.parseInt(ctx.VOLUME().getText());
 
-        String itemType = Utility.strip_special_chars(ctx.mobility().getText());
+        String itemType = Utility.strip_special_chars(ctx.itemtype().getText());
         Boolean isContainer;
         switch (itemType)
         {

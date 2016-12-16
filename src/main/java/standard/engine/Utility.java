@@ -43,4 +43,15 @@ public class Utility
         String res = input.replace("\"", "");
         return res;
     }
+
+    public static String addThe(String input)
+    {
+        if(!input.startsWith("the ")
+                && !input.startsWith("a ")
+                && !input.startsWith("an "))
+        {
+            input = "the " + input;
+        }
+        return input;
+    }
 }
