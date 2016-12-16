@@ -3,9 +3,11 @@ package input.parser;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.pipeline.Annotation;
+import edu.stanford.nlp.pipeline.CoreNLPProtos;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
+import edu.stanford.nlp.trees.GrammaticalRelation;
 import edu.stanford.nlp.util.CoreMap;
 import standard.engine.Command;
 import standard.engine.Engine;
@@ -22,11 +24,12 @@ public class NLPparser
 {
     private ArrayList<String> item_compounds;
     private Engine eng;
-    private ArrayList<String> twoArgumentWords;                          // the words which take two arguments
-    private HashMap<String, ArrayList<argType>> twoArguments;            // a map of their respective argument types
-    private ArrayList<String> oneArgumentWords;                          // the words which take one argument
-    private HashMap<String, argType> oneArguments;                       // a map of their respective argument types
-    private ArrayList<String> zeroArgumentWords;                         // the map of all the words with no arguments
+    private ArrayList<String> twoArgumentWords;                       // the words which take two arguments
+    private HashMap<String, ArrayList<argType>> twoArguments;         // a map of their respective argument types
+    private HashMap<String, ArrayList<String>> twoArgumentConnectors; // the set of connectors expected by the two Argument words
+    private ArrayList<String> oneArgumentWords;                       // the words which take one argument
+    private HashMap<String, argType> oneArguments;                    // a map of their respective argument types
+    private ArrayList<String> zeroArgumentWords;                      // the map of all the words with no arguments
 
     private enum argType {item, dir, saveloc} // the possible argument types
 
@@ -43,13 +46,19 @@ public class NLPparser
         item_compounds.sort((String s1, String s2) -> s1.length() == s2.length() ? s1.compareTo(s2): s2.length() - s1.length());
 
         this.eng = eng;
-        twoArgumentWords = new ArrayList<>(Arrays.asList("use", "combine"));
+        twoArgumentWords = new ArrayList<>(Arrays.asList("use", "combine", "put"));
         oneArgumentWords = new ArrayList<>(Arrays.asList("take", "drop", "examine", "move"));
         zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit", "inventory"));
+
+        twoArgumentConnectors = new HashMap<>();
+        twoArgumentConnectors.put("use", new ArrayList<>(Arrays.asList("with", "on")));
+        twoArgumentConnectors.put("combine", new ArrayList<>(Arrays.asList("with")));
+        twoArgumentConnectors.put("put", new ArrayList<>(Arrays.asList("in")));
 
         twoArguments = new HashMap<>();
         twoArguments.put("use", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
         twoArguments.put("combine", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
+        twoArguments.put("put", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
 
         oneArguments = new HashMap<>();
         oneArguments.put("take"   , argType.item);
@@ -143,6 +152,7 @@ public class NLPparser
             IndexedWord verb = findIndexedWord(dependencies, word);
             if(verb == null)
                 continue;
+
             TreeSet<IndexedWord> parents = getParents(dependencies, verb);
             TreeSet<IndexedWord> siblings = getSiblings(dependencies, verb);
             TreeSet<IndexedWord> children = getChildren(dependencies, verb);
@@ -151,6 +161,10 @@ public class NLPparser
             all.addAll(parents);
             all.addAll(siblings);
             all.addAll(children);
+            for(IndexedWord child : children)
+            {
+                all.addAll(getChildren(dependencies, child));
+            }
 
             // retrieve the arguments
             int curr_arg = 0;
@@ -163,10 +177,31 @@ public class NLPparser
                     case item:
                         if(itemMapping.containsKey(lemma))
                         {
-                            if(curr_arg == twoArguments.get(word).size())
+                            if(curr_arg >= 2)
                                 return new Command(Command.Type.badcomm);
-                            args.add(itemMapping.get(lemma));
-                            curr_arg++;
+                            else if(curr_arg == 1 && !word.equals("use"))
+                            {
+                                boolean works = false;
+                                Set<IndexedWord> curr_children = dependencies.getChildren(arg);
+                                for(String connector : twoArgumentConnectors.get(word))
+                                {
+                                    IndexedWord curr_child = findIndexedWord(dependencies, connector);
+                                    if(curr_child == null)
+                                        continue;
+                                    if(curr_children.contains(curr_child))
+                                        works = true;
+                                }
+                                if(works)
+                                {
+                                    args.add(itemMapping.get(lemma));
+                                    curr_arg++;
+                                }
+                            }
+                            else
+                            {
+                                args.add(itemMapping.get(lemma));
+                                curr_arg++;
+                            }
                         }
                         break;
                 }
@@ -195,7 +230,9 @@ public class NLPparser
             // otherwise we have useon
             if(word.equals("use"))
                 word = "useon";
-            // System.out.println(word + " " + args);
+            if(word.equals("put"))
+                word = "putin";
+            //System.out.println(word + " " + args);
             return new Command(Command.Type.valueOf(word), args);
         }
 
@@ -242,7 +279,7 @@ public class NLPparser
             }
             if(curr_arg == 0)
                 return new Command(Command.Type.badcomm);
-            // System.out.println(word + " " + args);
+            //System.out.println(word + " " + args);
             return new Command(Command.Type.valueOf(word), args);
 
         }
@@ -253,7 +290,7 @@ public class NLPparser
             IndexedWord verb = findIndexedWord(dependencies, word);
             if(verb == null)
                 continue;
-            // System.out.println(word);
+            //System.out.println(word);
             return new Command(Command.Type.valueOf(word));
         }
 

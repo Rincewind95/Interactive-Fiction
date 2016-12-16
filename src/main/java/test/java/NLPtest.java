@@ -2,6 +2,7 @@ package test.java;
 
 import com.google.common.io.Files;
 
+import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.S;
 import input.parser.NLPparser;
 import standard.engine.Command;
 import standard.engine.Engine;
@@ -34,24 +35,30 @@ public class NLPtest
         NLPparser parser = new NLPparser(eng);
         String[] sentences = text.split("\r\n");
         String[] expectedResult = expected.split("\r\n");
+        String out = "";
+        int errorcnt = 0;
         for(int i = 0; i < sentences.length; i++)
         {
             Command com = parser.parseInput(sentences[i]);
             String res = com.cmdToString();
-            System.out.println("User input ~ " + sentences[i]);
+            boolean doOut = false;
+            out = "";
+            out += "User input ~ " + sentences[i] + "\n";
             if(res.equals(expectedResult[i]))
             {
-                System.out.print("Success    ~ ");
-                System.out.println(res);
+                out += "Success    ~ " + res + "\n";
             }
             else
             {
-                System.out.print("Failure    ~ ");
-                System.out.println(res);
-                System.out.println("Expected   ~ " + expectedResult[i]);
+                doOut = true;
+                errorcnt++;
+                out += "Failure    ~ " + res + "\n" + "Expected   ~ " + expectedResult[i] + "\n";
             }
-            System.out.println("----------");
+            out += "----------\n";
+            if(doOut)
+                System.out.print(out);
         }
+        System.out.println("Test completed with " + errorcnt + " errors!");
     }
 
 }
