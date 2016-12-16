@@ -1,31 +1,18 @@
 package input.parser;
 
-import com.google.common.io.Files;
-import com.sun.org.apache.xml.internal.serializer.utils.SerializerMessages_zh_CN;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
-import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.tweet.AT;
-import edu.stanford.nlp.dcoref.CorefChain;
-import edu.stanford.nlp.dcoref.CorefCoreAnnotations;
 import edu.stanford.nlp.ling.CoreAnnotations;
-import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
-import edu.stanford.nlp.trees.GrammaticalRelation;
-import edu.stanford.nlp.trees.Tree;
-import edu.stanford.nlp.trees.TreeCoreAnnotations;
 import edu.stanford.nlp.util.CoreMap;
 import standard.engine.Command;
 import standard.engine.Engine;
 import standard.engine.Utility;
-import sun.security.util.AuthResources_zh_CN;
 
-import java.io.File;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.nio.charset.Charset;
 import java.util.*;
 
 /**
@@ -58,7 +45,7 @@ public class NLPparser
         this.eng = eng;
         twoArgumentWords = new ArrayList<>(Arrays.asList("use", "combine"));
         oneArgumentWords = new ArrayList<>(Arrays.asList("take", "drop", "examine", "move"));
-        zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit"));
+        zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit", "inventory"));
 
         twoArguments = new HashMap<>();
         twoArguments.put("use", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
@@ -190,11 +177,19 @@ public class NLPparser
                 return new Command(Command.Type.badcomm);
             }
 
-            if(curr_arg == 1 && word.equals("use"))
+            if(curr_arg == 1)
             {
-                // this means we in fact have use and not useon
-                //System.out.println(word + " " + args);
-                return new Command(Command.Type.valueOf(word), args);
+                if(word.equals("use"))
+                {
+                    // this means we in fact have use and not useon
+                    //System.out.println(word + " " + args);
+                    return new Command(Command.Type.valueOf(word), args);
+                }
+                else
+                {
+                    // we have a bad command
+                    return new Command(Command.Type.badcomm);
+                }
             }
 
             // otherwise we have useon

@@ -1,7 +1,8 @@
-package input.parser;
+package test.java;
 
 import com.google.common.io.Files;
 
+import input.parser.NLPparser;
 import standard.engine.Command;
 import standard.engine.Engine;
 import standard.engine.Item;
