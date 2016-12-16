@@ -79,9 +79,8 @@ public class Consequence implements Comparable
                 item = eng.findItem(args.get(0));
                 if(player.hasItem(item))
                 {
-                    room = player.getLocation();
-                    item.setLocation(room);
-                    item.setLocationFlag(Item.flag.room);
+                    // remove the item from the game completely
+                    item.setLocationFlag(Item.flag.prod);
                     player.removeItem(item);
                 }
                 break;
@@ -106,6 +105,7 @@ public class Consequence implements Comparable
                 {
                     item.setLocationFlag(Item.flag.room);
                     item.setLocation(roomto);
+                    roomto.addItem(item);
                 }
                 else if(item.getLocationFlag() == Item.flag.inv)
                 {
