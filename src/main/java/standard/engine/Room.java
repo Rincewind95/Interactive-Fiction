@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Created by Milos on 06/11/2016.
  */
-public class Room
+public class Room extends ItemLocation
 {
     private String room_id;                    // the unique name of the room
     private String level_id;                   // the unique name of the level the room is located on

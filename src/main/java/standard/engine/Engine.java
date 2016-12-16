@@ -121,12 +121,14 @@ public class Engine
         {
             case take:
                 // first test for input validity
-                if (finditem.containsKey(args.get(0)))
+                if (finditem.containsKey(args.get(0)) &&
+                        finditem.get(args.get(0)).getLocation() instanceof Room)
                 {
                     Item toTake = finditem.get(args.get(0));
+                    Room location = (Room)toTake.getLocation();
                     if (!player.hasItem(toTake) &&
-                            toTake.getLocationFlag() == Item.flag.room &&
-                            toTake.getLocation() == player.getLocation() &&
+                            toTake.getLocationFlag() == Item.flag.inroom &&
+                            location == player.getLocation() &&
                             toTake.isTakeable())
                     {
                         // if the player is in the same room as the item, and does not have the item he can take it
@@ -135,7 +137,7 @@ public class Engine
                         player.giveItem(toTake);
                         toTake.setLocationFlag(Item.flag.inv);
                         // remove the item from its room
-                        toTake.getLocation().removeItem(toTake);
+                        location.removeItem(toTake);
                     }
                     else if (!toTake.isTakeable())
                     {
@@ -161,7 +163,7 @@ public class Engine
                         // remove the item from the players inventory
                         player.removeItem(toDrop);
                         // add the item to the room the player is in
-                        toDrop.setLocationFlag(Item.flag.room);
+                        toDrop.setLocationFlag(Item.flag.inroom);
                         toDrop.setLocation(player.getLocation());
                         player.getLocation().addItem(toDrop);
                     }

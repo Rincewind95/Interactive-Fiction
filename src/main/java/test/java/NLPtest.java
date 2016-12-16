@@ -28,9 +28,9 @@ public class NLPtest
         String expected = Files.toString(outputFile, Charset.forName("UTF-8"));
         text = text.toLowerCase();
         Engine eng = new Engine();
-        eng.addItem("laser", new Item("laser", true, Item.flag.inv, null, null));
-        eng.addItem("beam", new Item("beam", true, Item.flag.inv, null, null));
-        eng.addItem("laser beam", new Item("laser beam", true, Item.flag.inv, null, null));
+        eng.addItem("laser", new Item("laser"));
+        eng.addItem("beam", new Item("beam"));
+        eng.addItem("laser beam", new Item("laser beam"));
         NLPparser parser = new NLPparser(eng);
         String[] sentences = text.split("\r\n");
         String[] expectedResult = expected.split("\r\n");

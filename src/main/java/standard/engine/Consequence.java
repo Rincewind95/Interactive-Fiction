@@ -52,7 +52,7 @@ public class Consequence implements Comparable
         Effect effect = Effect.procede;
         Player player = eng.getPlayer();
         Room room, roomfrom, roomto;
-        Item item;
+        Item item, container;
         String dirfrom, dirto;
         switch (type)
         {
@@ -64,33 +64,12 @@ public class Consequence implements Comparable
             case additinv:
                 // moves an item to the players inventory if it was not there already
                 item = eng.findItem(args.get(0));
-                if(item.getLocationFlag() == Item.flag.room)
-                {
-                    room = item.getLocation();
-                    room.removeItem(item);
-                    item.setLocationFlag(Item.flag.inv);
-                    player.giveItem(item);
-                }
-                else if(item.getLocationFlag() == Item.flag.prod)
-                {
-                    item.setLocationFlag(Item.flag.inv);
-                    player.giveItem(item);
-                }
+                item.moveItem(Item.flag.inv, null, eng);
                 break;
             case rmit:
                 // remove the item from the game by putting it to prod
                 item = eng.findItem(args.get(0));
-                if(item.getLocationFlag() == Item.flag.inv)
-                {
-                    item.setLocationFlag(Item.flag.prod);
-                    player.removeItem(item);
-                }
-                else if(item.getLocationFlag() == Item.flag.room)
-                {
-                    room = item.getLocation();
-                    room.removeItem(item);
-                    item.setLocationFlag(Item.flag.prod);
-                }
+                item.moveItem(Item.flag.prod, null, eng);
                 break;
             case kill:
                 effect = Effect.kill;
@@ -102,27 +81,7 @@ public class Consequence implements Comparable
                 // moves the item to the given room (wherever the item was before)
                 item = eng.findItem(args.get(0));
                 roomto = eng.findRoom(args.get(1));
-                roomfrom = item.getLocation();
-                if(item.getLocationFlag() == Item.flag.room
-                    && roomfrom != roomto)
-                {
-                    roomto.addItem(item);
-                    roomfrom.removeItem(item);
-                    item.setLocation(roomto);
-                }
-                else if(item.getLocationFlag() == Item.flag.prod)
-                {
-                    item.setLocationFlag(Item.flag.room);
-                    item.setLocation(roomto);
-                    roomto.addItem(item);
-                }
-                else if(item.getLocationFlag() == Item.flag.inv)
-                {
-                    item.setLocationFlag(Item.flag.room);
-                    item.setLocation(roomto);
-                    player.removeItem(item);
-                    roomto.addItem(item);
-                }
+                item.moveItem(Item.flag.inroom, roomto, eng);
                 break;
             case addcon:
                 // adds a new "connector" between rooms

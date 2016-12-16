@@ -58,14 +58,18 @@ public class StoryLinker
             // link the description
             curr_item.setDescription(linkMessage(curr_item.getDescriptionMsg(), item_id, eng));
 
-            // add the items to their rooms and the player inventory
+            // add the items to their rooms or containers and the player inventory
             switch (curr_item.getLocationFlag())
             {
-                case room:
-                    curr_item.setLocation(linkRoomWithItem(curr_item.getLocation(), curr_item, eng));
+                case inroom:
+                    curr_item.setLocation(linkRoomWithItem((Room)curr_item.getLocation(), curr_item, eng));
                     break;
                 case inv:
                     eng.getPlayer().giveItem(curr_item);
+                    break;
+                case incont:
+                    // todo add container support
+                    curr_item.setLocation(linkItemWithItem((Item)curr_item.getLocation(), curr_item, eng));
                     break;
             }
         }
@@ -249,6 +253,30 @@ public class StoryLinker
         Room room = eng.findRoom(r.getRoom_id());
         room.addItem(i);
         return room;
+    }
+
+    private Item linkItemWithItem(Item cont, Item i, Engine eng)
+    {
+        if(!eng.hasItem(cont.getItem_id()))
+        {
+            recordLinkerError(cont.getItem_id(), i.getItem_id());
+            return null;
+        }
+        Item container = eng.findItem(cont.getItem_id());
+        if(!container.isContainer())
+        {
+            error_report += "Item [" + container.getItem_id() + "] is not a container (in object [" + i.getItem_id() + "])\n";
+            error_cnt++;
+            return null;
+        }
+        else if(container.getVolume() < i.getVolume() )
+        {
+            error_report += "Volume of container [" + container.getItem_id() + "] is too small (in object [" + i.getItem_id() + "])\n";
+            error_cnt++;
+            return null;
+        }
+        container.addItem(i);
+        return container;
     }
 
     private void recordLinkerError(String child, String parent)

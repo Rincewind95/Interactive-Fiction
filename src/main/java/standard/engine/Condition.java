@@ -83,6 +83,16 @@ public class Condition implements Comparable
                 item = eng.findItem(args.get(0));
                 resp = !player.hasItem(item);
                 break;
+            case iticon:
+                item1 = eng.findItem(args.get(0));
+                item2 = eng.findItem(args.get(1));
+                resp = item2.contains(item1);
+                break;
+            case itnicon:
+                item1 = eng.findItem(args.get(0));
+                item2 = eng.findItem(args.get(1));
+                resp = !item2.contains(item1);
+                break;
             case combine:
                 resp = com != null
                         && com.getType() == Command.Type.combine
@@ -162,6 +172,6 @@ public class Condition implements Comparable
 
     public enum CondType
     {
-        plir, plnir, plilv, itir, itnir, itinv, itninv, combine, examine, use, useon, move, special
+        plir, plnir, plilv, itir, itnir, itinv, itninv, iticon, itnicon, combine, examine, use, useon, move, special
     }
 }

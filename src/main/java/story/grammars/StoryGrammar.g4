@@ -30,7 +30,8 @@ TAKEABLE: '_takeable';
 FIXED: '_fixed';
 INVENTORY: '_inv';       // if the item is in inventory
 PRODUCED: '_prod';       // if the item is not yet produced (is not in game yet)
-IN_CONTAINER: '_cont';   // if the item is in a container
+IN_ROOM: '_inroom';        // if the item is in a room
+IN_CONTAINER: '_incont';   // if the item is in a container
 VOLUME: NUMERIC;         // the volume of the item
 IS_CONTAINER: '_iscont'; // item is a container type
 IS_ITEM: '_isitem';      // item is of item type
@@ -107,9 +108,10 @@ item: ITEM_ OPEN_PAREN_CURLY item_id SEMICOLON mobility SEMICOLON location SEMIC
 mobility: TAKEABLE
         | FIXED;
 
-location: room_id
+location: IN_ROOM room_id
         | INVENTORY
-        | PRODUCED;
+        | PRODUCED
+        | IN_CONTAINER item_id;
 
 itemtype: IS_CONTAINER
         | IS_ITEM;

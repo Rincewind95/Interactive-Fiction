@@ -149,7 +149,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
                 break;
         }
         Item.flag flag;
-        Room location = null;
+        ItemLocation location = null;
         if(ctx.location().INVENTORY() != null)
         {
             flag = Item.flag.valueOf(Utility.strip_special_chars(ctx.location().INVENTORY().toString()));
@@ -157,14 +157,33 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         {
             flag = Item.flag.valueOf(Utility.strip_special_chars(ctx.location().PRODUCED().toString()));
         }
+        else if(ctx.location().IN_CONTAINER() != null)
+        {
+            flag = Item.flag.valueOf(Utility.strip_special_chars(ctx.location().IN_CONTAINER().toString()));
+            location = new Item(parseItem_id(ctx.location().item_id()));
+        }
         else
         {
-            flag = Item.flag.room;
+            flag = Item.flag.inroom;
             location = new Room(parseRoom_id(ctx.location().room_id()));
         }
 
+        int volume = Integer.parseInt(ctx.VOLUME().getText());
+
+        String itemType = Utility.strip_special_chars(ctx.mobility().getText());
+        Boolean isContainer;
+        switch (itemType)
+        {
+            case "iscont":
+                isContainer = true;
+                break;
+            default:
+                isContainer = false;
+                break;
+        }
+
         Message description = parseDescription(ctx.description());
-        eng.addItem(item_id, new Item(item_id, takeable, flag, location, description));
+        eng.addItem(item_id, new Item(item_id, takeable, flag, location, volume, isContainer, description));
         return null;
     }
 
