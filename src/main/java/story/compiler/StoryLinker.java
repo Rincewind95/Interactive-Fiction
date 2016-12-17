@@ -269,7 +269,7 @@ public class StoryLinker
             error_cnt++;
             return null;
         }
-        else if(container.getVolume() < i.getVolume() )
+        else if(container.getVolume(eng) < i.getVolume(eng) )
         {
             error_report += "Volume of container [" + container.getItem_id() + "] is too small (in object [" + i.getItem_id() + "])\n";
             error_cnt++;

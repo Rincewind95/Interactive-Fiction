@@ -46,7 +46,7 @@ public class NLPparser
         item_compounds.sort((String s1, String s2) -> s1.length() == s2.length() ? s1.compareTo(s2): s2.length() - s1.length());
 
         this.eng = eng;
-        twoArgumentWords = new ArrayList<>(Arrays.asList("use", "combine", "put"));
+        twoArgumentWords = new ArrayList<>(Arrays.asList("use", "combine", "put", "remove"));
         oneArgumentWords = new ArrayList<>(Arrays.asList("take", "drop", "examine", "move"));
         zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit", "inventory"));
 
@@ -54,11 +54,13 @@ public class NLPparser
         twoArgumentConnectors.put("use", new ArrayList<>(Arrays.asList("with", "on")));
         twoArgumentConnectors.put("combine", new ArrayList<>(Arrays.asList("with")));
         twoArgumentConnectors.put("put", new ArrayList<>(Arrays.asList("in")));
+        twoArgumentConnectors.put("remove", new ArrayList<>(Arrays.asList("from")));
 
         twoArguments = new HashMap<>();
         twoArguments.put("use", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
         twoArguments.put("combine", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
         twoArguments.put("put", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
+        twoArguments.put("remove", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
 
         oneArguments = new HashMap<>();
         oneArguments.put("take"   , argType.item);

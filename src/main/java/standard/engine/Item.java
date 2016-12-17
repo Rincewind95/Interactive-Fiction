@@ -170,9 +170,12 @@ public class Item extends ItemLocation implements Comparable
         return contained.containsKey(item.getItem_id());
     }
 
-    public int getVolume()
+    public int getVolume(Engine eng)
     {
-        return volume;
+        int remaining_vol = volume;
+        for(String item : contained.keySet())
+            remaining_vol -= eng.findItem(item).getVolume(eng);
+        return remaining_vol;
     }
 
     public enum flag

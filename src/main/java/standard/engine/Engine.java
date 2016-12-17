@@ -217,13 +217,12 @@ public class Engine
                 else resp = response.badinput;
                 break;
             case putin:
-                // todo implement putin
                 // first test for input validity
                 if(finditem.containsKey(args.get(0)) && finditem.containsKey(args.get(1)))
                 {
                     Item fir = finditem.get(args.get(0));
                     Item sec = finditem.get(args.get(1));
-                    if (fir.getVolume() >= sec.getVolume())
+                    if (fir.getVolume(this) >= sec.getVolume(this))
                     {
                         out = Utility.addThe(fir.getItem_id()) + " is to big to fit into " + Utility.addThe(sec.getItem_id()) + ".";
                         resp = response.skip;
@@ -232,12 +231,24 @@ public class Engine
                     {
                         fir.moveItem(Item.flag.incont, sec, this);
                         out = "you put " + Utility.addThe(fir.getItem_id()) + " into " + Utility.addThe(sec.getItem_id()) + ".";
-                        resp = response.skip;
                     }
                     else
                     {
                         out = Utility.addThe(sec.getItem_id()) + " is not a container.";
                         resp = response.skip;
+                    }
+                }
+                break;
+            case remove:
+                // first test for input validity
+                if(finditem.containsKey(args.get(0)) && finditem.containsKey(args.get(1)))
+                {
+                    Item fir = finditem.get(args.get(0));
+                    Item sec = finditem.get(args.get(1));
+                    if(sec.contains(fir))
+                    {
+                        fir.moveItem(Item.flag.inv, null, this);
+                        out = "you remove " + Utility.addThe(fir.getItem_id()) + " from " + Utility.addThe(sec.getItem_id()) + ".";
                     }
                 }
                 break;
