@@ -25,11 +25,12 @@ public class StoryGrammarParser extends Parser {
 		NORMAL=31, COLD=32, FROZEN=33, VARIABLE=34, CONSTANT=35, ANDING=36, ORING=37, 
 		PLAYER_IN_ROOM=38, PLAYER_NOT_IN_ROOM=39, PLAYER_ON_LEVEL=40, ITEM_IN_ROOM=41, 
 		ITEM_NOT_IN_ROOM=42, ITEM_IN_INVENTORY=43, ITEM_NOT_IN_INVENTORY=44, ITEM_IN_CONTAINER=45, 
-		ITEM_NOT_IN_CONTAINER=46, CON_COMBINE=47, CON_EXAMINE=48, CON_USE=49, 
-		CON_USEON=50, CON_MOVE=51, CON_SPECIAL=52, NONE=53, TELEPORT=54, ADD_ITEM_TO_INV=55, 
-		REMOVE_ITEM=56, KILL=57, WIN=58, ADD_ITEM_TO_ROOM=59, ADD_CONNECTOR=60, 
-		REMOVE_CONNECTOR=61, WAIT=62, QUOTED_TEXT=63, ALPHANUMERIC=64, NUMERIC=65, 
-		ID=66, TIME=67, WS=68;
+		ITEM_NOT_IN_CONTAINER=46, ITEM_IS_FROZEN=47, ITEM_IS_COLD=48, ITEM_IS_NORMAL=49, 
+		ITEM_IS_HOT=50, ITEM_IS_BURNING=51, CON_COMBINE=52, CON_EXAMINE=53, CON_USE=54, 
+		CON_USEON=55, CON_MOVE=56, CON_SPECIAL=57, NONE=58, TELEPORT=59, ADD_ITEM_TO_INV=60, 
+		REMOVE_ITEM=61, KILL=62, WIN=63, ADD_ITEM_TO_ROOM=64, ADD_CONNECTOR=65, 
+		REMOVE_CONNECTOR=66, WAIT=67, QUOTED_TEXT=68, ALPHANUMERIC=69, NUMERIC=70, 
+		ID=71, TIME=72, WS=73;
 	public static final int
 		RULE_level_id = 0, RULE_item_id = 1, RULE_room_id = 2, RULE_message_id = 3, 
 		RULE_message_text = 4, RULE_story_elements = 5, RULE_welcome = 6, RULE_message = 7, 
@@ -61,7 +62,8 @@ public class StoryGrammarParser extends Parser {
 		"'_inv'", "'_prod'", "'_inroom'", "'_incont'", null, "'_iscont'", "'_isitem'", 
 		"'_burning'", "'_hot'", "'_normal'", "'_cold'", "'_frozen'", "'_variable'", 
 		"'_constant'", null, null, "'_plir'", "'_plnir'", "'_plilv'", "'_itir'", 
-		"'_itnir'", "'_itinv'", "'_itninv'", "'_iticon'", "'_itnicon'", "'_combine'", 
+		"'_itnir'", "'_itinv'", "'_itninv'", "'_iticon'", "'_itnicon'", "'_isfrozen'", 
+		"'_iscold'", "'_isnormal'", "'_ishot'", "'_isburning'", "'_combine'", 
 		"'_examine'", "'_use'", "'_useon'", "'_move'", "'_special'", "'_none'", 
 		"'_jmp'", "'_additinv'", "'_rmit'", "'_kill'", "'_win'", "'_additr'", 
 		"'_addcon'", "'_rmcon'", "'_wait'"
@@ -75,6 +77,7 @@ public class StoryGrammarParser extends Parser {
 		"FROZEN", "VARIABLE", "CONSTANT", "ANDING", "ORING", "PLAYER_IN_ROOM", 
 		"PLAYER_NOT_IN_ROOM", "PLAYER_ON_LEVEL", "ITEM_IN_ROOM", "ITEM_NOT_IN_ROOM", 
 		"ITEM_IN_INVENTORY", "ITEM_NOT_IN_INVENTORY", "ITEM_IN_CONTAINER", "ITEM_NOT_IN_CONTAINER", 
+		"ITEM_IS_FROZEN", "ITEM_IS_COLD", "ITEM_IS_NORMAL", "ITEM_IS_HOT", "ITEM_IS_BURNING", 
 		"CON_COMBINE", "CON_EXAMINE", "CON_USE", "CON_USEON", "CON_MOVE", "CON_SPECIAL", 
 		"NONE", "TELEPORT", "ADD_ITEM_TO_INV", "REMOVE_ITEM", "KILL", "WIN", "ADD_ITEM_TO_ROOM", 
 		"ADD_CONNECTOR", "REMOVE_CONNECTOR", "WAIT", "QUOTED_TEXT", "ALPHANUMERIC", 
@@ -1839,6 +1842,11 @@ public class StoryGrammarParser extends Parser {
 			case PLAYER_ON_LEVEL:
 			case ITEM_IN_INVENTORY:
 			case ITEM_NOT_IN_INVENTORY:
+			case ITEM_IS_FROZEN:
+			case ITEM_IS_COLD:
+			case ITEM_IS_NORMAL:
+			case ITEM_IS_HOT:
+			case ITEM_IS_BURNING:
 			case CON_EXAMINE:
 			case CON_USE:
 			case CON_SPECIAL:
@@ -1942,6 +1950,11 @@ public class StoryGrammarParser extends Parser {
 		public TerminalNode CON_EXAMINE() { return getToken(StoryGrammarParser.CON_EXAMINE, 0); }
 		public TerminalNode CON_USE() { return getToken(StoryGrammarParser.CON_USE, 0); }
 		public TerminalNode CON_SPECIAL() { return getToken(StoryGrammarParser.CON_SPECIAL, 0); }
+		public TerminalNode ITEM_IS_FROZEN() { return getToken(StoryGrammarParser.ITEM_IS_FROZEN, 0); }
+		public TerminalNode ITEM_IS_COLD() { return getToken(StoryGrammarParser.ITEM_IS_COLD, 0); }
+		public TerminalNode ITEM_IS_NORMAL() { return getToken(StoryGrammarParser.ITEM_IS_NORMAL, 0); }
+		public TerminalNode ITEM_IS_HOT() { return getToken(StoryGrammarParser.ITEM_IS_HOT, 0); }
+		public TerminalNode ITEM_IS_BURNING() { return getToken(StoryGrammarParser.ITEM_IS_BURNING, 0); }
 		public Single_arg_cnd_typeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1970,7 +1983,7 @@ public class StoryGrammarParser extends Parser {
 			{
 			setState(253);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLAYER_IN_ROOM) | (1L << PLAYER_NOT_IN_ROOM) | (1L << PLAYER_ON_LEVEL) | (1L << ITEM_IN_INVENTORY) | (1L << ITEM_NOT_IN_INVENTORY) | (1L << CON_EXAMINE) | (1L << CON_USE) | (1L << CON_SPECIAL))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLAYER_IN_ROOM) | (1L << PLAYER_NOT_IN_ROOM) | (1L << PLAYER_ON_LEVEL) | (1L << ITEM_IN_INVENTORY) | (1L << ITEM_NOT_IN_INVENTORY) | (1L << ITEM_IS_FROZEN) | (1L << ITEM_IS_COLD) | (1L << ITEM_IS_NORMAL) | (1L << ITEM_IS_HOT) | (1L << ITEM_IS_BURNING) | (1L << CON_EXAMINE) | (1L << CON_USE) | (1L << CON_SPECIAL))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			} else {
 				consume();
@@ -2668,7 +2681,7 @@ public class StoryGrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3F\u012f\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3K\u012f\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -2690,18 +2703,18 @@ public class StoryGrammarParser extends Parser {
 		"\n\"\f\"\16\"\u010e\13\"\3#\3#\3#\3#\3#\3#\5#\u0116\n#\3$\3$\3%\3%\3%"+
 		"\3&\3&\3\'\3\'\3\'\3\'\3(\3(\3)\3)\3)\3)\3)\3)\3*\3*\3+\3+\3+\2\2,\2\4"+
 		"\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNP"+
-		"RT\2\r\3\2\22\25\3\2\26\27\3\2\35\36\3\2\37#\3\2$%\6\2(*-.\62\63\66\66"+
-		"\5\2+,/\61\64\64\4\2\67\67;<\3\28:\3\2>?\3\2&\'\u0119\2V\3\2\2\2\4X\3"+
-		"\2\2\2\6Z\3\2\2\2\b\\\3\2\2\2\n^\3\2\2\2\f`\3\2\2\2\16k\3\2\2\2\20u\3"+
-		"\2\2\2\22}\3\2\2\2\24\u008b\3\2\2\2\26\u0099\3\2\2\2\30\u009b\3\2\2\2"+
-		"\32\u009f\3\2\2\2\34\u00a3\3\2\2\2\36\u00a5\3\2\2\2 \u00b9\3\2\2\2\"\u00c1"+
+		"RT\2\r\3\2\22\25\3\2\26\27\3\2\35\36\3\2\37#\3\2$%\7\2(*-.\61\65\678;"+
+		";\6\2+,/\60\66\6699\4\2<<@A\3\2=?\3\2CD\3\2&\'\u0119\2V\3\2\2\2\4X\3\2"+
+		"\2\2\6Z\3\2\2\2\b\\\3\2\2\2\n^\3\2\2\2\f`\3\2\2\2\16k\3\2\2\2\20u\3\2"+
+		"\2\2\22}\3\2\2\2\24\u008b\3\2\2\2\26\u0099\3\2\2\2\30\u009b\3\2\2\2\32"+
+		"\u009f\3\2\2\2\34\u00a3\3\2\2\2\36\u00a5\3\2\2\2 \u00b9\3\2\2\2\"\u00c1"+
 		"\3\2\2\2$\u00c3\3\2\2\2&\u00c5\3\2\2\2(\u00c7\3\2\2\2*\u00c9\3\2\2\2,"+
 		"\u00cb\3\2\2\2.\u00d1\3\2\2\2\60\u00d3\3\2\2\2\62\u00e3\3\2\2\2\64\u00e6"+
 		"\3\2\2\2\66\u00ee\3\2\2\28\u00fa\3\2\2\2:\u00fc\3\2\2\2<\u00ff\3\2\2\2"+
 		">\u0101\3\2\2\2@\u0105\3\2\2\2B\u0107\3\2\2\2D\u0115\3\2\2\2F\u0117\3"+
 		"\2\2\2H\u0119\3\2\2\2J\u011c\3\2\2\2L\u011e\3\2\2\2N\u0122\3\2\2\2P\u0124"+
-		"\3\2\2\2R\u012a\3\2\2\2T\u012c\3\2\2\2VW\7D\2\2W\3\3\2\2\2XY\7D\2\2Y\5"+
-		"\3\2\2\2Z[\7D\2\2[\7\3\2\2\2\\]\7D\2\2]\t\3\2\2\2^_\7A\2\2_\13\3\2\2\2"+
+		"\3\2\2\2R\u012a\3\2\2\2T\u012c\3\2\2\2VW\7I\2\2W\3\3\2\2\2XY\7I\2\2Y\5"+
+		"\3\2\2\2Z[\7I\2\2[\7\3\2\2\2\\]\7I\2\2]\t\3\2\2\2^_\7F\2\2_\13\3\2\2\2"+
 		"`h\5\16\b\2ag\5\22\n\2bg\5\36\20\2cg\5\20\t\2dg\5,\27\2eg\5\60\31\2fa"+
 		"\3\2\2\2fb\3\2\2\2fc\3\2\2\2fd\3\2\2\2fe\3\2\2\2gj\3\2\2\2hf\3\2\2\2h"+
 		"i\3\2\2\2i\r\3\2\2\2jh\3\2\2\2kl\7\r\2\2lm\7\3\2\2mn\5.\30\2no\7\n\2\2"+
@@ -2730,20 +2743,20 @@ public class StoryGrammarParser extends Parser {
 		"\5\4\3\2\u00c1\u00bb\3\2\2\2\u00c1\u00bd\3\2\2\2\u00c1\u00be\3\2\2\2\u00c1"+
 		"\u00bf\3\2\2\2\u00c2#\3\2\2\2\u00c3\u00c4\t\4\2\2\u00c4%\3\2\2\2\u00c5"+
 		"\u00c6\t\5\2\2\u00c6\'\3\2\2\2\u00c7\u00c8\t\6\2\2\u00c8)\3\2\2\2\u00c9"+
-		"\u00ca\7D\2\2\u00ca+\3\2\2\2\u00cb\u00cc\7\20\2\2\u00cc\u00cd\7\3\2\2"+
+		"\u00ca\7I\2\2\u00ca+\3\2\2\2\u00cb\u00cc\7\20\2\2\u00cc\u00cd\7\3\2\2"+
 		"\u00cd\u00ce\5*\26\2\u00ce\u00cf\7\n\2\2\u00cf\u00d0\7\4\2\2\u00d0-\3"+
-		"\2\2\2\u00d1\u00d2\7D\2\2\u00d2/\3\2\2\2\u00d3\u00d4\7\21\2\2\u00d4\u00d5"+
+		"\2\2\2\u00d1\u00d2\7I\2\2\u00d2/\3\2\2\2\u00d3\u00d4\7\21\2\2\u00d4\u00d5"+
 		"\7\3\2\2\u00d5\u00d6\5.\30\2\u00d6\u00d7\7\n\2\2\u00d7\u00d8\5T+\2\u00d8"+
 		"\u00d9\7\n\2\2\u00d9\u00da\5\64\33\2\u00da\u00db\7\n\2\2\u00db\u00dc\5"+
 		"\66\34\2\u00dc\u00dd\7\n\2\2\u00dd\u00de\5B\"\2\u00de\u00df\7\n\2\2\u00df"+
 		"\u00e0\5\34\17\2\u00e0\u00e1\7\n\2\2\u00e1\u00e2\7\4\2\2\u00e2\61\3\2"+
-		"\2\2\u00e3\u00e4\5.\30\2\u00e4\u00e5\7E\2\2\u00e5\63\3\2\2\2\u00e6\u00eb"+
+		"\2\2\u00e3\u00e4\5.\30\2\u00e4\u00e5\7J\2\2\u00e5\63\3\2\2\2\u00e6\u00eb"+
 		"\5\62\32\2\u00e7\u00e8\7\t\2\2\u00e8\u00ea\5\62\32\2\u00e9\u00e7\3\2\2"+
 		"\2\u00ea\u00ed\3\2\2\2\u00eb\u00e9\3\2\2\2\u00eb\u00ec\3\2\2\2\u00ec\65"+
 		"\3\2\2\2\u00ed\u00eb\3\2\2\2\u00ee\u00f3\58\35\2\u00ef\u00f0\7\t\2\2\u00f0"+
 		"\u00f2\58\35\2\u00f1\u00ef\3\2\2\2\u00f2\u00f5\3\2\2\2\u00f3\u00f1\3\2"+
 		"\2\2\u00f3\u00f4\3\2\2\2\u00f4\67\3\2\2\2\u00f5\u00f3\3\2\2\2\u00f6\u00fb"+
-		"\5:\36\2\u00f7\u00fb\5> \2\u00f8\u00f9\7\65\2\2\u00f9\u00fb\5\30\r\2\u00fa"+
+		"\5:\36\2\u00f7\u00fb\5> \2\u00f8\u00f9\7:\2\2\u00f9\u00fb\5\30\r\2\u00fa"+
 		"\u00f6\3\2\2\2\u00fa\u00f7\3\2\2\2\u00fa\u00f8\3\2\2\2\u00fb9\3\2\2\2"+
 		"\u00fc\u00fd\5<\37\2\u00fd\u00fe\5\4\3\2\u00fe;\3\2\2\2\u00ff\u0100\t"+
 		"\7\2\2\u0100=\3\2\2\2\u0101\u0102\5@!\2\u0102\u0103\5\4\3\2\u0103\u0104"+
@@ -2751,12 +2764,12 @@ public class StoryGrammarParser extends Parser {
 		"\5D#\2\u0108\u0109\7\t\2\2\u0109\u010b\5D#\2\u010a\u0108\3\2\2\2\u010b"+
 		"\u010e\3\2\2\2\u010c\u010a\3\2\2\2\u010c\u010d\3\2\2\2\u010dC\3\2\2\2"+
 		"\u010e\u010c\3\2\2\2\u010f\u0116\5F$\2\u0110\u0116\5H%\2\u0111\u0116\5"+
-		"L\'\2\u0112\u0116\5P)\2\u0113\u0114\7@\2\2\u0114\u0116\7E\2\2\u0115\u010f"+
+		"L\'\2\u0112\u0116\5P)\2\u0113\u0114\7E\2\2\u0114\u0116\7J\2\2\u0115\u010f"+
 		"\3\2\2\2\u0115\u0110\3\2\2\2\u0115\u0111\3\2\2\2\u0115\u0112\3\2\2\2\u0115"+
 		"\u0113\3\2\2\2\u0116E\3\2\2\2\u0117\u0118\t\t\2\2\u0118G\3\2\2\2\u0119"+
 		"\u011a\5J&\2\u011a\u011b\5\4\3\2\u011bI\3\2\2\2\u011c\u011d\t\n\2\2\u011d"+
 		"K\3\2\2\2\u011e\u011f\5N(\2\u011f\u0120\5\4\3\2\u0120\u0121\5\6\4\2\u0121"+
-		"M\3\2\2\2\u0122\u0123\7=\2\2\u0123O\3\2\2\2\u0124\u0125\5R*\2\u0125\u0126"+
+		"M\3\2\2\2\u0122\u0123\7B\2\2\u0123O\3\2\2\2\u0124\u0125\5R*\2\u0125\u0126"+
 		"\5\6\4\2\u0126\u0127\5\30\r\2\u0127\u0128\5\6\4\2\u0128\u0129\5\30\r\2"+
 		"\u0129Q\3\2\2\2\u012a\u012b\t\13\2\2\u012bS\3\2\2\2\u012c\u012d\t\f\2"+
 		"\2\u012dU\3\2\2\2\16fh\u0090\u0099\u009f\u00a3\u00c1\u00eb\u00f3\u00fa"+

@@ -62,6 +62,11 @@ ITEM_IN_INVENTORY:  '_itinv';
 ITEM_NOT_IN_INVENTORY: '_itninv';
 ITEM_IN_CONTAINER: '_iticon';
 ITEM_NOT_IN_CONTAINER: '_itnicon';
+ITEM_IS_FROZEN: '_isfrozen';
+ITEM_IS_COLD: '_iscold';
+ITEM_IS_NORMAL: '_isnormal';
+ITEM_IS_HOT: '_ishot';
+ITEM_IS_BURNING: '_isburning';
 CON_COMBINE:'_combine';
 CON_EXAMINE:'_examine';
 CON_USE:    '_use';
@@ -161,7 +166,12 @@ single_arg_cnd_type: PLAYER_IN_ROOM
                    | ITEM_NOT_IN_INVENTORY
                    | CON_EXAMINE
                    | CON_USE
-                   | CON_SPECIAL;
+                   | CON_SPECIAL
+                   | ITEM_IS_FROZEN
+                   | ITEM_IS_COLD
+                   | ITEM_IS_NORMAL
+                   | ITEM_IS_HOT
+                   | ITEM_IS_BURNING;
 
 double_arg_cnd: double_arg_cnd_type item_id room_id;
 double_arg_cnd_type: ITEM_IN_ROOM

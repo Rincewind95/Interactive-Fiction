@@ -195,6 +195,11 @@ public class Item extends ItemLocation implements Comparable
         return remaining_vol;
     }
 
+    public temperature getTemperature()
+    {
+        return temperature;
+    }
+
     public enum flag
     {
         inroom, inv, incont, prod
