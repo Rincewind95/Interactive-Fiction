@@ -42,7 +42,7 @@ public class Player
         return location;
     }
 
-    public String listInventory()
+    public String listInventory(Engine eng)
     {
         String inv = "";
         if(!inventory.isEmpty())
@@ -50,7 +50,7 @@ public class Player
             inv += "Your have the following items:";
             for (String item_id: inventory.keySet())
             {
-                inv += "\n- " + item_id;
+                inv += eng.findItem(item_id).listContents(eng, "");
             }
         }
         else

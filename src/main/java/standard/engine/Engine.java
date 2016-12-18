@@ -102,7 +102,7 @@ public class Engine
             }
             else if (final_out_to_user.equals(""))
             {
-                final_out_to_user = "Nothing happens.";
+                final_out_to_user = "nothing happens";
             }
             System.out.println(final_out_to_user);
         }
@@ -132,7 +132,7 @@ public class Engine
                             toTake.isTakeable())
                     {
                         // if the player is in the same room as the item, and does not have the item he can take it
-                        out = toTake.getItem_id() + " picked up.";
+                        out = toTake.getItem_id() + " picked up";
                         // move the item to the players inventory
                         player.giveItem(toTake);
                         toTake.setLocationFlag(Item.flag.inv);
@@ -141,7 +141,7 @@ public class Engine
                     }
                     else if (!toTake.isTakeable())
                     {
-                        out = "You cannot take that.";
+                        out = "you cannot take that";
                     }
                     else
                     {
@@ -159,7 +159,7 @@ public class Engine
                     if (player.hasItem(toDrop))
                     {
                         // if the player has the item
-                        out = toDrop.getItem_id() + " dropped.";
+                        out = toDrop.getItem_id() + " dropped";
                         // remove the item from the players inventory
                         player.removeItem(toDrop);
                         // add the item to the room the player is in
@@ -222,19 +222,32 @@ public class Engine
                 {
                     Item fir = finditem.get(args.get(0));
                     Item sec = finditem.get(args.get(1));
-                    if (fir.getVolume(this) >= sec.getVolume(this))
+                    if(fir == sec)
                     {
-                        out = Utility.addThe(fir.getItem_id()) + " is to big to fit into " + Utility.addThe(sec.getItem_id()) + ".";
+                        out = "you cannot put " + Utility.addThe(fir.getItem_id()) + " in itself";
+                        resp = response.skip;
+                    }
+                    else if (fir.getVolume(this) >= sec.getVolume(this))
+                    {
+                        out = Utility.addThe(fir.getItem_id()) + " is to big to fit into " + Utility.addThe(sec.getItem_id());
                         resp = response.skip;
                     }
                     else if(sec.isContainer())
                     {
-                        fir.moveItem(Item.flag.incont, sec, this);
-                        out = "you put " + Utility.addThe(fir.getItem_id()) + " into " + Utility.addThe(sec.getItem_id()) + ".";
+                        if(!fir.isTakeable() )
+                        {
+                            out = "you cannot move " + Utility.addThe(fir.getItem_id());
+                            resp = response.skip;
+                        }
+                        else if ((player.hasItem(sec) || player.getLocation().containsItem(sec)))
+                        {
+                            fir.moveItem(Item.flag.incont, sec, this);
+                            out = "you put " + Utility.addThe(fir.getItem_id()) + " into " + Utility.addThe(sec.getItem_id());
+                        }
                     }
                     else
                     {
-                        out = Utility.addThe(sec.getItem_id()) + " is not a container.";
+                        out = Utility.addThe(sec.getItem_id()) + " is not a container";
                         resp = response.skip;
                     }
                 }
@@ -245,10 +258,10 @@ public class Engine
                 {
                     Item fir = finditem.get(args.get(0));
                     Item sec = finditem.get(args.get(1));
-                    if(sec.contains(fir))
+                    if(sec.contains(fir) && (player.hasItem(sec) || player.getLocation().containsItem(sec)))
                     {
                         fir.moveItem(Item.flag.inv, null, this);
-                        out = "you remove " + Utility.addThe(fir.getItem_id()) + " from " + Utility.addThe(sec.getItem_id()) + ".";
+                        out = "you remove " + Utility.addThe(fir.getItem_id()) + " from " + Utility.addThe(sec.getItem_id());
                     }
                 }
                 break;
@@ -264,7 +277,7 @@ public class Engine
                     }
                     else
                     {
-                        out = toExamine.getExamination();
+                        out = toExamine.getExamination(this);
                     }
                 }
                 else resp = response.badinput;
@@ -300,7 +313,7 @@ public class Engine
                     else
                     {
                         // write the default message if nothing else works
-                        out = "You cannot go there.";
+                        out = "you cannot go there";
                     }
                 }
                 else resp = response.badinput;
@@ -327,7 +340,7 @@ public class Engine
                 resp = response.skip;
                 break;
             case inventory:
-                out = player.listInventory();
+                out = player.listInventory(this);
                 resp = response.skip;
                 break;
             case look:
@@ -339,14 +352,14 @@ public class Engine
                 resp = response.skip;
                 break;
             case wait:
-                out = "Time passes.";
+                out = "time passes";
                 break;
 
             case empty:
                 resp = response.badinput;
                 break;
             case exit:
-                out = "Game terminating...";
+                out = "game terminating...";
                 resp = response.exit;
                 break;
             case badcomm:
@@ -356,7 +369,7 @@ public class Engine
 
         // write responses if the command was bad
         if (resp == response.badinput)
-            out = "I don't understand...";
+            out = "I don't understand";
         return new Pair<>(resp, out);
     }
 
@@ -483,7 +496,7 @@ public class Engine
         }
         else
         {
-            hist += "No historic commands available.";
+            hist += "no historic commands available";
             dashcnt = 31;
         }
         hist +=   "\n";

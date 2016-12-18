@@ -170,11 +170,16 @@ public class Item extends ItemLocation implements Comparable
         return contained.containsKey(item.getItem_id());
     }
 
+    public int getTotalVolume()
+    {
+        return volume;
+    }
+
     public int getVolume(Engine eng)
     {
         int remaining_vol = volume;
         for(String item : contained.keySet())
-            remaining_vol -= eng.findItem(item).getVolume(eng);
+            remaining_vol -= eng.findItem(item).getTotalVolume();
         return remaining_vol;
     }
 
@@ -183,7 +188,17 @@ public class Item extends ItemLocation implements Comparable
         inroom, inv, incont, prod
     }
 
-    public String getExamination()
+    public String listContents(Engine eng, String prefix)
+    {
+        String res = "\n" + prefix + "- " + item_id;
+        for(String child : contained.keySet())
+        {
+            res += eng.findItem(child).listContents(eng, prefix + "\t");
+        }
+        return res;
+    }
+
+    public String getExamination(Engine eng)
     {
         String result = "";
         result += description.getMsg();
@@ -192,7 +207,7 @@ public class Item extends ItemLocation implements Comparable
             result += "\nContains the following:";
             for(String item : contained.keySet())
             {
-                result += "\n- "+ item;
+                result += eng.findItem(item).listContents(eng, "");
             }
         }
         return result;

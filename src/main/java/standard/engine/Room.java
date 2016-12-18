@@ -199,22 +199,9 @@ public class Room extends ItemLocation
         if (!items.isEmpty())
         {
             info += "The following items are present:";
-            int tab = 0;
             for (String item_id : items.keySet())
             {
-                tab = Math.max(tab, item_id.length());
-            }
-            for (String item_id : items.keySet())
-            {
-                info += "\n- " + item_id + " ";
-                for(int i = 0; i < tab - item_id.length(); i++)
-                    info += " ";
-                info += (items.get(item_id).isTakeable() ? "<take-able>": "<fixed>");
-                Item curr = eng.findItem(item_id);
-                for(String item : curr.getContainedKeySet())
-                {
-                    info += "\n\t- " + item + " ";
-                }
+                info += eng.findItem(item_id).listContents(eng, "");
             }
         }
         else
