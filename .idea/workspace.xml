@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" afterPath="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammar.tokens" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammar.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarBaseListener.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarBaseListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarBaseVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarBaseVisitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarLexer.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarLexer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarLexer.tokens" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarLexer.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarListener.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarParser.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarVisitor.java" />
     </list>
     <ignored path="InteractiveFiction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,19 +36,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Engine.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Engine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="140" column="20" selection-start-line="140" selection-start-column="20" selection-end-line="140" selection-end-column="20" />
+            <state relative-caret-position="430">
+              <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
               <folding>
                 <element signature="docComment;class#Engine#0" expanded="false" />
                 <element signature="method#Engine#0;class#Engine#0" expanded="false" />
+                <element signature="method#start#0;class#Engine#0" expanded="false" />
+                <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
                 <element signature="method#checkConstraints#0;class#Engine#0" expanded="false" />
                 <element signature="method#setWelcome#0;class#Engine#0" expanded="false" />
                 <element signature="method#getHistory#0;class#Engine#0" expanded="false" />
                 <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StoryGrammar.g4" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="384">
+              <caret line="117" column="36" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -114,18 +135,6 @@
               <caret line="185" column="46" selection-start-line="185" selection-start-column="46" selection-end-line="185" selection-end-column="46" />
               <folding>
                 <element signature="method#Command#2;class#Command#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StoryCompiler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/story/compiler/StoryCompiler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -241,7 +250,6 @@
         <option value="$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/ItemLocation.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Condition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Consequence.java" />
         <option value="$PROJECT_DIR$/src/main/java/test/java/NLPtest.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
@@ -253,6 +261,7 @@
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Room.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" />
       </list>
     </option>
   </component>
@@ -923,7 +932,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.4914712" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18526544" sideWeight="0.4914712" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18851571" sideWeight="0.4936034" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -973,7 +982,7 @@
           <option name="timeStamp" value="120" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="142" />
+      <option name="time" value="143" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1212,13 +1221,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2016">
-          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Consequence.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
@@ -1364,16 +1366,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="140" column="20" selection-start-line="140" selection-start-column="20" selection-end-line="140" selection-end-column="20" />
+        <state relative-caret-position="430">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
           <folding>
             <element signature="docComment;class#Engine#0" expanded="false" />
             <element signature="method#Engine#0;class#Engine#0" expanded="false" />
+            <element signature="method#start#0;class#Engine#0" expanded="false" />
+            <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
             <element signature="method#checkConstraints#0;class#Engine#0" expanded="false" />
             <element signature="method#setWelcome#0;class#Engine#0" expanded="false" />
             <element signature="method#getHistory#0;class#Engine#0" expanded="false" />
             <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="117" column="36" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>

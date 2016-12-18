@@ -232,6 +232,30 @@ public class StoryGrammarBaseListener implements StoryGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterTemp_level(StoryGrammarParser.Temp_levelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTemp_level(StoryGrammarParser.Temp_levelContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTemp_variability(StoryGrammarParser.Temp_variabilityContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTemp_variability(StoryGrammarParser.Temp_variabilityContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterSpecial_id(StoryGrammarParser.Special_idContext ctx) { }
 	/**
 	 * {@inheritDoc}

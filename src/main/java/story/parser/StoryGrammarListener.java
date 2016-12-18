@@ -188,6 +188,26 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 */
 	void exitItemtype(StoryGrammarParser.ItemtypeContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#temp_level}.
+	 * @param ctx the parse tree
+	 */
+	void enterTemp_level(StoryGrammarParser.Temp_levelContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#temp_level}.
+	 * @param ctx the parse tree
+	 */
+	void exitTemp_level(StoryGrammarParser.Temp_levelContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#temp_variability}.
+	 * @param ctx the parse tree
+	 */
+	void enterTemp_variability(StoryGrammarParser.Temp_variabilityContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#temp_variability}.
+	 * @param ctx the parse tree
+	 */
+	void exitTemp_variability(StoryGrammarParser.Temp_variabilityContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#special_id}.
 	 * @param ctx the parse tree
 	 */

@@ -30,11 +30,23 @@ TAKEABLE: '_takeable';
 FIXED: '_fixed';
 INVENTORY: '_inv';       // if the item is in inventory
 PRODUCED: '_prod';       // if the item is not yet produced (is not in game yet)
-IN_ROOM: '_inroom';        // if the item is in a room
-IN_CONTAINER: '_incont';   // if the item is in a container
+IN_ROOM: '_inroom';      // if the item is in a room
+IN_CONTAINER: '_incont'; // if the item is in a container
+// volume related
 VOLUME: NUMERIC;         // the volume of the item
 IS_CONTAINER: '_iscont'; // item is a container type
 IS_ITEM: '_isitem';      // item is of item type
+// temperature related
+// temperature levels
+BURNING: '_burning';
+HOT: '_hot';
+NORMAL: '_normal';
+COLD: '_cold';
+FROZEN: '_frozen';
+// temperature variability
+VARIABLE: '_variable';   // if the temperature is variable
+CONSTANT: '_constant';   // if the temperature is constant
+
 
 // step related
 // and vs or
@@ -103,7 +115,7 @@ brief: message_text
 description: message_text
            | message_id;
 
-item: ITEM_ OPEN_PAREN_CURLY item_id SEMICOLON mobility SEMICOLON location SEMICOLON VOLUME SEMICOLON itemtype SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
+item: ITEM_ OPEN_PAREN_CURLY item_id SEMICOLON mobility SEMICOLON location SEMICOLON VOLUME SEMICOLON itemtype SEMICOLON temp_level SEMICOLON temp_variability SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
 
 mobility: TAKEABLE
         | FIXED;
@@ -115,6 +127,15 @@ location: IN_ROOM room_id
 
 itemtype: IS_CONTAINER
         | IS_ITEM;
+
+temp_level: BURNING
+          | HOT
+          | NORMAL
+          | COLD
+          | FROZEN;
+
+temp_variability: CONSTANT
+                | VARIABLE;
 
 special_id: ID;
 special: SPECIAL_ OPEN_PAREN_CURLY special_id SEMICOLON CLOS_PAREN_CURLY;
