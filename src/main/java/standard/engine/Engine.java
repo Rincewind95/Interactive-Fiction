@@ -160,12 +160,9 @@ public class Engine
                     {
                         // if the player has the item
                         out = toDrop.getItem_id() + " dropped";
-                        // remove the item from the players inventory
-                        player.removeItem(toDrop);
-                        // add the item to the room the player is in
-                        toDrop.setLocationFlag(Item.flag.inroom);
-                        toDrop.setLocation(player.getLocation());
-                        player.getLocation().addItem(toDrop);
+                        toDrop.moveItem(Item.flag.inroom, player.getLocation(), this);
+                        // all rooms are at room temperature, so items dropped in them are set to room temperature
+                        //toDrop.setTemperature(Item.Temperature.normal);
                     }
                     else
                     {
@@ -242,6 +239,7 @@ public class Engine
                         else if ((player.hasItem(sec) || player.getLocation().containsItem(sec)))
                         {
                             fir.moveItem(Item.flag.incont, sec, this);
+                            Item.modifyTemperatures(fir, sec);
                             out = "you put " + Utility.addThe(fir.getItem_id()) + " into " + Utility.addThe(sec.getItem_id());
                         }
                         else

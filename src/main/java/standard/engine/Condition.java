@@ -95,23 +95,23 @@ public class Condition implements Comparable
                 break;
             case isfrozen:
                 item1 = eng.findItem(args.get(0));
-                resp = item1.getTemperature() == Item.temperature.frozen;
+                resp = item1.getTemperature() == Item.Temperature.frozen;
                 break;
             case iscold:
                 item1 = eng.findItem(args.get(0));
-                resp = item1.getTemperature() == Item.temperature.cold;
+                resp = item1.getTemperature() == Item.Temperature.cold;
                 break;
             case isnormal:
                 item1 = eng.findItem(args.get(0));
-                resp = item1.getTemperature() == Item.temperature.normal;
+                resp = item1.getTemperature() == Item.Temperature.normal;
                 break;
             case ishot:
                 item1 = eng.findItem(args.get(0));
-                resp = item1.getTemperature() == Item.temperature.hot;
+                resp = item1.getTemperature() == Item.Temperature.hot;
                 break;
             case isburning:
                 item1 = eng.findItem(args.get(0));
-                resp = item1.getTemperature() == Item.temperature.burning;
+                resp = item1.getTemperature() == Item.Temperature.burning;
                 break;
             case combine:
                 resp = com != null

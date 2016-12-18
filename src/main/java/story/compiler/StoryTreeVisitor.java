@@ -182,7 +182,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
                 break;
         }
 
-        Item.temperature temp = Item.temperature.valueOf(Utility.strip_special_chars(ctx.temp_level().getText()));
+        Item.Temperature temp = Item.Temperature.valueOf(Utility.strip_special_chars(ctx.temp_level().getText()));
 
         String variability = Utility.strip_special_chars(ctx.temp_variability().getText());
         Boolean fixedTemp;

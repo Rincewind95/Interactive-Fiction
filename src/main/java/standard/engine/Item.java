@@ -1,6 +1,7 @@
 package standard.engine;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -15,11 +16,9 @@ public class Item extends ItemLocation implements Comparable
     private int volume;                      // the volume of the item
     private boolean isContainer;             // true if the item is a container
     private HashMap<String, Item> contained; // the items contained if the item is a container
-    private temperature temperature;         // the temperature of the item
+    private Temperature temperature;         // the temperature of the item
     private boolean hasConstantTemp;          // true if the temperature level cannot change
     private Message description;             // items short description
-
-    public enum temperature {frozen, cold, normal, hot, burning}
 
     public Item(String item_id,
                 boolean takeable,
@@ -27,7 +26,7 @@ public class Item extends ItemLocation implements Comparable
                 ItemLocation location,
                 int volume,
                 boolean isContainer,
-                temperature temperature,
+                Temperature temperature,
                 boolean constTemp,
                 Message description)
     {
@@ -75,19 +74,14 @@ public class Item extends ItemLocation implements Comparable
         return description.getMsg();
     }
 
-    public Message getDescriptionMsg()
-    {
-        return description;
-    }
-
     public void setDescription(Message description)
     {
         this.description = description;
     }
 
-    public void setLocationFlag(flag loc)
+    public Message getDescriptionMsg()
     {
-        location_flag = loc;
+        return description;
     }
 
     public flag getLocationFlag()
@@ -95,9 +89,19 @@ public class Item extends ItemLocation implements Comparable
         return location_flag;
     }
 
+    public void setLocationFlag(flag loc)
+    {
+        location_flag = loc;
+    }
+
     public ItemLocation getLocation()
     {
         return location;
+    }
+
+    public void setLocation(ItemLocation loc)
+    {
+        location = loc;
     }
 
     public void moveItem(flag fl, ItemLocation r, Engine eng)
@@ -106,11 +110,11 @@ public class Item extends ItemLocation implements Comparable
         switch (location_flag)
         {
             case inroom:
-                Room loc = (Room)location;
+                Room loc = (Room) location;
                 loc.removeItem(this);
                 break;
             case incont:
-                Item cont = (Item)location;
+                Item cont = (Item) location;
                 cont.removeItem(this);
                 break;
             case inv:
@@ -130,25 +134,20 @@ public class Item extends ItemLocation implements Comparable
                 location = null;
                 return;
         }
-        if(r instanceof Item)
+        if (r instanceof Item)
         {
-            Item container = (Item)r;
+            Item container = (Item) r;
             container.addItem(this);
             location = container;
             location_flag = flag.incont;
         }
         else
         {
-            Room loc = (Room)r;
+            Room loc = (Room) r;
             loc.addItem(this);
             location = loc;
             location_flag = flag.inroom;
         }
-    }
-
-    public void setLocation(ItemLocation loc)
-    {
-        location = loc;
     }
 
     public boolean isTakeable()
@@ -168,7 +167,7 @@ public class Item extends ItemLocation implements Comparable
 
     public void removeItem(Item item)
     {
-        if(contained.containsKey(item.getItem_id()))
+        if (contained.containsKey(item.getItem_id()))
             contained.remove(item.getItem_id());
     }
 
@@ -184,31 +183,58 @@ public class Item extends ItemLocation implements Comparable
 
     public int getTotalVolume()
     {
-        return volume;
+        int vol = volume;
+        switch (temperature)
+        {
+            case burning: vol += vol*0.2; break;
+            case hot: vol += vol*0.1; break;
+            case cold: vol -= vol*0.1; break;
+            case frozen: vol -= vol*0.2; break;
+        }
+        return vol;
     }
 
     public int getVolume(Engine eng)
     {
-        int remaining_vol = volume;
-        for(String item : contained.keySet())
+        int remaining_vol = getTotalVolume();
+        for (String item : contained.keySet())
             remaining_vol -= eng.findItem(item).getTotalVolume();
         return remaining_vol;
     }
 
-    public temperature getTemperature()
+    public Temperature getTemperature()
     {
         return temperature;
     }
 
-    public enum flag
+    public void setTemperature(Temperature tmp)
     {
-        inroom, inv, incont, prod
+        temperature = tmp;
+    }
+
+    public static void modifyTemperatures(Item item1, Item item2)
+    {
+        if(!item1.hasConstantTemp && !item2.hasConstantTemp)
+        {
+            // if both items have variable temperature, take the average of their temperatures
+            Temperature finaltmp = Temperature.values()[(item1.temperature.ordinal() + item2.temperature.ordinal())/2];
+            item1.temperature = finaltmp;
+            item2.temperature = finaltmp;
+        }
+        else if(item1.hasConstantTemp && !item2.hasConstantTemp)
+        {
+            item2.temperature = item1.temperature;
+        }
+        else if(!item1.hasConstantTemp && item2.hasConstantTemp)
+        {
+            item1.temperature = item2.temperature;
+        }
     }
 
     public String listContents(Engine eng, String prefix)
     {
         String res = "\n" + prefix + "- " + item_id;
-        for(String child : contained.keySet())
+        for (String child : contained.keySet())
         {
             res += eng.findItem(child).listContents(eng, prefix + "\t");
         }
@@ -219,14 +245,33 @@ public class Item extends ItemLocation implements Comparable
     {
         String result = "";
         result += description.getMsg();
-        if(!contained.isEmpty())
+        if (!contained.isEmpty())
         {
             result += "\nContains the following:";
-            for(String item : contained.keySet())
+            for (String item : contained.keySet())
             {
                 result += eng.findItem(item).listContents(eng, "");
             }
         }
+        if(hasConstantTemp)
+        {
+            if(temperature != Temperature.normal)
+                result += "\n" + Utility.addThe(item_id) + " is always " + temperature.toString() + ".";
+            else
+                result += "\n" + Utility.addThe(item_id) + " is always at normal temperature.";
+        }
+        else if(temperature != Temperature.normal)
+            result += "\nAt the moment, " + Utility.addThe(item_id) + " is " + temperature.toString() + ".";
         return result;
+    }
+
+    public enum Temperature
+    {
+        frozen, cold, normal, hot, burning
+    }
+
+    public enum flag
+    {
+        inroom, inv, incont, prod
     }
 }
