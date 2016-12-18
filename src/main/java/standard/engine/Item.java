@@ -1,7 +1,5 @@
 package standard.engine;
 
-import javafx.util.Pair;
-
 import java.util.HashMap;
 import java.util.Set;
 
@@ -17,9 +15,21 @@ public class Item extends ItemLocation implements Comparable
     private int volume;                      // the volume of the item
     private boolean isContainer;             // true if the item is a container
     private HashMap<String, Item> contained; // the items contained if the item is a container
+    private temperature temperature;         // the temperature of the item
+    private boolean hasConstantTemp;          // true if the temperature level cannot change
     private Message description;             // items short description
 
-    public Item(String item_id, boolean takeable, flag location_flag, ItemLocation location, int volume, boolean isContainer, Message description)
+    public enum temperature {frozen, cold, normal, hot, burning}
+
+    public Item(String item_id,
+                boolean takeable,
+                flag location_flag,
+                ItemLocation location,
+                int volume,
+                boolean isContainer,
+                temperature temperature,
+                boolean constTemp,
+                Message description)
     {
         this.item_id = item_id;
         this.takeable = takeable;
@@ -28,6 +38,8 @@ public class Item extends ItemLocation implements Comparable
         this.description = description;
         this.volume = volume;
         this.isContainer = isContainer;
+        this.temperature = temperature;
+        this.hasConstantTemp = constTemp;
         contained = new HashMap<>();
     }
 

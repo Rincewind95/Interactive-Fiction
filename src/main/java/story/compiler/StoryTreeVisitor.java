@@ -182,8 +182,25 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
                 break;
         }
 
+        Item.temperature temp = Item.temperature.valueOf(Utility.strip_special_chars(ctx.temp_level().getText()));
+
+        String variability = Utility.strip_special_chars(ctx.temp_variability().getText());
+        Boolean fixedTemp;
+        switch (variability)
+        {
+            case "constant":
+                fixedTemp = true;
+                break;
+            default:
+                fixedTemp = false;
+                break;
+        }
+
         Message description = parseDescription(ctx.description());
-        eng.addItem(item_id, new Item(item_id, takeable, flag, location, volume, isContainer, description));
+        eng.addItem(item_id, new Item(item_id,takeable, flag, location,
+                                      volume, isContainer,
+                                      temp, fixedTemp,
+                                      description));
         return null;
     }
 
