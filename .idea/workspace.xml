@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/de_tudarmstadt_ukp_dkpro_core_de_tudarmstadt_ukp_dkpro_core_stanfordnlp_gpl_1_8_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/de_tudarmstadt_ukp_dkpro_core_de_tudarmstadt_ukp_dkpro_core_stanfordnlp_gpl_1_8_0.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Player.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Room.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Room.java" />
     </list>
     <ignored path="InteractiveFiction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,8 +30,8 @@
       <file leaf-file-name="Engine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="242" column="25" selection-start-line="242" selection-start-column="25" selection-end-line="242" selection-end-column="25" />
+            <state relative-caret-position="624">
+              <caret line="140" column="20" selection-start-line="140" selection-start-column="20" selection-end-line="140" selection-end-column="20" />
               <folding>
                 <element signature="docComment;class#Engine#0" expanded="false" />
                 <element signature="method#Engine#0;class#Engine#0" expanded="false" />
@@ -1369,8 +1364,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="242" column="25" selection-start-line="242" selection-start-column="25" selection-end-line="242" selection-end-column="25" />
+        <state relative-caret-position="624">
+          <caret line="140" column="20" selection-start-line="140" selection-start-column="20" selection-end-line="140" selection-end-column="20" />
           <folding>
             <element signature="docComment;class#Engine#0" expanded="false" />
             <element signature="method#Engine#0;class#Engine#0" expanded="false" />

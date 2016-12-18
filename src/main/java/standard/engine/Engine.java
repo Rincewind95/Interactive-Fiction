@@ -244,6 +244,11 @@ public class Engine
                             fir.moveItem(Item.flag.incont, sec, this);
                             out = "you put " + Utility.addThe(fir.getItem_id()) + " into " + Utility.addThe(sec.getItem_id());
                         }
+                        else
+                        {
+                            out = "you can only interact with top-level items and their immediate content";
+                            resp = response.skip;
+                        }
                     }
                     else
                     {
