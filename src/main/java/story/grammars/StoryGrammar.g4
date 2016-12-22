@@ -10,6 +10,7 @@ CLOS_PAREN_ROUND: ')';
 COMMA: ',';
 SEMICOLON: ';';
 DOUBLEQUOT: '"';
+MINUS: '-';
 
 // main rule identifiers
 MESSAGE_: '_message';
@@ -110,7 +111,7 @@ room: ROOM_ OPEN_PAREN_CURLY room_id SEMICOLON level_id SEMICOLON exits SEMICOLO
 exits: exit (COMMA exit)*;
 
 exit: direction room_id
-    | direction description;
+    | direction MINUS description;
 
 direction: N|E|W|S;
 

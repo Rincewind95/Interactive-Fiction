@@ -19,18 +19,18 @@ public class StoryGrammarParser extends Parser {
 	public static final int
 		OPEN_PAREN_CURLY=1, CLOS_PAREN_CURLY=2, OPEN_PAREN_BLOCK=3, CLOS_PAREN_BLOCK=4, 
 		OPEN_PAREN_ROUND=5, CLOS_PAREN_ROUND=6, COMMA=7, SEMICOLON=8, DOUBLEQUOT=9, 
-		MESSAGE_=10, WELCOME_=11, ROOM_=12, ITEM_=13, SPECIAL_=14, STEP_=15, N=16, 
-		E=17, S=18, W=19, TAKEABLE=20, FIXED=21, INVENTORY=22, PRODUCED=23, IN_ROOM=24, 
-		IN_CONTAINER=25, VOLUME=26, IS_CONTAINER=27, IS_ITEM=28, BURNING=29, HOT=30, 
-		NORMAL=31, COLD=32, FROZEN=33, VARIABLE=34, CONSTANT=35, ANDING=36, ORING=37, 
-		PLAYER_IN_ROOM=38, PLAYER_NOT_IN_ROOM=39, PLAYER_ON_LEVEL=40, ITEM_IN_ROOM=41, 
-		ITEM_NOT_IN_ROOM=42, ITEM_IN_INVENTORY=43, ITEM_NOT_IN_INVENTORY=44, ITEM_IN_CONTAINER=45, 
-		ITEM_NOT_IN_CONTAINER=46, ITEM_IS_FROZEN=47, ITEM_IS_COLD=48, ITEM_IS_NORMAL=49, 
-		ITEM_IS_HOT=50, ITEM_IS_BURNING=51, CON_COMBINE=52, CON_EXAMINE=53, CON_USE=54, 
-		CON_USEON=55, CON_MOVE=56, CON_SPECIAL=57, NONE=58, TELEPORT=59, ADD_ITEM_TO_INV=60, 
-		REMOVE_ITEM=61, KILL=62, WIN=63, ADD_ITEM_TO_ROOM=64, ADD_CONNECTOR=65, 
-		REMOVE_CONNECTOR=66, WAIT=67, QUOTED_TEXT=68, ALPHANUMERIC=69, NUMERIC=70, 
-		ID=71, TIME=72, WS=73;
+		MINUS=10, MESSAGE_=11, WELCOME_=12, ROOM_=13, ITEM_=14, SPECIAL_=15, STEP_=16, 
+		N=17, E=18, S=19, W=20, TAKEABLE=21, FIXED=22, INVENTORY=23, PRODUCED=24, 
+		IN_ROOM=25, IN_CONTAINER=26, VOLUME=27, IS_CONTAINER=28, IS_ITEM=29, BURNING=30, 
+		HOT=31, NORMAL=32, COLD=33, FROZEN=34, VARIABLE=35, CONSTANT=36, ANDING=37, 
+		ORING=38, PLAYER_IN_ROOM=39, PLAYER_NOT_IN_ROOM=40, PLAYER_ON_LEVEL=41, 
+		ITEM_IN_ROOM=42, ITEM_NOT_IN_ROOM=43, ITEM_IN_INVENTORY=44, ITEM_NOT_IN_INVENTORY=45, 
+		ITEM_IN_CONTAINER=46, ITEM_NOT_IN_CONTAINER=47, ITEM_IS_FROZEN=48, ITEM_IS_COLD=49, 
+		ITEM_IS_NORMAL=50, ITEM_IS_HOT=51, ITEM_IS_BURNING=52, CON_COMBINE=53, 
+		CON_EXAMINE=54, CON_USE=55, CON_USEON=56, CON_MOVE=57, CON_SPECIAL=58, 
+		NONE=59, TELEPORT=60, ADD_ITEM_TO_INV=61, REMOVE_ITEM=62, KILL=63, WIN=64, 
+		ADD_ITEM_TO_ROOM=65, ADD_CONNECTOR=66, REMOVE_CONNECTOR=67, WAIT=68, QUOTED_TEXT=69, 
+		ALPHANUMERIC=70, NUMERIC=71, ID=72, TIME=73, WS=74;
 	public static final int
 		RULE_level_id = 0, RULE_item_id = 1, RULE_room_id = 2, RULE_message_id = 3, 
 		RULE_message_text = 4, RULE_story_elements = 5, RULE_welcome = 6, RULE_message = 7, 
@@ -57,7 +57,7 @@ public class StoryGrammarParser extends Parser {
 
 	private static final String[] _LITERAL_NAMES = {
 		null, "'{'", "'}'", "'['", "']'", "'('", "')'", "','", "';'", "'\"'", 
-		"'_message'", "'_welcome'", "'_room'", "'_item'", "'_special_command'", 
+		"'-'", "'_message'", "'_welcome'", "'_room'", "'_item'", "'_special_command'", 
 		"'_step'", "'_N'", "'_E'", "'_S'", "'_W'", "'_takeable'", "'_fixed'", 
 		"'_inv'", "'_prod'", "'_inroom'", "'_incont'", null, "'_iscont'", "'_isitem'", 
 		"'_burning'", "'_hot'", "'_normal'", "'_cold'", "'_frozen'", "'_variable'", 
@@ -71,17 +71,17 @@ public class StoryGrammarParser extends Parser {
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "OPEN_PAREN_CURLY", "CLOS_PAREN_CURLY", "OPEN_PAREN_BLOCK", "CLOS_PAREN_BLOCK", 
 		"OPEN_PAREN_ROUND", "CLOS_PAREN_ROUND", "COMMA", "SEMICOLON", "DOUBLEQUOT", 
-		"MESSAGE_", "WELCOME_", "ROOM_", "ITEM_", "SPECIAL_", "STEP_", "N", "E", 
-		"S", "W", "TAKEABLE", "FIXED", "INVENTORY", "PRODUCED", "IN_ROOM", "IN_CONTAINER", 
-		"VOLUME", "IS_CONTAINER", "IS_ITEM", "BURNING", "HOT", "NORMAL", "COLD", 
-		"FROZEN", "VARIABLE", "CONSTANT", "ANDING", "ORING", "PLAYER_IN_ROOM", 
-		"PLAYER_NOT_IN_ROOM", "PLAYER_ON_LEVEL", "ITEM_IN_ROOM", "ITEM_NOT_IN_ROOM", 
-		"ITEM_IN_INVENTORY", "ITEM_NOT_IN_INVENTORY", "ITEM_IN_CONTAINER", "ITEM_NOT_IN_CONTAINER", 
-		"ITEM_IS_FROZEN", "ITEM_IS_COLD", "ITEM_IS_NORMAL", "ITEM_IS_HOT", "ITEM_IS_BURNING", 
-		"CON_COMBINE", "CON_EXAMINE", "CON_USE", "CON_USEON", "CON_MOVE", "CON_SPECIAL", 
-		"NONE", "TELEPORT", "ADD_ITEM_TO_INV", "REMOVE_ITEM", "KILL", "WIN", "ADD_ITEM_TO_ROOM", 
-		"ADD_CONNECTOR", "REMOVE_CONNECTOR", "WAIT", "QUOTED_TEXT", "ALPHANUMERIC", 
-		"NUMERIC", "ID", "TIME", "WS"
+		"MINUS", "MESSAGE_", "WELCOME_", "ROOM_", "ITEM_", "SPECIAL_", "STEP_", 
+		"N", "E", "S", "W", "TAKEABLE", "FIXED", "INVENTORY", "PRODUCED", "IN_ROOM", 
+		"IN_CONTAINER", "VOLUME", "IS_CONTAINER", "IS_ITEM", "BURNING", "HOT", 
+		"NORMAL", "COLD", "FROZEN", "VARIABLE", "CONSTANT", "ANDING", "ORING", 
+		"PLAYER_IN_ROOM", "PLAYER_NOT_IN_ROOM", "PLAYER_ON_LEVEL", "ITEM_IN_ROOM", 
+		"ITEM_NOT_IN_ROOM", "ITEM_IN_INVENTORY", "ITEM_NOT_IN_INVENTORY", "ITEM_IN_CONTAINER", 
+		"ITEM_NOT_IN_CONTAINER", "ITEM_IS_FROZEN", "ITEM_IS_COLD", "ITEM_IS_NORMAL", 
+		"ITEM_IS_HOT", "ITEM_IS_BURNING", "CON_COMBINE", "CON_EXAMINE", "CON_USE", 
+		"CON_USEON", "CON_MOVE", "CON_SPECIAL", "NONE", "TELEPORT", "ADD_ITEM_TO_INV", 
+		"REMOVE_ITEM", "KILL", "WIN", "ADD_ITEM_TO_ROOM", "ADD_CONNECTOR", "REMOVE_CONNECTOR", 
+		"WAIT", "QUOTED_TEXT", "ALPHANUMERIC", "NUMERIC", "ID", "TIME", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -763,6 +763,7 @@ public class StoryGrammarParser extends Parser {
 		public Room_idContext room_id() {
 			return getRuleContext(Room_idContext.class,0);
 		}
+		public TerminalNode MINUS() { return getToken(StoryGrammarParser.MINUS, 0); }
 		public DescriptionContext description() {
 			return getRuleContext(DescriptionContext.class,0);
 		}
@@ -789,7 +790,7 @@ public class StoryGrammarParser extends Parser {
 		ExitContext _localctx = new ExitContext(_ctx, getState());
 		enterRule(_localctx, 20, RULE_exit);
 		try {
-			setState(151);
+			setState(152);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 			case 1:
@@ -807,6 +808,8 @@ public class StoryGrammarParser extends Parser {
 				setState(148);
 				direction();
 				setState(149);
+				match(MINUS);
+				setState(150);
 				description();
 				}
 				break;
@@ -854,7 +857,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(153);
+			setState(154);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << N) | (1L << E) | (1L << S) | (1L << W))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -904,19 +907,19 @@ public class StoryGrammarParser extends Parser {
 		BriefContext _localctx = new BriefContext(_ctx, getState());
 		enterRule(_localctx, 24, RULE_brief);
 		try {
-			setState(157);
+			setState(158);
 			switch (_input.LA(1)) {
 			case QUOTED_TEXT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(155);
+				setState(156);
 				message_text();
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(156);
+				setState(157);
 				message_id();
 				}
 				break;
@@ -965,19 +968,19 @@ public class StoryGrammarParser extends Parser {
 		DescriptionContext _localctx = new DescriptionContext(_ctx, getState());
 		enterRule(_localctx, 26, RULE_description);
 		try {
-			setState(161);
+			setState(162);
 			switch (_input.LA(1)) {
 			case QUOTED_TEXT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(159);
+				setState(160);
 				message_text();
 				}
 				break;
 			case ID:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(160);
+				setState(161);
 				message_id();
 				}
 				break;
@@ -1051,43 +1054,43 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(163);
-			match(ITEM_);
 			setState(164);
-			match(OPEN_PAREN_CURLY);
+			match(ITEM_);
 			setState(165);
-			item_id();
+			match(OPEN_PAREN_CURLY);
 			setState(166);
-			match(SEMICOLON);
+			item_id();
 			setState(167);
-			mobility();
+			match(SEMICOLON);
 			setState(168);
-			match(SEMICOLON);
+			mobility();
 			setState(169);
-			location();
+			match(SEMICOLON);
 			setState(170);
-			match(SEMICOLON);
+			location();
 			setState(171);
-			match(VOLUME);
+			match(SEMICOLON);
 			setState(172);
-			match(SEMICOLON);
+			match(VOLUME);
 			setState(173);
-			itemtype();
+			match(SEMICOLON);
 			setState(174);
-			match(SEMICOLON);
+			itemtype();
 			setState(175);
-			temp_level();
+			match(SEMICOLON);
 			setState(176);
-			match(SEMICOLON);
+			temp_level();
 			setState(177);
-			temp_variability();
+			match(SEMICOLON);
 			setState(178);
-			match(SEMICOLON);
+			temp_variability();
 			setState(179);
-			description();
-			setState(180);
 			match(SEMICOLON);
+			setState(180);
+			description();
 			setState(181);
+			match(SEMICOLON);
+			setState(182);
 			match(CLOS_PAREN_CURLY);
 			}
 		}
@@ -1131,7 +1134,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(183);
+			setState(184);
 			_la = _input.LA(1);
 			if ( !(_la==TAKEABLE || _la==FIXED) ) {
 			_errHandler.recoverInline(this);
@@ -1185,37 +1188,37 @@ public class StoryGrammarParser extends Parser {
 		LocationContext _localctx = new LocationContext(_ctx, getState());
 		enterRule(_localctx, 32, RULE_location);
 		try {
-			setState(191);
+			setState(192);
 			switch (_input.LA(1)) {
 			case IN_ROOM:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(185);
-				match(IN_ROOM);
 				setState(186);
+				match(IN_ROOM);
+				setState(187);
 				room_id();
 				}
 				break;
 			case INVENTORY:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(187);
+				setState(188);
 				match(INVENTORY);
 				}
 				break;
 			case PRODUCED:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(188);
+				setState(189);
 				match(PRODUCED);
 				}
 				break;
 			case IN_CONTAINER:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(189);
-				match(IN_CONTAINER);
 				setState(190);
+				match(IN_CONTAINER);
+				setState(191);
 				item_id();
 				}
 				break;
@@ -1263,7 +1266,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(193);
+			setState(194);
 			_la = _input.LA(1);
 			if ( !(_la==IS_CONTAINER || _la==IS_ITEM) ) {
 			_errHandler.recoverInline(this);
@@ -1315,7 +1318,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(195);
+			setState(196);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BURNING) | (1L << HOT) | (1L << NORMAL) | (1L << COLD) | (1L << FROZEN))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1364,7 +1367,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(197);
+			setState(198);
 			_la = _input.LA(1);
 			if ( !(_la==VARIABLE || _la==CONSTANT) ) {
 			_errHandler.recoverInline(this);
@@ -1411,7 +1414,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(199);
+			setState(200);
 			match(ID);
 			}
 		}
@@ -1459,15 +1462,15 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(201);
-			match(SPECIAL_);
 			setState(202);
-			match(OPEN_PAREN_CURLY);
+			match(SPECIAL_);
 			setState(203);
-			special_id();
+			match(OPEN_PAREN_CURLY);
 			setState(204);
-			match(SEMICOLON);
+			special_id();
 			setState(205);
+			match(SEMICOLON);
+			setState(206);
 			match(CLOS_PAREN_CURLY);
 			}
 		}
@@ -1509,7 +1512,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(207);
+			setState(208);
 			match(ID);
 			}
 		}
@@ -1575,35 +1578,35 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(209);
-			match(STEP_);
 			setState(210);
-			match(OPEN_PAREN_CURLY);
+			match(STEP_);
 			setState(211);
-			step_id();
+			match(OPEN_PAREN_CURLY);
 			setState(212);
-			match(SEMICOLON);
+			step_id();
 			setState(213);
-			gate_type();
+			match(SEMICOLON);
 			setState(214);
-			match(SEMICOLON);
+			gate_type();
 			setState(215);
-			required_steps();
+			match(SEMICOLON);
 			setState(216);
-			match(SEMICOLON);
+			required_steps();
 			setState(217);
-			conditions();
+			match(SEMICOLON);
 			setState(218);
-			match(SEMICOLON);
+			conditions();
 			setState(219);
-			consequences();
+			match(SEMICOLON);
 			setState(220);
-			match(SEMICOLON);
+			consequences();
 			setState(221);
-			description();
-			setState(222);
 			match(SEMICOLON);
+			setState(222);
+			description();
 			setState(223);
+			match(SEMICOLON);
+			setState(224);
 			match(CLOS_PAREN_CURLY);
 			}
 		}
@@ -1648,9 +1651,9 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(225);
-			step_id();
 			setState(226);
+			step_id();
+			setState(227);
 			match(TIME);
 			}
 		}
@@ -1702,21 +1705,21 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(228);
+			setState(229);
 			step_before();
-			setState(233);
+			setState(234);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				setState(229);
-				match(COMMA);
 				setState(230);
+				match(COMMA);
+				setState(231);
 				step_before();
 				}
 				}
-				setState(235);
+				setState(236);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1770,21 +1773,21 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(236);
+			setState(237);
 			condition();
-			setState(241);
+			setState(242);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				setState(237);
-				match(COMMA);
 				setState(238);
+				match(COMMA);
+				setState(239);
 				condition();
 				}
 				}
-				setState(243);
+				setState(244);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1835,7 +1838,7 @@ public class StoryGrammarParser extends Parser {
 		ConditionContext _localctx = new ConditionContext(_ctx, getState());
 		enterRule(_localctx, 54, RULE_condition);
 		try {
-			setState(248);
+			setState(249);
 			switch (_input.LA(1)) {
 			case PLAYER_IN_ROOM:
 			case PLAYER_NOT_IN_ROOM:
@@ -1852,7 +1855,7 @@ public class StoryGrammarParser extends Parser {
 			case CON_SPECIAL:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(244);
+				setState(245);
 				single_arg_cnd();
 				}
 				break;
@@ -1864,16 +1867,16 @@ public class StoryGrammarParser extends Parser {
 			case CON_USEON:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(245);
+				setState(246);
 				double_arg_cnd();
 				}
 				break;
 			case CON_MOVE:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(246);
-				match(CON_MOVE);
 				setState(247);
+				match(CON_MOVE);
+				setState(248);
 				direction();
 				}
 				break;
@@ -1924,9 +1927,9 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(250);
-			single_arg_cnd_type();
 			setState(251);
+			single_arg_cnd_type();
+			setState(252);
 			item_id();
 			}
 		}
@@ -1981,7 +1984,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(253);
+			setState(254);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLAYER_IN_ROOM) | (1L << PLAYER_NOT_IN_ROOM) | (1L << PLAYER_ON_LEVEL) | (1L << ITEM_IN_INVENTORY) | (1L << ITEM_NOT_IN_INVENTORY) | (1L << ITEM_IS_FROZEN) | (1L << ITEM_IS_COLD) | (1L << ITEM_IS_NORMAL) | (1L << ITEM_IS_HOT) | (1L << ITEM_IS_BURNING) | (1L << CON_EXAMINE) | (1L << CON_USE) | (1L << CON_SPECIAL))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -2036,11 +2039,11 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(255);
-			double_arg_cnd_type();
 			setState(256);
-			item_id();
+			double_arg_cnd_type();
 			setState(257);
+			item_id();
+			setState(258);
 			room_id();
 			}
 		}
@@ -2088,7 +2091,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(259);
+			setState(260);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << ITEM_IN_ROOM) | (1L << ITEM_NOT_IN_ROOM) | (1L << ITEM_IN_CONTAINER) | (1L << ITEM_NOT_IN_CONTAINER) | (1L << CON_COMBINE) | (1L << CON_USEON))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -2145,21 +2148,21 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(261);
+			setState(262);
 			consequence();
-			setState(266);
+			setState(267);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==COMMA) {
 				{
 				{
-				setState(262);
-				match(COMMA);
 				setState(263);
+				match(COMMA);
+				setState(264);
 				consequence();
 				}
 				}
-				setState(268);
+				setState(269);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -2214,14 +2217,14 @@ public class StoryGrammarParser extends Parser {
 		ConsequenceContext _localctx = new ConsequenceContext(_ctx, getState());
 		enterRule(_localctx, 66, RULE_consequence);
 		try {
-			setState(275);
+			setState(276);
 			switch (_input.LA(1)) {
 			case NONE:
 			case KILL:
 			case WIN:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(269);
+				setState(270);
 				no_arg_cons();
 				}
 				break;
@@ -2230,14 +2233,14 @@ public class StoryGrammarParser extends Parser {
 			case REMOVE_ITEM:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(270);
+				setState(271);
 				single_arg_cons();
 				}
 				break;
 			case ADD_ITEM_TO_ROOM:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(271);
+				setState(272);
 				double_arg_cons();
 				}
 				break;
@@ -2245,16 +2248,16 @@ public class StoryGrammarParser extends Parser {
 			case REMOVE_CONNECTOR:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(272);
+				setState(273);
 				four_arg_cons();
 				}
 				break;
 			case WAIT:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(273);
-				match(WAIT);
 				setState(274);
+				match(WAIT);
+				setState(275);
 				match(TIME);
 				}
 				break;
@@ -2303,9 +2306,9 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(277);
+			setState(278);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NONE) | (1L << KILL) | (1L << WIN))) != 0)) ) {
+			if ( !(((((_la - 59)) & ~0x3f) == 0 && ((1L << (_la - 59)) & ((1L << (NONE - 59)) | (1L << (KILL - 59)) | (1L << (WIN - 59)))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			} else {
 				consume();
@@ -2355,9 +2358,9 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(279);
-			single_arg_cons_type();
 			setState(280);
+			single_arg_cons_type();
+			setState(281);
 			item_id();
 			}
 		}
@@ -2402,7 +2405,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(282);
+			setState(283);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TELEPORT) | (1L << ADD_ITEM_TO_INV) | (1L << REMOVE_ITEM))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -2457,11 +2460,11 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(284);
-			double_arg_cons_type();
 			setState(285);
-			item_id();
+			double_arg_cons_type();
 			setState(286);
+			item_id();
+			setState(287);
 			room_id();
 			}
 		}
@@ -2503,7 +2506,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(288);
+			setState(289);
 			match(ADD_ITEM_TO_ROOM);
 			}
 		}
@@ -2559,15 +2562,15 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(290);
-			four_arg_cons_type();
 			setState(291);
-			room_id();
+			four_arg_cons_type();
 			setState(292);
-			direction();
-			setState(293);
 			room_id();
+			setState(293);
+			direction();
 			setState(294);
+			room_id();
+			setState(295);
 			direction();
 			}
 		}
@@ -2611,7 +2614,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(296);
+			setState(297);
 			_la = _input.LA(1);
 			if ( !(_la==ADD_CONNECTOR || _la==REMOVE_CONNECTOR) ) {
 			_errHandler.recoverInline(this);
@@ -2660,7 +2663,7 @@ public class StoryGrammarParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(298);
+			setState(299);
 			_la = _input.LA(1);
 			if ( !(_la==ANDING || _la==ORING) ) {
 			_errHandler.recoverInline(this);
@@ -2681,7 +2684,7 @@ public class StoryGrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3K\u012f\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3L\u0130\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -2691,89 +2694,89 @@ public class StoryGrammarParser extends Parser {
 		"\7\f\7\16\7j\13\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t"+
 		"\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
 		"\n\3\n\3\13\3\13\3\13\7\13\u008f\n\13\f\13\16\13\u0092\13\13\3\f\3\f\3"+
-		"\f\3\f\3\f\3\f\5\f\u009a\n\f\3\r\3\r\3\16\3\16\5\16\u00a0\n\16\3\17\3"+
-		"\17\5\17\u00a4\n\17\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20"+
+		"\f\3\f\3\f\3\f\3\f\5\f\u009b\n\f\3\r\3\r\3\16\3\16\5\16\u00a1\n\16\3\17"+
+		"\3\17\5\17\u00a5\n\17\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20"+
 		"\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\21\3\21\3\22\3\22"+
-		"\3\22\3\22\3\22\3\22\5\22\u00c2\n\22\3\23\3\23\3\24\3\24\3\25\3\25\3\26"+
+		"\3\22\3\22\3\22\3\22\5\22\u00c3\n\22\3\23\3\23\3\24\3\24\3\25\3\25\3\26"+
 		"\3\26\3\27\3\27\3\27\3\27\3\27\3\27\3\30\3\30\3\31\3\31\3\31\3\31\3\31"+
 		"\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\32\3\32\3\32"+
-		"\3\33\3\33\3\33\7\33\u00ea\n\33\f\33\16\33\u00ed\13\33\3\34\3\34\3\34"+
-		"\7\34\u00f2\n\34\f\34\16\34\u00f5\13\34\3\35\3\35\3\35\3\35\5\35\u00fb"+
-		"\n\35\3\36\3\36\3\36\3\37\3\37\3 \3 \3 \3 \3!\3!\3\"\3\"\3\"\7\"\u010b"+
-		"\n\"\f\"\16\"\u010e\13\"\3#\3#\3#\3#\3#\3#\5#\u0116\n#\3$\3$\3%\3%\3%"+
+		"\3\33\3\33\3\33\7\33\u00eb\n\33\f\33\16\33\u00ee\13\33\3\34\3\34\3\34"+
+		"\7\34\u00f3\n\34\f\34\16\34\u00f6\13\34\3\35\3\35\3\35\3\35\5\35\u00fc"+
+		"\n\35\3\36\3\36\3\36\3\37\3\37\3 \3 \3 \3 \3!\3!\3\"\3\"\3\"\7\"\u010c"+
+		"\n\"\f\"\16\"\u010f\13\"\3#\3#\3#\3#\3#\3#\5#\u0117\n#\3$\3$\3%\3%\3%"+
 		"\3&\3&\3\'\3\'\3\'\3\'\3(\3(\3)\3)\3)\3)\3)\3)\3*\3*\3+\3+\3+\2\2,\2\4"+
 		"\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNP"+
-		"RT\2\r\3\2\22\25\3\2\26\27\3\2\35\36\3\2\37#\3\2$%\7\2(*-.\61\65\678;"+
-		";\6\2+,/\60\66\6699\4\2<<@A\3\2=?\3\2CD\3\2&\'\u0119\2V\3\2\2\2\4X\3\2"+
-		"\2\2\6Z\3\2\2\2\b\\\3\2\2\2\n^\3\2\2\2\f`\3\2\2\2\16k\3\2\2\2\20u\3\2"+
-		"\2\2\22}\3\2\2\2\24\u008b\3\2\2\2\26\u0099\3\2\2\2\30\u009b\3\2\2\2\32"+
-		"\u009f\3\2\2\2\34\u00a3\3\2\2\2\36\u00a5\3\2\2\2 \u00b9\3\2\2\2\"\u00c1"+
-		"\3\2\2\2$\u00c3\3\2\2\2&\u00c5\3\2\2\2(\u00c7\3\2\2\2*\u00c9\3\2\2\2,"+
-		"\u00cb\3\2\2\2.\u00d1\3\2\2\2\60\u00d3\3\2\2\2\62\u00e3\3\2\2\2\64\u00e6"+
-		"\3\2\2\2\66\u00ee\3\2\2\28\u00fa\3\2\2\2:\u00fc\3\2\2\2<\u00ff\3\2\2\2"+
-		">\u0101\3\2\2\2@\u0105\3\2\2\2B\u0107\3\2\2\2D\u0115\3\2\2\2F\u0117\3"+
-		"\2\2\2H\u0119\3\2\2\2J\u011c\3\2\2\2L\u011e\3\2\2\2N\u0122\3\2\2\2P\u0124"+
-		"\3\2\2\2R\u012a\3\2\2\2T\u012c\3\2\2\2VW\7I\2\2W\3\3\2\2\2XY\7I\2\2Y\5"+
-		"\3\2\2\2Z[\7I\2\2[\7\3\2\2\2\\]\7I\2\2]\t\3\2\2\2^_\7F\2\2_\13\3\2\2\2"+
-		"`h\5\16\b\2ag\5\22\n\2bg\5\36\20\2cg\5\20\t\2dg\5,\27\2eg\5\60\31\2fa"+
-		"\3\2\2\2fb\3\2\2\2fc\3\2\2\2fd\3\2\2\2fe\3\2\2\2gj\3\2\2\2hf\3\2\2\2h"+
-		"i\3\2\2\2i\r\3\2\2\2jh\3\2\2\2kl\7\r\2\2lm\7\3\2\2mn\5.\30\2no\7\n\2\2"+
-		"op\5\6\4\2pq\7\n\2\2qr\5\34\17\2rs\7\n\2\2st\7\4\2\2t\17\3\2\2\2uv\7\f"+
-		"\2\2vw\7\3\2\2wx\5\b\5\2xy\7\n\2\2yz\5\n\6\2z{\7\n\2\2{|\7\4\2\2|\21\3"+
-		"\2\2\2}~\7\16\2\2~\177\7\3\2\2\177\u0080\5\6\4\2\u0080\u0081\7\n\2\2\u0081"+
+		"RT\2\r\3\2\23\26\3\2\27\30\3\2\36\37\3\2 $\3\2%&\7\2)+./\62\6689<<\6\2"+
+		",-\60\61\67\67::\4\2==AB\3\2>@\3\2DE\3\2\'(\u011a\2V\3\2\2\2\4X\3\2\2"+
+		"\2\6Z\3\2\2\2\b\\\3\2\2\2\n^\3\2\2\2\f`\3\2\2\2\16k\3\2\2\2\20u\3\2\2"+
+		"\2\22}\3\2\2\2\24\u008b\3\2\2\2\26\u009a\3\2\2\2\30\u009c\3\2\2\2\32\u00a0"+
+		"\3\2\2\2\34\u00a4\3\2\2\2\36\u00a6\3\2\2\2 \u00ba\3\2\2\2\"\u00c2\3\2"+
+		"\2\2$\u00c4\3\2\2\2&\u00c6\3\2\2\2(\u00c8\3\2\2\2*\u00ca\3\2\2\2,\u00cc"+
+		"\3\2\2\2.\u00d2\3\2\2\2\60\u00d4\3\2\2\2\62\u00e4\3\2\2\2\64\u00e7\3\2"+
+		"\2\2\66\u00ef\3\2\2\28\u00fb\3\2\2\2:\u00fd\3\2\2\2<\u0100\3\2\2\2>\u0102"+
+		"\3\2\2\2@\u0106\3\2\2\2B\u0108\3\2\2\2D\u0116\3\2\2\2F\u0118\3\2\2\2H"+
+		"\u011a\3\2\2\2J\u011d\3\2\2\2L\u011f\3\2\2\2N\u0123\3\2\2\2P\u0125\3\2"+
+		"\2\2R\u012b\3\2\2\2T\u012d\3\2\2\2VW\7J\2\2W\3\3\2\2\2XY\7J\2\2Y\5\3\2"+
+		"\2\2Z[\7J\2\2[\7\3\2\2\2\\]\7J\2\2]\t\3\2\2\2^_\7G\2\2_\13\3\2\2\2`h\5"+
+		"\16\b\2ag\5\22\n\2bg\5\36\20\2cg\5\20\t\2dg\5,\27\2eg\5\60\31\2fa\3\2"+
+		"\2\2fb\3\2\2\2fc\3\2\2\2fd\3\2\2\2fe\3\2\2\2gj\3\2\2\2hf\3\2\2\2hi\3\2"+
+		"\2\2i\r\3\2\2\2jh\3\2\2\2kl\7\16\2\2lm\7\3\2\2mn\5.\30\2no\7\n\2\2op\5"+
+		"\6\4\2pq\7\n\2\2qr\5\34\17\2rs\7\n\2\2st\7\4\2\2t\17\3\2\2\2uv\7\r\2\2"+
+		"vw\7\3\2\2wx\5\b\5\2xy\7\n\2\2yz\5\n\6\2z{\7\n\2\2{|\7\4\2\2|\21\3\2\2"+
+		"\2}~\7\17\2\2~\177\7\3\2\2\177\u0080\5\6\4\2\u0080\u0081\7\n\2\2\u0081"+
 		"\u0082\5\2\2\2\u0082\u0083\7\n\2\2\u0083\u0084\5\24\13\2\u0084\u0085\7"+
 		"\n\2\2\u0085\u0086\5\32\16\2\u0086\u0087\7\n\2\2\u0087\u0088\5\34\17\2"+
 		"\u0088\u0089\7\n\2\2\u0089\u008a\7\4\2\2\u008a\23\3\2\2\2\u008b\u0090"+
 		"\5\26\f\2\u008c\u008d\7\t\2\2\u008d\u008f\5\26\f\2\u008e\u008c\3\2\2\2"+
 		"\u008f\u0092\3\2\2\2\u0090\u008e\3\2\2\2\u0090\u0091\3\2\2\2\u0091\25"+
 		"\3\2\2\2\u0092\u0090\3\2\2\2\u0093\u0094\5\30\r\2\u0094\u0095\5\6\4\2"+
-		"\u0095\u009a\3\2\2\2\u0096\u0097\5\30\r\2\u0097\u0098\5\34\17\2\u0098"+
-		"\u009a\3\2\2\2\u0099\u0093\3\2\2\2\u0099\u0096\3\2\2\2\u009a\27\3\2\2"+
-		"\2\u009b\u009c\t\2\2\2\u009c\31\3\2\2\2\u009d\u00a0\5\n\6\2\u009e\u00a0"+
-		"\5\b\5\2\u009f\u009d\3\2\2\2\u009f\u009e\3\2\2\2\u00a0\33\3\2\2\2\u00a1"+
-		"\u00a4\5\n\6\2\u00a2\u00a4\5\b\5\2\u00a3\u00a1\3\2\2\2\u00a3\u00a2\3\2"+
-		"\2\2\u00a4\35\3\2\2\2\u00a5\u00a6\7\17\2\2\u00a6\u00a7\7\3\2\2\u00a7\u00a8"+
-		"\5\4\3\2\u00a8\u00a9\7\n\2\2\u00a9\u00aa\5 \21\2\u00aa\u00ab\7\n\2\2\u00ab"+
-		"\u00ac\5\"\22\2\u00ac\u00ad\7\n\2\2\u00ad\u00ae\7\34\2\2\u00ae\u00af\7"+
-		"\n\2\2\u00af\u00b0\5$\23\2\u00b0\u00b1\7\n\2\2\u00b1\u00b2\5&\24\2\u00b2"+
-		"\u00b3\7\n\2\2\u00b3\u00b4\5(\25\2\u00b4\u00b5\7\n\2\2\u00b5\u00b6\5\34"+
-		"\17\2\u00b6\u00b7\7\n\2\2\u00b7\u00b8\7\4\2\2\u00b8\37\3\2\2\2\u00b9\u00ba"+
-		"\t\3\2\2\u00ba!\3\2\2\2\u00bb\u00bc\7\32\2\2\u00bc\u00c2\5\6\4\2\u00bd"+
-		"\u00c2\7\30\2\2\u00be\u00c2\7\31\2\2\u00bf\u00c0\7\33\2\2\u00c0\u00c2"+
-		"\5\4\3\2\u00c1\u00bb\3\2\2\2\u00c1\u00bd\3\2\2\2\u00c1\u00be\3\2\2\2\u00c1"+
-		"\u00bf\3\2\2\2\u00c2#\3\2\2\2\u00c3\u00c4\t\4\2\2\u00c4%\3\2\2\2\u00c5"+
-		"\u00c6\t\5\2\2\u00c6\'\3\2\2\2\u00c7\u00c8\t\6\2\2\u00c8)\3\2\2\2\u00c9"+
-		"\u00ca\7I\2\2\u00ca+\3\2\2\2\u00cb\u00cc\7\20\2\2\u00cc\u00cd\7\3\2\2"+
-		"\u00cd\u00ce\5*\26\2\u00ce\u00cf\7\n\2\2\u00cf\u00d0\7\4\2\2\u00d0-\3"+
-		"\2\2\2\u00d1\u00d2\7I\2\2\u00d2/\3\2\2\2\u00d3\u00d4\7\21\2\2\u00d4\u00d5"+
-		"\7\3\2\2\u00d5\u00d6\5.\30\2\u00d6\u00d7\7\n\2\2\u00d7\u00d8\5T+\2\u00d8"+
-		"\u00d9\7\n\2\2\u00d9\u00da\5\64\33\2\u00da\u00db\7\n\2\2\u00db\u00dc\5"+
-		"\66\34\2\u00dc\u00dd\7\n\2\2\u00dd\u00de\5B\"\2\u00de\u00df\7\n\2\2\u00df"+
-		"\u00e0\5\34\17\2\u00e0\u00e1\7\n\2\2\u00e1\u00e2\7\4\2\2\u00e2\61\3\2"+
-		"\2\2\u00e3\u00e4\5.\30\2\u00e4\u00e5\7J\2\2\u00e5\63\3\2\2\2\u00e6\u00eb"+
-		"\5\62\32\2\u00e7\u00e8\7\t\2\2\u00e8\u00ea\5\62\32\2\u00e9\u00e7\3\2\2"+
-		"\2\u00ea\u00ed\3\2\2\2\u00eb\u00e9\3\2\2\2\u00eb\u00ec\3\2\2\2\u00ec\65"+
-		"\3\2\2\2\u00ed\u00eb\3\2\2\2\u00ee\u00f3\58\35\2\u00ef\u00f0\7\t\2\2\u00f0"+
-		"\u00f2\58\35\2\u00f1\u00ef\3\2\2\2\u00f2\u00f5\3\2\2\2\u00f3\u00f1\3\2"+
-		"\2\2\u00f3\u00f4\3\2\2\2\u00f4\67\3\2\2\2\u00f5\u00f3\3\2\2\2\u00f6\u00fb"+
-		"\5:\36\2\u00f7\u00fb\5> \2\u00f8\u00f9\7:\2\2\u00f9\u00fb\5\30\r\2\u00fa"+
-		"\u00f6\3\2\2\2\u00fa\u00f7\3\2\2\2\u00fa\u00f8\3\2\2\2\u00fb9\3\2\2\2"+
-		"\u00fc\u00fd\5<\37\2\u00fd\u00fe\5\4\3\2\u00fe;\3\2\2\2\u00ff\u0100\t"+
-		"\7\2\2\u0100=\3\2\2\2\u0101\u0102\5@!\2\u0102\u0103\5\4\3\2\u0103\u0104"+
-		"\5\6\4\2\u0104?\3\2\2\2\u0105\u0106\t\b\2\2\u0106A\3\2\2\2\u0107\u010c"+
-		"\5D#\2\u0108\u0109\7\t\2\2\u0109\u010b\5D#\2\u010a\u0108\3\2\2\2\u010b"+
-		"\u010e\3\2\2\2\u010c\u010a\3\2\2\2\u010c\u010d\3\2\2\2\u010dC\3\2\2\2"+
-		"\u010e\u010c\3\2\2\2\u010f\u0116\5F$\2\u0110\u0116\5H%\2\u0111\u0116\5"+
-		"L\'\2\u0112\u0116\5P)\2\u0113\u0114\7E\2\2\u0114\u0116\7J\2\2\u0115\u010f"+
-		"\3\2\2\2\u0115\u0110\3\2\2\2\u0115\u0111\3\2\2\2\u0115\u0112\3\2\2\2\u0115"+
-		"\u0113\3\2\2\2\u0116E\3\2\2\2\u0117\u0118\t\t\2\2\u0118G\3\2\2\2\u0119"+
-		"\u011a\5J&\2\u011a\u011b\5\4\3\2\u011bI\3\2\2\2\u011c\u011d\t\n\2\2\u011d"+
-		"K\3\2\2\2\u011e\u011f\5N(\2\u011f\u0120\5\4\3\2\u0120\u0121\5\6\4\2\u0121"+
-		"M\3\2\2\2\u0122\u0123\7B\2\2\u0123O\3\2\2\2\u0124\u0125\5R*\2\u0125\u0126"+
-		"\5\6\4\2\u0126\u0127\5\30\r\2\u0127\u0128\5\6\4\2\u0128\u0129\5\30\r\2"+
-		"\u0129Q\3\2\2\2\u012a\u012b\t\13\2\2\u012bS\3\2\2\2\u012c\u012d\t\f\2"+
-		"\2\u012dU\3\2\2\2\16fh\u0090\u0099\u009f\u00a3\u00c1\u00eb\u00f3\u00fa"+
-		"\u010c\u0115";
+		"\u0095\u009b\3\2\2\2\u0096\u0097\5\30\r\2\u0097\u0098\7\f\2\2\u0098\u0099"+
+		"\5\34\17\2\u0099\u009b\3\2\2\2\u009a\u0093\3\2\2\2\u009a\u0096\3\2\2\2"+
+		"\u009b\27\3\2\2\2\u009c\u009d\t\2\2\2\u009d\31\3\2\2\2\u009e\u00a1\5\n"+
+		"\6\2\u009f\u00a1\5\b\5\2\u00a0\u009e\3\2\2\2\u00a0\u009f\3\2\2\2\u00a1"+
+		"\33\3\2\2\2\u00a2\u00a5\5\n\6\2\u00a3\u00a5\5\b\5\2\u00a4\u00a2\3\2\2"+
+		"\2\u00a4\u00a3\3\2\2\2\u00a5\35\3\2\2\2\u00a6\u00a7\7\20\2\2\u00a7\u00a8"+
+		"\7\3\2\2\u00a8\u00a9\5\4\3\2\u00a9\u00aa\7\n\2\2\u00aa\u00ab\5 \21\2\u00ab"+
+		"\u00ac\7\n\2\2\u00ac\u00ad\5\"\22\2\u00ad\u00ae\7\n\2\2\u00ae\u00af\7"+
+		"\35\2\2\u00af\u00b0\7\n\2\2\u00b0\u00b1\5$\23\2\u00b1\u00b2\7\n\2\2\u00b2"+
+		"\u00b3\5&\24\2\u00b3\u00b4\7\n\2\2\u00b4\u00b5\5(\25\2\u00b5\u00b6\7\n"+
+		"\2\2\u00b6\u00b7\5\34\17\2\u00b7\u00b8\7\n\2\2\u00b8\u00b9\7\4\2\2\u00b9"+
+		"\37\3\2\2\2\u00ba\u00bb\t\3\2\2\u00bb!\3\2\2\2\u00bc\u00bd\7\33\2\2\u00bd"+
+		"\u00c3\5\6\4\2\u00be\u00c3\7\31\2\2\u00bf\u00c3\7\32\2\2\u00c0\u00c1\7"+
+		"\34\2\2\u00c1\u00c3\5\4\3\2\u00c2\u00bc\3\2\2\2\u00c2\u00be\3\2\2\2\u00c2"+
+		"\u00bf\3\2\2\2\u00c2\u00c0\3\2\2\2\u00c3#\3\2\2\2\u00c4\u00c5\t\4\2\2"+
+		"\u00c5%\3\2\2\2\u00c6\u00c7\t\5\2\2\u00c7\'\3\2\2\2\u00c8\u00c9\t\6\2"+
+		"\2\u00c9)\3\2\2\2\u00ca\u00cb\7J\2\2\u00cb+\3\2\2\2\u00cc\u00cd\7\21\2"+
+		"\2\u00cd\u00ce\7\3\2\2\u00ce\u00cf\5*\26\2\u00cf\u00d0\7\n\2\2\u00d0\u00d1"+
+		"\7\4\2\2\u00d1-\3\2\2\2\u00d2\u00d3\7J\2\2\u00d3/\3\2\2\2\u00d4\u00d5"+
+		"\7\22\2\2\u00d5\u00d6\7\3\2\2\u00d6\u00d7\5.\30\2\u00d7\u00d8\7\n\2\2"+
+		"\u00d8\u00d9\5T+\2\u00d9\u00da\7\n\2\2\u00da\u00db\5\64\33\2\u00db\u00dc"+
+		"\7\n\2\2\u00dc\u00dd\5\66\34\2\u00dd\u00de\7\n\2\2\u00de\u00df\5B\"\2"+
+		"\u00df\u00e0\7\n\2\2\u00e0\u00e1\5\34\17\2\u00e1\u00e2\7\n\2\2\u00e2\u00e3"+
+		"\7\4\2\2\u00e3\61\3\2\2\2\u00e4\u00e5\5.\30\2\u00e5\u00e6\7K\2\2\u00e6"+
+		"\63\3\2\2\2\u00e7\u00ec\5\62\32\2\u00e8\u00e9\7\t\2\2\u00e9\u00eb\5\62"+
+		"\32\2\u00ea\u00e8\3\2\2\2\u00eb\u00ee\3\2\2\2\u00ec\u00ea\3\2\2\2\u00ec"+
+		"\u00ed\3\2\2\2\u00ed\65\3\2\2\2\u00ee\u00ec\3\2\2\2\u00ef\u00f4\58\35"+
+		"\2\u00f0\u00f1\7\t\2\2\u00f1\u00f3\58\35\2\u00f2\u00f0\3\2\2\2\u00f3\u00f6"+
+		"\3\2\2\2\u00f4\u00f2\3\2\2\2\u00f4\u00f5\3\2\2\2\u00f5\67\3\2\2\2\u00f6"+
+		"\u00f4\3\2\2\2\u00f7\u00fc\5:\36\2\u00f8\u00fc\5> \2\u00f9\u00fa\7;\2"+
+		"\2\u00fa\u00fc\5\30\r\2\u00fb\u00f7\3\2\2\2\u00fb\u00f8\3\2\2\2\u00fb"+
+		"\u00f9\3\2\2\2\u00fc9\3\2\2\2\u00fd\u00fe\5<\37\2\u00fe\u00ff\5\4\3\2"+
+		"\u00ff;\3\2\2\2\u0100\u0101\t\7\2\2\u0101=\3\2\2\2\u0102\u0103\5@!\2\u0103"+
+		"\u0104\5\4\3\2\u0104\u0105\5\6\4\2\u0105?\3\2\2\2\u0106\u0107\t\b\2\2"+
+		"\u0107A\3\2\2\2\u0108\u010d\5D#\2\u0109\u010a\7\t\2\2\u010a\u010c\5D#"+
+		"\2\u010b\u0109\3\2\2\2\u010c\u010f\3\2\2\2\u010d\u010b\3\2\2\2\u010d\u010e"+
+		"\3\2\2\2\u010eC\3\2\2\2\u010f\u010d\3\2\2\2\u0110\u0117\5F$\2\u0111\u0117"+
+		"\5H%\2\u0112\u0117\5L\'\2\u0113\u0117\5P)\2\u0114\u0115\7F\2\2\u0115\u0117"+
+		"\7K\2\2\u0116\u0110\3\2\2\2\u0116\u0111\3\2\2\2\u0116\u0112\3\2\2\2\u0116"+
+		"\u0113\3\2\2\2\u0116\u0114\3\2\2\2\u0117E\3\2\2\2\u0118\u0119\t\t\2\2"+
+		"\u0119G\3\2\2\2\u011a\u011b\5J&\2\u011b\u011c\5\4\3\2\u011cI\3\2\2\2\u011d"+
+		"\u011e\t\n\2\2\u011eK\3\2\2\2\u011f\u0120\5N(\2\u0120\u0121\5\4\3\2\u0121"+
+		"\u0122\5\6\4\2\u0122M\3\2\2\2\u0123\u0124\7C\2\2\u0124O\3\2\2\2\u0125"+
+		"\u0126\5R*\2\u0126\u0127\5\6\4\2\u0127\u0128\5\30\r\2\u0128\u0129\5\6"+
+		"\4\2\u0129\u012a\5\30\r\2\u012aQ\3\2\2\2\u012b\u012c\t\13\2\2\u012cS\3"+
+		"\2\2\2\u012d\u012e\t\f\2\2\u012eU\3\2\2\2\16fh\u0090\u009a\u00a0\u00a4"+
+		"\u00c2\u00ec\u00f4\u00fb\u010d\u0116";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

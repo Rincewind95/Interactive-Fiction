@@ -27,6 +27,10 @@ public class StoryLinker
         // and the initial step
         eng.addStep(eng.getStart_id(), new StoryStep(eng.getStart_id(), true));
 
+        // and set up the welcome message
+        if(eng.getWelcomeMessage().getMsg() == null)
+            eng.setWelcomeMessage(linkMessage(eng.getWelcomeMessage(), "welcome", eng));
+
         // first link up the rooms
         Set<String> roomKeySet = eng.getRoomKeySet();
         for (String room_id: roomKeySet)

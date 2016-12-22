@@ -407,6 +407,16 @@ public class Engine
         this.welcome = welcome;
     }
 
+    public Message getWelcomeMessage()
+    {
+        return  welcome;
+    }
+
+    public void setWelcomeMessage(Message welcome)
+    {
+        this.welcome = welcome;
+    }
+
     public void addRoom(String room_id, Room room)
     {
         findroom.put(room_id, room);

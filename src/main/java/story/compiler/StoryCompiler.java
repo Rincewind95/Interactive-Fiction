@@ -52,3 +52,4 @@ public class StoryCompiler
     }
 }
 // C:\Users\Milos\Dropbox\Part II project Interactive Fiction\Testing\simple_story.txt
+// C:\Users\Milos\Dropbox\Part II project Interactive Fiction\Comparative Study\study_story.txt
