@@ -224,7 +224,7 @@ public class Engine
                         out = "you cannot put " + Utility.addThe(fir.getItem_id()) + " in itself";
                         resp = response.skip;
                     }
-                    else if (fir.getVolume(this) >= sec.getVolume(this))
+                    else if (fir.getVolume(this) > sec.getVolume(this))
                     {
                         out = Utility.addThe(fir.getItem_id()) + " is to big to fit into " + Utility.addThe(sec.getItem_id());
                         resp = response.skip;

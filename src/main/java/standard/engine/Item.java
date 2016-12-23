@@ -231,9 +231,28 @@ public class Item extends ItemLocation implements Comparable
         }
     }
 
+    public String getIDWithTemp()
+    {
+        if(hasConstantTemp || temperature == Temperature.normal)
+            return item_id;
+        String res = item_id;
+        String[] prefixes = {"the ", "a ", "an "};
+        String prefix = "";
+        for(String pre : prefixes)
+        {
+            if(res.startsWith(prefix))
+            {
+                pre = prefix;
+                res = res.substring(pre.length());
+            }
+        }
+        res = prefix + temperature.toString() + " " + res;
+        return res;
+    }
+
     public String listContents(Engine eng, String prefix)
     {
-        String res = "\n" + prefix + "- " + item_id;
+        String res = "\n" + prefix + "- " + getIDWithTemp();
         for (String child : contained.keySet())
         {
             res += eng.findItem(child).listContents(eng, prefix + "\t");
@@ -260,8 +279,6 @@ public class Item extends ItemLocation implements Comparable
             else
                 result += "\n" + Utility.addThe(item_id) + " is always at normal temperature.";
         }
-        else if(temperature != Temperature.normal)
-            result += "\nAt the moment, " + Utility.addThe(item_id) + " is " + temperature.toString() + ".";
         return result;
     }
 
