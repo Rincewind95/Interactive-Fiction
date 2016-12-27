@@ -72,7 +72,6 @@ public class StoryLinker
                     eng.getPlayer().giveItem(curr_item);
                     break;
                 case incont:
-                    // todo add container support
                     curr_item.setLocation(linkItemWithItem((Item)curr_item.getLocation(), curr_item, eng));
                     break;
             }
@@ -135,10 +134,8 @@ public class StoryLinker
                 break;
             case addcon:
             case rmcon:
-                linkStoryItem(args.get(0), constype, parent_id, eng);
-                linkStoryRoom(args.get(1), constype, parent_id, eng);
-                linkStoryItem(args.get(2), constype, parent_id, eng);
-                linkStoryRoom(args.get(3), constype, parent_id, eng);
+                linkStoryRoom(args.get(0), constype, parent_id, eng);
+                linkStoryRoom(args.get(2), constype, parent_id, eng);
                 break;
         }
     }

@@ -272,13 +272,6 @@ public class Item extends ItemLocation implements Comparable
                 result += eng.findItem(item).listContents(eng, "");
             }
         }
-        if(hasConstantTemp)
-        {
-            if(temperature != Temperature.normal)
-                result += "\n" + Utility.addThe(item_id) + " is always " + temperature.toString() + ".";
-            else
-                result += "\n" + Utility.addThe(item_id) + " is always at normal temperature.";
-        }
         return result;
     }
 
