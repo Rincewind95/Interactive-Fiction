@@ -53,7 +53,7 @@ public class NLPparser
         twoArgumentConnectors = new HashMap<>();
         twoArgumentConnectors.put("use", new ArrayList<>(Arrays.asList("with", "on")));
         twoArgumentConnectors.put("combine", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("put", new ArrayList<>(Arrays.asList("in", "on")));
+        twoArgumentConnectors.put("put", new ArrayList<>(Arrays.asList("in", "on", "into")));
         twoArgumentConnectors.put("remove", new ArrayList<>(Arrays.asList("from")));
 
         twoArguments = new HashMap<>();

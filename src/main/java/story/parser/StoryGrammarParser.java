@@ -26,11 +26,13 @@ public class StoryGrammarParser extends Parser {
 		ORING=38, PLAYER_IN_ROOM=39, PLAYER_NOT_IN_ROOM=40, PLAYER_ON_LEVEL=41, 
 		ITEM_IN_ROOM=42, ITEM_NOT_IN_ROOM=43, ITEM_IN_INVENTORY=44, ITEM_NOT_IN_INVENTORY=45, 
 		ITEM_IN_CONTAINER=46, ITEM_NOT_IN_CONTAINER=47, ITEM_IS_FROZEN=48, ITEM_IS_COLD=49, 
-		ITEM_IS_NORMAL=50, ITEM_IS_HOT=51, ITEM_IS_BURNING=52, CON_COMBINE=53, 
-		CON_EXAMINE=54, CON_USE=55, CON_USEON=56, CON_MOVE=57, CON_SPECIAL=58, 
-		NONE=59, TELEPORT=60, ADD_ITEM_TO_INV=61, REMOVE_ITEM=62, KILL=63, WIN=64, 
-		ADD_ITEM_TO_ROOM=65, ADD_CONNECTOR=66, REMOVE_CONNECTOR=67, WAIT=68, QUOTED_TEXT=69, 
-		ALPHANUMERIC=70, NUMERIC=71, ID=72, TIME=73, WS=74;
+		ITEM_IS_NORMAL=50, ITEM_IS_HOT=51, ITEM_IS_BURNING=52, ITEM_IS_NOT_FROZEN=53, 
+		ITEM_IS_NOT_COLD=54, ITEM_IS_NOT_NORMAL=55, ITEM_IS_NOT_HOT=56, ITEM_IS_NOT_BURNING=57, 
+		CON_COMBINE=58, CON_EXAMINE=59, CON_USE=60, CON_USEON=61, CON_MOVE=62, 
+		CON_SPECIAL=63, NONE=64, TELEPORT=65, ADD_ITEM_TO_INV=66, REMOVE_ITEM=67, 
+		KILL=68, WIN=69, ADD_ITEM_TO_ROOM=70, ADD_CONNECTOR=71, REMOVE_CONNECTOR=72, 
+		WAIT=73, QUOTED_TEXT=74, ALPHANUMERIC=75, NUMERIC=76, ID=77, TIME=78, 
+		WS=79;
 	public static final int
 		RULE_level_id = 0, RULE_item_id = 1, RULE_room_id = 2, RULE_message_id = 3, 
 		RULE_message_text = 4, RULE_story_elements = 5, RULE_welcome = 6, RULE_message = 7, 
@@ -63,7 +65,8 @@ public class StoryGrammarParser extends Parser {
 		"'_burning'", "'_hot'", "'_normal'", "'_cold'", "'_frozen'", "'_variable'", 
 		"'_constant'", null, null, "'_plir'", "'_plnir'", "'_plilv'", "'_itir'", 
 		"'_itnir'", "'_itinv'", "'_itninv'", "'_iticon'", "'_itnicon'", "'_isfrozen'", 
-		"'_iscold'", "'_isnormal'", "'_ishot'", "'_isburning'", "'_combine'", 
+		"'_iscold'", "'_isnormal'", "'_ishot'", "'_isburning'", "'_isnotfrozen'", 
+		"'_isnotcold'", "'_isnotnormal'", "'_isnothot'", "'_isnotburning'", "'_combine'", 
 		"'_examine'", "'_use'", "'_useon'", "'_move'", "'_special'", "'_none'", 
 		"'_jmp'", "'_additinv'", "'_rmit'", "'_kill'", "'_win'", "'_additr'", 
 		"'_addcon'", "'_rmcon'", "'_wait'"
@@ -78,10 +81,12 @@ public class StoryGrammarParser extends Parser {
 		"PLAYER_IN_ROOM", "PLAYER_NOT_IN_ROOM", "PLAYER_ON_LEVEL", "ITEM_IN_ROOM", 
 		"ITEM_NOT_IN_ROOM", "ITEM_IN_INVENTORY", "ITEM_NOT_IN_INVENTORY", "ITEM_IN_CONTAINER", 
 		"ITEM_NOT_IN_CONTAINER", "ITEM_IS_FROZEN", "ITEM_IS_COLD", "ITEM_IS_NORMAL", 
-		"ITEM_IS_HOT", "ITEM_IS_BURNING", "CON_COMBINE", "CON_EXAMINE", "CON_USE", 
-		"CON_USEON", "CON_MOVE", "CON_SPECIAL", "NONE", "TELEPORT", "ADD_ITEM_TO_INV", 
-		"REMOVE_ITEM", "KILL", "WIN", "ADD_ITEM_TO_ROOM", "ADD_CONNECTOR", "REMOVE_CONNECTOR", 
-		"WAIT", "QUOTED_TEXT", "ALPHANUMERIC", "NUMERIC", "ID", "TIME", "WS"
+		"ITEM_IS_HOT", "ITEM_IS_BURNING", "ITEM_IS_NOT_FROZEN", "ITEM_IS_NOT_COLD", 
+		"ITEM_IS_NOT_NORMAL", "ITEM_IS_NOT_HOT", "ITEM_IS_NOT_BURNING", "CON_COMBINE", 
+		"CON_EXAMINE", "CON_USE", "CON_USEON", "CON_MOVE", "CON_SPECIAL", "NONE", 
+		"TELEPORT", "ADD_ITEM_TO_INV", "REMOVE_ITEM", "KILL", "WIN", "ADD_ITEM_TO_ROOM", 
+		"ADD_CONNECTOR", "REMOVE_CONNECTOR", "WAIT", "QUOTED_TEXT", "ALPHANUMERIC", 
+		"NUMERIC", "ID", "TIME", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -1850,6 +1855,11 @@ public class StoryGrammarParser extends Parser {
 			case ITEM_IS_NORMAL:
 			case ITEM_IS_HOT:
 			case ITEM_IS_BURNING:
+			case ITEM_IS_NOT_FROZEN:
+			case ITEM_IS_NOT_COLD:
+			case ITEM_IS_NOT_NORMAL:
+			case ITEM_IS_NOT_HOT:
+			case ITEM_IS_NOT_BURNING:
 			case CON_EXAMINE:
 			case CON_USE:
 			case CON_SPECIAL:
@@ -1958,6 +1968,11 @@ public class StoryGrammarParser extends Parser {
 		public TerminalNode ITEM_IS_NORMAL() { return getToken(StoryGrammarParser.ITEM_IS_NORMAL, 0); }
 		public TerminalNode ITEM_IS_HOT() { return getToken(StoryGrammarParser.ITEM_IS_HOT, 0); }
 		public TerminalNode ITEM_IS_BURNING() { return getToken(StoryGrammarParser.ITEM_IS_BURNING, 0); }
+		public TerminalNode ITEM_IS_NOT_FROZEN() { return getToken(StoryGrammarParser.ITEM_IS_NOT_FROZEN, 0); }
+		public TerminalNode ITEM_IS_NOT_COLD() { return getToken(StoryGrammarParser.ITEM_IS_NOT_COLD, 0); }
+		public TerminalNode ITEM_IS_NOT_NORMAL() { return getToken(StoryGrammarParser.ITEM_IS_NOT_NORMAL, 0); }
+		public TerminalNode ITEM_IS_NOT_HOT() { return getToken(StoryGrammarParser.ITEM_IS_NOT_HOT, 0); }
+		public TerminalNode ITEM_IS_NOT_BURNING() { return getToken(StoryGrammarParser.ITEM_IS_NOT_BURNING, 0); }
 		public Single_arg_cnd_typeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1986,7 +2001,7 @@ public class StoryGrammarParser extends Parser {
 			{
 			setState(254);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLAYER_IN_ROOM) | (1L << PLAYER_NOT_IN_ROOM) | (1L << PLAYER_ON_LEVEL) | (1L << ITEM_IN_INVENTORY) | (1L << ITEM_NOT_IN_INVENTORY) | (1L << ITEM_IS_FROZEN) | (1L << ITEM_IS_COLD) | (1L << ITEM_IS_NORMAL) | (1L << ITEM_IS_HOT) | (1L << ITEM_IS_BURNING) | (1L << CON_EXAMINE) | (1L << CON_USE) | (1L << CON_SPECIAL))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLAYER_IN_ROOM) | (1L << PLAYER_NOT_IN_ROOM) | (1L << PLAYER_ON_LEVEL) | (1L << ITEM_IN_INVENTORY) | (1L << ITEM_NOT_IN_INVENTORY) | (1L << ITEM_IS_FROZEN) | (1L << ITEM_IS_COLD) | (1L << ITEM_IS_NORMAL) | (1L << ITEM_IS_HOT) | (1L << ITEM_IS_BURNING) | (1L << ITEM_IS_NOT_FROZEN) | (1L << ITEM_IS_NOT_COLD) | (1L << ITEM_IS_NOT_NORMAL) | (1L << ITEM_IS_NOT_HOT) | (1L << ITEM_IS_NOT_BURNING) | (1L << CON_EXAMINE) | (1L << CON_USE) | (1L << CON_SPECIAL))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			} else {
 				consume();
@@ -2308,7 +2323,7 @@ public class StoryGrammarParser extends Parser {
 			{
 			setState(278);
 			_la = _input.LA(1);
-			if ( !(((((_la - 59)) & ~0x3f) == 0 && ((1L << (_la - 59)) & ((1L << (NONE - 59)) | (1L << (KILL - 59)) | (1L << (WIN - 59)))) != 0)) ) {
+			if ( !(((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (NONE - 64)) | (1L << (KILL - 64)) | (1L << (WIN - 64)))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			} else {
 				consume();
@@ -2407,7 +2422,7 @@ public class StoryGrammarParser extends Parser {
 			{
 			setState(283);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << TELEPORT) | (1L << ADD_ITEM_TO_INV) | (1L << REMOVE_ITEM))) != 0)) ) {
+			if ( !(((((_la - 65)) & ~0x3f) == 0 && ((1L << (_la - 65)) & ((1L << (TELEPORT - 65)) | (1L << (ADD_ITEM_TO_INV - 65)) | (1L << (REMOVE_ITEM - 65)))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			} else {
 				consume();
@@ -2684,7 +2699,7 @@ public class StoryGrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3L\u0130\4\2\t\2\4"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3Q\u0130\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -2706,18 +2721,18 @@ public class StoryGrammarParser extends Parser {
 		"\n\"\f\"\16\"\u010f\13\"\3#\3#\3#\3#\3#\3#\5#\u0117\n#\3$\3$\3%\3%\3%"+
 		"\3&\3&\3\'\3\'\3\'\3\'\3(\3(\3)\3)\3)\3)\3)\3)\3*\3*\3+\3+\3+\2\2,\2\4"+
 		"\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<>@BDFHJLNP"+
-		"RT\2\r\3\2\23\26\3\2\27\30\3\2\36\37\3\2 $\3\2%&\7\2)+./\62\6689<<\6\2"+
-		",-\60\61\67\67::\4\2==AB\3\2>@\3\2DE\3\2\'(\u011a\2V\3\2\2\2\4X\3\2\2"+
-		"\2\6Z\3\2\2\2\b\\\3\2\2\2\n^\3\2\2\2\f`\3\2\2\2\16k\3\2\2\2\20u\3\2\2"+
-		"\2\22}\3\2\2\2\24\u008b\3\2\2\2\26\u009a\3\2\2\2\30\u009c\3\2\2\2\32\u00a0"+
+		"RT\2\r\3\2\23\26\3\2\27\30\3\2\36\37\3\2 $\3\2%&\7\2)+./\62;=>AA\6\2,"+
+		"-\60\61<<??\4\2BBFG\3\2CE\3\2IJ\3\2\'(\u011a\2V\3\2\2\2\4X\3\2\2\2\6Z"+
+		"\3\2\2\2\b\\\3\2\2\2\n^\3\2\2\2\f`\3\2\2\2\16k\3\2\2\2\20u\3\2\2\2\22"+
+		"}\3\2\2\2\24\u008b\3\2\2\2\26\u009a\3\2\2\2\30\u009c\3\2\2\2\32\u00a0"+
 		"\3\2\2\2\34\u00a4\3\2\2\2\36\u00a6\3\2\2\2 \u00ba\3\2\2\2\"\u00c2\3\2"+
 		"\2\2$\u00c4\3\2\2\2&\u00c6\3\2\2\2(\u00c8\3\2\2\2*\u00ca\3\2\2\2,\u00cc"+
 		"\3\2\2\2.\u00d2\3\2\2\2\60\u00d4\3\2\2\2\62\u00e4\3\2\2\2\64\u00e7\3\2"+
 		"\2\2\66\u00ef\3\2\2\28\u00fb\3\2\2\2:\u00fd\3\2\2\2<\u0100\3\2\2\2>\u0102"+
 		"\3\2\2\2@\u0106\3\2\2\2B\u0108\3\2\2\2D\u0116\3\2\2\2F\u0118\3\2\2\2H"+
 		"\u011a\3\2\2\2J\u011d\3\2\2\2L\u011f\3\2\2\2N\u0123\3\2\2\2P\u0125\3\2"+
-		"\2\2R\u012b\3\2\2\2T\u012d\3\2\2\2VW\7J\2\2W\3\3\2\2\2XY\7J\2\2Y\5\3\2"+
-		"\2\2Z[\7J\2\2[\7\3\2\2\2\\]\7J\2\2]\t\3\2\2\2^_\7G\2\2_\13\3\2\2\2`h\5"+
+		"\2\2R\u012b\3\2\2\2T\u012d\3\2\2\2VW\7O\2\2W\3\3\2\2\2XY\7O\2\2Y\5\3\2"+
+		"\2\2Z[\7O\2\2[\7\3\2\2\2\\]\7O\2\2]\t\3\2\2\2^_\7L\2\2_\13\3\2\2\2`h\5"+
 		"\16\b\2ag\5\22\n\2bg\5\36\20\2cg\5\20\t\2dg\5,\27\2eg\5\60\31\2fa\3\2"+
 		"\2\2fb\3\2\2\2fc\3\2\2\2fd\3\2\2\2fe\3\2\2\2gj\3\2\2\2hf\3\2\2\2hi\3\2"+
 		"\2\2i\r\3\2\2\2jh\3\2\2\2kl\7\16\2\2lm\7\3\2\2mn\5.\30\2no\7\n\2\2op\5"+
@@ -2746,20 +2761,20 @@ public class StoryGrammarParser extends Parser {
 		"\34\2\2\u00c1\u00c3\5\4\3\2\u00c2\u00bc\3\2\2\2\u00c2\u00be\3\2\2\2\u00c2"+
 		"\u00bf\3\2\2\2\u00c2\u00c0\3\2\2\2\u00c3#\3\2\2\2\u00c4\u00c5\t\4\2\2"+
 		"\u00c5%\3\2\2\2\u00c6\u00c7\t\5\2\2\u00c7\'\3\2\2\2\u00c8\u00c9\t\6\2"+
-		"\2\u00c9)\3\2\2\2\u00ca\u00cb\7J\2\2\u00cb+\3\2\2\2\u00cc\u00cd\7\21\2"+
+		"\2\u00c9)\3\2\2\2\u00ca\u00cb\7O\2\2\u00cb+\3\2\2\2\u00cc\u00cd\7\21\2"+
 		"\2\u00cd\u00ce\7\3\2\2\u00ce\u00cf\5*\26\2\u00cf\u00d0\7\n\2\2\u00d0\u00d1"+
-		"\7\4\2\2\u00d1-\3\2\2\2\u00d2\u00d3\7J\2\2\u00d3/\3\2\2\2\u00d4\u00d5"+
+		"\7\4\2\2\u00d1-\3\2\2\2\u00d2\u00d3\7O\2\2\u00d3/\3\2\2\2\u00d4\u00d5"+
 		"\7\22\2\2\u00d5\u00d6\7\3\2\2\u00d6\u00d7\5.\30\2\u00d7\u00d8\7\n\2\2"+
 		"\u00d8\u00d9\5T+\2\u00d9\u00da\7\n\2\2\u00da\u00db\5\64\33\2\u00db\u00dc"+
 		"\7\n\2\2\u00dc\u00dd\5\66\34\2\u00dd\u00de\7\n\2\2\u00de\u00df\5B\"\2"+
 		"\u00df\u00e0\7\n\2\2\u00e0\u00e1\5\34\17\2\u00e1\u00e2\7\n\2\2\u00e2\u00e3"+
-		"\7\4\2\2\u00e3\61\3\2\2\2\u00e4\u00e5\5.\30\2\u00e5\u00e6\7K\2\2\u00e6"+
+		"\7\4\2\2\u00e3\61\3\2\2\2\u00e4\u00e5\5.\30\2\u00e5\u00e6\7P\2\2\u00e6"+
 		"\63\3\2\2\2\u00e7\u00ec\5\62\32\2\u00e8\u00e9\7\t\2\2\u00e9\u00eb\5\62"+
 		"\32\2\u00ea\u00e8\3\2\2\2\u00eb\u00ee\3\2\2\2\u00ec\u00ea\3\2\2\2\u00ec"+
 		"\u00ed\3\2\2\2\u00ed\65\3\2\2\2\u00ee\u00ec\3\2\2\2\u00ef\u00f4\58\35"+
 		"\2\u00f0\u00f1\7\t\2\2\u00f1\u00f3\58\35\2\u00f2\u00f0\3\2\2\2\u00f3\u00f6"+
 		"\3\2\2\2\u00f4\u00f2\3\2\2\2\u00f4\u00f5\3\2\2\2\u00f5\67\3\2\2\2\u00f6"+
-		"\u00f4\3\2\2\2\u00f7\u00fc\5:\36\2\u00f8\u00fc\5> \2\u00f9\u00fa\7;\2"+
+		"\u00f4\3\2\2\2\u00f7\u00fc\5:\36\2\u00f8\u00fc\5> \2\u00f9\u00fa\7@\2"+
 		"\2\u00fa\u00fc\5\30\r\2\u00fb\u00f7\3\2\2\2\u00fb\u00f8\3\2\2\2\u00fb"+
 		"\u00f9\3\2\2\2\u00fc9\3\2\2\2\u00fd\u00fe\5<\37\2\u00fe\u00ff\5\4\3\2"+
 		"\u00ff;\3\2\2\2\u0100\u0101\t\7\2\2\u0101=\3\2\2\2\u0102\u0103\5@!\2\u0103"+
@@ -2767,12 +2782,12 @@ public class StoryGrammarParser extends Parser {
 		"\u0107A\3\2\2\2\u0108\u010d\5D#\2\u0109\u010a\7\t\2\2\u010a\u010c\5D#"+
 		"\2\u010b\u0109\3\2\2\2\u010c\u010f\3\2\2\2\u010d\u010b\3\2\2\2\u010d\u010e"+
 		"\3\2\2\2\u010eC\3\2\2\2\u010f\u010d\3\2\2\2\u0110\u0117\5F$\2\u0111\u0117"+
-		"\5H%\2\u0112\u0117\5L\'\2\u0113\u0117\5P)\2\u0114\u0115\7F\2\2\u0115\u0117"+
-		"\7K\2\2\u0116\u0110\3\2\2\2\u0116\u0111\3\2\2\2\u0116\u0112\3\2\2\2\u0116"+
+		"\5H%\2\u0112\u0117\5L\'\2\u0113\u0117\5P)\2\u0114\u0115\7K\2\2\u0115\u0117"+
+		"\7P\2\2\u0116\u0110\3\2\2\2\u0116\u0111\3\2\2\2\u0116\u0112\3\2\2\2\u0116"+
 		"\u0113\3\2\2\2\u0116\u0114\3\2\2\2\u0117E\3\2\2\2\u0118\u0119\t\t\2\2"+
 		"\u0119G\3\2\2\2\u011a\u011b\5J&\2\u011b\u011c\5\4\3\2\u011cI\3\2\2\2\u011d"+
 		"\u011e\t\n\2\2\u011eK\3\2\2\2\u011f\u0120\5N(\2\u0120\u0121\5\4\3\2\u0121"+
-		"\u0122\5\6\4\2\u0122M\3\2\2\2\u0123\u0124\7C\2\2\u0124O\3\2\2\2\u0125"+
+		"\u0122\5\6\4\2\u0122M\3\2\2\2\u0123\u0124\7H\2\2\u0124O\3\2\2\2\u0125"+
 		"\u0126\5R*\2\u0126\u0127\5\6\4\2\u0127\u0128\5\30\r\2\u0128\u0129\5\6"+
 		"\4\2\u0129\u012a\5\30\r\2\u012aQ\3\2\2\2\u012b\u012c\t\13\2\2\u012cS\3"+
 		"\2\2\2\u012d\u012e\t\f\2\2\u012eU\3\2\2\2\16fh\u0090\u009a\u00a0\u00a4"+

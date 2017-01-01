@@ -99,8 +99,6 @@ public class StoryLinker
             {
                 linkConsequence(cons, step_id, eng);
             }
-
-            // TODO check links for all the conditions and consequences
             // TODO check story consistency
         }
 

@@ -20,17 +20,17 @@ public class Utility
     public static String removeWhiteSpace(String input)
     {
         String noSpaces = input.replaceAll("\\s+", " ");
-        if(noSpaces != null && noSpaces.startsWith(" "))
+        if (noSpaces != null && noSpaces.startsWith(" "))
             noSpaces = noSpaces.replaceFirst("\\s+", "");
-        if(noSpaces.endsWith(" "))
-            noSpaces = noSpaces.substring(0, noSpaces.length()-1);
+        if (noSpaces.endsWith(" "))
+            noSpaces = noSpaces.substring(0, noSpaces.length() - 1);
         return noSpaces;
     }
 
     public static String pre_tokenise(String input)
     {
         String moded = input;
-        for (String spec: special_chars)
+        for (String spec : special_chars)
         {
             moded = moded.replaceAll("\\s*" + spec + "\\s*", " " + spec + " ");
         }
@@ -56,7 +56,7 @@ public class Utility
 
     public static String addThe(String input)
     {
-        if(!input.startsWith("the ")
+        if (!input.startsWith("the ")
                 && !input.startsWith("a ")
                 && !input.startsWith("an "))
         {
@@ -71,11 +71,13 @@ public class Utility
         pipeline.annotate(annotation);
         String lemmas = "";
         List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
-        for(CoreMap sentence: sentences) {
+        for (CoreMap sentence : sentences)
+        {
             // Iterate over all tokens in a sentence
-            for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) {
+            for (CoreLabel token : sentence.get(CoreAnnotations.TokensAnnotation.class))
+            {
                 // Retrieve and add the lemma for each word into the list of lemmas
-                if(!lemmas.equals(""))
+                if (!lemmas.equals(""))
                     lemmas += " " + token.get(CoreAnnotations.LemmaAnnotation.class);
                 else
                     lemmas = token.get(CoreAnnotations.LemmaAnnotation.class);
@@ -87,13 +89,34 @@ public class Utility
     public static String capitalise(String input)
     {
         String res = "";
-        if(97 <= input.charAt(0) && input.charAt(0) <= 122)
-            res += (char)((int)input.charAt(0) - 97 + 65);
+        if (97 <= input.charAt(0) && input.charAt(0) <= 122)
+            res += (char) ((int) input.charAt(0) - 97 + 65);
         return res + input.substring(1);
     }
 
     public static String dashedLine()
     {
         return "--------------------------------------------------------------------------------";
+    }
+
+    public static String volumeChangeMessage(Item item, Item.Temperature finaltmp)
+    {
+        String out = "";
+        if(finaltmp != item.getTemperature())
+        {
+            out += ".\nThe volume of " + Utility.addThe(item.getItem_id());
+            if (finaltmp.ordinal() > item.getTemperature().ordinal())
+                out += " has increased to ";
+            else
+                out += " has decreased to ";
+            switch (finaltmp)
+            {
+                case burning: out += "120% its normal size"; break;
+                case hot:     out += "110% its normal size"; break;
+                case cold:    out += "90% its normal size"; break;
+                case frozen:  out += "80% its normal size"; break;
+            }
+        }
+        return out;
     }
 }

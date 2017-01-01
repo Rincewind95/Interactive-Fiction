@@ -211,7 +211,14 @@ public class Item extends ItemLocation implements Comparable
 
     public void setTemperature(Temperature tmp)
     {
-        temperature = tmp;
+        if(!hasConstantTemp)
+        {
+            temperature = tmp;
+            for (String itemId : contained.keySet())
+            {
+                contained.get(itemId).setTemperature(tmp);
+            }
+        }
     }
 
     public static String modifyTemperatures(Item item1, Item item2, StanfordCoreNLP pipeline)
@@ -221,34 +228,48 @@ public class Item extends ItemLocation implements Comparable
         {
             // if both items have variable temperature, take the average of their temperatures
             Temperature finaltmp = Temperature.values()[(item1.temperature.ordinal() + item2.temperature.ordinal())/2];
-            item1.temperature = finaltmp;
-            item2.temperature = finaltmp;
             if(finaltmp != Temperature.normal)
-                out = ", and now both items are " + finaltmp.toString();
+            {
+                out = ", and now both items are" +
+                        (item1.temperature == finaltmp ? " still " : " ") + finaltmp.toString();
+                for(int i = 0; i < 2; i++)
+                {
+                    Item item = (i == 0) ? item1 : item2;
+                    out += Utility.volumeChangeMessage(item, finaltmp);
+                }
+            }
             else
-                out = ", and now both items are at normal temperature";
+                out = ", and now both items are at normal temperature and volume";
+            item1.setTemperature(finaltmp);
+            item2.setTemperature(finaltmp);
         }
         else if(item1.hasConstantTemp && !item2.hasConstantTemp)
         {
-            item2.temperature = item1.temperature;
             out = ", and now " + Utility.addThe(item2.getItem_id()) +
                     " " + (Utility.isSingular(item2.getItem_id(), pipeline) ? "is":"are")
-                    + " ";
-            if(item2.temperature != Temperature.normal)
-                 out += item2.temperature.toString();
+                    + (item1.temperature == item2.temperature ? " still " : " ");
+            if(item1.temperature != Temperature.normal)
+            {
+                out += item1.temperature.toString();
+                out += Utility.volumeChangeMessage(item2, item1.temperature);
+            }
             else
-                out += " at normal temperature";
+                out += "at normal temperature and volume";
+            item2.setTemperature(item1.temperature);
         }
         else if(!item1.hasConstantTemp && item2.hasConstantTemp)
         {
-            item1.temperature = item2.temperature;
             out = ", and now " + Utility.addThe(item1.getItem_id()) +
                     " " + (Utility.isSingular(item1.getItem_id(), pipeline) ? "is":"are")
-                    + " ";
+                    + (item1.temperature == item2.temperature ? " still " : " ");
             if(item2.temperature != Temperature.normal)
-                out += item1.temperature.toString();
+            {
+                out += item2.temperature.toString();
+                out += Utility.volumeChangeMessage(item1, item2.temperature);
+            }
             else
-                out += " at normal temperature";
+                out += "at normal temperature and volume";
+            item1.setTemperature(item2.temperature);
         }
         return out;
     }
@@ -292,6 +313,16 @@ public class Item extends ItemLocation implements Comparable
             for (String item : contained.keySet())
             {
                 result += eng.findItem(item).listContents(eng, "");
+            }
+        }
+        if(!hasConstantTemp)
+        {
+            switch (temperature)
+            {
+                case burning: result += "\nThe volume of " + Utility.addThe(item_id) + " is currently at 120% its normal size."; break;
+                case hot:     result += "\nThe volume of " + Utility.addThe(item_id) + " is currently at 110% its normal size."; break;
+                case cold:    result += "\nThe volume of " + Utility.addThe(item_id) + " is currently at 90% its normal size."; break;
+                case frozen:  result += "\nThe volume of " + Utility.addThe(item_id) + " is currently at 80% its normal size."; break;
             }
         }
         return result;

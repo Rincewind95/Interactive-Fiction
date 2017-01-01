@@ -68,6 +68,11 @@ ITEM_IS_COLD: '_iscold';
 ITEM_IS_NORMAL: '_isnormal';
 ITEM_IS_HOT: '_ishot';
 ITEM_IS_BURNING: '_isburning';
+ITEM_IS_NOT_FROZEN: '_isnotfrozen';
+ITEM_IS_NOT_COLD: '_isnotcold';
+ITEM_IS_NOT_NORMAL: '_isnotnormal';
+ITEM_IS_NOT_HOT: '_isnothot';
+ITEM_IS_NOT_BURNING: '_isnotburning';
 CON_COMBINE:'_combine';
 CON_EXAMINE:'_examine';
 CON_USE:    '_use';
@@ -172,7 +177,12 @@ single_arg_cnd_type: PLAYER_IN_ROOM
                    | ITEM_IS_COLD
                    | ITEM_IS_NORMAL
                    | ITEM_IS_HOT
-                   | ITEM_IS_BURNING;
+                   | ITEM_IS_BURNING
+                   | ITEM_IS_NOT_FROZEN
+                   | ITEM_IS_NOT_COLD
+                   | ITEM_IS_NOT_NORMAL
+                   | ITEM_IS_NOT_HOT
+                   | ITEM_IS_NOT_BURNING;
 
 double_arg_cnd: double_arg_cnd_type item_id room_id;
 double_arg_cnd_type: ITEM_IN_ROOM
