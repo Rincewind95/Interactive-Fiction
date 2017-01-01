@@ -91,4 +91,9 @@ public class Utility
             res += (char)((int)input.charAt(0) - 97 + 65);
         return res + input.substring(1);
     }
+
+    public static String dashedLine()
+    {
+        return "--------------------------------------------------------------------------------";
+    }
 }

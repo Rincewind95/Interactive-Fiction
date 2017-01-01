@@ -48,7 +48,7 @@ public class NLPparser
         this.eng = eng;
         twoArgumentWords = new ArrayList<>(Arrays.asList("use", "combine", "put", "remove"));
         oneArgumentWords = new ArrayList<>(Arrays.asList("take", "drop", "examine", "move"));
-        zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit", "inventory"));
+        zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit", "inventory", "restart"));
 
         twoArgumentConnectors = new HashMap<>();
         twoArgumentConnectors.put("use", new ArrayList<>(Arrays.asList("with", "on")));

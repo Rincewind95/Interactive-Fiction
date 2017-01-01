@@ -47,7 +47,7 @@ public class Engine
         enhanced = true;
     }
 
-    public void start(boolean enhanced)
+    public response start(boolean enhanced)
     {
         this.enhanced = enhanced;
         Scanner scanner = new Scanner(System.in);
@@ -81,6 +81,11 @@ public class Engine
                 System.out.println(out_to_user);
                 break;
             }
+            else if(resp == response.restart)
+            {
+                System.out.println(out_to_user);
+                return resp;
+            }
             else if (resp == Engine.response.badinput ||
                     resp == Engine.response.skip)
             {
@@ -113,6 +118,7 @@ public class Engine
         }
 
         scanner.close();
+        return response.exit;
     }
 
     private Pair<response, String> executeCommand(Command command)
@@ -352,14 +358,16 @@ public class Engine
                 }
                 break;
             case load:
-                // TODO implement load, save and restart mechanics
+                // TODO implement load and save mechanics
                 resp = response.skip;
                 break;
             case save:
                 resp = response.skip;
                 break;
             case restart:
-                resp = response.skip;
+                out = "All unsaved progress is lost, game restarting...\n"
+                +     Utility.dashedLine();
+                resp = response.restart;
                 break;
             case history:
                 out = getHistory();
@@ -598,7 +606,7 @@ public class Engine
     }
 
     // enumerates the possible response types which can be generated when processing user commands
-    private enum response
+    public enum response
     {
         good, skip, badinput, load, save, restart, exit
     }

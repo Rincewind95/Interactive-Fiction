@@ -1,8 +1,10 @@
 package runnable;
 
 import standard.engine.Engine;
+import standard.engine.Utility;
 import story.compiler.StoryCompiler;
 
+import javax.rmi.CORBA.Util;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -44,16 +46,27 @@ public class MainExecutor
             if(eng == null)
             {
                 System.out.println("To recompile the story file press enter or type \"abort\" to quit.\n" +
-                                   "---------------------------------------------------------------");
+                                   Utility.dashedLine());
                 String procede = scanner.nextLine();
                 if(procede.equals("abort"))
                     return;
             }
         }
         System.out.println("Story file successfully loaded...\n" +
-                           "-------------------------------");
+                Utility.dashedLine());
         // --------------------------------------------------------------------------------------
-
-        eng.start(args.length > 0 ? args[0].equals("enhanced") : true);
+        while(true)
+        {
+            Engine.response resp = eng.start(args.length > 0 ? args[0].equals("enhanced") : true);
+            if(resp == Engine.response.exit)
+            {
+                break;
+            }
+            else if (resp == Engine.response.restart)
+            {
+                // recompile the story from zero
+                eng = StoryCompiler.complieStory(story_location);
+            }
+        }
     }
 }
