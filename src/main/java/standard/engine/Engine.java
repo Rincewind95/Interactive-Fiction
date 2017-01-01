@@ -530,8 +530,7 @@ public class Engine
         int dashcnt = 0;
         if (!prev_commands.isEmpty())
         {
-            hist += "History:";
-            int t = 1;
+            hist += "Command history:";
             for (Pair<Command, Integer> com : prev_commands)
             {
                 hist += "\n> [" + com.getValue() + "] " + com.getKey().getOriginal();
@@ -540,10 +539,10 @@ public class Engine
         }
         else
         {
-            hist += "no historic commands available";
+            hist += "Command history is empty.";
             dashcnt = 31;
         }
-        hist +=   "\n";
+        hist += "\n";
         for(int i = 0; i < dashcnt; i++) hist += "-";
         return hist;
     }

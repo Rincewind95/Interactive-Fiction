@@ -16,10 +16,19 @@ public class Command
         this.type = type;
         args = new ArrayList<>();
     }
-    public Command(Type type, ArrayList<String> args)
+
+    public Command(Type type, String original)
+    {
+        this.type = type;
+        args = new ArrayList<>();
+        this.original = original;
+    }
+
+    public Command(Type type, ArrayList<String> args, String original)
     {
         this.type = type;
         this.args = args;
+        this.original = original;
     }
 
     public Command(String input)
