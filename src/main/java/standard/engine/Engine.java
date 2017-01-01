@@ -10,19 +10,21 @@ import java.util.*;
  */
 public class Engine
 {
-    private String start_id;                                // the identifier of the first, necessarily satisfied story step (where to begin the story)
-    private String start_location_id;                       // the starting location id of the player
-    private Message welcome;                                // the welcome message played at the start
-    private Player player;                                  // the star of the show
-    private HashMap<String, Room> findroom;                 // a map of the rooms in the game on all levels
-    private HashMap<String, Item> finditem;                 // a map of all possible items in the game
-    private HashSet<String> findspecial;                    // a map of all possible special commands
-    private HashMap<String, Message> findmsg;               // used during engine creation to link the messages
-    private HashMap<String, StoryStep> findstep;            // a map of all possible steps in the game
-    private int time;                                       // the current time step of the game
+    private String start_id;                                 // the identifier of the first, necessarily satisfied story step (where to begin the story)
+    private String start_location_id;                        // the starting location id of the player
+    private Message welcome;                                 // the welcome message played at the start
+    private Player player;                                   // the star of the show
+    private HashMap<String, Room> findroom;                  // a map of the rooms in the game on all levels
+    private HashMap<String, Item> finditem;                  // a map of all possible items in the game
+    private HashSet<String> findspecial;                     // a map of all possible special commands
+    private HashMap<String, Message> findmsg;                // used during engine creation to link the messages
+    private HashMap<String, StoryStep> findstep;             // a map of all possible steps in the game
+    private int time;                                        // the current time step of the game
     private ArrayList<Pair<Command, Integer>> prev_commands; // a list of all previous player commands
-    private ArrayList<StoryStep> prev_steps;                // a list of all previously satisfied steps
-    private NLPparser parser;                               // the NLP parser which will parse user input
+    private ArrayList<StoryStep> prev_steps;                 // a list of all previously satisfied steps
+    private NLPparser parser;                                // the NLP parser which will parse user input
+
+    private boolean enhanced;                                // true if the engine is in advanced mode
 
     public Engine()
     {
@@ -41,10 +43,13 @@ public class Engine
         time = 1;
         prev_commands = new ArrayList<>();
         prev_steps = new ArrayList<>();
+
+        enhanced = true;
     }
 
-    public void start()
+    public void start(boolean enhanced)
     {
+        this.enhanced = enhanced;
         Scanner scanner = new Scanner(System.in);
 
         // start the game once the engine is loaded
@@ -102,7 +107,7 @@ public class Engine
             }
             else if (final_out_to_user.equals(""))
             {
-                final_out_to_user = "nothing happens";
+                final_out_to_user = "Nothing happens.";
             }
             System.out.println(final_out_to_user);
         }
@@ -132,7 +137,7 @@ public class Engine
                             toTake.isTakeable())
                     {
                         // if the player is in the same room as the item, and does not have the item he can take it
-                        out = toTake.getItem_id() + " picked up";
+                        out = "You pick up " + Utility.addThe(toTake.getItem_id()) + ".";
                         // move the item to the players inventory
                         player.giveItem(toTake);
                         toTake.setLocationFlag(Item.flag.inv);
@@ -141,7 +146,7 @@ public class Engine
                     }
                     else if (!toTake.isTakeable())
                     {
-                        out = "you cannot take that";
+                        out = "You cannot take that.";
                     }
                     else
                     {
@@ -159,10 +164,18 @@ public class Engine
                     if (player.hasItem(toDrop))
                     {
                         // if the player has the item
-                        out = toDrop.getItem_id() + " dropped";
+                        out = "You drop " + Utility.addThe(toDrop.getItem_id());
                         toDrop.moveItem(Item.flag.inroom, player.getLocation(), this);
                         // all rooms are at room temperature, so items dropped in them are set to room temperature
-                        //toDrop.setTemperature(Item.Temperature.normal);
+                        if (enhanced)
+                        {
+                            if(toDrop.getTemperature() != Item.Temperature.normal)
+                                out += ", and this sets" +
+                                        (Utility.isSingular(toDrop.getItem_id(), parser.getPipeline()) ? " its ":" their ")
+                                        + "temperature to normal";
+                        }
+                        out += ".";
+                        toDrop.setTemperature(Item.Temperature.normal);
                     }
                     else
                     {
@@ -221,36 +234,46 @@ public class Engine
                     Item sec = finditem.get(args.get(1));
                     if(fir == sec)
                     {
-                        out = "you cannot put " + Utility.addThe(fir.getItem_id()) + " in itself";
+                        out = "You cannot put " + Utility.addThe(fir.getItem_id()) + " in itself.";
                         resp = response.skip;
                     }
                     else if (fir.getVolume(this) > sec.getVolume(this))
                     {
-                        out = Utility.addThe(fir.getItem_id()) + " is to big to fit into " + Utility.addThe(sec.getItem_id());
+                        if (enhanced)
+                        {
+                            out = Utility.capitalise(Utility.addThe(fir.getItem_id())) + " " +
+                                    (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is":"are") +
+                                    " too big to fit into " + Utility.addThe(sec.getItem_id()) + ".";
+                        }
                         resp = response.skip;
                     }
                     else if(sec.isContainer())
                     {
                         if(!fir.isTakeable() )
                         {
-                            out = "you cannot move " + Utility.addThe(fir.getItem_id());
+                            out = "You cannot move " + Utility.addThe(fir.getItem_id()) + ".";
                             resp = response.skip;
                         }
                         else if ((player.hasItem(sec) || player.getLocation().containsItem(sec)))
                         {
                             fir.moveItem(Item.flag.incont, sec, this);
-                            Item.modifyTemperatures(fir, sec);
-                            out = "you put " + Utility.addThe(fir.getItem_id()) + " into " + Utility.addThe(sec.getItem_id());
+                            String result = Item.modifyTemperatures(fir, sec, parser.getPipeline());
+                            out = "You put " + Utility.addThe(fir.getItem_id()) + " into " + Utility.addThe(sec.getItem_id());
+                            if(enhanced)
+                                out += result;
+                            out += ".";
                         }
                         else
                         {
-                            out = "you can only interact with top-level items and their immediate content";
+                            if(enhanced)
+                                out = "You can only interact with top-level items and their immediate content.";
                             resp = response.skip;
                         }
                     }
                     else
                     {
-                        out = Utility.addThe(sec.getItem_id()) + " is not a container";
+                        if(enhanced)
+                            out = Utility.capitalise(Utility.addThe(sec.getItem_id())) + " is not a container.";
                         resp = response.skip;
                     }
                 }
@@ -264,7 +287,7 @@ public class Engine
                     if(sec.contains(fir) && (player.hasItem(sec) || player.getLocation().containsItem(sec)))
                     {
                         fir.moveItem(Item.flag.inv, null, this);
-                        out = "you remove " + Utility.addThe(fir.getItem_id()) + " from " + Utility.addThe(sec.getItem_id());
+                        out = "You remove " + Utility.addThe(fir.getItem_id()) + " from " + Utility.addThe(sec.getItem_id()) + ".";
                     }
                 }
                 break;
@@ -316,7 +339,7 @@ public class Engine
                     else
                     {
                         // write the default message if nothing else works
-                        out = "you cannot go there";
+                        out = "You cannot go there.";
                     }
                 }
                 else resp = response.badinput;
@@ -355,14 +378,14 @@ public class Engine
                 resp = response.skip;
                 break;
             case wait:
-                out = "time passes";
+                out = "Time passes.";
                 break;
 
             case empty:
                 resp = response.badinput;
                 break;
             case exit:
-                out = "game terminating...";
+                out = "Game terminating...";
                 resp = response.exit;
                 break;
             case badcomm:
@@ -372,7 +395,7 @@ public class Engine
 
         // write responses if the command was bad
         if (resp == response.badinput)
-            out = "I don't understand";
+            out = "I don't understand.";
         return new Pair<>(resp, out);
     }
 

@@ -54,6 +54,6 @@ public class MainExecutor
                            "-------------------------------");
         // --------------------------------------------------------------------------------------
 
-        eng.start();
+        eng.start(args.length > 0 ? args[0].equals("enhanced") : true);
     }
 }

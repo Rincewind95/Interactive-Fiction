@@ -1,5 +1,15 @@
 package standard.engine;
 
+import edu.stanford.nlp.ling.CoreAnnotations;
+import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.ling.tokensregex.ComplexNodePattern;
+import edu.stanford.nlp.pipeline.Annotation;
+import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+import edu.stanford.nlp.util.CoreMap;
+import input.parser.NLPparser;
+
+import java.util.List;
+
 /**
  * Created by Milos on 07/11/2016.
  */
@@ -53,5 +63,32 @@ public class Utility
             input = "the " + input;
         }
         return input;
+    }
+
+    public static Boolean isSingular(String input, StanfordCoreNLP pipeline)
+    {
+        Annotation annotation = new Annotation(input);
+        pipeline.annotate(annotation);
+        String lemmas = "";
+        List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
+        for(CoreMap sentence: sentences) {
+            // Iterate over all tokens in a sentence
+            for (CoreLabel token: sentence.get(CoreAnnotations.TokensAnnotation.class)) {
+                // Retrieve and add the lemma for each word into the list of lemmas
+                if(!lemmas.equals(""))
+                    lemmas += " " + token.get(CoreAnnotations.LemmaAnnotation.class);
+                else
+                    lemmas = token.get(CoreAnnotations.LemmaAnnotation.class);
+            }
+        }
+        return input.equals(lemmas);
+    }
+
+    public static String capitalise(String input)
+    {
+        String res = "";
+        if(97 <= input.charAt(0) && input.charAt(0) <= 122)
+            res += (char)((int)input.charAt(0) - 97 + 65);
+        return res + input.substring(1);
     }
 }

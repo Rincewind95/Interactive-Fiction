@@ -1,5 +1,7 @@
 package standard.engine;
 
+import edu.stanford.nlp.pipeline.StanfordCoreNLP;
+
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Set;
@@ -212,23 +214,43 @@ public class Item extends ItemLocation implements Comparable
         temperature = tmp;
     }
 
-    public static void modifyTemperatures(Item item1, Item item2)
+    public static String modifyTemperatures(Item item1, Item item2, StanfordCoreNLP pipeline)
     {
+        String out = "";
         if(!item1.hasConstantTemp && !item2.hasConstantTemp)
         {
             // if both items have variable temperature, take the average of their temperatures
             Temperature finaltmp = Temperature.values()[(item1.temperature.ordinal() + item2.temperature.ordinal())/2];
             item1.temperature = finaltmp;
             item2.temperature = finaltmp;
+            if(finaltmp != Temperature.normal)
+                out = ", and now both items are " + finaltmp.toString();
+            else
+                out = ", and now both items are at normal temperature";
         }
         else if(item1.hasConstantTemp && !item2.hasConstantTemp)
         {
             item2.temperature = item1.temperature;
+            out = ", and now " + Utility.addThe(item2.getItem_id()) +
+                    " " + (Utility.isSingular(item2.getItem_id(), pipeline) ? "is":"are")
+                    + " ";
+            if(item2.temperature != Temperature.normal)
+                 out += item2.temperature.toString();
+            else
+                out += " at normal temperature";
         }
         else if(!item1.hasConstantTemp && item2.hasConstantTemp)
         {
             item1.temperature = item2.temperature;
+            out = ", and now " + Utility.addThe(item1.getItem_id()) +
+                    " " + (Utility.isSingular(item1.getItem_id(), pipeline) ? "is":"are")
+                    + " ";
+            if(item2.temperature != Temperature.normal)
+                out += item1.temperature.toString();
+            else
+                out += " at normal temperature";
         }
+        return out;
     }
 
     public String getIDWithTemp()

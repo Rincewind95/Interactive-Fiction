@@ -95,6 +95,11 @@ public class NLPparser
         System.setErr(err);
     }
 
+    public StanfordCoreNLP getPipeline()
+    {
+        return pipeline;
+    }
+
     public Command parseInput(String input)
     {
         if(input == null || input.length() == 0)
