@@ -5,71 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/input/parser/NLPparser.class" afterPath="$PROJECT_DIR$/target/classes/input/parser/NLPparser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Condition$1.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Condition$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Condition$CondType.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Condition$CondType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Condition.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Condition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Item$flag.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Item$flag.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Item$temperature.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Item$temperature.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Item.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Item.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Utility.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Utility.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/compiler/StoryLinker$1.class" afterPath="$PROJECT_DIR$/target/classes/story/compiler/StoryLinker$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/compiler/StoryLinker.class" afterPath="$PROJECT_DIR$/target/classes/story/compiler/StoryLinker.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarLexer.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarLexer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$BriefContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$BriefContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConditionContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConditionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConditionsContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConditionsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConsequenceContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConsequenceContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConsequencesContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConsequencesContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$DescriptionContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$DescriptionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$DirectionContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$DirectionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_cndContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_cndContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_cnd_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_cnd_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_consContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_consContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_cons_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_cons_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ExitContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ExitContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ExitsContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ExitsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Four_arg_consContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Four_arg_consContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Four_arg_cons_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Four_arg_cons_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Gate_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Gate_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ItemContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ItemContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Item_idContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Item_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ItemtypeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ItemtypeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Level_idContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Level_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$LocationContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$LocationContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$MessageContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$MessageContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Message_idContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Message_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Message_textContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Message_textContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$MobilityContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$MobilityContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$No_arg_consContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$No_arg_consContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Required_stepsContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Required_stepsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$RoomContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$RoomContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Room_idContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Room_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_cndContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_cndContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_cnd_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_cnd_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_consContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_consContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_cons_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_cons_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$SpecialContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$SpecialContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Special_idContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Special_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$StepContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$StepContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Step_beforeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Step_beforeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Step_idContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Step_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Story_elementsContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Story_elementsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Temp_levelContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Temp_levelContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Temp_variabilityContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Temp_variabilityContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$WelcomeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$WelcomeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java" afterPath="$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Condition.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Condition.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/compiler/StoryLinker.java" afterPath="$PROJECT_DIR$/src/main/java/story/compiler/StoryLinker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" afterPath="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammar.tokens" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammar.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarLexer.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarLexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarLexer.tokens" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarLexer.tokens" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarParser.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
     </list>
     <ignored path="InteractiveFiction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,15 +27,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Engine.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Engine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4770">
-              <caret line="542" column="25" selection-start-line="542" selection-start-column="25" selection-end-line="542" selection-end-column="25" />
+            <state relative-caret-position="2702">
+              <caret line="249" column="53" selection-start-line="249" selection-start-column="53" selection-end-line="249" selection-end-column="53" />
               <folding>
                 <element signature="docComment;class#Engine#0" expanded="false" />
                 <element signature="method#Engine#0;class#Engine#0" expanded="false" />
-                <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
                 <element signature="method#checkConstraints#0;class#Engine#0" expanded="false" />
                 <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
               </folding>
@@ -166,11 +101,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Item.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Item.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="233" column="59" selection-start-line="233" selection-start-column="59" selection-end-line="233" selection-end-column="59" />
+            <state relative-caret-position="79">
+              <caret line="238" column="17" selection-start-line="238" selection-start-column="17" selection-end-line="238" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Item#0;class#Item#0" expanded="false" />
@@ -297,7 +232,6 @@
         <option value="$PROJECT_DIR$/src/main/java/story/compiler/StoryCompiler.java" />
         <option value="$PROJECT_DIR$/src/main/java/test/java/NLPtest.java" />
         <option value="$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Command.java" />
         <option value="$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
@@ -305,6 +239,7 @@
         <option value="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Condition.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" />
+        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
       </list>
     </option>
   </component>
@@ -321,10 +256,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-7" />
     <option name="width" value="1932" />
-    <option name="height" value="1056" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -676,7 +610,7 @@
       <recent name="C:\Users\Milos\Dropbox\Part II project Interactive Fiction\InteractiveFiction\src\story\parser\grammars" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Standard Engine">
+  <component name="RunManager" selected="Application.Enhanced Engine">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -925,7 +859,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="runnable.MainExecutor" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="enhanced" />
+      <option name="PROGRAM_PARAMETERS" value="standard" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -937,6 +871,21 @@
       <method>
         <option name="MakeProject" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="false" name="Enhanced Engine" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="runnable.MainExecutor" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="enhanced" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="InteractiveFiction" />
+      <envs />
+      <method />
     </configuration>
     <configuration default="false" name="NLPtest" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -953,9 +902,10 @@
       <envs />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.Standard Engine" />
-      <item index="1" class="java.lang.String" itemvalue="Application.NLPtest" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Enhanced Engine" />
+      <item index="2" class="java.lang.String" itemvalue="Application.NLPtest" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
@@ -984,19 +934,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
-    <editor active="false" />
+    <frame x="-7" y="0" width="1932" height="1047" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18526544" sideWeight="0.4914712" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33802816" sideWeight="0.4936034" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3369803" sideWeight="0.4936034" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42036837" sideWeight="0.5079957" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="1.0" sideWeight="0.49200428" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6695843" sideWeight="0.49200428" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1394,20 +1344,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4770">
-          <caret line="542" column="25" selection-start-line="542" selection-start-column="25" selection-end-line="542" selection-end-column="25" />
-          <folding>
-            <element signature="docComment;class#Engine#0" expanded="false" />
-            <element signature="method#Engine#0;class#Engine#0" expanded="false" />
-            <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
-            <element signature="method#checkConstraints#0;class#Engine#0" expanded="false" />
-            <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5423">
@@ -1475,8 +1411,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Item.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="233" column="59" selection-start-line="233" selection-start-column="59" selection-end-line="233" selection-end-column="59" />
+        <state relative-caret-position="79">
+          <caret line="238" column="17" selection-start-line="238" selection-start-column="17" selection-end-line="238" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Item#0;class#Item#0" expanded="false" />
@@ -1489,6 +1425,19 @@
             <element signature="method#getExamination#0;class#Item#0" expanded="false" />
             <element signature="class#Temperature#0;class#Item#0" expanded="false" />
             <element signature="class#flag#0;class#Item#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2702">
+          <caret line="249" column="53" selection-start-line="249" selection-start-column="53" selection-end-line="249" selection-end-column="53" />
+          <folding>
+            <element signature="docComment;class#Engine#0" expanded="false" />
+            <element signature="method#Engine#0;class#Engine#0" expanded="false" />
+            <element signature="method#checkConstraints#0;class#Engine#0" expanded="false" />
+            <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
           </folding>
         </state>
       </provider>

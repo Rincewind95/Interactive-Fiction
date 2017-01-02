@@ -240,8 +240,15 @@ public class Engine
                     Item sec = finditem.get(args.get(1));
                     if(fir == sec)
                     {
-                        out = "You cannot put " + Utility.addThe(fir.getItem_id()) + " in itself.";
-                        resp = response.skip;
+                        if(enhanced)
+                        {
+                            out = "You cannot put " + Utility.addThe(fir.getItem_id()) + " in itself.";
+                            resp = response.skip;
+                        }
+                        else
+                        {
+                            resp = response.badinput;
+                        }
                     }
                     else if (fir.getVolume(this) > sec.getVolume(this))
                     {
@@ -250,8 +257,12 @@ public class Engine
                             out = Utility.capitalise(Utility.addThe(fir.getItem_id())) + " " +
                                     (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is":"are") +
                                     " too big to fit into " + Utility.addThe(sec.getItem_id()) + ".";
+                            resp = response.skip;
                         }
-                        resp = response.skip;
+                        else
+                        {
+                            resp = response.badinput;
+                        }
                     }
                     else if(sec.isContainer())
                     {
@@ -272,15 +283,27 @@ public class Engine
                         else
                         {
                             if(enhanced)
+                            {
                                 out = "You can only interact with top-level items and their immediate content.";
-                            resp = response.skip;
+                                resp = response.skip;
+                            }
+                            else
+                            {
+                                resp = response.badinput;
+                            }
                         }
                     }
                     else
                     {
                         if(enhanced)
+                        {
                             out = Utility.capitalise(Utility.addThe(sec.getItem_id())) + " is not a container.";
-                        resp = response.skip;
+                            resp = response.skip;
+                        }
+                        else
+                        {
+                            resp = response.badinput;
+                        }
                     }
                 }
                 break;
