@@ -88,7 +88,6 @@ public class IOtest
                     break;
                 }
                 if (line.equalsIgnoreCase("cls")) {
-                    reader.readCharacter();
                     reader.clearScreen();
                     reader.flush();
                 }
