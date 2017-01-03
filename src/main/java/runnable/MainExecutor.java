@@ -19,23 +19,15 @@ public class MainExecutor
         Scanner scanner = new Scanner(System.in);
 
         // repeat until a game is successfully loaded or exit has been input
-        System.out.println("Please input the location of the story file to be loaded...");
         String test = "", story_location = "";
-        boolean badLocation = true;
-        while(badLocation)
+        try
         {
-            try
-            {
-                story_location = "C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Comparative Study\\study_story.txt";//= scanner.nextLine(); // "C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Testing\\simple_story.txt";
-                if(story_location.equals("abort"))
-                    return;
-                System.out.println("Attempting to load story file...");
-                new Scanner(new File(story_location)).next(); // test if the file is there
-                badLocation = false;
-            } catch (IOException e)
-            {
-                System.out.println("The file could not be found, please input a different location or input \"abort\"...");
-            }
+            story_location = args[1];//"C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Comparative Study\\study_story.txt";
+            System.out.println("Attempting to load story file...");
+            new Scanner(new File(story_location)).next(); // test if the file is there
+        } catch (IOException e)
+        {
+            System.out.println("The file could not be found...\nTerminating...");
         }
 
         Engine eng = null;
