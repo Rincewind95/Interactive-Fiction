@@ -1,5 +1,6 @@
 package standard.engine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -58,5 +59,19 @@ public class Player
             inv += "Your inventory is empty.";
         }
         return inv;
+    }
+
+    public ArrayList<String> listAllItems(Engine eng)
+    {
+        ArrayList<String> allItems = new ArrayList<>();
+        allItems.addAll(inventory.keySet());
+        int loc = 0;
+        while(loc < allItems.size())
+        {
+            Item curr = eng.findItem(allItems.get(loc));
+            allItems.addAll(curr.getContainedKeySet());
+            loc++;
+        }
+        return allItems;
     }
 }

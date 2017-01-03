@@ -101,6 +101,7 @@ public class NLPparser
         oneArgumentsynonyms.put("move"       , "move");
         oneArgumentsynonyms.put("go"         , "move");
         oneArgumentsynonyms.put("proceed"    , "move");
+        oneArgumentsynonyms.put("advance"    , "move");
         oneArgumentsynonyms.put("travel"     , "move");
 
         oneArguments = new HashMap<>();

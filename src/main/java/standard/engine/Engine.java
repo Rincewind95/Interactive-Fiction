@@ -287,7 +287,7 @@ public class Engine
                         if(enhanced)
                         {
                             out = "You cannot put " + Utility.addThe(fir.getItem_id()) + " in itself.";
-                            resp = response.skip;
+                            resp = response.good;
                         }
                         else
                         {
@@ -301,7 +301,7 @@ public class Engine
                             out = Utility.capitalise(Utility.addThe(fir.getItem_id())) + " " +
                                     (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is":"are") +
                                     " too big to fit into " + Utility.addThe(sec.getItem_id()) + ".";
-                            resp = response.skip;
+                            resp = response.good;
                         }
                         else
                         {
@@ -313,7 +313,7 @@ public class Engine
                         if(!fir.isTakeable() )
                         {
                             out = "You cannot move " + Utility.addThe(fir.getItem_id()) + ".";
-                            resp = response.skip;
+                            resp = response.good;
                         }
                         else if ((player.hasItem(sec) || player.getLocation().containsItem(sec)))
                         {
@@ -329,7 +329,7 @@ public class Engine
                             if(enhanced)
                             {
                                 out = "You can only interact with top-level items and their immediate content.";
-                                resp = response.skip;
+                                resp = response.good;
                             }
                             else
                             {
@@ -342,7 +342,7 @@ public class Engine
                         if(enhanced)
                         {
                             out = Utility.capitalise(Utility.addThe(sec.getItem_id())) + " is not a container.";
-                            resp = response.skip;
+                            resp = response.good;
                         }
                         else
                         {
@@ -442,11 +442,11 @@ public class Engine
                 break;
             case inventory:
                 out = player.listInventory(this);
-                resp = response.skip;
+                resp = response.good;
                 break;
             case look:
                 out = player.getLocation().getLookInfo(this);
-                resp = response.skip;
+                resp = response.good;
                 break;
             case brief:
                 out = player.getLocation().getBrief();
@@ -509,7 +509,7 @@ public class Engine
             item_suggestions.add(itemId);
         }
 
-        Set<String> itemsInv = player.inventory.keySet();
+        ArrayList<String> itemsInv = player.listAllItems(this);
         for(String itemId : itemsInv)
         {
             item_suggestions.add(itemId);
