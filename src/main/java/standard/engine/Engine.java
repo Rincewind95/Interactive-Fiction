@@ -2,7 +2,11 @@ package standard.engine;
 
 import input.parser.NLPparser;
 import javafx.util.Pair;
+import jline.console.ConsoleReader;
 
+import java.io.PrintWriter;
+import java.io.Reader;
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -26,6 +30,12 @@ public class Engine
 
     private boolean enhanced;                                // true if the engine is in advanced mode
 
+    private ConsoleReader reader;
+    private PrintWriter writer;
+    private FinalCompleter completer;
+    private ArrayList<String> command_suggestions;
+    private HashSet<String> item_suggestions;
+
     public Engine()
     {
         // empty game initialisation
@@ -45,80 +55,114 @@ public class Engine
         prev_steps = new ArrayList<>();
 
         enhanced = true;
+
+        reader = null;
+        writer = null;
+        completer = null;
+
+        command_suggestions = new ArrayList<>(
+                            Arrays.asList("use", "combine", "put", "remove",
+                                    "take", "drop", "examine", "move",
+                                    "look", "brief", "wait", "history", "exit", "inventory", "restart",
+                                    "with", "in", "on", "from",
+                                    "north", "east", "south", "west"));
+        item_suggestions = new HashSet<>();
+
     }
 
-    public response start(boolean enhanced)
+    public response start(boolean enhanced, ConsoleReader reader, PrintWriter writer)
     {
-        this.enhanced = enhanced;
-        Scanner scanner = new Scanner(System.in);
-
-        // start the game once the engine is loaded
-        boolean gameRunning = true;
-        System.out.println(welcome.getMsg());
-        System.out.println(player.getLocation().getBrief());
-        findroom.get(start_location_id).visit();
-        // main input loop
-        while (gameRunning)
+        try
         {
-            System.out.print("[" + time + "] ");
-            String userInput = scanner.nextLine();
+            this.enhanced = enhanced;
+            this.reader = reader;
+            this.writer = writer;
+            this.completer = new FinalCompleter(Utility.joinArrays(command_suggestions, item_suggestions));
+            reader.addCompleter(completer);
 
-            // input parsing
-            Command command = parser.parseInput(userInput);
-
-            // modify the engines internal state with the command and determine the outcome
-            Pair<response, String> out = executeCommand(command);
-            response resp = out.getKey();
-            String out_to_user = out.getValue();
-
-            // the command is valid so we add it to the list of previous commands
-            if (resp != Engine.response.badinput)
-                prev_commands.add(new Pair<>(command, time));
-
-            // now we determine what to do next
-            if (resp == Engine.response.exit)
+            // start the game once the engine is loaded
+            boolean gameRunning = true;
+            writer.println(welcome.getMsg());
+            writer.println(player.getLocation().getBrief());
+            writer.flush();
+            findroom.get(start_location_id).visit();
+            // main input loop
+            while (gameRunning)
             {
-                System.out.println(out_to_user);
-                break;
-            }
-            else if(resp == response.restart)
-            {
-                System.out.println(out_to_user);
-                return resp;
-            }
-            else if (resp == Engine.response.badinput ||
-                    resp == Engine.response.skip)
-            {
-                System.out.println(out_to_user);
-                continue;
-            }
+                updateItemSuggestions();
+                // if new items were added, update the completer
+                completer.updateSuggestions(Utility.joinArrays(command_suggestions, item_suggestions));
 
-            // we advance time, check constraints and potentially generate another response
-            advanceTime();
-            Pair<Consequence.Effect, String> final_out = checkConstraints();
-            Consequence.Effect eff = final_out.getKey();
-            switch (eff)
-            {
-                case kill:
-                case win:
-                    gameRunning = false;
+                reader.setPrompt("[" + time + "] ");
+                String userInput = reader.readLine();
+
+                // input parsing
+                Command command = parser.parseInput(userInput);
+
+                // modify the engines internal state with the command and determine the outcome
+                Pair<response, String> out = executeCommand(command);
+                response resp = out.getKey();
+                String out_to_user = out.getValue();
+
+                // the command is valid so we add it to the list of previous commands
+                if (resp != Engine.response.badinput)
+                    prev_commands.add(new Pair<>(command, time));
+
+                // now we determine what to do next
+                if (resp == Engine.response.exit)
+                {
+                    writer.println(out_to_user);
+                    writer.flush();
                     break;
+                }
+                else if (resp == response.restart)
+                {
+                    writer.println(out_to_user);
+                    writer.flush();
+                    reader.removeCompleter(completer);
+                    return resp;
+                }
+                else if (resp == Engine.response.badinput ||
+                        resp == Engine.response.skip)
+                {
+                    writer.println(out_to_user);
+                    writer.flush();
+                    continue;
+                }
+
+                // we advance time, check constraints and potentially generate another response
+                advanceTime();
+                Pair<Consequence.Effect, String> final_out = checkConstraints();
+                Consequence.Effect eff = final_out.getKey();
+                switch (eff)
+                {
+                    case kill:
+                    case win:
+                        gameRunning = false;
+                        break;
+                }
+
+                String final_out_to_user = out_to_user;
+                if (!final_out.getValue().equals(""))
+                {
+                    final_out_to_user = final_out.getValue();
+                }
+                else if (final_out_to_user.equals(""))
+                {
+                    final_out_to_user = "Nothing happens.";
+                }
+                writer.println(final_out_to_user);
+                writer.flush();
             }
 
-            String final_out_to_user = out_to_user;
-            if (!final_out.getValue().equals(""))
-            {
-                final_out_to_user = final_out.getValue();
-            }
-            else if (final_out_to_user.equals(""))
-            {
-                final_out_to_user = "Nothing happens.";
-            }
-            System.out.println(final_out_to_user);
+            reader.removeCompleter(completer);
+            return response.exit;
+        } catch (Throwable t)
+        {
+            t.printStackTrace();
         }
-
-        scanner.close();
-        return response.exit;
+        reader.removeCompleter(completer);
+        return  response.exit;
     }
 
     private Pair<response, String> executeCommand(Command command)
@@ -451,6 +495,25 @@ public class Engine
             }
         }
         return new Pair<>(Consequence.Effect.procede, out);
+    }
+
+    // adds new items to the item suggestions list and returns true if new items were added
+    private void updateItemSuggestions()
+    {
+        Room current = player.getLocation();
+        item_suggestions.clear();
+
+        ArrayList<String> itemsPresent = current.listAllItems(this);
+        for(String itemId : itemsPresent)
+        {
+            item_suggestions.add(itemId);
+        }
+
+        Set<String> itemsInv = player.inventory.keySet();
+        for(String itemId : itemsInv)
+        {
+            item_suggestions.add(itemId);
+        }
     }
 
     //------------------Parser-Related-Bit----------------------

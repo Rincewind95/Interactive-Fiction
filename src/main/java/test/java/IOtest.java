@@ -1,14 +1,14 @@
 package test.java;
 
+import jline.console.ConsoleReader;
+import jline.console.completer.Completer;
+import standard.engine.FinalCompleter;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-
-import jline.console.ConsoleReader;
-import jline.console.completer.*;
-import standard.engine.FinalCompleter;
 
 public class IOtest
 {
@@ -34,7 +34,8 @@ public class IOtest
     }
 
     public static void main(String[] args) throws IOException {
-        try {
+        try
+        {
             Character mask = null;
             String trigger = null;
             boolean color = false;
@@ -43,7 +44,8 @@ public class IOtest
 
             reader.setPrompt("> ");
 
-            if ((args == null) || (args.length == 0)) {
+            if ((args == null) || (args.length == 0))
+            {
                 usage();
 
                 return;
@@ -58,42 +60,51 @@ public class IOtest
 
             completors.add(new FinalCompleter(suggestions));
 
-            if (args.length == 3) {
+            if (args.length == 3)
+            {
                 mask = args[2].charAt(0);
                 trigger = args[1];
             }
 
-            for (Completer c : completors) {
+            for (Completer c : completors)
+            {
                 reader.addCompleter(c);
             }
 
             String line;
             PrintWriter out = new PrintWriter(reader.getOutput());
 
-            while ((line = reader.readLine()) != null) {
-                if (color){
+            while ((line = reader.readLine()) != null)
+            {
+                if (color)
+                {
                     out.println("\u001B[33m======>\u001B[0m\"" + line + "\"");
 
-                } else {
+                }
+                else
+                {
                     out.println("======>\"" + line + "\"");
                 }
                 out.flush();
 
                 // If we input the special word then we will mask
                 // the next line.
-                if ((trigger != null) && (line.compareTo(trigger) == 0)) {
+                if ((trigger != null) && (line.compareTo(trigger) == 0))
+                {
                     line = reader.readLine("password> ", mask);
                 }
-                if (line.equalsIgnoreCase("quit") || line.equalsIgnoreCase("exit")) {
+                if (line.equalsIgnoreCase("quit") || line.equalsIgnoreCase("exit"))
+                {
                     break;
                 }
-                if (line.equalsIgnoreCase("cls")) {
+                if (line.equalsIgnoreCase("cls"))
+                {
                     reader.clearScreen();
                     reader.flush();
                 }
             }
-        }
-        catch (Throwable t) {
+        } catch (Throwable t)
+        {
             t.printStackTrace();
         }
     }

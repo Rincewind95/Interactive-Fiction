@@ -1,9 +1,9 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="InteractiveFiction:jar">
-    <output-path>D:/!!!M/!MILOS/Cambridge/Part II project Interactive Fiction/Jars/Engine</output-path>
-    <root id="archive" name="InteractiveFiction.jar">
+  <artifact type="jar" name="IOtest:jar">
+    <output-path>D:/!!!M/!MILOS/Cambridge/Part II project Interactive Fiction/Jars/IOtest</output-path>
+    <root id="archive" name="IOtest.jar">
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="D:/!!!M/!MILOS/Cambridge/Part II project Interactive Fiction/Jars/Engine/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="D:/!!!M/!MILOS/Cambridge/Part II project Interactive Fiction/Jars/IOtest/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="InteractiveFiction" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/javax/json/javax.json-api/1.0/javax.json-api-1.0.jar" path-in-jar="/" />

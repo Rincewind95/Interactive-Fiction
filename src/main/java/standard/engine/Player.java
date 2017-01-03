@@ -47,7 +47,7 @@ public class Player
         String inv = "";
         if(!inventory.isEmpty())
         {
-            inv += "Your have the following items:";
+            inv += "Your have the following:";
             for (String item_id: inventory.keySet())
             {
                 inv += eng.findItem(item_id).listContents(eng, "");

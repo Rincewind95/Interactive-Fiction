@@ -298,7 +298,7 @@ public class Item extends ItemLocation implements Comparable
         String res = "\n" + prefix + "- " + getIDWithTemp();
         for (String child : contained.keySet())
         {
-            res += eng.findItem(child).listContents(eng, prefix + "\t");
+            res += eng.findItem(child).listContents(eng, prefix + "   ");
         }
         return res;
     }

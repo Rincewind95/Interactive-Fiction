@@ -1,5 +1,6 @@
 package standard.engine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -214,7 +215,7 @@ public class Room extends ItemLocation
             info += "\nThe exits are:";
             for (String dir : leads_to.keySet())
             {
-                info += "\n-> " + dir + ": " + leads_to.get(dir).getRoom_id();
+                info += "\n" + Utility.dirMap.get(dir) + " -> " + leads_to.get(dir).getRoom_id();
             }
         }
         else
@@ -222,5 +223,19 @@ public class Room extends ItemLocation
             info += "\nThere are no immediate exits from here.";
         }
         return info;
+    }
+
+    public ArrayList<String> listAllItems(Engine eng)
+    {
+        ArrayList<String> allItems = new ArrayList<>();
+        allItems.addAll(items.keySet());
+        int loc = 0;
+        while(loc < allItems.size())
+        {
+            Item curr = eng.findItem(allItems.get(loc));
+            allItems.addAll(curr.getContainedKeySet());
+            loc++;
+        }
+        return allItems;
     }
 }

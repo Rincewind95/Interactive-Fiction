@@ -110,10 +110,10 @@ public class NLPparser
 
         // remove all the extra spaces
         input = Utility.removeWhiteSpace(input);
-
+        String original = input;
         // now test for special commands before any NLP is done
         if(eng.hasSpecial(input))
-            return new Command(Command.Type.special, new ArrayList<>(Arrays.asList(input)), input);
+            return new Command(Command.Type.special, new ArrayList<>(Arrays.asList(input)), original);
 
         // find all the occurrences of items in the sentence and map them to "item1", "item2" etc.
         HashMap<String, String> itemMapping = new HashMap<>();
@@ -225,7 +225,7 @@ public class NLPparser
                 {
                     // this means we in fact have use and not useon
                     //System.out.println(word + " " + args);
-                    return new Command(Command.Type.valueOf(word), args, input);
+                    return new Command(Command.Type.valueOf(word), args, original);
                 }
                 else
                 {
@@ -240,7 +240,7 @@ public class NLPparser
             if(word.equals("put"))
                 word = "putin";
             //System.out.println(word + " " + args);
-            return new Command(Command.Type.valueOf(word), args, input);
+            return new Command(Command.Type.valueOf(word), args, original);
         }
 
         for(String word : oneArgumentWords)
@@ -287,7 +287,7 @@ public class NLPparser
             if(curr_arg == 0)
                 return new Command(Command.Type.badcomm);
             //System.out.println(word + " " + args);
-            return new Command(Command.Type.valueOf(word), args, input);
+            return new Command(Command.Type.valueOf(word), args, original);
 
         }
 
@@ -298,7 +298,7 @@ public class NLPparser
             if(verb == null)
                 continue;
             //System.out.println(word);
-            return new Command(Command.Type.valueOf(word), input);
+            return new Command(Command.Type.valueOf(word), original);
         }
 
         return new Command(Command.Type.badcomm);

@@ -8,6 +8,9 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
 import input.parser.NLPparser;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -16,6 +19,16 @@ import java.util.List;
 public class Utility
 {
     private static String[] special_chars = {"\\(", "\\)", "\\[", "\\]", "\\{", "\\}", "\\\"", ";"};
+
+    public static final HashMap<String, String> dirMap;
+    static
+    {
+        dirMap = new HashMap<String, String>();
+        dirMap.put("n", "north");
+        dirMap.put("e", "east");
+        dirMap.put("s", "south");
+        dirMap.put("w", "west");
+    }
 
     public static String removeWhiteSpace(String input)
     {
@@ -118,5 +131,13 @@ public class Utility
             }
         }
         return out;
+    }
+
+    public static ArrayList<String> joinArrays(ArrayList<String> array1, HashSet<String> array2)
+    {
+        ArrayList<String> res = new ArrayList<>();
+        res.addAll(array1);
+        res.addAll(array2);
+        return res;
     }
 }
