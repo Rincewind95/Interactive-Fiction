@@ -79,11 +79,14 @@ public class Engine
             this.writer = writer;
             this.completer = new FinalCompleter(Utility.joinArrays(command_suggestions, item_suggestions));
             reader.addCompleter(completer);
+            reader.setPrompt("> ");
 
             // start the game once the engine is loaded
             boolean gameRunning = true;
+            writer.println();
             writer.println(welcome.getMsg());
             writer.println(player.getLocation().getBrief());
+            writer.println();
             writer.flush();
             findroom.get(start_location_id).visit();
             // main input loop
@@ -93,7 +96,7 @@ public class Engine
                 // if new items were added, update the completer
                 completer.updateSuggestions(Utility.joinArrays(command_suggestions, item_suggestions));
 
-                reader.setPrompt("[" + time + "] ");
+                //reader.setPrompt("[" + time + "] ");
                 String userInput = reader.readLine();
 
                 // input parsing
@@ -111,12 +114,14 @@ public class Engine
                 // now we determine what to do next
                 if (resp == Engine.response.exit)
                 {
+                    out_to_user = "\n" + out_to_user + "\n";
                     writer.println(out_to_user);
                     writer.flush();
                     break;
                 }
                 else if (resp == response.restart)
                 {
+                    out_to_user = "\n" + out_to_user + "\n";
                     writer.println(out_to_user);
                     writer.flush();
                     reader.removeCompleter(completer);
@@ -125,6 +130,7 @@ public class Engine
                 else if (resp == Engine.response.badinput ||
                         resp == Engine.response.skip)
                 {
+                    out_to_user = "\n" + out_to_user + "\n";
                     writer.println(out_to_user);
                     writer.flush();
                     continue;
@@ -149,8 +155,12 @@ public class Engine
                 }
                 else if (final_out_to_user.equals(""))
                 {
-                    final_out_to_user = "Nothing happens.";
+                    if(enhanced)
+                        final_out_to_user = "Nothing happens.";
+                    else
+                        final_out_to_user = "I don't understand.";
                 }
+                final_out_to_user = "\n" + final_out_to_user + "\n";
                 writer.println(final_out_to_user);
                 writer.flush();
             }
@@ -683,6 +693,11 @@ public class Engine
         if (prev_commands.size() == 0)
             return null;
         return prev_commands.get(prev_commands.size() - 1).getKey();
+    }
+
+    public NLPparser getParser()
+    {
+        return parser;
     }
 
     public void waitTime(int t)

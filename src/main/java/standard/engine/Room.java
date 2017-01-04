@@ -195,32 +195,26 @@ public class Room extends ItemLocation
         String info = "";
 
         info += getDescription();
-        info += "\n";
 
         if (!items.isEmpty())
         {
-            info += "The following items are present:";
             for (String item_id : items.keySet())
             {
-                info += eng.findItem(item_id).listContents(eng, "");
+                info += "\nThere " +
+                        (Utility.isSingular(item_id, eng.getParser().getPipeline()) ?
+                                "is " + Utility.addAorAn(item_id):
+                                "are " + item_id) +
+                        " here.";
+                        //eng.findItem(item_id).listContents(eng, "");
             }
-        }
-        else
-        {
-            info += "There are no items here.";
         }
 
         if (!leads_to.isEmpty())
         {
-            info += "\nThe exits are:";
             for (String dir : leads_to.keySet())
             {
-                info += "\n" + Utility.dirMap.get(dir) + " -> " + leads_to.get(dir).getRoom_id();
+                info += "\n" + Utility.exitMap.get(dir) + Utility.addThe(leads_to.get(dir).getRoom_id()) + ".";
             }
-        }
-        else
-        {
-            info += "\nThere are no immediate exits from here.";
         }
         return info;
     }

@@ -1,7 +1,9 @@
 package standard.engine;
 
+import de.tudarmstadt.ukp.dkpro.core.api.lexmorph.type.pos.POS;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;
+import edu.stanford.nlp.ling.Tag;
 import edu.stanford.nlp.ling.tokensregex.ComplexNodePattern;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
@@ -20,14 +22,21 @@ public class Utility
 {
     private static String[] special_chars = {"\\(", "\\)", "\\[", "\\]", "\\{", "\\}", "\\\"", ";"};
 
-    public static final HashMap<String, String> dirMap;
+    private static final HashSet<Character> vowels;
+    public static final HashMap<String, String> exitMap;
     static
     {
-        dirMap = new HashMap<String, String>();
-        dirMap.put("n", "north");
-        dirMap.put("e", "east");
-        dirMap.put("s", "south");
-        dirMap.put("w", "west");
+        exitMap = new HashMap<>();
+        exitMap.put("n", "The northern exit leads to ");
+        exitMap.put("e", "The eastern exit leads to ");
+        exitMap.put("s", "The southern exit leads to ");
+        exitMap.put("w", "The western exit leads to ");
+        vowels = new HashSet<>();
+        vowels.add('a');
+        vowels.add('e');
+        vowels.add('i');
+        vowels.add('o');
+        vowels.add('u');
     }
 
     public static String removeWhiteSpace(String input)
@@ -78,25 +87,40 @@ public class Utility
         return input;
     }
 
+
+    public static String addAorAn(String input)
+    {
+        if (!input.startsWith("the ")
+                && !input.startsWith("a ")
+                && !input.startsWith("an ")
+                && input.length() > 0)
+        {
+            if(vowels.contains(input.charAt(0)))
+                input = "an " + input;
+            else
+                input = "a " + input;
+        }
+        return input;
+    }
+
     public static Boolean isSingular(String input, StanfordCoreNLP pipeline)
     {
         Annotation annotation = new Annotation(input);
+        boolean result = true;
         pipeline.annotate(annotation);
-        String lemmas = "";
+        String[] words = input.split(" ");
         List<CoreMap> sentences = annotation.get(CoreAnnotations.SentencesAnnotation.class);
-        for (CoreMap sentence : sentences)
+
+        int i = 0;
+        // Iterate over all tokens in a sentence
+        for (CoreLabel token : sentences.get(0).get(CoreAnnotations.TokensAnnotation.class))
         {
-            // Iterate over all tokens in a sentence
-            for (CoreLabel token : sentence.get(CoreAnnotations.TokensAnnotation.class))
-            {
-                // Retrieve and add the lemma for each word into the list of lemmas
-                if (!lemmas.equals(""))
-                    lemmas += " " + token.get(CoreAnnotations.LemmaAnnotation.class);
-                else
-                    lemmas = token.get(CoreAnnotations.LemmaAnnotation.class);
-            }
+            // Retrieve and add the lemma for each word into the list of lemmas
+            String lemma = token.get(CoreAnnotations.LemmaAnnotation.class);
+            result = result && lemma.equals(words[i]);
+            i++;
         }
-        return input.equals(lemmas);
+        return result;//input.equals(lemmas);
     }
 
     public static String capitalise(String input)
