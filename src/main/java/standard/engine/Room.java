@@ -219,6 +219,27 @@ public class Room extends ItemLocation
         return info;
     }
 
+    public String getMoveInfo(Engine eng)
+    {
+        String info = "";
+
+        info += getDescription();
+
+        if (!items.isEmpty())
+        {
+            for (String item_id : items.keySet())
+            {
+                info += "\nThere " +
+                        (Utility.isSingular(item_id, eng.getParser().getPipeline()) ?
+                                "is " + Utility.addAorAn(item_id):
+                                "are " + item_id) +
+                        " here.";
+                //eng.findItem(item_id).listContents(eng, "");
+            }
+        }
+        return info;
+    }
+
     public ArrayList<String> listAllItems(Engine eng)
     {
         ArrayList<String> allItems = new ArrayList<>();

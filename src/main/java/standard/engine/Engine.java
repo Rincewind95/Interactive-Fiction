@@ -411,7 +411,7 @@ public class Engine
                         }
                         else
                         {
-                            out = room.getDescription();
+                            out = room.getMoveInfo(this);
                         }
                     }
                     else if (cur.hasDeadEndInDir(dir))
