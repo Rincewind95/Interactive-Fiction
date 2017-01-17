@@ -229,7 +229,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
     {
         String step_id = parseStep_id(ctx.step_id());
         Boolean ander = false;
-        if(ctx.gate_type().ANDING() != null)
+        if (ctx.gate_type().ANDING() != null)
         {
             ander = true;
         }
@@ -240,6 +240,12 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         parseRequiredSteps(step, ctx.required_steps());
         parseConditions(step, ctx.conditions());
         parseConsequences(step, ctx.consequences());
+
+        if (ctx.hint() != null)
+        {
+            //set the hint if one exists
+            step.setHint(parseDescription(ctx.hint().description()));
+        }
 
         eng.addStep(step_id, step);
         return null;

@@ -238,6 +238,16 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 */
 	void exitStep_id(StoryGrammarParser.Step_idContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#hint}.
+	 * @param ctx the parse tree
+	 */
+	void enterHint(StoryGrammarParser.HintContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#hint}.
+	 * @param ctx the parse tree
+	 */
+	void exitHint(StoryGrammarParser.HintContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#step}.
 	 * @param ctx the parse tree
 	 */

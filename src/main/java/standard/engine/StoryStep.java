@@ -10,16 +10,17 @@ import java.util.TreeSet;
 public class StoryStep implements Comparable
 {
     // parent_steps are a list of parent steps which need to be satisfied + the conditions for the step to be enacted
-    String step_id;                            // the steps identifier
-    TreeSet<Condition> conditions;             // the set of preconditions which ALL need to be met for the consequences to be triggered
-    TreeSet<Consequence> consequences;         // the set of consequences which are triggered when all the conditions are met
-    Message message;                           // the message printed when the step is activated
-    HashMap<String, StoryStep> child_steps;    // a list of steps which are direct descendants of the current step
-    HashMap<String, StoryStep> parent_steps;   // a list of steps which are direct predecessors of the current step
-    HashMap<String, Integer> sat_before;       // a map of times at least before the parents need to be satisfied
-    boolean ands;                              // true if the node requires all the parent_steps to be true, false if it requires at least one
-    boolean satisfied;                         // true if the step is always satisfied
-    int timestamp;                             // time of satisfaction
+    private String step_id;                            // the steps identifier
+    private TreeSet<Condition> conditions;             // the set of preconditions which ALL need to be met for the consequences to be triggered
+    private TreeSet<Consequence> consequences;         // the set of consequences which are triggered when all the conditions are met
+    private Message message;                           // the message printed when the step is activated
+    private HashMap<String, StoryStep> child_steps;    // a list of steps which are direct descendants of the current step
+    private HashMap<String, StoryStep> parent_steps;   // a list of steps which are direct predecessors of the current step
+    private HashMap<String, Integer> sat_before;       // a map of times at least before the parents need to be satisfied
+    private boolean ands;                              // true if the node requires all the parent_steps to be true, false if it requires at least one
+    private boolean satisfied;                         // true if the step is always satisfied
+    private int timestamp;                             // time of satisfaction
+    private Message hint;                              // a hint for the story step if one exists
 
     // placeholder step creator
     public StoryStep(String step_id)
@@ -39,6 +40,7 @@ public class StoryStep implements Comparable
         conditions = new TreeSet<>();
         consequences = new TreeSet<>();
         sat_before = new HashMap<>();
+        hint = null;
     }
 
     // creates a bare story step
@@ -53,6 +55,7 @@ public class StoryStep implements Comparable
         this.ands = ands;
         satisfied = false;
         sat_before = new HashMap<>();
+        hint = null;
     }
 
     //------------------Linker-Related-Bit----------------------
@@ -149,6 +152,12 @@ public class StoryStep implements Comparable
 
     public boolean canBeSatisfied(Engine eng)
     {
+        return isHintCandidate(eng) && hasConditionsSatisfied(eng);
+    }
+
+    // if its parents are satisfied
+    public boolean isHintCandidate(Engine eng)
+    {
         if (satisfied)
             return false;
         boolean res = false;
@@ -163,7 +172,35 @@ public class StoryStep implements Comparable
             else
                 res = res || parent_sat;
         }
-        return res && hasConditionsSatisfied(eng);
+        return res;
+    }
+
+    public boolean playerIsInRigthRoom(Engine eng)
+    {
+        String room = eng.getPlayer().getLocation().getRoom_id();
+        for (Condition cond : conditions)
+        {
+            switch (cond.getType())
+            {
+                case plir:
+                    // player in room
+                    return room.equals(cond.getArgs().get(0));
+            }
+        }
+        return true;
+    }
+
+    public boolean hasHint()
+    {
+        return hint != null;
+    }
+
+    public int satisfiedConditionCount(Engine eng)
+    {
+        int cnt = 0;
+        for (Condition cond : conditions)
+            cnt = cnt + (cond.evaluate(eng) ? 1 : 0);
+        return cnt;
     }
 
     public void addCondition(Condition cond)
@@ -232,6 +269,23 @@ public class StoryStep implements Comparable
     public void setTimestamp(int timestamp)
     {
         this.timestamp = timestamp;
+    }
+
+    public void setHint(Message hint)
+    {
+        this.hint = hint;
+    }
+
+    public Message getHintMessage()
+    {
+        return hint;
+    }
+
+    public String getHint()
+    {
+        if(hint != null)
+            return hint.getMsg();
+        return null;
     }
 }
 

@@ -99,6 +99,13 @@ public class StoryLinker
             {
                 linkConsequence(cons, step_id, eng);
             }
+
+            if(curr_step.getHint() != null)
+            {
+                // set the hint message
+                curr_step.setHint(linkMessage(curr_step.getHintMessage(), curr_step.getStep_id(), eng));
+            }
+
             // TODO check story consistency
         }
 

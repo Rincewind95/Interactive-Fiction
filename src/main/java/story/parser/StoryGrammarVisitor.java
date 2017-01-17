@@ -149,6 +149,12 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStep_id(StoryGrammarParser.Step_idContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#hint}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHint(StoryGrammarParser.HintContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#step}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

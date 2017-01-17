@@ -63,7 +63,7 @@ public class Engine
         command_suggestions = new ArrayList<>(
                             Arrays.asList("use", "combine", "put", "remove",
                                     "take", "drop", "examine", "move",
-                                    "look", "brief", "wait", "history", "exit", "inventory", "restart",
+                                    "look", "brief", "wait", "history", "exit", "inventory", "restart", "hint", "help",
                                     "with", "in", "on", "from",
                                     "north", "east", "south", "west"));
         item_suggestions = new HashSet<>();
@@ -197,7 +197,7 @@ public class Engine
                             toTake.isTakeable())
                     {
                         // if the player is in the same room as the item, and does not have the item he can take it
-                        out = "You pick up " + Utility.addThe(toTake.getItem_id()) + ".";
+                        out = "You take " + Utility.addThe(toTake.getItem_id()) + ".";
                         // move the item to the players inventory
                         player.giveItem(toTake);
                         toTake.setLocationFlag(Item.flag.inv);
@@ -465,7 +465,38 @@ public class Engine
             case wait:
                 out = "Time passes.";
                 break;
+            case help:
+                // TODO implement help
+                break;
+            case hint:
+                // TODO implement hint
+                // go through all the steps and isolate the ones that could be hinted
+                ArrayList<StoryStep> candidates = new ArrayList<>();
+                for (String step_id : findstep.keySet())
+                {
+                    if (step_id == start_id)
+                        continue;
+                    StoryStep curr_step = findStep(step_id);
 
+                    if (curr_step.isHintCandidate(this) &&
+                        curr_step.hasHint() &&
+                        curr_step.playerIsInRigthRoom(this))
+                    {
+                        candidates.add(curr_step);
+                    }
+                }
+                candidates.sort((StoryStep st1, StoryStep st2) -> st1.satisfiedConditionCount(this) - st2.satisfiedConditionCount(this));
+
+                if(candidates.isEmpty())
+                {
+                    out = "I cannot help you, no hints are available at this time.";
+                }
+                else
+                {
+                    out = candidates.get(0).getHint();
+                }
+                resp = response.good;
+                break;
             case empty:
                 resp = response.badinput;
                 break;

@@ -152,7 +152,9 @@ special_id: ID;
 special: SPECIAL_ OPEN_PAREN_CURLY special_id SEMICOLON CLOS_PAREN_CURLY;
 
 step_id: ID;
-step: STEP_ OPEN_PAREN_CURLY step_id SEMICOLON gate_type SEMICOLON required_steps SEMICOLON conditions SEMICOLON consequences SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
+hint: description;
+step: STEP_ OPEN_PAREN_CURLY step_id SEMICOLON gate_type SEMICOLON required_steps SEMICOLON conditions SEMICOLON consequences SEMICOLON description SEMICOLON CLOS_PAREN_CURLY
+    | STEP_ OPEN_PAREN_CURLY step_id SEMICOLON gate_type SEMICOLON required_steps SEMICOLON conditions SEMICOLON consequences SEMICOLON description SEMICOLON hint SEMICOLON CLOS_PAREN_CURLY;
 
 step_before: step_id TIME;
 
