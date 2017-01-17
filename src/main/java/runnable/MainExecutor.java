@@ -8,9 +8,7 @@ import standard.engine.Utility;
 import story.compiler.StoryCompiler;
 
 import javax.rmi.CORBA.Util;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,23 +32,26 @@ public class MainExecutor
 
             String line;
             PrintWriter out = new PrintWriter(reader.getOutput());
-            if(args.length <= 1)
+            Writer transwriter;
+            if(args.length <= 2)
             {
-                out.println("java -jar InteractiveFiction.jar [enhanced/standard] [story file location]");
+                out.println("java -jar InteractiveFiction.jar [enhanced/standard] [story file location] [transcript location]");
             }
             // repeat until a game is successfully loaded or exit has been input
-            String test = "", story_location = "";
+            String test = "", story_location = "", transcript = "";
             try
             {
-                story_location = args[1];//"C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Comparative Study\\study_story.txt";
+                story_location = args[1]; //"C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Comparative Study\\study_story.txt";
+                transcript = args[2];     //"C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Comparative Study\\study_transcript.txt";
                 out.println("Attempting to load story file...");
                 out.flush();
-
+                transwriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(transcript), "utf-8"));
                 new Scanner(new File(story_location)).next(); // test if the file is there
             } catch (IOException e)
             {
                 out.println("The file could not be found...\nTerminating...");
                 out.flush();
+                return;
             }
 
             Engine eng = null;
@@ -73,9 +74,10 @@ public class MainExecutor
             // --------------------------------------------------------------------------------------
             while(true)
             {
-                Engine.response resp = eng.start(args.length > 0 ? args[0].equals("enhanced") : true, reader, out);
+                Engine.response resp = eng.start(args.length > 0 ? args[0].equals("enhanced") : true, reader, out, transwriter);
                 if (resp == Engine.response.exit)
                 {
+                    transwriter.close();
                     break;
                 }
                 else if (resp == Engine.response.restart)

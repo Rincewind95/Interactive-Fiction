@@ -6,6 +6,7 @@ import jline.console.ConsoleReader;
 
 import java.io.PrintWriter;
 import java.io.Reader;
+import java.io.Writer;
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -32,6 +33,7 @@ public class Engine
 
     private ConsoleReader reader;
     private PrintWriter writer;
+    private Writer transcriptWriter;
     private FinalCompleter completer;
     private ArrayList<String> command_suggestions;
     private HashSet<String> item_suggestions;
@@ -70,24 +72,24 @@ public class Engine
 
     }
 
-    public response start(boolean enhanced, ConsoleReader reader, PrintWriter writer)
+    public response start(boolean enhanced, ConsoleReader reader, PrintWriter writer, Writer transwriter)
     {
         try
         {
             this.enhanced = enhanced;
             this.reader = reader;
             this.writer = writer;
+            this.transcriptWriter = transwriter;
             this.completer = new FinalCompleter(Utility.joinArrays(command_suggestions, item_suggestions));
             reader.addCompleter(completer);
             reader.setPrompt("> ");
 
             // start the game once the engine is loaded
             boolean gameRunning = true;
-            writer.println();
-            writer.println(welcome.getMsg());
-            writer.println(player.getLocation().getBrief());
-            writer.println();
-            writer.flush();
+            Utility.write(writer, "\n"
+                                  + welcome.getMsg() + "\n"
+                                  + player.getLocation().getBrief() + "\n", transcriptWriter);
+
             findroom.get(start_location_id).visit();
             // main input loop
             while (gameRunning)
@@ -97,7 +99,7 @@ public class Engine
                 completer.updateSuggestions(Utility.joinArrays(command_suggestions, item_suggestions));
 
                 //reader.setPrompt("[" + time + "] ");
-                String userInput = reader.readLine();
+                String userInput = Utility.readLn(reader, transcriptWriter);
 
                 // input parsing
                 Command command = parser.parseInput(userInput);
@@ -115,15 +117,13 @@ public class Engine
                 if (resp == Engine.response.exit)
                 {
                     out_to_user = "\n" + out_to_user + "\n";
-                    writer.println(out_to_user);
-                    writer.flush();
+                    Utility.write(writer, out_to_user, transcriptWriter);
                     break;
                 }
                 else if (resp == response.restart)
                 {
                     out_to_user = "\n" + out_to_user + "\n";
-                    writer.println(out_to_user);
-                    writer.flush();
+                    Utility.write(writer, out_to_user, transcriptWriter);
                     reader.removeCompleter(completer);
                     return resp;
                 }
@@ -131,8 +131,7 @@ public class Engine
                         resp == Engine.response.skip)
                 {
                     out_to_user = "\n" + out_to_user + "\n";
-                    writer.println(out_to_user);
-                    writer.flush();
+                    Utility.write(writer, out_to_user, transcriptWriter);
                     continue;
                 }
 
@@ -161,8 +160,7 @@ public class Engine
                         final_out_to_user = "I don't understand.";
                 }
                 final_out_to_user = "\n" + final_out_to_user + "\n";
-                writer.println(final_out_to_user);
-                writer.flush();
+                Utility.write(writer, final_out_to_user, transcriptWriter);
             }
 
             reader.removeCompleter(completer);

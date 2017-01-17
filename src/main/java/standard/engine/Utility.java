@@ -9,11 +9,12 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
 import input.parser.NLPparser;
+import jline.console.ConsoleReader;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
+import java.util.*;
 
 /**
  * Created by Milos on 07/11/2016.
@@ -24,29 +25,32 @@ public class Utility
 
     public static final String helpMessage =
             "use     <item>             - uses an item\n" +
-            "use     <item> on   <item> - uses an item on another item\n" +
-            "combine <item> with <item> - combines two items (ordering is irrelevant)\n" +
-            "put     <item> in   <item> - adds an item to a container\n" +
-            "remove  <item> from <item> - removes an item from a container\n" +
-            "take    <item>             - adds the item to your inventory\n" +
-            "drop    <item>             - removes the item from your inventory\n" +
-            "examine <item>             - gives the items description and contents\n" +
-            "move    <direction>        - moves the player north/east/south/west\n" +
-            "<special command>          - exact string of event triggering characters\n" +
-            "inventory - lists the items stored in your inventory\n" +
-            "look      - gives a rooms short description, its contents and its exits\n" +
-            "wait      - waits a unit of time\n" +
-            "hint      - gives useful tips with respect to current progress\n" +
-            "help      - prints the general help message\n" +
-            "brief     - prints a room's introductory message\n" +
-            "history   - presents a list of all previous successful user commands\n" +
-            "restart   - [CAUTION] restarts the game, and all progress is lost\n" +
-            "quit      - [CAUTION] exits the game\n" +
-            "N.B. the list of commands given above is nothing more than a suggestion." +
-            "You can be creative with synonyms, but there is no guarantee that all synonym options will work.";
+                    "use     <item> on   <item> - uses an item on another item\n" +
+                    "combine <item> with <item> - combines two items (ordering is irrelevant)\n" +
+                    "put     <item> in   <item> - adds an item to a container\n" +
+                    "remove  <item> from <item> - removes an item from a container\n" +
+                    "take    <item>             - adds the item to your inventory\n" +
+                    "drop    <item>             - removes the item from your inventory\n" +
+                    "examine <item>             - gives the items description and contents\n" +
+                    "move    <direction>        - moves the player north/east/south/west\n" +
+                    "<special command>          - exact string of event triggering characters\n" +
+                    "inventory - lists the items stored in your inventory\n" +
+                    "look      - gives a rooms short description, its contents and its exits\n" +
+                    "wait      - waits a unit of time\n" +
+                    "hint      - gives useful tips with respect to current progress\n" +
+                    "help      - prints the general help message\n" +
+                    "brief     - prints a room's introductory message\n" +
+                    "history   - presents a list of all previous successful user commands\n" +
+                    "restart   - [CAUTION] restarts the game, and all progress is lost\n" +
+                    "quit      - [CAUTION] exits the game\n" +
+                    "N.B. the list of commands given above is nothing more than a suggestion." +
+                    "You can be creative with synonyms, but there is no guarantee that all synonym options will work.";
 
     private static final HashSet<Character> vowels;
     public static final HashMap<String, String> exitMap;
+    public static final ArrayList<String> commands_list;
+    public static final ArrayList<String> connectors_list;
+
     static
     {
         exitMap = new HashMap<>();
@@ -60,6 +64,14 @@ public class Utility
         vowels.add('i');
         vowels.add('o');
         vowels.add('u');
+
+        commands_list = new ArrayList<>(
+                Arrays.asList("use", "combine", "put", "remove",
+                        "take", "drop", "examine", "move",
+                        "look", "brief", "wait", "history", "exit", "inventory", "restart", "hint", "help"));
+        connectors_list = new ArrayList<>(
+                Arrays.asList("with", "in", "on", "from",
+                        "north", "east", "south", "west"));
     }
 
     public static String removeWhiteSpace(String input)
@@ -118,7 +130,7 @@ public class Utility
                 && !input.startsWith("an ")
                 && input.length() > 0)
         {
-            if(vowels.contains(input.charAt(0)))
+            if (vowels.contains(input.charAt(0)))
                 input = "an " + input;
             else
                 input = "a " + input;
@@ -162,7 +174,7 @@ public class Utility
     public static String volumeChangeMessage(Item item, Item.Temperature finaltmp)
     {
         String out = "";
-        if(finaltmp != item.getTemperature())
+        if (finaltmp != item.getTemperature())
         {
             out += ".\nThe volume of " + Utility.addThe(item.getItem_id());
             if (finaltmp.ordinal() > item.getTemperature().ordinal())
@@ -171,10 +183,18 @@ public class Utility
                 out += " has decreased to ";
             switch (finaltmp)
             {
-                case burning: out += "120% its normal size"; break;
-                case hot:     out += "110% its normal size"; break;
-                case cold:    out += "90% its normal size"; break;
-                case frozen:  out += "80% its normal size"; break;
+                case burning:
+                    out += "120% its normal size";
+                    break;
+                case hot:
+                    out += "110% its normal size";
+                    break;
+                case cold:
+                    out += "90% its normal size";
+                    break;
+                case frozen:
+                    out += "80% its normal size";
+                    break;
             }
         }
         return out;
@@ -186,5 +206,25 @@ public class Utility
         res.addAll(array1);
         res.addAll(array2);
         return res;
+    }
+
+    public static void write(PrintWriter writer, String out, Writer transwriter)
+    {
+        try
+        {
+            transwriter.write(out);
+        } catch (Exception e) {}
+        writer.println(out);
+        writer.flush();
+    }
+
+    public static String readLn(ConsoleReader reader, Writer transwriter) throws IOException
+    {
+        String out = reader.readLine();
+        try
+        {
+            transwriter.write("\n> " + out + "\n");
+        } catch (Exception e) {}
+        return out;
     }
 }
