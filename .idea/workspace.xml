@@ -10,8 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java" afterPath="$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Room.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Room.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
     </list>
     <ignored path="InteractiveFiction.iws" />
@@ -37,8 +37,8 @@
       <file leaf-file-name="Engine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="108" column="45" selection-start-line="108" selection-start-column="45" selection-end-line="108" selection-end-column="45" />
+            <state relative-caret-position="226">
+              <caret line="231" column="40" selection-start-line="231" selection-start-column="40" selection-end-line="231" selection-end-column="40" />
               <folding>
                 <element signature="docComment;class#Engine#0" expanded="false" />
                 <element signature="method#checkConstraints#0;class#Engine#0" expanded="false" />
@@ -60,30 +60,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StoryStep.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java">
+      <file leaf-file-name="Room.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Room.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="25" column="36" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
-              <folding>
-                <element signature="docComment;class#StoryStep#0" expanded="false" />
-                <element signature="method#compareTo#0;class#StoryStep#0" expanded="false" />
-                <element signature="e#5514#5515#0" expanded="true" />
-                <element signature="e#5549#5550#0" expanded="true" />
-                <element signature="method#addCondition#0;class#StoryStep#0" expanded="false" />
-                <element signature="method#addConsequence#0;class#StoryStep#0" expanded="false" />
-                <element signature="method#invokeConsequences#0;class#StoryStep#0" expanded="false" />
-                <element signature="method#getHint#0;class#StoryStep#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="313">
+              <caret line="229" column="27" selection-start-line="229" selection-start-column="27" selection-end-line="229" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Utility.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Utility.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Utility.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="225" column="33" selection-start-line="225" selection-start-column="33" selection-end-line="225" selection-end-column="33" />
+            <state relative-caret-position="133">
+              <caret line="169" column="36" selection-start-line="169" selection-start-column="36" selection-end-line="169" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -92,30 +83,41 @@
       <file leaf-file-name="Consequence.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Consequence.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="83" column="42" selection-start-line="83" selection-start-column="42" selection-end-line="83" selection-end-column="42" />
+            <state relative-caret-position="436">
+              <caret line="100" column="22" selection-start-line="100" selection-start-column="22" selection-end-line="100" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Command.java">
+      <file leaf-file-name="Item.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Item.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="196" column="0" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
+            <state relative-caret-position="404">
+              <caret line="323" column="6" selection-start-line="323" selection-start-column="6" selection-end-line="323" selection-end-column="6" />
               <folding>
-                <element signature="method#Command#3;class#Command#0" expanded="false" />
+                <element signature="method#Item#0;class#Item#0" expanded="false" />
+                <element signature="method#Item#1;class#Item#0" expanded="false" />
+                <element signature="method#compareTo#0;class#Item#0" expanded="false" />
+                <element signature="method#moveItem#0;class#Item#0" expanded="false" />
+                <element signature="method#removeItem#0;class#Item#0" expanded="false" />
+                <element signature="method#getTotalVolume#0;class#Item#0" expanded="false" />
+                <element signature="method#getVolume#0;class#Item#0" expanded="false" />
+                <element signature="method#setTemperature#0;class#Item#0" expanded="false" />
+                <element signature="method#modifyTemperatures#0;class#Item#0" expanded="false" />
+                <element signature="method#getIDWithTemp#0;class#Item#0" expanded="false" />
+                <element signature="class#Temperature#0;class#Item#0" expanded="false" />
+                <element signature="class#flag#0;class#Item#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StoryGrammar.g4" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4">
+      <file leaf-file-name="NLPtest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/test/java/NLPtest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="174" column="32" selection-start-line="174" selection-start-column="25" selection-end-line="174" selection-end-column="32" />
+            <state relative-caret-position="155">
+              <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -146,7 +148,7 @@
       <file leaf-file-name="NLPparser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1076">
+            <state relative-caret-position="-1526">
               <caret line="119" column="59" selection-start-line="119" selection-start-column="59" selection-end-line="119" selection-end-column="59" />
               <folding />
             </state>
@@ -218,9 +220,7 @@
         <option value="$PROJECT_DIR$/src/main/java/test/java/NLPtest.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/FinalCompleter.java" />
         <option value="$PROJECT_DIR$/src/main/java/test/java/IOtest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Player.java" />
-        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Room.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Command.java" />
         <option value="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" />
         <option value="$PROJECT_DIR$/src/main/java/story/compiler/StoryTreeVisitor.java" />
@@ -229,7 +229,9 @@
         <option value="$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
         <option value="$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Room.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
+        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" />
       </list>
     </option>
   </component>
@@ -895,7 +897,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18526544" sideWeight="0.4914712" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16576381" sideWeight="0.48773986" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17009751" sideWeight="0.48773986" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42145178" sideWeight="0.51226014" order="7" side_tool="true" content_ui="tabs" />
@@ -906,6 +908,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18923241" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4946695" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4767064" sideWeight="0.5042644" order="12" side_tool="false" content_ui="tabs" x="-237" y="994" width="1876" height="300" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -919,7 +922,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4946695" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1120,14 +1122,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/java/NLPtest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/RawConsoleInput.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Message.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1150,92 +1144,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="15" column="135" selection-start-line="15" selection-start-column="126" selection-end-line="15" selection-end-column="135" />
-          <folding>
-            <element signature="method#Item#0;class#Item#0" expanded="false" />
-            <element signature="method#Item#1;class#Item#0" expanded="false" />
-            <element signature="method#compareTo#0;class#Item#0" expanded="false" />
-            <element signature="method#moveItem#0;class#Item#0" expanded="false" />
-            <element signature="method#removeItem#0;class#Item#0" expanded="false" />
-            <element signature="method#getTotalVolume#0;class#Item#0" expanded="false" />
-            <element signature="method#getVolume#0;class#Item#0" expanded="false" />
-            <element signature="method#setTemperature#0;class#Item#0" expanded="false" />
-            <element signature="method#modifyTemperatures#0;class#Item#0" expanded="false" />
-            <element signature="method#getIDWithTemp#0;class#Item#0" expanded="false" />
-            <element signature="class#Temperature#0;class#Item#0" expanded="false" />
-            <element signature="class#flag#0;class#Item#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="63" column="45" selection-start-line="63" selection-start-column="45" selection-end-line="63" selection-end-column="45" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Room.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2737">
-          <caret line="238" column="9" selection-start-line="238" selection-start-column="9" selection-end-line="238" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1631#1632#0" expanded="false" />
-            <element signature="e#1671#1672#0" expanded="false" />
-            <element signature="e#1719#1720#0" expanded="false" />
-            <element signature="e#1759#1760#0" expanded="false" />
-            <element signature="e#2469#2470#0" expanded="false" />
-            <element signature="e#2507#2508#0" expanded="false" />
-            <element signature="e#2546#2547#0" expanded="false" />
-            <element signature="e#2576#2577#0" expanded="false" />
-            <element signature="e#2607#2608#0" expanded="false" />
-            <element signature="e#2637#2638#0" expanded="false" />
-            <element signature="e#2688#2689#0" expanded="false" />
-            <element signature="e#2736#2737#0" expanded="false" />
-            <element signature="e#2790#2791#0" expanded="false" />
-            <element signature="e#2838#2839#0" expanded="false" />
-            <element signature="e#2877#2878#0" expanded="false" />
-            <element signature="e#2908#2909#0" expanded="false" />
-            <element signature="e#2960#2961#0" expanded="false" />
-            <element signature="e#3000#3001#0" expanded="false" />
-            <element signature="e#3038#3039#0" expanded="false" />
-            <element signature="e#3068#3069#0" expanded="false" />
-            <element signature="e#3118#3119#0" expanded="false" />
-            <element signature="e#3156#3157#0" expanded="false" />
-            <element signature="e#3203#3204#0" expanded="false" />
-            <element signature="e#3259#3260#0" expanded="false" />
-            <element signature="e#3298#3299#0" expanded="false" />
-            <element signature="e#3342#3343#0" expanded="false" />
-            <element signature="e#3528#3529#0" expanded="false" />
-            <element signature="e#3562#3563#0" expanded="false" />
-            <element signature="e#3602#3603#0" expanded="false" />
-            <element signature="e#3630#3631#0" expanded="false" />
-            <element signature="e#3666#3667#0" expanded="false" />
-            <element signature="e#3703#3704#0" expanded="false" />
-            <element signature="e#3750#3751#0" expanded="false" />
-            <element signature="e#3784#3785#0" expanded="false" />
-            <element signature="e#3836#3837#0" expanded="false" />
-            <element signature="e#3870#3871#0" expanded="false" />
-            <element signature="e#3912#3913#0" expanded="false" />
-            <element signature="e#3955#3956#0" expanded="false" />
-            <element signature="e#4001#4002#0" expanded="false" />
-            <element signature="e#4035#4036#0" expanded="false" />
-            <element signature="e#4088#4089#0" expanded="false" />
-            <element signature="e#4124#4125#0" expanded="false" />
-            <element signature="e#4187#4188#0" expanded="false" />
-            <element signature="e#4229#4230#0" expanded="false" />
-            <element signature="e#4277#4278#0" expanded="false" />
-            <element signature="e#4317#4318#0" expanded="false" />
-            <element signature="e#4370#4371#0" expanded="false" />
-            <element signature="e#4419#4420#0" expanded="false" />
-            <element signature="e#4476#4477#0" expanded="false" />
-            <element signature="e#4516#4517#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1339,14 +1252,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1076">
-          <caret line="119" column="59" selection-start-line="119" selection-start-column="59" selection-end-line="119" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1365,14 +1270,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Consequence.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="83" column="42" selection-start-line="83" selection-start-column="42" selection-end-line="83" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="367">
@@ -1383,8 +1280,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="108" column="45" selection-start-line="108" selection-start-column="45" selection-end-line="108" selection-end-column="45" />
+        <state relative-caret-position="226">
+          <caret line="231" column="40" selection-start-line="231" selection-start-column="40" selection-end-line="231" selection-end-column="40" />
           <folding>
             <element signature="docComment;class#Engine#0" expanded="false" />
             <element signature="method#checkConstraints#0;class#Engine#0" expanded="false" />
@@ -1395,11 +1292,64 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/test/java/NLPtest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="36" column="35" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1526">
+          <caret line="119" column="59" selection-start-line="119" selection-start-column="59" selection-end-line="119" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Consequence.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="100" column="22" selection-start-line="100" selection-start-column="22" selection-end-line="100" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="225" column="33" selection-start-line="225" selection-start-column="33" selection-end-line="225" selection-end-column="33" />
+        <state relative-caret-position="133">
+          <caret line="169" column="36" selection-start-line="169" selection-start-column="36" selection-end-line="169" selection-end-column="36" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Room.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="229" column="27" selection-start-line="229" selection-start-column="27" selection-end-line="229" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="323" column="6" selection-start-line="323" selection-start-column="6" selection-end-line="323" selection-end-column="6" />
+          <folding>
+            <element signature="method#Item#0;class#Item#0" expanded="false" />
+            <element signature="method#Item#1;class#Item#0" expanded="false" />
+            <element signature="method#compareTo#0;class#Item#0" expanded="false" />
+            <element signature="method#moveItem#0;class#Item#0" expanded="false" />
+            <element signature="method#removeItem#0;class#Item#0" expanded="false" />
+            <element signature="method#getTotalVolume#0;class#Item#0" expanded="false" />
+            <element signature="method#getVolume#0;class#Item#0" expanded="false" />
+            <element signature="method#setTemperature#0;class#Item#0" expanded="false" />
+            <element signature="method#modifyTemperatures#0;class#Item#0" expanded="false" />
+            <element signature="method#getIDWithTemp#0;class#Item#0" expanded="false" />
+            <element signature="class#Temperature#0;class#Item#0" expanded="false" />
+            <element signature="class#flag#0;class#Item#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -234,7 +234,7 @@ public class Room extends ItemLocation
                                 "is " + Utility.addAorAn(item_id):
                                 "are " + item_id) +
                         " here.";
-                //eng.findItem(item_id).listContents(eng, "");
+                    //eng.findItem(item_id).listContents(eng, "");
             }
         }
         return info;

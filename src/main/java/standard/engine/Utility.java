@@ -152,10 +152,22 @@ public class Utility
         {
             // Retrieve and add the lemma for each word into the list of lemmas
             String lemma = token.get(CoreAnnotations.LemmaAnnotation.class);
+            String posTag = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
+            if(posTag.contains("VB"))
+            {
+                // we ignore all verbs
+                i++;
+                continue;
+            }
             result = result && lemma.equals(words[i]);
             i++;
         }
         return result;//input.equals(lemmas);
+    }
+
+    public static String isAre(String input, StanfordCoreNLP pipeline)
+    {
+        return (Utility.isSingular(input, pipeline) ? "is" : "are");
     }
 
     public static String capitalise(String input)
