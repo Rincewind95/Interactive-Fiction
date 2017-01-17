@@ -466,10 +466,10 @@ public class Engine
                 out = "Time passes.";
                 break;
             case help:
-                // TODO implement help
+                out = Utility.helpMessage;
+                resp = response.skip;
                 break;
             case hint:
-                // TODO implement hint
                 // go through all the steps and isolate the ones that could be hinted
                 ArrayList<StoryStep> candidates = new ArrayList<>();
                 for (String step_id : findstep.keySet())
@@ -495,7 +495,7 @@ public class Engine
                 {
                     out = candidates.get(0).getHint();
                 }
-                resp = response.good;
+                resp = response.skip;
                 break;
             case empty:
                 resp = response.badinput;

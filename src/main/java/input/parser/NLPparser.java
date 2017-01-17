@@ -118,7 +118,6 @@ public class NLPparser
         zeroArgumentsynonyms.put("brief"      , "brief");
         zeroArgumentsynonyms.put("wait"       , "wait");
         zeroArgumentsynonyms.put("history"    , "history");
-        zeroArgumentsynonyms.put("exit"       , "exit");
         zeroArgumentsynonyms.put("quit"       , "exit");
         zeroArgumentsynonyms.put("inventory"  , "inventory");
         zeroArgumentsynonyms.put("restart"    , "restart");
