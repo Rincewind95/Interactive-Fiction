@@ -545,14 +545,48 @@ public class Engine
         ArrayList<String> itemsPresent = current.listAllItems(this);
         for(String itemId : itemsPresent)
         {
-            item_suggestions.add(itemId);
+            item_suggestions.add(findItem(itemId).getIDWithTemp());
         }
 
         ArrayList<String> itemsInv = player.listAllItems(this);
         for(String itemId : itemsInv)
         {
-            item_suggestions.add(itemId);
+            item_suggestions.add(findItem(itemId).getIDWithTemp());
         }
+
+        ArrayList<String> extras = new ArrayList<>();
+        for(String item : item_suggestions)
+        {
+            HashSet<String> suffixes = new HashSet<>();
+            String tmp = item;
+            while (tmp.length() > 0 && tmp.contains(" "))
+            {
+                if (tmp.contains(" "))
+                {
+                    tmp = tmp.substring(tmp.indexOf(' ') + 1, tmp.length());
+                    suffixes.add(tmp);
+                }
+                else
+                    break;
+            }
+            for (String suffix : suffixes)
+            {
+                boolean shouldAdd = true;
+                for (String curr : item_suggestions)
+                {
+                    if (curr.contains(suffix) && !curr.equals(item))
+                    {
+                        shouldAdd = false;
+                        break;
+                    }
+                }
+                if (shouldAdd)
+                {
+                    extras.add(suffix);
+                }
+            }
+        }
+        item_suggestions.addAll(extras);
     }
 
     //------------------Parser-Related-Bit----------------------
