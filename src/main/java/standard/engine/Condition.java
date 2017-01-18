@@ -136,8 +136,10 @@ public class Condition implements Comparable
             case combine:
                 resp = com != null
                         && com.getType() == Command.Type.combine
-                        && com.getArgs().get(0).equals(args.get(0))
-                        && com.getArgs().get(1).equals(args.get(1));
+                        &&  (  (com.getArgs().get(0).equals(args.get(0))
+                             && com.getArgs().get(1).equals(args.get(1)))
+                            || (com.getArgs().get(1).equals(args.get(0))
+                             && com.getArgs().get(0).equals(args.get(1))));
                 break;
             case examine:
                 resp = com != null

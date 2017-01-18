@@ -58,6 +58,7 @@ public class StoryStep implements Comparable
         parent_steps = new HashMap<>();
         this.ands = ands;
         satisfied = false;
+        timestamp = 0;
         sat_before = new HashMap<>();
         hint = null;
         hasHint = false;
@@ -95,8 +96,9 @@ public class StoryStep implements Comparable
         return -1;
     }
 
-    public void satisfy()
+    public void satisfy(int time)
     {
+        timestamp = time;
         satisfied = true;
     }
 
@@ -157,12 +159,6 @@ public class StoryStep implements Comparable
 
     public boolean canBeSatisfied(Engine eng)
     {
-        return isHintCandidate(eng) && hasConditionsSatisfied(eng);
-    }
-
-    // if its parents are satisfied
-    public boolean isHintCandidate(Engine eng)
-    {
         if (satisfied)
             return false;
         boolean res = false;
@@ -176,6 +172,40 @@ public class StoryStep implements Comparable
                 res = res && parent_sat;
             else
                 res = res || parent_sat;
+        }
+        return res && hasConditionsSatisfied(eng);
+    }
+
+    // if its parents are satisfied
+    public boolean isHintCandidate()
+    {
+        if (satisfied)
+            return false;
+        boolean res = false;
+        if (ands)
+            res = true;
+        for (String parent_id : parent_steps.keySet())
+        {
+            StoryStep parent = parent_steps.get(parent_id);
+            boolean parent_sat = parent.isSatisfied();
+            if (ands)
+                res = res && parent_sat;
+            else
+                res = res || parent_sat;
+        }
+        return res;
+    }
+
+    public int lastParentSatisfactionTime(int currentTime)
+    {
+        int res = currentTime;
+        for(String parent : parent_steps.keySet())
+        {
+            StoryStep curr = parent_steps.get(parent);
+            if(curr.satisfied && (currentTime - curr.getTimestamp() < res))
+            {
+                res = currentTime - curr.getTimestamp();
+            }
         }
         return res;
     }

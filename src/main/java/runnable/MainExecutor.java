@@ -36,6 +36,7 @@ public class MainExecutor
             if(args.length <= 2)
             {
                 out.println("java -jar InteractiveFiction.jar [enhanced/standard] [story file location] [transcript location]");
+                return;
             }
             // repeat until a game is successfully loaded or exit has been input
             String test = "", story_location = "", transcript = "";

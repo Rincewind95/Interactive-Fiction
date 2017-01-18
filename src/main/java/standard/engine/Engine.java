@@ -476,14 +476,17 @@ public class Engine
                         continue;
                     StoryStep curr_step = findStep(step_id);
 
-                    if (curr_step.isHintCandidate(this) &&
+                    if (curr_step.isHintCandidate() &&
                         curr_step.hasHint() &&
                         curr_step.playerIsInRigthRoom(this))
                     {
                         candidates.add(curr_step);
                     }
                 }
-                candidates.sort((StoryStep st1, StoryStep st2) -> st1.satisfiedConditionCount(this) - st2.satisfiedConditionCount(this));
+                candidates.sort((StoryStep st1, StoryStep st2) ->
+                                st1.lastParentSatisfactionTime(time) == st2.lastParentSatisfactionTime(time) ?
+                                st1.satisfiedConditionCount(this)    - st2.satisfiedConditionCount(this) :
+                                st1.lastParentSatisfactionTime(time) - st2.lastParentSatisfactionTime(time));
 
                 if(candidates.isEmpty())
                 {
@@ -527,8 +530,7 @@ public class Engine
 
             if (curr_step.canBeSatisfied(this))
             {
-                curr_step.satisfy();
-                curr_step.setTimestamp(time);
+                curr_step.satisfy(time);
                 out = curr_step.getMessage().getMsg();
                 return new Pair<>(curr_step.invokeConsequences(this), out);
             }
