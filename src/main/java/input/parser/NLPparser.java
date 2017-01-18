@@ -433,6 +433,8 @@ public class NLPparser
             String item = eng.findItem(itemId).getIDWithTemp();
             item_compounds.add(item);
             item_originals.put(item, itemId);
+            item_compounds.add(itemId);
+            item_originals.put(itemId, itemId);
         }
 
         ArrayList<String> itemsInv = eng.getPlayer().listAllItems(eng);
@@ -441,6 +443,8 @@ public class NLPparser
             String item = eng.findItem(itemId).getIDWithTemp();
             item_compounds.add(item);
             item_originals.put(item, itemId);
+            item_compounds.add(itemId);
+            item_originals.put(itemId, itemId);
         }
 
         ArrayList<String> extras = new ArrayList<>();
