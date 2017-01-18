@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="InteractiveFiction:jar">
+  <artifact type="jar" name="InteractiveFiction:jar">
     <output-path>D:/!!!M/!MILOS/Cambridge/Part II project Interactive Fiction/Jars/Engine</output-path>
     <root id="archive" name="InteractiveFiction.jar">
       <element id="directory" name="META-INF">

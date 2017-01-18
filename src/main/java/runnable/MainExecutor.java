@@ -36,6 +36,7 @@ public class MainExecutor
             if(args.length <= 2)
             {
                 out.println("java -jar InteractiveFiction.jar [enhanced/standard] [story file location] [transcript location]");
+                out.flush();
                 return;
             }
             // repeat until a game is successfully loaded or exit has been input
@@ -72,6 +73,7 @@ public class MainExecutor
             }
             out.println("Story file successfully loaded...\n" +
                     Utility.dashedLine());
+            out.flush();
             // --------------------------------------------------------------------------------------
             while(true)
             {
