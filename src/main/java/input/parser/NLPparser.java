@@ -430,9 +430,6 @@ public class NLPparser
         ArrayList<String> itemsPresent = current.listAllItems(eng);
         for(String itemId : itemsPresent)
         {
-            String item = eng.findItem(itemId).getIDWithTemp();
-            item_compounds.add(item);
-            item_originals.put(item, itemId);
             item_compounds.add(itemId);
             item_originals.put(itemId, itemId);
         }
@@ -440,9 +437,6 @@ public class NLPparser
         ArrayList<String> itemsInv = eng.getPlayer().listAllItems(eng);
         for(String itemId : itemsInv)
         {
-            String item = eng.findItem(itemId).getIDWithTemp();
-            item_compounds.add(item);
-            item_originals.put(item, itemId);
             item_compounds.add(itemId);
             item_originals.put(itemId, itemId);
         }
@@ -481,6 +475,21 @@ public class NLPparser
             }
         }
         item_compounds.addAll(extras);
+
+
+        for(String itemId : itemsPresent)
+        {
+            String item = eng.findItem(itemId).getIDWithTemp();
+            item_compounds.add(item);
+            item_originals.put(item, itemId);
+        }
+        for(String itemId : itemsInv)
+        {
+            String item = eng.findItem(itemId).getIDWithTemp();
+            item_compounds.add(item);
+            item_originals.put(item, itemId);
+        }
+
         item_compounds.sort((String s1, String s2) -> s1.length() == s2.length() ? s1.compareTo(s2) : s2.length() - s1.length());
     }
 }

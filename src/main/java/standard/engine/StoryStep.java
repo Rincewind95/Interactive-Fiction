@@ -21,11 +21,14 @@ public class StoryStep implements Comparable
     private boolean satisfied;                         // true if the step is always satisfied
     private int timestamp;                             // time of satisfaction
     private Message hint;                              // a hint for the story step if one exists
+    private boolean hasHint;                           // true if there is a hint
 
     // placeholder step creator
     public StoryStep(String step_id)
     {
         this.step_id = step_id;
+        hint = null;
+        hasHint = false;
     }
 
     // creator for the start step
@@ -41,6 +44,7 @@ public class StoryStep implements Comparable
         consequences = new TreeSet<>();
         sat_before = new HashMap<>();
         hint = null;
+        hasHint = false;
     }
 
     // creates a bare story step
@@ -56,6 +60,7 @@ public class StoryStep implements Comparable
         satisfied = false;
         sat_before = new HashMap<>();
         hint = null;
+        hasHint = false;
     }
 
     //------------------Linker-Related-Bit----------------------
@@ -192,7 +197,7 @@ public class StoryStep implements Comparable
 
     public boolean hasHint()
     {
-        return hint != null;
+        return hasHint;
     }
 
     public int satisfiedConditionCount(Engine eng)
@@ -273,6 +278,10 @@ public class StoryStep implements Comparable
 
     public void setHint(Message hint)
     {
+        if(hint == null)
+            hasHint = false;
+        else
+            hasHint = true;
         this.hint = hint;
     }
 

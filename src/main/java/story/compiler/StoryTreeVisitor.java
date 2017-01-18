@@ -246,6 +246,10 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
             //set the hint if one exists
             step.setHint(parseDescription(ctx.hint().description()));
         }
+        else
+        {
+            step.setHint(null);
+        }
 
         eng.addStep(step_id, step);
         return null;

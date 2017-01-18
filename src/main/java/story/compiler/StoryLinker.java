@@ -100,10 +100,10 @@ public class StoryLinker
                 linkConsequence(cons, step_id, eng);
             }
 
-            if(curr_step.getHint() != null)
+            if(curr_step.hasHint())
             {
                 // set the hint message
-                curr_step.setHint(linkMessage(curr_step.getHintMessage(), curr_step.getStep_id(), eng));
+                curr_step.setHint(linkMessage(curr_step.getHintMessage(), step_id, eng));
             }
 
             // TODO check story consistency
