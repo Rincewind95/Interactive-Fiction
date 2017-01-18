@@ -430,17 +430,15 @@ public class NLPparser
         ArrayList<String> itemsPresent = current.listAllItems(eng);
         for(String itemId : itemsPresent)
         {
-            String item = eng.findItem(itemId).getIDWithTemp();
-            item_compounds.add(item);
-            item_originals.put(item, item);
+            item_compounds.add(itemId);
+            item_originals.put(itemId, itemId);
         }
 
         ArrayList<String> itemsInv = eng.getPlayer().listAllItems(eng);
         for(String itemId : itemsInv)
         {
-            String item = eng.findItem(itemId).getIDWithTemp();
-            item_compounds.add(item);
-            item_originals.put(item, item);
+            item_compounds.add(itemId);
+            item_originals.put(itemId, itemId);
         }
 
         ArrayList<String> extras = new ArrayList<>();

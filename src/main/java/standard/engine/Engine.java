@@ -195,7 +195,7 @@ public class Engine
                             toTake.isTakeable())
                     {
                         // if the player is in the same room as the item, and does not have the item he can take it
-                        out = "You take " + Utility.addThe(toTake.getItem_id()) + ".";
+                        out = "You take " + Utility.addThe(toTake.getIDWithTemp()) + ".";
                         // move the item to the players inventory
                         player.giveItem(toTake);
                         toTake.setLocationFlag(Item.flag.inv);
@@ -222,7 +222,7 @@ public class Engine
                     if (player.hasItem(toDrop))
                     {
                         // if the player has the item
-                        out = "You drop " + Utility.addThe(toDrop.getItem_id());
+                        out = "You drop " + Utility.addThe(toDrop.getIDWithTemp());
                         toDrop.moveItem(Item.flag.inroom, player.getLocation(), this);
                         // all rooms are at room temperature, so items dropped in them are set to room temperature
                         if (enhanced)
@@ -294,7 +294,7 @@ public class Engine
                     {
                         if(enhanced)
                         {
-                            out = "You cannot put " + Utility.addThe(fir.getItem_id()) + " in itself.";
+                            out = "You cannot put " + Utility.addThe(fir.getIDWithTemp()) + " in itself.";
                             resp = response.good;
                         }
                         else
@@ -306,9 +306,9 @@ public class Engine
                     {
                         if (enhanced)
                         {
-                            out = Utility.capitalise(Utility.addThe(fir.getItem_id())) + " " +
+                            out = Utility.capitalise(Utility.addThe(fir.getIDWithTemp())) + " " +
                                     (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is":"are") +
-                                    " too big to fit into " + Utility.addThe(sec.getItem_id()) + ".";
+                                    " too big to fit into " + Utility.addThe(sec.getIDWithTemp()) + ".";
                             resp = response.good;
                         }
                         else
@@ -320,14 +320,14 @@ public class Engine
                     {
                         if(!fir.isTakeable() )
                         {
-                            out = "You cannot move " + Utility.addThe(fir.getItem_id()) + ".";
+                            out = "You cannot move " + Utility.addThe(fir.getIDWithTemp()) + ".";
                             resp = response.good;
                         }
                         else if ((player.hasItem(sec) || player.getLocation().containsItem(sec)))
                         {
                             fir.moveItem(Item.flag.incont, sec, this);
                             String result = Item.modifyTemperatures(fir, sec, parser.getPipeline());
-                            out = "You put " + Utility.addThe(fir.getItem_id()) + " into " + Utility.addThe(sec.getItem_id());
+                            out = "You put " + Utility.addThe(fir.getIDWithTemp()) + " into " + Utility.addThe(sec.getIDWithTemp());
                             if(enhanced)
                                 out += result;
                             out += ".";
@@ -349,7 +349,7 @@ public class Engine
                     {
                         if(enhanced)
                         {
-                            out = Utility.capitalise(Utility.addThe(sec.getItem_id())) + " is not a container.";
+                            out = Utility.capitalise(Utility.addThe(sec.getIDWithTemp())) + " is not a container.";
                             resp = response.good;
                         }
                         else
@@ -368,7 +368,7 @@ public class Engine
                     if(sec.contains(fir) && (player.hasItem(sec) || player.getLocation().containsItem(sec)))
                     {
                         fir.moveItem(Item.flag.inv, null, this);
-                        out = "You remove " + Utility.addThe(fir.getItem_id()) + " from " + Utility.addThe(sec.getItem_id()) + ".";
+                        out = "You remove " + Utility.addThe(fir.getIDWithTemp()) + " from " + Utility.addThe(sec.getIDWithTemp()) + ".";
                     }
                 }
                 break;
