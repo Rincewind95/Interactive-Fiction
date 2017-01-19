@@ -198,7 +198,7 @@ public class Utility
                 out += " has decreased to ";
             switch (finaltmp)
             {
-                case burning:
+                case hot:
                     out += "120% its normal size";
                     break;
                 case warm:

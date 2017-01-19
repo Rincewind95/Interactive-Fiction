@@ -21,13 +21,13 @@ public class StoryGrammarParser extends Parser {
 		OPEN_PAREN_ROUND=5, CLOS_PAREN_ROUND=6, COMMA=7, SEMICOLON=8, DOUBLEQUOT=9, 
 		MINUS=10, MESSAGE_=11, WELCOME_=12, ROOM_=13, ITEM_=14, SPECIAL_=15, STEP_=16, 
 		N=17, E=18, S=19, W=20, TAKEABLE=21, FIXED=22, INVENTORY=23, PRODUCED=24, 
-		IN_ROOM=25, IN_CONTAINER=26, VOLUME=27, IS_CONTAINER=28, IS_ITEM=29, BURNING=30, 
+		IN_ROOM=25, IN_CONTAINER=26, VOLUME=27, IS_CONTAINER=28, IS_ITEM=29, HOT=30, 
 		WARM=31, NORMAL=32, COLD=33, FROZEN=34, VARIABLE=35, CONSTANT=36, ANDING=37, 
 		ORING=38, PLAYER_IN_ROOM=39, PLAYER_NOT_IN_ROOM=40, PLAYER_ON_LEVEL=41, 
 		ITEM_IN_ROOM=42, ITEM_NOT_IN_ROOM=43, ITEM_IN_INVENTORY=44, ITEM_NOT_IN_INVENTORY=45, 
 		ITEM_IN_CONTAINER=46, ITEM_NOT_IN_CONTAINER=47, ITEM_IS_FROZEN=48, ITEM_IS_COLD=49, 
-		ITEM_IS_NORMAL=50, ITEM_IS_WARM=51, ITEM_IS_BURNING=52, ITEM_IS_NOT_FROZEN=53, 
-		ITEM_IS_NOT_COLD=54, ITEM_IS_NOT_NORMAL=55, ITEM_IS_NOT_WARM=56, ITEM_IS_NOT_BURNING=57, 
+		ITEM_IS_NORMAL=50, ITEM_IS_WARM=51, ITEM_IS_HOT=52, ITEM_IS_NOT_FROZEN=53, 
+		ITEM_IS_NOT_COLD=54, ITEM_IS_NOT_NORMAL=55, ITEM_IS_NOT_WARM=56, ITEM_IS_NOT_HOT=57, 
 		CON_COMBINE=58, CON_EXAMINE=59, CON_USE=60, CON_USEON=61, CON_MOVE=62, 
 		CON_SPECIAL=63, NONE=64, TELEPORT=65, ADD_ITEM_TO_INV=66, REMOVE_ITEM=67, 
 		KILL=68, WIN=69, ADD_ITEM_TO_ROOM=70, ADD_CONNECTOR=71, REMOVE_CONNECTOR=72, 
@@ -62,11 +62,11 @@ public class StoryGrammarParser extends Parser {
 		"'-'", "'_message'", "'_welcome'", "'_room'", "'_item'", "'_special_command'", 
 		"'_step'", "'_N'", "'_E'", "'_S'", "'_W'", "'_takeable'", "'_fixed'", 
 		"'_inv'", "'_prod'", "'_inroom'", "'_incont'", null, "'_iscont'", "'_isitem'", 
-		"'_burning'", "'_warm'", "'_normal'", "'_cold'", "'_frozen'", "'_variable'", 
+		"'_hot'", "'_warm'", "'_normal'", "'_cold'", "'_frozen'", "'_variable'", 
 		"'_constant'", null, null, "'_plir'", "'_plnir'", "'_plilv'", "'_itir'", 
 		"'_itnir'", "'_itinv'", "'_itninv'", "'_iticon'", "'_itnicon'", "'_isfrozen'", 
-		"'_iscold'", "'_isnormal'", "'_iswarm'", "'_isburning'", "'_isnotfrozen'", 
-		"'_isnotcold'", "'_isnotnormal'", "'_isnotwarm'", "'_isnotburning'", "'_combine'", 
+		"'_iscold'", "'_isnormal'", "'_iswarm'", "'_ishot'", "'_isnotfrozen'", 
+		"'_isnotcold'", "'_isnotnormal'", "'_isnotwarm'", "'_isnothot'", "'_combine'", 
 		"'_examine'", "'_use'", "'_useon'", "'_move'", "'_special'", "'_none'", 
 		"'_jmp'", "'_additinv'", "'_rmit'", "'_kill'", "'_win'", "'_additr'", 
 		"'_addcon'", "'_rmcon'", "'_wait'"
@@ -76,17 +76,16 @@ public class StoryGrammarParser extends Parser {
 		"OPEN_PAREN_ROUND", "CLOS_PAREN_ROUND", "COMMA", "SEMICOLON", "DOUBLEQUOT", 
 		"MINUS", "MESSAGE_", "WELCOME_", "ROOM_", "ITEM_", "SPECIAL_", "STEP_", 
 		"N", "E", "S", "W", "TAKEABLE", "FIXED", "INVENTORY", "PRODUCED", "IN_ROOM", 
-		"IN_CONTAINER", "VOLUME", "IS_CONTAINER", "IS_ITEM", "BURNING", "WARM", 
-		"NORMAL", "COLD", "FROZEN", "VARIABLE", "CONSTANT", "ANDING", "ORING", 
-		"PLAYER_IN_ROOM", "PLAYER_NOT_IN_ROOM", "PLAYER_ON_LEVEL", "ITEM_IN_ROOM", 
-		"ITEM_NOT_IN_ROOM", "ITEM_IN_INVENTORY", "ITEM_NOT_IN_INVENTORY", "ITEM_IN_CONTAINER", 
-		"ITEM_NOT_IN_CONTAINER", "ITEM_IS_FROZEN", "ITEM_IS_COLD", "ITEM_IS_NORMAL", 
-		"ITEM_IS_WARM", "ITEM_IS_BURNING", "ITEM_IS_NOT_FROZEN", "ITEM_IS_NOT_COLD", 
-		"ITEM_IS_NOT_NORMAL", "ITEM_IS_NOT_WARM", "ITEM_IS_NOT_BURNING", "CON_COMBINE", 
-		"CON_EXAMINE", "CON_USE", "CON_USEON", "CON_MOVE", "CON_SPECIAL", "NONE", 
-		"TELEPORT", "ADD_ITEM_TO_INV", "REMOVE_ITEM", "KILL", "WIN", "ADD_ITEM_TO_ROOM", 
-		"ADD_CONNECTOR", "REMOVE_CONNECTOR", "WAIT", "QUOTED_TEXT", "ALPHANUMERIC", 
-		"NUMERIC", "ID", "TIME", "WS"
+		"IN_CONTAINER", "VOLUME", "IS_CONTAINER", "IS_ITEM", "HOT", "WARM", "NORMAL", 
+		"COLD", "FROZEN", "VARIABLE", "CONSTANT", "ANDING", "ORING", "PLAYER_IN_ROOM", 
+		"PLAYER_NOT_IN_ROOM", "PLAYER_ON_LEVEL", "ITEM_IN_ROOM", "ITEM_NOT_IN_ROOM", 
+		"ITEM_IN_INVENTORY", "ITEM_NOT_IN_INVENTORY", "ITEM_IN_CONTAINER", "ITEM_NOT_IN_CONTAINER", 
+		"ITEM_IS_FROZEN", "ITEM_IS_COLD", "ITEM_IS_NORMAL", "ITEM_IS_WARM", "ITEM_IS_HOT", 
+		"ITEM_IS_NOT_FROZEN", "ITEM_IS_NOT_COLD", "ITEM_IS_NOT_NORMAL", "ITEM_IS_NOT_WARM", 
+		"ITEM_IS_NOT_HOT", "CON_COMBINE", "CON_EXAMINE", "CON_USE", "CON_USEON", 
+		"CON_MOVE", "CON_SPECIAL", "NONE", "TELEPORT", "ADD_ITEM_TO_INV", "REMOVE_ITEM", 
+		"KILL", "WIN", "ADD_ITEM_TO_ROOM", "ADD_CONNECTOR", "REMOVE_CONNECTOR", 
+		"WAIT", "QUOTED_TEXT", "ALPHANUMERIC", "NUMERIC", "ID", "TIME", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -1305,7 +1304,7 @@ public class StoryGrammarParser extends Parser {
 	}
 
 	public static class Temp_levelContext extends ParserRuleContext {
-		public TerminalNode BURNING() { return getToken(StoryGrammarParser.BURNING, 0); }
+		public TerminalNode HOT() { return getToken(StoryGrammarParser.HOT, 0); }
 		public TerminalNode WARM() { return getToken(StoryGrammarParser.WARM, 0); }
 		public TerminalNode NORMAL() { return getToken(StoryGrammarParser.NORMAL, 0); }
 		public TerminalNode COLD() { return getToken(StoryGrammarParser.COLD, 0); }
@@ -1338,7 +1337,7 @@ public class StoryGrammarParser extends Parser {
 			{
 			setState(198);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BURNING) | (1L << WARM) | (1L << NORMAL) | (1L << COLD) | (1L << FROZEN))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << HOT) | (1L << WARM) | (1L << NORMAL) | (1L << COLD) | (1L << FROZEN))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {
@@ -1966,12 +1965,12 @@ public class StoryGrammarParser extends Parser {
 			case ITEM_IS_COLD:
 			case ITEM_IS_NORMAL:
 			case ITEM_IS_WARM:
-			case ITEM_IS_BURNING:
+			case ITEM_IS_HOT:
 			case ITEM_IS_NOT_FROZEN:
 			case ITEM_IS_NOT_COLD:
 			case ITEM_IS_NOT_NORMAL:
 			case ITEM_IS_NOT_WARM:
-			case ITEM_IS_NOT_BURNING:
+			case ITEM_IS_NOT_HOT:
 			case CON_EXAMINE:
 			case CON_USE:
 			case CON_SPECIAL:
@@ -2079,12 +2078,12 @@ public class StoryGrammarParser extends Parser {
 		public TerminalNode ITEM_IS_COLD() { return getToken(StoryGrammarParser.ITEM_IS_COLD, 0); }
 		public TerminalNode ITEM_IS_NORMAL() { return getToken(StoryGrammarParser.ITEM_IS_NORMAL, 0); }
 		public TerminalNode ITEM_IS_WARM() { return getToken(StoryGrammarParser.ITEM_IS_WARM, 0); }
-		public TerminalNode ITEM_IS_BURNING() { return getToken(StoryGrammarParser.ITEM_IS_BURNING, 0); }
+		public TerminalNode ITEM_IS_HOT() { return getToken(StoryGrammarParser.ITEM_IS_HOT, 0); }
 		public TerminalNode ITEM_IS_NOT_FROZEN() { return getToken(StoryGrammarParser.ITEM_IS_NOT_FROZEN, 0); }
 		public TerminalNode ITEM_IS_NOT_COLD() { return getToken(StoryGrammarParser.ITEM_IS_NOT_COLD, 0); }
 		public TerminalNode ITEM_IS_NOT_NORMAL() { return getToken(StoryGrammarParser.ITEM_IS_NOT_NORMAL, 0); }
 		public TerminalNode ITEM_IS_NOT_WARM() { return getToken(StoryGrammarParser.ITEM_IS_NOT_WARM, 0); }
-		public TerminalNode ITEM_IS_NOT_BURNING() { return getToken(StoryGrammarParser.ITEM_IS_NOT_BURNING, 0); }
+		public TerminalNode ITEM_IS_NOT_HOT() { return getToken(StoryGrammarParser.ITEM_IS_NOT_HOT, 0); }
 		public Single_arg_cnd_typeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -2113,7 +2112,7 @@ public class StoryGrammarParser extends Parser {
 			{
 			setState(278);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLAYER_IN_ROOM) | (1L << PLAYER_NOT_IN_ROOM) | (1L << PLAYER_ON_LEVEL) | (1L << ITEM_IN_INVENTORY) | (1L << ITEM_NOT_IN_INVENTORY) | (1L << ITEM_IS_FROZEN) | (1L << ITEM_IS_COLD) | (1L << ITEM_IS_NORMAL) | (1L << ITEM_IS_WARM) | (1L << ITEM_IS_BURNING) | (1L << ITEM_IS_NOT_FROZEN) | (1L << ITEM_IS_NOT_COLD) | (1L << ITEM_IS_NOT_NORMAL) | (1L << ITEM_IS_NOT_WARM) | (1L << ITEM_IS_NOT_BURNING) | (1L << CON_EXAMINE) | (1L << CON_USE) | (1L << CON_SPECIAL))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PLAYER_IN_ROOM) | (1L << PLAYER_NOT_IN_ROOM) | (1L << PLAYER_ON_LEVEL) | (1L << ITEM_IN_INVENTORY) | (1L << ITEM_NOT_IN_INVENTORY) | (1L << ITEM_IS_FROZEN) | (1L << ITEM_IS_COLD) | (1L << ITEM_IS_NORMAL) | (1L << ITEM_IS_WARM) | (1L << ITEM_IS_HOT) | (1L << ITEM_IS_NOT_FROZEN) | (1L << ITEM_IS_NOT_COLD) | (1L << ITEM_IS_NOT_NORMAL) | (1L << ITEM_IS_NOT_WARM) | (1L << ITEM_IS_NOT_HOT) | (1L << CON_EXAMINE) | (1L << CON_USE) | (1L << CON_SPECIAL))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			else {

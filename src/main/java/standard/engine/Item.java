@@ -188,7 +188,7 @@ public class Item extends ItemLocation implements Comparable
         int vol = volume;
         switch (temperature)
         {
-            case burning: vol += vol*0.2; break;
+            case hot: vol += vol*0.2; break;
             case warm: vol += vol*0.1; break;
             case cold: vol -= vol*0.1; break;
             case frozen: vol -= vol*0.2; break;
@@ -319,8 +319,8 @@ public class Item extends ItemLocation implements Comparable
         {
             switch (temperature)
             {
-                case burning: result += "\nThe volume of "      + Utility.addThe(item_id)  + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at 120% its normal size.";
-                              result += "\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently burning."; break;
+                case hot: result += "\nThe volume of "      + Utility.addThe(item_id)  + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at 120% its normal size.";
+                              result += "\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently hot."; break;
                 case warm:     result += "\nThe volume of "      + Utility.addThe(item_id)  + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at 110% its normal size.";
                               result += "\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently warm."; break;
                 case normal:  result += "\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at normal temperature."; break;
@@ -335,7 +335,7 @@ public class Item extends ItemLocation implements Comparable
 
     public enum Temperature
     {
-        frozen, cold, normal, warm, burning
+        frozen, cold, normal, warm, hot
     }
 
     public enum flag

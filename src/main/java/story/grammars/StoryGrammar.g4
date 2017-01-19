@@ -39,7 +39,7 @@ IS_CONTAINER: '_iscont'; // item is a container type
 IS_ITEM: '_isitem';      // item is of item type
 // temperature related
 // temperature levels
-BURNING: '_burning';
+HOT: '_hot';
 WARM: '_warm';
 NORMAL: '_normal';
 COLD: '_cold';
@@ -67,12 +67,12 @@ ITEM_IS_FROZEN: '_isfrozen';
 ITEM_IS_COLD: '_iscold';
 ITEM_IS_NORMAL: '_isnormal';
 ITEM_IS_WARM: '_iswarm';
-ITEM_IS_BURNING: '_isburning';
+ITEM_IS_HOT: '_ishot';
 ITEM_IS_NOT_FROZEN: '_isnotfrozen';
 ITEM_IS_NOT_COLD: '_isnotcold';
 ITEM_IS_NOT_NORMAL: '_isnotnormal';
 ITEM_IS_NOT_WARM: '_isnotwarm';
-ITEM_IS_NOT_BURNING: '_isnotburning';
+ITEM_IS_NOT_HOT: '_isnothot';
 CON_COMBINE:'_combine';
 CON_EXAMINE:'_examine';
 CON_USE:    '_use';
@@ -139,7 +139,7 @@ location: IN_ROOM room_id
 itemtype: IS_CONTAINER
         | IS_ITEM;
 
-temp_level: BURNING
+temp_level: HOT
           | WARM
           | NORMAL
           | COLD
@@ -179,12 +179,12 @@ single_arg_cnd_type: PLAYER_IN_ROOM
                    | ITEM_IS_COLD
                    | ITEM_IS_NORMAL
                    | ITEM_IS_WARM
-                   | ITEM_IS_BURNING
+                   | ITEM_IS_HOT
                    | ITEM_IS_NOT_FROZEN
                    | ITEM_IS_NOT_COLD
                    | ITEM_IS_NOT_NORMAL
                    | ITEM_IS_NOT_WARM
-                   | ITEM_IS_NOT_BURNING;
+                   | ITEM_IS_NOT_HOT;
 
 double_arg_cnd: double_arg_cnd_type item_id room_id;
 double_arg_cnd_type: ITEM_IN_ROOM
