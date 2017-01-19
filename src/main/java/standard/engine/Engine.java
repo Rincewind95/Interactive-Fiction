@@ -1,5 +1,6 @@
 package standard.engine;
 
+import com.sun.javafx.webkit.UtilitiesImpl;
 import input.parser.NLPparser;
 import javafx.util.Pair;
 import jline.console.ConsoleReader;
@@ -86,6 +87,9 @@ public class Engine
 
             // start the game once the engine is loaded
             boolean gameRunning = true;
+
+            Utility.write(writer, "-> Tip: Type 'help' for a list of response suggestions <-", transcriptWriter);
+
             Utility.write(writer, "\n"
                                   + welcome.getMsg() + "\n"
                                   + player.getLocation().getBrief() + "\n", transcriptWriter);
@@ -326,8 +330,8 @@ public class Engine
                         else if ((player.hasItem(sec) || player.getLocation().containsItem(sec)))
                         {
                             fir.moveItem(Item.flag.incont, sec, this);
-                            String result = Item.modifyTemperatures(fir, sec, parser.getPipeline());
                             out = "You put " + Utility.addThe(fir.getIDWithTemp()) + " into " + Utility.addThe(sec.getIDWithTemp());
+                            String result = Item.modifyTemperatures(fir, sec, parser.getPipeline());
                             if(enhanced)
                                 out += result;
                             out += ".";

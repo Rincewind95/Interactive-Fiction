@@ -24,27 +24,30 @@ public class Utility
     private static String[] special_chars = {"\\(", "\\)", "\\[", "\\]", "\\{", "\\}", "\\\"", ";"};
 
     public static final String helpMessage =
+            "[Tab]         - autocomplete, cycles through suggestions when pressed again\n" +
+            "[Shift]+[Tab] - autocomplete, returns to previous suggestion when pressed\n" +
+            "[Up]/[Down]   - navigates through previous responses\n" +
             "use     <item>             - uses an item\n" +
-                    "use     <item> on   <item> - uses an item on another item\n" +
-                    "combine <item> with <item> - combines two items (ordering is irrelevant)\n" +
-                    "put     <item> in   <item> - adds an item to a container\n" +
-                    "remove  <item> from <item> - removes an item from a container\n" +
-                    "take    <item>             - adds the item to your inventory\n" +
-                    "drop    <item>             - removes the item from your inventory\n" +
-                    "examine <item>             - gives the items description and contents\n" +
-                    "move    <direction>        - moves the player north/east/south/west\n" +
-                    "<special command>          - exact string of event triggering characters\n" +
-                    "inventory - lists the items stored in your inventory\n" +
-                    "look      - gives a rooms short description, its contents and its exits\n" +
-                    "wait      - waits a unit of time\n" +
-                    "hint      - gives useful tips with respect to current progress\n" +
-                    "help      - prints the general help message\n" +
-                    "brief     - prints a room's introductory message\n" +
-                    "history   - presents a list of all previous successful user commands\n" +
-                    "restart   - [CAUTION] restarts the game, and all progress is lost\n" +
-                    "quit      - [CAUTION] exits the game\n" +
-                    "N.B. the list of commands given above is nothing more than a suggestion." +
-                    "You can be creative with synonyms, but there is no guarantee that all synonym options will work.";
+            "use     <item> on   <item> - uses an item on another item\n" +
+            "combine <item> with <item> - combines two items (ordering is irrelevant)\n" +
+            "put     <item> in   <item> - adds an item to a container\n" +
+            "remove  <item> from <item> - removes an item from a container\n" +
+            "take    <item>             - adds the item to your inventory\n" +
+            "drop    <item>             - removes the item from your inventory\n" +
+            "examine <item>             - gives the items description and contents\n" +
+            "move    <direction>        - moves the player north/east/south/west\n" +
+            "<special command>          - exact string of event triggering characters\n" +
+            "inventory - lists the items stored in your inventory\n" +
+            "look      - gives a rooms short description, its contents and its exits\n" +
+            "wait      - waits a unit of time\n" +
+            "hint      - gives useful tips with respect to current progress\n" +
+            "help      - prints the general help message\n" +
+            "brief     - prints a room's introductory message\n" +
+            "history   - presents a list of all previous successful user commands\n" +
+            "restart   - [CAUTION] restarts the game, and all progress is lost\n" +
+            "quit      - [CAUTION] exits the game, and all progress is lost\n" +
+            "N.B. The list of responses given above is nothing more than a suggestion. " +
+            "You can be creative with synonyms, but there is no guarantee that all synonym options will work.";
 
     private static final HashSet<Character> vowels;
     public static final HashMap<String, String> exitMap;
@@ -225,6 +228,7 @@ public class Utility
         try
         {
             transwriter.write(out);
+            transwriter.flush();
         } catch (Exception e) {}
         writer.println(out);
         writer.flush();
@@ -235,7 +239,8 @@ public class Utility
         String out = reader.readLine();
         try
         {
-            transwriter.write("\n> " + out + "\n");
+            transwriter.write("\r\n> " + out + "\r\n");
+            transwriter.flush();
         } catch (Exception e) {}
         return out;
     }
