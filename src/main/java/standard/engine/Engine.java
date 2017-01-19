@@ -779,4 +779,9 @@ public class Engine
     {
         good, skip, badinput, load, save, restart, exit
     }
+
+    public boolean isEnhanced()
+    {
+        return enhanced;
+    }
 }

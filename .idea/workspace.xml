@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="StudyExe:jar" />
+      <artifact name="InteractiveFiction:jar" />
     </artifacts-to-build>
   </component>
   <component name="BookmarkManager">
@@ -10,22 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/StudyExe_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_abego_treelayout_org_abego_treelayout_core_1_0_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_ST4_4_0_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr4_4_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr4_runtime_4_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr_runtime_3_5_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_javax_json_1_0_4.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/org_antlr_antlr4_4_5_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/org_antlr_antlr4_maven_plugin_4_5_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/org_antlr_antlr4_runtime_4_5_2_1.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarLexer.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarLexer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/de_tudarmstadt_ukp_dkpro_core_de_tudarmstadt_ukp_dkpro_core_stanfordnlp_gpl_1_8_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/de_tudarmstadt_ukp_dkpro_core_de_tudarmstadt_ukp_dkpro_core_stanfordnlp_gpl_1_8_0.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/StudyExe_jar.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Item.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Item.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/InteractiveFiction_jar.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/InteractiveFiction_jar.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/InteractiveFiction.iml" afterPath="$PROJECT_DIR$/InteractiveFiction.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" />
     </list>
     <ignored path="InteractiveFiction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,23 +38,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Engine.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Engine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4624">
-              <caret line="314" column="104" lean-forward="false" selection-start-line="314" selection-start-column="104" selection-end-line="314" selection-end-column="104" />
+            <state relative-caret-position="104">
+              <caret line="680" column="0" lean-forward="true" selection-start-line="680" selection-start-column="0" selection-end-line="680" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#Engine#0" expanded="false" />
                 <element signature="method#Engine#0;class#Engine#0" expanded="false" />
                 <element signature="method#setWelcome#0;class#Engine#0" expanded="false" />
                 <element signature="method#getHistory#0;class#Engine#0" expanded="false" />
                 <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
+                <element signature="e#28542#28543#0" expanded="true" />
+                <element signature="e#28573#28574#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="665">
@@ -86,8 +79,8 @@
       <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Item.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4947">
-              <caret line="337" column="36" lean-forward="false" selection-start-line="337" selection-start-column="36" selection-end-line="337" selection-end-column="36" />
+            <state relative-caret-position="630">
+              <caret line="251" column="13" lean-forward="true" selection-start-line="251" selection-start-column="13" selection-end-line="251" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -249,12 +242,12 @@
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java" />
         <option value="$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java" />
         <option value="$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Condition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
         <option value="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" />
       </list>
     </option>
   </component>
@@ -542,7 +535,7 @@
     <property name="last_opened_file_path" value="D:/!!!M/!MILOS/Cambridge/Part II project Interactive Fiction/Jars/Study" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.14746094" />
     <property name="project.structure.side.proportion" value="0.36197022" />
     <property name="$PROJECT_DIR$/src/story/parser/StoryGrammar.g4::/auto-gen" value="true" />
@@ -920,7 +913,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1334,6 +1327,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
           <caret line="52" column="1" lean-forward="false" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1341,6 +1337,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1666">
           <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="method#linkCondition#0;class#StoryLinker#0" expanded="false" />
+            <element signature="method#linkStorySpecial#0;class#StoryLinker#0" expanded="false" />
+            <element signature="method#recordStoryStepLinkerError#0;class#StoryLinker#0" expanded="false" />
+            <element signature="method#linkStep#0;class#StoryLinker#0" expanded="false" />
+            <element signature="method#linkRoom#0;class#StoryLinker#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1348,6 +1352,30 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2805">
           <caret line="244" column="9" lean-forward="false" selection-start-line="244" selection-start-column="9" selection-end-line="244" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="docComment;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="e#365#366#0" expanded="false" />
+            <element signature="e#399#400#0" expanded="false" />
+            <element signature="e#440#441#0" expanded="false" />
+            <element signature="e#466#467#0" expanded="false" />
+            <element signature="method#visitMessage#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseBrief#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseDescription#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseMessage_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseMessage_text#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseRoom_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseLevel_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#visitRoom#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#addExitTo#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseDirection#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseSpecial_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#visitSpecial#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseStep_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseRequiredSteps#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseConditions#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseConsequences#0;class#StoryTreeVisitor#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1369,20 +1397,6 @@
           <caret line="38" column="27" lean-forward="false" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4624">
-          <caret line="314" column="104" lean-forward="false" selection-start-line="314" selection-start-column="104" selection-end-line="314" selection-end-column="104" />
-          <folding>
-            <element signature="docComment;class#Engine#0" expanded="false" />
-            <element signature="method#Engine#0;class#Engine#0" expanded="false" />
-            <element signature="method#setWelcome#0;class#Engine#0" expanded="false" />
-            <element signature="method#getHistory#0;class#Engine#0" expanded="false" />
-            <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1415,14 +1429,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3587">
           <caret line="217" column="63" lean-forward="false" selection-start-line="217" selection-start-column="63" selection-end-line="217" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4947">
-          <caret line="337" column="36" lean-forward="false" selection-start-line="337" selection-start-column="36" selection-end-line="337" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -1472,6 +1478,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="251" column="13" lean-forward="true" selection-start-line="251" selection-start-column="13" selection-end-line="251" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="680" column="0" lean-forward="true" selection-start-line="680" selection-start-column="0" selection-end-line="680" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#Engine#0" expanded="false" />
+            <element signature="method#Engine#0;class#Engine#0" expanded="false" />
+            <element signature="method#setWelcome#0;class#Engine#0" expanded="false" />
+            <element signature="method#getHistory#0;class#Engine#0" expanded="false" />
+            <element signature="method#getPrevCommand#0;class#Engine#0" expanded="false" />
+            <element signature="e#28542#28543#0" expanded="true" />
+            <element signature="e#28573#28574#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
@@ -1483,7 +1513,7 @@
               <type id="library" />
             </show-content>
           </artifact-editor>
-          <last-edited>StudyExe:jar</last-edited>
+          <last-edited>InteractiveFiction:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

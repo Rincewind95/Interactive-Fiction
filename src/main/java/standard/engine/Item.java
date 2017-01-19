@@ -315,13 +315,13 @@ public class Item extends ItemLocation implements Comparable
                 result += eng.findItem(item).listContents(eng, "");
             }
         }
-        if(!hasConstantTemp)
+        if(!hasConstantTemp && eng.isEnhanced())
         {
             switch (temperature)
             {
-                case hot: result += "\nThe volume of "      + Utility.addThe(item_id)  + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at 120% its normal size.";
+                case hot:     result += "\nThe volume of "      + Utility.addThe(item_id)  + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at 120% its normal size.";
                               result += "\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently hot."; break;
-                case warm:     result += "\nThe volume of "      + Utility.addThe(item_id)  + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at 110% its normal size.";
+                case warm:    result += "\nThe volume of "      + Utility.addThe(item_id)  + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at 110% its normal size.";
                               result += "\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently warm."; break;
                 case normal:  result += "\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at normal temperature."; break;
                 case cold:    result += "\nThe volume of "      + Utility.addThe(item_id)  + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at 90% its normal size.";
