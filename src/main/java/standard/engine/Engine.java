@@ -68,7 +68,7 @@ public class Engine
                                     "take", "drop", "examine", "move",
                                     "look", "brief", "wait", "history", "exit", "inventory", "restart", "hint", "help",
                                     "with", "in", "on", "from",
-                                    "north", "east", "south", "west"));
+                                    "north", "east", "south", "west", "all"));
         item_suggestions = new HashSet<>();
 
     }
@@ -107,6 +107,8 @@ public class Engine
 
                 // input parsing
                 Command command = parser.parseInput(userInput);
+
+
 
                 // modify the engines internal state with the command and determine the outcome
                 Pair<response, String> out = executeCommand(command);
@@ -152,6 +154,9 @@ public class Engine
                 }
 
                 String final_out_to_user = out_to_user + final_out.getValue();
+
+
+
                 if (final_out_to_user.equals(""))
                 {
                     if(enhanced)
@@ -184,27 +189,28 @@ public class Engine
         {
             case take:
                 // first test for input validity
-                if (finditem.containsKey(args.get(0)) &&
-                        finditem.get(args.get(0)).getLocation() instanceof Room)
+                if (finditem.containsKey(args.get(0)))
                 {
+                    // we take the item and return the response
                     Item toTake = finditem.get(args.get(0));
-                    Room location = (Room)toTake.getLocation();
-                    if (!player.hasItem(toTake) &&
-                            toTake.getLocationFlag() == Item.flag.inroom &&
-                            location == player.getLocation() &&
-                            toTake.isTakeable())
+                    Item.flag flag = toTake.getLocationFlag();
+                    if(toTake.isTakeable() && flag == flag.inroom && (toTake.getLocation()) == player.getLocation())
                     {
                         // if the player is in the same room as the item, and does not have the item he can take it
                         out = "You take " + Utility.addThe(toTake.getIDWithTemp()) + ".";
-                        // move the item to the players inventory
-                        player.giveItem(toTake);
-                        toTake.setLocationFlag(Item.flag.inv);
-                        // remove the item from its room
-                        location.removeItem(toTake);
+                        toTake.moveItem(flag.inv, null, this);
+                    }
+                    else if(toTake.isTakeable() && flag == flag.incont &&
+                            (((Item)toTake.getLocation()).getLocation() == player.getLocation() ||
+                                    player.hasItem((Item)toTake.getLocation())))
+                    {
+                        // if the player is in the same room as the items container, or has it, he can take the item
+                        out = "You remove " + Utility.addThe(toTake.getIDWithTemp()) + " from " + Utility.addThe(((Item)toTake.getLocation()).getIDWithTemp()) + ".";
+                        toTake.moveItem(flag.inv, null, this);
                     }
                     else if (!toTake.isTakeable())
                     {
-                        out = "You cannot take that.";
+                        out = "You cannot take " + Utility.addThe(toTake.getIDWithTemp()) + ".";
                     }
                     else
                     {
@@ -212,13 +218,18 @@ public class Engine
                         resp = response.badinput;
                     }
                 }
+                else if(args.get(0).equals("all"))
+                {
+                    // this is the special take all command - takes all the items in the room
+                    resp = response.takeall;
+                }
                 else resp = response.badinput;
                 break;
             case drop:
                 // first test for input validity
                 if (finditem.containsKey(args.get(0)))
                 {
-                    Item toDrop = finditem.get(args.get(0));
+                    Item toDrop = findItem(args.get(0));
                     if (player.hasItem(toDrop))
                     {
                         // if the player has the item
@@ -240,6 +251,11 @@ public class Engine
                         // the conditions were not satisfied, so we print that nothing can be done
                         resp = response.badinput;
                     }
+                }
+                else if(args.get(0).equals("all"))
+                {
+                    // this is the special drop all command - takes all the items in the room
+                    resp = response.dropall;
                 }
                 else resp = response.badinput;
                 break;
@@ -358,6 +374,7 @@ public class Engine
                         }
                     }
                 }
+                else resp = response.badinput;
                 break;
             case remove:
                 // first test for input validity
@@ -365,12 +382,18 @@ public class Engine
                 {
                     Item fir = finditem.get(args.get(0));
                     Item sec = finditem.get(args.get(1));
-                    if(sec.contains(fir) && (player.hasItem(sec) || player.getLocation().containsItem(sec)))
+                    if(fir.isTakeable() && sec.contains(fir) && (player.hasItem(sec) || player.getLocation().containsItem(sec)))
                     {
                         fir.moveItem(Item.flag.inv, null, this);
                         out = "You remove " + Utility.addThe(fir.getIDWithTemp()) + " from " + Utility.addThe(sec.getIDWithTemp()) + ".";
                     }
                 }
+                else if(args.get(0).equals("all") && finditem.containsKey(args.get(1)))
+                {
+                    // the special remove all from command
+                    resp = response.removeall;
+                }
+                else resp = response.badinput;
                 break;
             case examine:
                 // first test for input validity
@@ -386,6 +409,11 @@ public class Engine
                     {
                         out = toExamine.getExamination(this);
                     }
+                }
+                else if(args.get(0).equals("all"))
+                {
+                    // the special remove all from command
+                    resp = response.examineall;
                 }
                 else resp = response.badinput;
                 break;
@@ -773,7 +801,7 @@ public class Engine
     // enumerates the possible response types which can be generated when processing user commands
     public enum response
     {
-        good, skip, badinput, load, save, restart, exit
+        good, skip, badinput, load, save, restart, exit, takeall, dropall, removeall, examineall
     }
 
     public boolean isEnhanced()

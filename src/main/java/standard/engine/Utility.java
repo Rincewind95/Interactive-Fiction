@@ -23,6 +23,8 @@ public class Utility
 {
     private static String[] special_chars = {"\\(", "\\)", "\\[", "\\]", "\\{", "\\}", "\\\"", ";"};
 
+    public static final HashSet<String> theAlls;
+
     public static final String helpMessage =
             "[Tab]         - autocomplete, cycles through suggestions when pressed again\n" +
             "[Shift]+[Tab] - autocomplete, returns to previous suggestion when pressed\n" +
@@ -32,9 +34,13 @@ public class Utility
             "combine <item> with <item> - combines two items (ordering is irrelevant)\n" +
             "put     <item> in   <item> - adds an item to a container\n" +
             "remove  <item> from <item> - removes an item from a container\n" +
+            "remove  all    from <item> - removes all of the containers contents\n" +
             "take    <item>             - adds the item to your inventory\n" +
+            "take    all                - adds all items in the room to your inventory\n" +
             "drop    <item>             - removes the item from your inventory\n" +
+            "drop    all                - removes all items from your inventory\n" +
             "examine <item>             - gives the items description and contents\n" +
+            "examine all                - examines all items in current room\n" +
             "move    <direction>        - moves the player north/east/south/west\n" +
             "<special command>          - exact string of event triggering characters\n" +
             "inventory - lists the items stored in your inventory\n" +
@@ -56,6 +62,10 @@ public class Utility
 
     static
     {
+        theAlls = new HashSet<>();
+        theAlls.add("all");
+        theAlls.add("everything");
+
         exitMap = new HashMap<>();
         exitMap.put("n", "The northern exit leads to ");
         exitMap.put("e", "The eastern exit leads to ");

@@ -50,6 +50,11 @@ public class Room extends ItemLocation
     }
     //----------------------------------------------------------
 
+    public Set<String> getItemKeySet()
+    {
+        return items.keySet();
+    }
+
     public static void createPath(Room r1, String dir1, Room r2, String dir2)
     {
         if (!r1.leads_to.containsKey(dir1) && !r2.leads_to.containsKey(dir2))

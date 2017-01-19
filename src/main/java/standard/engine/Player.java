@@ -2,6 +2,7 @@ package standard.engine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Created by Milos on 06/11/2016.
@@ -15,6 +16,11 @@ public class Player
     {
         location = loc;
         inventory = new HashMap<>();
+    }
+
+    public Set<String> getInventoryKeySet()
+    {
+        return inventory.keySet();
     }
 
     public boolean hasItem(Item i)

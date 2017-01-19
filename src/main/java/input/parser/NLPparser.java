@@ -65,6 +65,11 @@ public class NLPparser
         twoArgumentsynonyms.put("place", "put");
         twoArgumentsynonyms.put("position", "put");
         twoArgumentsynonyms.put("remove", "remove");
+        twoArgumentsynonyms.put("take", "remove");
+        twoArgumentsynonyms.put("collect", "remove");
+        twoArgumentsynonyms.put("acquire", "remove");
+        twoArgumentsynonyms.put("obtain", "remove");
+        twoArgumentsynonyms.put("claim", "remove");
 
         twoArgumentConnectors = new HashMap<>();
         twoArgumentConnectors.put("use", new ArrayList<>(Arrays.asList("with", "on")));
@@ -91,11 +96,6 @@ public class NLPparser
 
         oneArgumentWords = new ArrayList<>(Arrays.asList("take", "drop", "examine", "move"));
         oneArgumentsynonyms = new HashMap<>();
-        oneArgumentsynonyms.put("take", "take");
-        oneArgumentsynonyms.put("collect", "take");
-        oneArgumentsynonyms.put("acquire", "take");
-        oneArgumentsynonyms.put("obtain", "take");
-        oneArgumentsynonyms.put("claim", "take");
         oneArgumentsynonyms.put("get", "take");
         oneArgumentsynonyms.put("drop", "drop");
         oneArgumentsynonyms.put("leave", "drop");
@@ -110,7 +110,6 @@ public class NLPparser
         oneArgumentsynonyms.put("travel", "move");
 
         oneArguments = new HashMap<>();
-        oneArguments.put("take", argType.item);
         oneArguments.put("drop", argType.item);
         oneArguments.put("examine", argType.item);
         oneArguments.put("move", argType.dir);
@@ -134,10 +133,6 @@ public class NLPparser
         dirMapping.put("east", "e");
         dirMapping.put("south", "s");
         dirMapping.put("west", "w");
-        dirMapping.put("n", "n");
-        dirMapping.put("e", "e");
-        dirMapping.put("s", "s");
-        dirMapping.put("w", "w");
     }
 
     public NLPparser(Engine eng)
@@ -295,11 +290,16 @@ public class NLPparser
 
             if (curr_arg == 1)
             {
-                if (keyword.equals("use"))
+                // if there is only one argument to the two argument command
+                if(keyword.equals("use"))
                 {
                     // this means we in fact have use and not useon
-                    //System.out.println(word + " " + args);
                     return new Command(Command.Type.valueOf(keyword), args, original);
+                }
+                 else if(keyword.equals("remove"))
+                {
+                    //we in fact have a take command
+                    return new Command(Command.Type.take, args, original);
                 }
                 else
                 {
@@ -307,6 +307,7 @@ public class NLPparser
                     return new Command(Command.Type.badcomm);
                 }
             }
+
 
             // otherwise we have useon
             if (keyword.equals("use"))
@@ -490,6 +491,11 @@ public class NLPparser
             item_originals.put(item, itemId);
         }
 
+        item_compounds.addAll(Utility.theAlls);
+        for(String all : Utility.theAlls)
+        {
+            item_originals.put(all, "all");
+        }
         item_compounds.sort((String s1, String s2) -> s1.length() == s2.length() ? s1.compareTo(s2) : s2.length() - s1.length());
     }
 }
