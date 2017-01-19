@@ -201,7 +201,7 @@ public class Utility
                 case burning:
                     out += "120% its normal size";
                     break;
-                case hot:
+                case warm:
                     out += "110% its normal size";
                     break;
                 case cold:

@@ -105,9 +105,9 @@ public class Condition implements Comparable
                 item1 = eng.findItem(args.get(0));
                 resp = item1.getTemperature() == Item.Temperature.normal;
                 break;
-            case ishot:
+            case iswarm:
                 item1 = eng.findItem(args.get(0));
-                resp = item1.getTemperature() == Item.Temperature.hot;
+                resp = item1.getTemperature() == Item.Temperature.warm;
                 break;
             case isburning:
                 item1 = eng.findItem(args.get(0));
@@ -125,9 +125,9 @@ public class Condition implements Comparable
                 item1 = eng.findItem(args.get(0));
                 resp = !(item1.getTemperature() == Item.Temperature.normal);
                 break;
-            case isnothot:
+            case isnotwarm:
                 item1 = eng.findItem(args.get(0));
-                resp = !(item1.getTemperature() == Item.Temperature.hot);
+                resp = !(item1.getTemperature() == Item.Temperature.warm);
                 break;
             case isnotburning:
                 item1 = eng.findItem(args.get(0));
@@ -214,7 +214,7 @@ public class Condition implements Comparable
 
     public enum CondType
     {
-        plir, plnir, plilv, itir, itnir, itinv, itninv, iticon, itnicon, isfrozen, iscold, isnormal, ishot, isburning
-        , isnotfrozen, isnotcold, isnotnormal, isnothot, isnotburning, combine, examine, use, useon, move, special
+        plir, plnir, plilv, itir, itnir, itinv, itninv, iticon, itnicon, isfrozen, iscold, isnormal, iswarm, isburning
+        , isnotfrozen, isnotcold, isnotnormal, isnotwarm, isnotburning, combine, examine, use, useon, move, special
     }
 }
