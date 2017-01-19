@@ -151,12 +151,8 @@ public class Engine
                         break;
                 }
 
-                String final_out_to_user = out_to_user;
-                if (!final_out.getValue().equals(""))
-                {
-                    final_out_to_user = final_out.getValue();
-                }
-                else if (final_out_to_user.equals(""))
+                String final_out_to_user = out_to_user + final_out.getValue();
+                if (final_out_to_user.equals(""))
                 {
                     if(enhanced)
                         final_out_to_user = "Nothing happens.";
