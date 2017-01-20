@@ -27,6 +27,7 @@ public class Engine
     private HashMap<String, StoryStep> findstep;             // a map of all possible steps in the game
     private int time;                                        // the current time step of the game
     private ArrayList<Pair<Command, Integer>> prev_commands; // a list of all previous player commands
+    private Command lastCommand;                             // the last command that was received
     private ArrayList<StoryStep> prev_steps;                 // a list of all previously satisfied steps
     private NLPparser parser;                                // the NLP parser which will parse user input
 
@@ -88,7 +89,7 @@ public class Engine
             // start the game once the engine is loaded
             boolean gameRunning = true;
 
-            Utility.write(writer, "-> Tip: Type 'help' for a list of response suggestions <-", transcriptWriter);
+            Utility.write(writer, Utility.tipMessage, transcriptWriter);
 
             Utility.write(writer, "\n"
                                   + welcome.getMsg() + "\n"
@@ -108,8 +109,6 @@ public class Engine
                 // input parsing
                 Command command = parser.parseInput(userInput);
 
-
-
                 // modify the engines internal state with the command and determine the outcome
                 Pair<response, String> out = executeCommand(command);
                 response resp = out.getKey();
@@ -117,7 +116,12 @@ public class Engine
 
                 // the command is valid so we add it to the list of previous commands
                 if (resp != Engine.response.badinput)
+                {
                     prev_commands.add(new Pair<>(command, time));
+                    lastCommand = command;
+                }
+
+                String final_out_to_user = out_to_user;
 
                 // now we determine what to do next
                 if (resp == Engine.response.exit)
@@ -140,22 +144,86 @@ public class Engine
                     Utility.write(writer, out_to_user, transcriptWriter);
                     continue;
                 }
-
-                // we advance time, check constraints and potentially generate another response
-                advanceTime();
-                Pair<Consequence.Effect, String> final_out = checkConstraints();
-                Consequence.Effect eff = final_out.getKey();
-                switch (eff)
+                else if(resp == response.dropall ||
+                        resp == response.takeall ||
+                        resp == response.removeall ||
+                        resp == response.examineall)
                 {
-                    case kill:
-                    case win:
-                        gameRunning = false;
-                        break;
+                    Command.Type type;
+                    Set<String> contents;
+                    switch (resp)
+                    {
+                        case takeall:
+                        default:
+                            type = Command.Type.take;
+                            contents = new HashSet<>(player.getLocation().getItemKeySet());
+                            break;
+                        case dropall:
+                            type = Command.Type.drop;
+                            contents = new HashSet<>(player.getInventoryKeySet());
+                            break;
+                        case removeall:
+                            type = Command.Type.remove;
+                            Set<String> keyset = findItem(command.getArgs().get(1)).getContainedKeySet();
+                            contents = new HashSet<>(keyset);
+                            for(String cont : keyset)
+                            {
+                                if(!findItem(cont).isTakeable())
+                                    contents.remove(cont);
+                            }
+                            break;
+                        case examineall:
+                            type = Command.Type.examine;
+                            contents = new HashSet<>(player.getLocation().getItemKeySet());
+                            break;
+                    }
+
+                    for(String item : contents)
+                    {
+                        // create the temp command
+                        ArrayList<String> args = new ArrayList<>();
+                        args.add(item);
+                        if(resp == response.removeall)
+                            args.add(command.getArgs().get(1));
+                        Command curr = new Command(type, args, "");
+                        lastCommand = curr;
+                        // modify the engines internal state with the command and determine the outcome
+                        if(!final_out_to_user.equals(""))
+                            final_out_to_user += "\n";
+                        if(type == Command.Type.examine)
+                            final_out_to_user += "-- " + item + ": ";
+                        final_out_to_user += executeCommand(curr).getValue();
+                        // we advance time, check constraints and potentially generate another response
+                        advanceTime();
+                        Pair<Consequence.Effect, String> final_out = checkConstraints();
+                        Consequence.Effect eff = final_out.getKey();
+                        final_out_to_user += final_out.getValue();
+                        switch (eff)
+                        {
+                            case kill:
+                            case win:
+                                gameRunning = false;
+                                break;
+                        }
+                        if(!gameRunning)
+                            break;
+                    }
                 }
-
-                String final_out_to_user = out_to_user + final_out.getValue();
-
-
+                else
+                {
+                    // we advance time, check constraints and potentially generate another response
+                    advanceTime();
+                    Pair<Consequence.Effect, String> final_out = checkConstraints();
+                    Consequence.Effect eff = final_out.getKey();
+                    final_out_to_user += final_out.getValue();
+                    switch (eff)
+                    {
+                        case kill:
+                        case win:
+                            gameRunning = false;
+                            break;
+                    }
+                }
 
                 if (final_out_to_user.equals(""))
                 {
@@ -388,7 +456,9 @@ public class Engine
                         out = "You remove " + Utility.addThe(fir.getIDWithTemp()) + " from " + Utility.addThe(sec.getIDWithTemp()) + ".";
                     }
                 }
-                else if(args.get(0).equals("all") && finditem.containsKey(args.get(1)))
+                else if(args.get(0).equals("all") && finditem.containsKey(args.get(1)) &&
+                        (player.hasItem(findItem(args.get(1))) ||
+                        player.getLocation().containsItem(findItem(args.get(1)))))
                 {
                     // the special remove all from command
                     resp = response.removeall;
@@ -781,11 +851,11 @@ public class Engine
         return findspecial.contains(special_id);
     }
 
-    public Command getPrevCommand()
+    public Command getLastCommand()
     {
         if (prev_commands.size() == 0)
             return null;
-        return prev_commands.get(prev_commands.size() - 1).getKey();
+        return lastCommand;
     }
 
     public NLPparser getParser()

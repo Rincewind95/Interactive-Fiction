@@ -53,7 +53,7 @@ public class Condition implements Comparable
         Player player = eng.getPlayer();
         Item item, item1, item2;
         Room room;
-        Command com = eng.getPrevCommand();
+        Command com = eng.getLastCommand();
         switch (type)
         {
             case plir:

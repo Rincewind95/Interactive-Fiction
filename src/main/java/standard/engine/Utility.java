@@ -55,6 +55,8 @@ public class Utility
             "N.B. The list of responses given above is nothing more than a suggestion. " +
             "You can be creative with synonyms, but there is no guarantee that all synonym options will work.";
 
+    public static final String tipMessage ="------------- Tip: Type 'help' for a list of response suggestions -------------";
+
     private static final HashSet<Character> vowels;
     public static final HashMap<String, String> exitMap;
     public static final ArrayList<String> commands_list;
@@ -193,7 +195,7 @@ public class Utility
 
     public static String dashedLine()
     {
-        return "--------------------------------------------------------------------------------";
+        return "-------------------------------------------------------------------------------";
     }
 
     public static String volumeChangeMessage(Item item, Item.Temperature finaltmp)
