@@ -13,14 +13,17 @@ public class FinalCompleter implements Completer
     private ArrayList<String> suggestions;
 
     private String prevVal;
+    private String original;                                  // the original buffer string
     private int currValIdx;                                   // the index of the previous word suggested in completion
     private boolean inCompletionMode;                         // true if tab is pressed once, turns false when previous word of the current input does not match the previous suggestion
     private ArrayList<Pair<String, Integer>> currSuggestions; // the list of current suggestions and their offsets in the original string
+
 
     public FinalCompleter(ArrayList<String> suggestions)
     {
         currValIdx = 0;
         prevVal = "";
+        original = "";
         inCompletionMode = false;
         updateSuggestions(suggestions);
     }
@@ -39,49 +42,41 @@ public class FinalCompleter implements Completer
     @Override
     public int complete(final String buffer, final int cursor, final List<CharSequence> candidates)
     {
-        if(buffer.length() == 0)
-        {
-            // there is nothing in the buffer, no suggestions can be made
-            return 0;
-        }
-
-        // extract the final word (or rather the part of it that was started
-        String lastWord = "";
-        if(buffer.contains(" "))
-            lastWord = buffer.substring(buffer.lastIndexOf(' ')+1, buffer.length());
-        else
-            lastWord = buffer;
-
-        if(lastWord.length() == 0)
-        {
-            // there is nothing in the half-word, so we abort
-            return 0;
-        }
-
-        if(inCompletionMode && !buffer.endsWith(prevVal))
+        if(inCompletionMode && !buffer.endsWith(prevVal) || !buffer.startsWith(original))
         {
             // the buffer does not end with the last match, so we reset the procedure
             inCompletionMode = false;
         }
 
-        // now we perform the matching process on the lastWord
         if(!inCompletionMode)
         {
+            // extract the final word (or rather the part of it that was started
+            String lastWord = "";
+            if(buffer.contains(" "))
+            {
+                if(buffer.lastIndexOf(' ') + 1 < buffer.length())
+                    lastWord = buffer.substring(buffer.lastIndexOf(' ') + 1, buffer.length());
+            }
+            else
+                lastWord = buffer;
+
+            // now we perform the matching process on the lastWord
             prevVal = lastWord;
+            original = buffer;
             currValIdx = -1;
             // we fill up the potential suggestions
             currSuggestions = filterSuggestions(buffer);
             inCompletionMode = true;
-        }
 
-        switch (currSuggestions.size())
-        {
-            case 0: // no suggestions can be made, so we fail
+            switch (currSuggestions.size())
+            {
+                case 0: // no suggestions can be made, so we fail
                     inCompletionMode = false;
                     return 0;
-            case 1: // there is exactly one perfect match, so we put that
+                case 1: // there is exactly one perfect match, so we put that
                     inCompletionMode = false;
                     break;
+            }
         }
 
         // move the index to the next value
@@ -104,11 +99,22 @@ public class FinalCompleter implements Completer
     {
         ArrayList<String> prefixes = new ArrayList<>();
         String tmp = buffer;
-        while(tmp.length() > 0)
+        boolean addall = false;
+        if(buffer.equals(""))
+            addall = true;
+        else while(tmp.length() > 0)
         {
             prefixes.add(tmp);
             if(tmp.contains(" "))
-                tmp = tmp.substring(tmp.indexOf(' ')+1, tmp.length());
+            {
+                if(tmp.indexOf(' ') + 1 < tmp.length())
+                    tmp = tmp.substring(tmp.indexOf(' ') + 1, tmp.length());
+                else
+                {
+                    tmp = "";
+                    addall = true;
+                }
+            }
             else
                 tmp = "";
         }
@@ -122,6 +128,14 @@ public class FinalCompleter implements Completer
                     sugs.add(new Pair<>(elem, new Integer(buffer.length() - prefix.length())));
                     break;
                 }
+            }
+        }
+        if(addall && sugs.size() == 0)
+        {
+            // if there were no other suggestions, suggest everything
+            for(String elem : suggestions)
+            {
+                sugs.add(new Pair<>(elem, new Integer(buffer.length())));
             }
         }
         return sugs;
