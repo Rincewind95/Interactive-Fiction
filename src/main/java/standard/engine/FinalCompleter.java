@@ -47,6 +47,11 @@ public class FinalCompleter implements Completer
     @Override
     public int complete(final String buffer, final int cursor, final List<CharSequence> candidates)
     {
+        if(cursor < buffer.length())
+        {
+            // autocomplete only when at the end of the buffer
+            return 0;
+        }
         if(inCompletionMode && !buffer.endsWith(prevVal) || !buffer.startsWith(original))
         {
             // the buffer does not end with the last match, so we reset the procedure
