@@ -12,6 +12,8 @@ public class FinalCompleter implements Completer
 {
     private ArrayList<String> suggestions;
 
+    private ArrayList<String> objectSuggestions;
+
     private String prevVal;
     private String original;                                  // the original buffer string
     private int currValIdx;                                   // the index of the previous word suggested in completion
@@ -19,19 +21,22 @@ public class FinalCompleter implements Completer
     private ArrayList<Pair<String, Integer>> currSuggestions; // the list of current suggestions and their offsets in the original string
 
 
-    public FinalCompleter(ArrayList<String> suggestions)
+    public FinalCompleter(ArrayList<String> suggest)
     {
         currValIdx = 0;
         prevVal = "";
         original = "";
         inCompletionMode = false;
-        updateSuggestions(suggestions);
+        objectSuggestions = suggest;
+        suggestions = new ArrayList<>(objectSuggestions);
+        suggestions.addAll(Utility.commands_list);
+        suggestions.addAll(Utility.connectors_list);
+        sortSuggestions();
     }
 
-    public void updateSuggestions(ArrayList<String> newSuggestions)
+    public void updateObjectSuggestions(ArrayList<String> newSuggestions)
     {
-        suggestions = newSuggestions;
-        sortSuggestions();
+        objectSuggestions = newSuggestions;
     }
 
     private void sortSuggestions()
@@ -100,14 +105,14 @@ public class FinalCompleter implements Completer
         ArrayList<String> prefixes = new ArrayList<>();
         String tmp = buffer;
         boolean addall = false;
-        if(buffer.equals(""))
+        if (buffer.equals(""))
             addall = true;
-        else while(tmp.length() > 0)
+        else while (tmp.length() > 0)
         {
             prefixes.add(tmp);
-            if(tmp.contains(" "))
+            if (tmp.contains(" "))
             {
-                if(tmp.indexOf(' ') + 1 < tmp.length())
+                if (tmp.indexOf(' ') + 1 < tmp.length())
                     tmp = tmp.substring(tmp.indexOf(' ') + 1, tmp.length());
                 else
                 {
@@ -119,7 +124,40 @@ public class FinalCompleter implements Completer
                 tmp = "";
         }
         ArrayList<Pair<String, Integer>> sugs = new ArrayList<>();
-        for(String elem : suggestions)
+        ArrayList<String> values = new ArrayList<>(objectSuggestions);
+
+        // try to add commands
+        boolean hasCommand = false;
+        for (String comm : Utility.commands_list)
+        {
+            if (buffer.contains(comm))
+            {
+                hasCommand = true;
+                break;
+            }
+        }
+        if (!hasCommand)
+            values.addAll(Utility.commands_list);
+
+        // try to add connectors
+        boolean hasConnector = false;
+        for (String conn : Utility.connectors_list)
+        {
+            if (buffer.contains(conn))
+            {
+                hasConnector = true;
+                break;
+            }
+        }
+        if (!hasConnector)
+            values.addAll(Utility.connectors_list);
+
+        // add the all keyword
+        if(!buffer.contains("all"))
+            values.add("all");
+
+        // then add all the values that we can
+        for(String elem : values)
         {
             for(String prefix : prefixes)
             {
@@ -130,14 +168,24 @@ public class FinalCompleter implements Completer
                 }
             }
         }
+
         if(addall && sugs.size() == 0)
         {
             // if there were no other suggestions, suggest everything
-            for(String elem : suggestions)
-            {
+            for(String elem : objectSuggestions)
                 sugs.add(new Pair<>(elem, new Integer(buffer.length())));
+            if(!hasCommand)
+            {
+                for (String elem : Utility.commands_list)
+                    sugs.add(new Pair<>(elem, new Integer(buffer.length())));
+            }
+            if(!hasConnector)
+            {
+                for (String elem : Utility.connectors_list)
+                    sugs.add(new Pair<>(elem, new Integer(buffer.length())));
             }
         }
+
         return sugs;
     }
 

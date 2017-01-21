@@ -64,12 +64,6 @@ public class Engine
         writer = null;
         completer = null;
 
-        command_suggestions = new ArrayList<>(
-                            Arrays.asList("use", "combine", "put", "remove",
-                                    "take", "drop", "examine", "move",
-                                    "look", "brief", "wait", "history", "exit", "inventory", "restart", "hint", "help",
-                                    "with", "in", "on", "from",
-                                    "north", "east", "south", "west", "all"));
         item_suggestions = new HashSet<>();
 
     }
@@ -82,7 +76,7 @@ public class Engine
             this.reader = reader;
             this.writer = writer;
             this.transcriptWriter = transwriter;
-            this.completer = new FinalCompleter(Utility.joinArrays(command_suggestions, item_suggestions));
+            this.completer = new FinalCompleter(new ArrayList<>());
             reader.addCompleter(completer);
             reader.setPrompt("> ");
 
@@ -101,7 +95,7 @@ public class Engine
             {
                 updateItemSuggestions();
                 // if new items were added, update the completer
-                completer.updateSuggestions(Utility.joinArrays(command_suggestions, item_suggestions));
+                completer.updateObjectSuggestions(new ArrayList<>(item_suggestions));
 
                 //reader.setPrompt("[" + time + "] ");
                 String userInput = Utility.readLn(reader, transcriptWriter);
