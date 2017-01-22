@@ -256,11 +256,11 @@ public class NLPparser
                         {
                             if (curr_arg >= 2)
                                 return new Command(Command.Type.badcomm);
-                            else if (curr_arg == 1 && !keyword.equals("use"))
+                            else if (curr_arg == 1)
                             {
                                 boolean works = false;
                                 Set<IndexedWord> curr_children = dependencies.getChildren(arg);
-                                for (String connector : twoArgumentConnectors.get(word))
+                                for (String connector : twoArgumentConnectors.get(keyword))
                                 {
                                     IndexedWord curr_child = findIndexedWord(dependencies, connector);
                                     if (curr_child == null)
