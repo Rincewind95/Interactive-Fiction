@@ -83,7 +83,7 @@ public class Utility
         commands_list = new ArrayList<>(
                 Arrays.asList("use", "combine", "put", "remove",
                         "take", "drop", "examine", "move",
-                        "look", "brief", "wait", "history", "exit", "inventory", "restart", "hint", "help"));
+                        "look", "brief", "wait", "history", "inventory", "hint", "help"));
         connectors_list = new ArrayList<>(
                 Arrays.asList("with", "in", "on", "from",
                         "north", "east", "south", "west"));
