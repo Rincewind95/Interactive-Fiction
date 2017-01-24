@@ -373,66 +373,95 @@ public class Engine
                         if(enhanced)
                         {
                             out = "You cannot put " + Utility.addThe(fir.getIDWithTemp()) + " in itself.";
-                            resp = response.good;
                         }
                         else
                         {
                             resp = response.badinput;
                         }
                     }
-                    else if (fir.getVolume(this) > sec.getVolume(this))
+                    else
                     {
-                        if (enhanced)
+                        if(sec.isContainer())
                         {
-                            out = Utility.capitalise(Utility.addThe(fir.getIDWithTemp())) + " " +
-                                    (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is":"are") +
-                                    " too big to fit into " + Utility.addThe(sec.getIDWithTemp()) + ".";
-                            resp = response.good;
-                        }
-                        else
-                        {
-                            resp = response.badinput;
-                        }
-                    }
-                    else if(sec.isContainer())
-                    {
-                        if(!fir.isTakeable() )
-                        {
-                            out = "You cannot move " + Utility.addThe(fir.getIDWithTemp()) + ".";
-                            resp = response.good;
-                        }
-                        else if ((player.hasItem(sec) || player.getLocation().containsItem(sec)))
-                        {
-                            fir.moveItem(Item.flag.incont, sec, this);
-                            out = "You put " + Utility.addThe(fir.getIDWithTemp()) + " into " + Utility.addThe(sec.getIDWithTemp());
-                            String result = Item.modifyTemperatures(fir, sec, parser.getPipeline());
-                            if(enhanced)
-                                out += result;
-                            out += ".";
-                        }
-                        else
-                        {
-                            if(enhanced)
+                            if (!fir.isTakeable())
                             {
-                                out = "You can only interact with top-level items and their immediate content.";
+                                out = "You cannot move " + Utility.addThe(fir.getIDWithTemp()) + ".";
+                            }
+                            else
+                            {
+                                boolean fitsvol = true;
+                                if (fir.getTotalVolume() > sec.getVolume(this))
+                                {
+                                    fitsvol = false;
+                                    if (enhanced)
+                                    {
+                                        out += Utility.capitalise(Utility.addThe(fir.getIDWithTemp())) + " " +
+                                                (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is" : "are") +
+                                                " too big to fit into " + Utility.addThe(sec.getIDWithTemp()) + ".";
+                                    }
+                                    else
+                                    {
+                                        resp = response.badinput;
+                                    }
+                                }
+
+                                Pair<Boolean, String> canFitMass = sec.canAddItemsMass(fir, this);
+                                boolean massfits = canFitMass.getKey();
+                                String massOutput = canFitMass.getValue();
+
+                                if(!massfits)
+                                {
+                                    if (enhanced)
+                                    {
+                                        if(!fitsvol)
+                                            out += "\n";
+                                        out += Utility.capitalise(Utility.addThe(fir.getIDWithTemp())) + " " +
+                                                (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is" : "are") +
+                                                massOutput + "to be put into " + Utility.addThe(sec.getIDWithTemp()) + ".";
+                                    }
+                                    else
+                                    {
+                                        resp = response.badinput;
+                                    }
+                                }
+
+                                if (((player.hasItem(sec) || player.getLocation().containsItem(sec))))
+                                {
+                                    if(fitsvol && massfits)
+                                    {
+                                        fir.moveItem(Item.flag.incont, sec, this);
+                                        out = "You put " + Utility.addThe(fir.getIDWithTemp()) + " into " + Utility.addThe(sec.getIDWithTemp());
+                                        String result = Item.modifyTemperatures(fir, sec, parser.getPipeline());
+                                        if (enhanced)
+                                            out += result;
+                                        out += ".";
+                                    }
+                                }
+                                else
+                                {
+                                    if (enhanced)
+                                    {
+                                        out = "You can only interact with top-level items and their immediate content.";
+                                        resp = response.good;
+                                    }
+                                    else
+                                    {
+                                        resp = response.badinput;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (enhanced)
+                            {
+                                out = Utility.capitalise(Utility.addThe(sec.getIDWithTemp())) + " is not a container.";
                                 resp = response.good;
                             }
                             else
                             {
                                 resp = response.badinput;
                             }
-                        }
-                    }
-                    else
-                    {
-                        if(enhanced)
-                        {
-                            out = Utility.capitalise(Utility.addThe(sec.getIDWithTemp())) + " is not a container.";
-                            resp = response.good;
-                        }
-                        else
-                        {
-                            resp = response.badinput;
                         }
                     }
                 }

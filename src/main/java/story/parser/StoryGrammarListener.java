@@ -178,6 +178,26 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 */
 	void exitLocation(StoryGrammarParser.LocationContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#holding_type}.
+	 * @param ctx the parse tree
+	 */
+	void enterHolding_type(StoryGrammarParser.Holding_typeContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#holding_type}.
+	 * @param ctx the parse tree
+	 */
+	void exitHolding_type(StoryGrammarParser.Holding_typeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#holding_mass}.
+	 * @param ctx the parse tree
+	 */
+	void enterHolding_mass(StoryGrammarParser.Holding_massContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#holding_mass}.
+	 * @param ctx the parse tree
+	 */
+	void exitHolding_mass(StoryGrammarParser.Holding_massContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#itemtype}.
 	 * @param ctx the parse tree
 	 */
@@ -187,6 +207,16 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitItemtype(StoryGrammarParser.ItemtypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#mass_field}.
+	 * @param ctx the parse tree
+	 */
+	void enterMass_field(StoryGrammarParser.Mass_fieldContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#mass_field}.
+	 * @param ctx the parse tree
+	 */
+	void exitMass_field(StoryGrammarParser.Mass_fieldContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#temp_level}.
 	 * @param ctx the parse tree

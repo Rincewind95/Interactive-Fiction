@@ -113,11 +113,29 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLocation(StoryGrammarParser.LocationContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#holding_type}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHolding_type(StoryGrammarParser.Holding_typeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#holding_mass}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitHolding_mass(StoryGrammarParser.Holding_massContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#itemtype}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitItemtype(StoryGrammarParser.ItemtypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#mass_field}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitMass_field(StoryGrammarParser.Mass_fieldContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#temp_level}.
 	 * @param ctx the parse tree

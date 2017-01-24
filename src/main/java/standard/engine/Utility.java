@@ -116,6 +116,8 @@ public class Utility
         res = res.replace("]", "");
         res = res.replace("(", "");
         res = res.replace(")", "");
+        res = res.replace("{", "");
+        res = res.replace("}", "");
         res = res.replace("_", "");
         return res;
     }

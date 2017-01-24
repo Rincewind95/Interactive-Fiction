@@ -150,17 +150,20 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         }
         Item.flag flag;
         ItemLocation location = null;
-        if(ctx.location().INVENTORY() != null)
+
+        if (ctx.location().INVENTORY() != null)
         {
             flag = Item.flag.valueOf(Utility.strip_special_chars(ctx.location().INVENTORY().toString()));
-        }else if(ctx.location().PRODUCED() != null)
+        }
+        else if (ctx.location().PRODUCED() != null)
         {
             flag = Item.flag.valueOf(Utility.strip_special_chars(ctx.location().PRODUCED().toString()));
         }
-        else if(ctx.location().IN_CONTAINER() != null)
+        else if (ctx.location().IN_CONTAINER() != null)
         {
             flag = Item.flag.valueOf(Utility.strip_special_chars(ctx.location().IN_CONTAINER().toString()));
             location = new Item(parseItem_id(ctx.location().item_id()));
+
         }
         else
         {
@@ -171,16 +174,25 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         int volume = Integer.parseInt(ctx.VOLUME().getText());
 
         String itemType = Utility.strip_special_chars(ctx.itemtype().getText());
+
+
         Boolean isContainer;
-        switch (itemType)
+        int holdingMass = 0;
+        Item.HoldingType holdingType = Item.HoldingType.min;
+
+        if (ctx.itemtype().IS_CONTAINER() != null)
         {
-            case "iscont":
-                isContainer = true;
-                break;
-            default:
-                isContainer = false;
-                break;
+            isContainer = true;
+            holdingType = Item.HoldingType.valueOf(Utility.strip_special_chars(ctx.itemtype().holding_type().getText()));
+            holdingMass = Integer.parseInt(Utility.strip_special_chars(ctx.itemtype().holding_mass().MASS().getText()));
         }
+        else
+        {
+            isContainer = false;
+        }
+
+        int mass = Integer.parseInt(Utility.strip_special_chars(ctx.mass_field().MASS().getText()));
+        boolean surpress = ctx.mass_field().SURPRESS() != null;
 
         Item.Temperature temp = Item.Temperature.valueOf(Utility.strip_special_chars(ctx.temp_level().getText()));
 
@@ -198,7 +210,8 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
 
         Message description = parseDescription(ctx.description());
         eng.addItem(item_id, new Item(item_id,takeable, flag, location,
-                                      volume, isContainer,
+                                      volume, isContainer, holdingType, holdingMass,
+                                      mass, surpress,
                                       temp, fixedTemp,
                                       description));
         return null;

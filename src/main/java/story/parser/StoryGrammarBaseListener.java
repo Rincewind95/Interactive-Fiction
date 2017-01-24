@@ -220,6 +220,30 @@ public class StoryGrammarBaseListener implements StoryGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterHolding_type(StoryGrammarParser.Holding_typeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitHolding_type(StoryGrammarParser.Holding_typeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterHolding_mass(StoryGrammarParser.Holding_massContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitHolding_mass(StoryGrammarParser.Holding_massContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterItemtype(StoryGrammarParser.ItemtypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -227,6 +251,18 @@ public class StoryGrammarBaseListener implements StoryGrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitItemtype(StoryGrammarParser.ItemtypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterMass_field(StoryGrammarParser.Mass_fieldContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitMass_field(StoryGrammarParser.Mass_fieldContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

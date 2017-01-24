@@ -1,5 +1,6 @@
 package story.compiler;
 
+import javafx.util.Pair;
 import standard.engine.*;
 
 import java.util.ArrayList;
@@ -275,11 +276,21 @@ public class StoryLinker
             error_cnt++;
             return null;
         }
-        else if(container.getVolume(eng) < i.getVolume(eng) )
+        else
         {
-            error_report += "Volume of container [" + container.getItem_id() + "] is too small (in object [" + i.getItem_id() + "])\n";
-            error_cnt++;
-            return null;
+            if(container.getVolume(eng) < i.getTotalVolume() )
+            {
+                error_report += "Volume of container [" + container.getItem_id() + "] is too small (in object [" + i.getItem_id() + "])\n";
+                error_cnt++;
+                return null;
+            }
+            Pair<Boolean, String> resp = container.canAddItemsMass(i, eng);
+            if(!resp.getKey())
+            {
+                error_report += "Mass of item [" + i.getItem_id() + "] is" + resp.getKey() + "to fit into [" + container.getItem_id() +"] (in object [" + i.getItem_id() + "])\n";
+                error_cnt++;
+                return null;
+            }
         }
         container.addItem(i);
         return container;

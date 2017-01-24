@@ -47,7 +47,12 @@ FROZEN: '_frozen';
 // temperature variability
 VARIABLE: '_variable';   // if the temperature is variable
 CONSTANT: '_constant';   // if the temperature is constant
-
+// mass related
+MASS: OPEN_PAREN_CURLY NUMERIC CLOS_PAREN_CURLY;         // the volume of the item
+MIN: '_min';
+MAX: '_max';
+EQUAL: '_equal';
+SURPRESS: '_surpress';
 
 // step related
 // and vs or
@@ -126,7 +131,7 @@ brief: message_text
 description: message_text
            | message_id;
 
-item: ITEM_ OPEN_PAREN_CURLY item_id SEMICOLON mobility SEMICOLON location SEMICOLON VOLUME SEMICOLON itemtype SEMICOLON temp_level SEMICOLON temp_variability SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
+item: ITEM_ OPEN_PAREN_CURLY item_id SEMICOLON mobility SEMICOLON location SEMICOLON VOLUME SEMICOLON itemtype SEMICOLON mass_field SEMICOLON temp_level SEMICOLON temp_variability SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
 
 mobility: TAKEABLE
         | FIXED;
@@ -136,8 +141,17 @@ location: IN_ROOM room_id
         | PRODUCED
         | IN_CONTAINER item_id;
 
-itemtype: IS_CONTAINER
+holding_type: MIN
+            | MAX
+            | EQUAL;
+
+holding_mass: MASS;
+
+itemtype: IS_CONTAINER COMMA holding_type COMMA holding_mass
         | IS_ITEM;
+
+mass_field: SURPRESS MASS
+          | MASS;
 
 temp_level: HOT
           | WARM
