@@ -41,6 +41,7 @@ public class Utility
             "drop    all                - removes all items from your inventory\n" +
             "examine <item>             - gives the items description and contents\n" +
             "examine all                - examines all items in current room\n" +
+            "examine inventory          - examines all items in your inventory\n" +
             "move    <direction>        - moves the player north/east/south/west\n" +
             "<special command>          - exact string of event triggering characters\n" +
             "inventory - lists the items stored in your inventory\n" +
@@ -83,10 +84,9 @@ public class Utility
         commands_list = new ArrayList<>(
                 Arrays.asList("use", "combine", "put", "remove",
                         "take", "drop", "examine", "move",
-                        "look", "brief", "wait", "history", "inventory", "hint", "help"));
+                        "look", "brief", "wait", "history", "hint", "help"));
         connectors_list = new ArrayList<>(
-                Arrays.asList("with", "in", "on", "from",
-                        "north", "east", "south", "west"));
+                Arrays.asList("north", "east", "south", "west", "inventory"));
     }
 
     public static String removeWhiteSpace(String input)

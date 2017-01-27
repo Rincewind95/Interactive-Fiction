@@ -104,6 +104,9 @@ public class NLPparser
         oneArgumentsynonyms.put("analyze", "examine");
         oneArgumentsynonyms.put("analyse", "examine");
         oneArgumentsynonyms.put("inspect", "examine");
+        oneArgumentsynonyms.put("observe", "examine");
+        oneArgumentsynonyms.put("investigate", "examine");
+        oneArgumentsynonyms.put("look", "examine");
         oneArgumentsynonyms.put("move", "move");
         oneArgumentsynonyms.put("go", "move");
         oneArgumentsynonyms.put("proceed", "move");
@@ -118,8 +121,6 @@ public class NLPparser
         zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit", "inventory", "restart", "hint", "help"));
 
         zeroArgumentsynonyms = new HashMap<>();
-        zeroArgumentsynonyms.put("look", "look");
-        zeroArgumentsynonyms.put("investigate", "look");
         zeroArgumentsynonyms.put("brief", "brief");
         zeroArgumentsynonyms.put("wait", "wait");
         zeroArgumentsynonyms.put("history", "history");
@@ -349,6 +350,14 @@ public class NLPparser
                             args.add(itemMapping.get(lemma));
                             curr_arg++;
                         }
+                        else if(keyword.equals("examine") && lemma.equals("inventory"))
+                        {
+                            // special case, when examine inventory is performed
+                            if (curr_arg == 1)
+                                return new Command(Command.Type.badcomm);
+                            args.add(lemma);
+                            curr_arg++;
+                        }
                         break;
                     case dir:
                         if (dirMapping.containsKey(lemma))
@@ -362,7 +371,18 @@ public class NLPparser
                 }
             }
             if (curr_arg == 0)
-                return new Command(Command.Type.badcomm);
+            {
+                if(keyword.equals("examine"))
+                {
+                    // it is in fact a look type response
+                    return new Command(Command.Type.look, args, original);
+                }
+                else
+                {
+                    return new Command(Command.Type.badcomm);
+                }
+            }
+
             //System.out.println(word + " " + args);
             return new Command(Command.Type.valueOf(keyword), args, original);
 
@@ -423,6 +443,7 @@ public class NLPparser
         return null;
     }
 
+    // update the set of all accepted item names (with extras)
     private void updateItemCompounds()
     {
         Room current = eng.getPlayer().getLocation();
@@ -492,11 +513,13 @@ public class NLPparser
             item_originals.put(item, itemId);
         }
 
+        // add the special command all at the end
         item_compounds.addAll(Utility.theAlls);
         for(String all : Utility.theAlls)
         {
             item_originals.put(all, "all");
         }
+
         item_compounds.sort((String s1, String s2) -> s1.length() == s2.length() ? s1.compareTo(s2) : s2.length() - s1.length());
     }
 }

@@ -141,7 +141,8 @@ public class Engine
                 else if(resp == response.dropall ||
                         resp == response.takeall ||
                         resp == response.removeall ||
-                        resp == response.examineall)
+                        resp == response.examineall||
+                        resp == response.examineinventory)
                 {
                     Command.Type type;
                     Set<String> contents;
@@ -169,6 +170,10 @@ public class Engine
                         case examineall:
                             type = Command.Type.examine;
                             contents = new HashSet<>(player.getLocation().getItemKeySet());
+                            break;
+                        case examineinventory:
+                            type = Command.Type.examine;
+                            contents = new HashSet<>(player.getInventoryKeySet());
                             break;
                     }
 
@@ -505,8 +510,13 @@ public class Engine
                 }
                 else if(args.get(0).equals("all"))
                 {
-                    // the special remove all from command
+                    // the special examine all command
                     resp = response.examineall;
+                }
+                else if(args.get(0).equals("inventory"))
+                {
+                    // the special examine inventory command
+                    resp = response.examineinventory;
                 }
                 else resp = response.badinput;
                 break;
@@ -894,7 +904,7 @@ public class Engine
     // enumerates the possible response types which can be generated when processing user commands
     public enum response
     {
-        good, skip, badinput, load, save, restart, exit, takeall, dropall, removeall, examineall
+        good, skip, badinput, load, save, restart, exit, takeall, dropall, removeall, examineall, examineinventory
     }
 
     public boolean isEnhanced()
