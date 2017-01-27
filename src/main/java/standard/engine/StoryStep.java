@@ -193,7 +193,15 @@ public class StoryStep implements Comparable
             else
                 res = res || parent_sat;
         }
-        return res;
+
+        // test if all the children are satisfied, and if so, this is not our hint candidate
+        boolean children_sat = !(child_steps.isEmpty());
+        for(String child_id : child_steps.keySet())
+        {
+            StoryStep child = child_steps.get(child_id);
+            children_sat = children_sat && child.isSatisfied();
+        }
+        return res && !children_sat;
     }
 
     public int lastParentSatisfactionTime(int currentTime)
