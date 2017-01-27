@@ -354,8 +354,10 @@ public class Item extends ItemLocation implements Comparable
         }
     }
 
-    public String getIDWithTemp()
+    public String getIDWithTemp(boolean enhanced)
     {
+        if(!enhanced)
+            return item_id;
         if (hasConstantTemp || temperature == Temperature.normal)
             return item_id;
         String res = item_id;
@@ -375,7 +377,7 @@ public class Item extends ItemLocation implements Comparable
 
     public String listContents(Engine eng, String prefix)
     {
-        String res = "\n" + prefix + "- " + getIDWithTemp();
+        String res = "\n" + prefix + "- " + getIDWithTemp(eng.isEnhanced());
         for (String child : contained.keySet())
         {
             res += eng.findItem(child).listContents(eng, prefix + "   ");

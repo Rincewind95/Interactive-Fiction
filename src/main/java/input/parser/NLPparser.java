@@ -198,7 +198,11 @@ public class NLPparser
             }
         }
 
-        if (input.contains("dont") || input.contains("n't") || input.contains("not"))
+        if (Utility.hasWord("dont",  input) ||
+            Utility.hasWord("don't", input) ||
+            input.contains("n't") ||
+            Utility.hasWord("not",   input) ||
+            Utility.hasWord("never", input))
         {
             // negation is applied somewhere within the command
             // reject all such inputs
@@ -499,18 +503,20 @@ public class NLPparser
         }
         item_compounds.addAll(extras);
 
-
-        for(String itemId : itemsPresent)
+        if(eng.isEnhanced())
         {
-            String item = eng.findItem(itemId).getIDWithTemp();
-            item_compounds.add(item);
-            item_originals.put(item, itemId);
-        }
-        for(String itemId : itemsInv)
-        {
-            String item = eng.findItem(itemId).getIDWithTemp();
-            item_compounds.add(item);
-            item_originals.put(item, itemId);
+            for (String itemId : itemsPresent)
+            {
+                String item = eng.findItem(itemId).getIDWithTemp(eng.isEnhanced());
+                item_compounds.add(item);
+                item_originals.put(item, itemId);
+            }
+            for (String itemId : itemsInv)
+            {
+                String item = eng.findItem(itemId).getIDWithTemp(eng.isEnhanced());
+                item_compounds.add(item);
+                item_originals.put(item, itemId);
+            }
         }
 
         // add the special command all at the end

@@ -259,4 +259,15 @@ public class Utility
         return out;
     }
 
+
+    public static boolean hasWord(String input, String text)
+    {
+        String[] words = text.split(" ");
+        for(String word : words)
+        {
+            if(word.equals(input))
+                return true;
+        }
+        return false;
+    }
 }
