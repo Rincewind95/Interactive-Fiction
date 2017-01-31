@@ -32,22 +32,25 @@ public class MainExecutor
 
             String line;
             PrintWriter out = new PrintWriter(reader.getOutput());
-            Writer transwriter;
-            if(args.length <= 2)
+            Writer transwriter, logwriter = null;
+            if(args.length <= 3)
             {
-                out.println("java -jar InteractiveFiction.jar [enhanced/standard] [story file location] [transcript location]");
+                out.println("java -jar InteractiveFiction.jar [enhanced/standard/alternate] [story file location] [transcript location] [logfile location]|[nolog]");
                 out.flush();
                 return;
             }
             // repeat until a game is successfully loaded or exit has been input
-            String test = "", story_location = "", transcript = "";
+            String test = "", story_location = "", transcript = "", log = "";
             try
             {
                 story_location = args[1]; //"C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Comparative Study\\study_story.txt";
                 transcript = args[2];     //"C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Comparative Study\\study_transcript.txt";
+                log = args[3];            //"C:\\Users\\Milos\\Dropbox\\Part II project Interactive Fiction\\Comparative Study\\study_log.txt";
                 out.println("Attempting to load story file...");
                 out.flush();
                 transwriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(transcript), "utf-8"));
+                if(log.equals("nolog"))
+                    logwriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(log), "utf-8"));
                 new Scanner(new File(story_location)).next(); // test if the file is there
             } catch (IOException e)
             {
@@ -77,7 +80,10 @@ public class MainExecutor
             // --------------------------------------------------------------------------------------
             while(true)
             {
-                Engine.response resp = eng.start(args.length > 0 ? args[0].equals("enhanced") : true, reader, out, transwriter);
+                eng.setLogging(!args[3].equals("nolog"));
+                eng.setLogger(logwriter);
+                Engine.response resp = eng.start(args[0].equals("enhanced"), args[0].equals("alternate"), reader, out, transwriter);
+
                 if (resp == Engine.response.exit)
                 {
                     transwriter.close();

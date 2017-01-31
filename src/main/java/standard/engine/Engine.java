@@ -32,10 +32,14 @@ public class Engine
     private NLPparser parser;                                // the NLP parser which will parse user input
 
     private boolean enhanced;                                // true if the engine is in advanced mode
+    private boolean alternate;                               // true if the engine should alternate responses
+    private boolean doEvaluation;                            // true if the engine should request evaluation
+    private boolean askForEvaluation;                        // true if the current step will ask the player for evaluation
 
     private ConsoleReader reader;
     private PrintWriter writer;
     private Writer transcriptWriter;
+    private Writer logWriter;
     private FinalCompleter completer;
     private ArrayList<String> command_suggestions;
     private HashSet<String> item_suggestions;
@@ -59,6 +63,7 @@ public class Engine
         prev_steps = new ArrayList<>();
 
         enhanced = true;
+        alternate = false;
 
         reader = null;
         writer = null;
@@ -68,11 +73,22 @@ public class Engine
 
     }
 
-    public response start(boolean enhanced, ConsoleReader reader, PrintWriter writer, Writer transwriter)
+    public void setLogging(boolean log)
+    {
+        doEvaluation = log;
+    }
+
+    public void setLogger(Writer logger)
+    {
+        logWriter = logger;
+    }
+
+    public response start(boolean enhance, boolean alternating, ConsoleReader reader, PrintWriter writer, Writer transwriter)
     {
         try
         {
-            this.enhanced = enhanced;
+            enhanced = enhance;
+            alternate = alternating;
             this.reader = reader;
             this.writer = writer;
             this.transcriptWriter = transwriter;
@@ -93,12 +109,30 @@ public class Engine
             // main input loop
             while (gameRunning)
             {
+                // save the original timestamp
+                int origtime = time;
+                // update the enhanced/unenhanced engine state
+                if(alternate)
+                {
+                    // randomly select which response will be returned
+                    Random rnd = new Random();
+                    int value = rnd.nextInt(2);
+
+                    if(value == 0)
+                        enhanced = true;
+                    else
+                        enhanced = false;
+                }
+
+                // update the request for evaluation
+                askForEvaluation = false;
+
                 updateItemSuggestions();
                 // if new items were added, update the completer
                 completer.updateObjectSuggestions(new ArrayList<>(item_suggestions));
 
                 //reader.setPrompt("[" + time + "] ");
-                String userInput = Utility.readLn(reader, transcriptWriter);
+                String userInput = Utility.readLn(reader, transcriptWriter, Integer.toString(origtime));
 
                 // input parsing
                 Command command = parser.parseInput(userInput);
@@ -231,8 +265,39 @@ public class Engine
                     else
                         final_out_to_user = "I don't understand.";
                 }
+
                 final_out_to_user = "\n" + final_out_to_user + "\n";
                 Utility.write(writer, final_out_to_user, transcriptWriter);
+
+                if(askForEvaluation && doEvaluation)
+                {
+
+                    // prepare the initial logging message
+                    String logoutput = enhanced ? "type: ENHANCED" : "type: STANDARD";
+                    logoutput += "\ntimestamp: " + time;
+                    logoutput += "\n> " + command.getOriginal() +
+                                 "\ncommand: (" + command.getType().toString() + ")";
+                    for(String arg : command.getArgs())
+                    {
+                        logoutput += " [" + arg + "]";
+                    }
+                    logoutput += "\nresponse:" + final_out_to_user;
+
+                    Utility.write(writer, Utility.evaluationQuestion, transcriptWriter);
+
+                    String evaluation = Utility.readLn(reader, transcriptWriter, Integer.toString(origtime));
+                    while(!Utility.evaluationOptions.contains(evaluation))
+                    {
+                        Utility.write(writer, Utility.invalidOptionReply, transcriptWriter);
+                        evaluation = Utility.readLn(reader, transcriptWriter, Integer.toString(origtime));
+                    }
+                    Utility.write(writer, Utility.successfulOptionReply + "\n", transcriptWriter);
+                    logoutput += "evaluation: " + evaluation;
+                    logoutput += "\n" + Utility.dashedLine() + "\n";
+                    logWriter.write(logoutput);
+                    logWriter.flush();
+                }
+
             }
 
             reader.removeCompleter(completer);
@@ -255,6 +320,7 @@ public class Engine
         switch (type)
         {
             case take:
+                askForEvaluation = true;
                 // first test for input validity
                 if (finditem.containsKey(args.get(0)))
                 {
@@ -293,6 +359,7 @@ public class Engine
                 else resp = response.badinput;
                 break;
             case drop:
+                askForEvaluation = true;
                 // first test for input validity
                 if (finditem.containsKey(args.get(0)))
                 {
@@ -368,6 +435,7 @@ public class Engine
                 else resp = response.badinput;
                 break;
             case putin:
+                askForEvaluation = true;
                 // first test for input validity
                 if(finditem.containsKey(args.get(0)) && finditem.containsKey(args.get(1)))
                 {
@@ -473,6 +541,7 @@ public class Engine
                 else resp = response.badinput;
                 break;
             case remove:
+                askForEvaluation = true;
                 // first test for input validity
                 if(finditem.containsKey(args.get(0)) && finditem.containsKey(args.get(1)))
                 {
@@ -494,6 +563,7 @@ public class Engine
                 else resp = response.badinput;
                 break;
             case examine:
+                askForEvaluation = true;
                 // first test for input validity
                 if (finditem.containsKey(args.get(0)))
                 {

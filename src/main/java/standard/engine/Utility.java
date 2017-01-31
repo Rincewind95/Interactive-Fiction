@@ -62,6 +62,10 @@ public class Utility
     public static final HashMap<String, String> exitMap;
     public static final ArrayList<String> commands_list;
     public static final ArrayList<String> connectors_list;
+    public static final HashSet<String> evaluationOptions;
+    public static final String invalidOptionReply;
+    public static final String evaluationQuestion;
+    public static final String successfulOptionReply;
 
     static
     {
@@ -87,6 +91,20 @@ public class Utility
                         "look", "brief", "wait", "history", "hint", "help"));
         connectors_list = new ArrayList<>(
                 Arrays.asList("north", "east", "south", "west", "inventory"));
+
+        evaluationOptions = new HashSet<>();
+        evaluationOptions.add("1");
+        evaluationOptions.add("2");
+        evaluationOptions.add("3");
+        evaluationOptions.add("4");
+        evaluationOptions.add("5");
+
+        evaluationQuestion = "*Please estimate the usefulness of this response. Options:       *" +
+                           "\n*(1 - Very Poor) (2 - Poor) (3 - Fair) (4 - Good) (5 - Very Good)*";
+        invalidOptionReply = "*Invalid estimation. Please select a number from the options below: *" +
+                           "\n*(1 - Very Poor) (2 - Poor) (3 - Fair) (4 - Good) (5 - Very Good)   *";
+        successfulOptionReply = "*Estimation recorded. Continuing...*";
+
     }
 
     public static String removeWhiteSpace(String input)
@@ -248,12 +266,12 @@ public class Utility
         writer.flush();
     }
 
-    public static String readLn(ConsoleReader reader, Writer transwriter) throws IOException
+    public static String readLn(ConsoleReader reader, Writer transwriter, String time) throws IOException
     {
         String out = reader.readLine();
         try
         {
-            transwriter.write("\r\n> " + out + "\r\n");
+            transwriter.write("\r\n-[" + time + "]-> " + out + "\r\n");
             transwriter.flush();
         } catch (Exception e) {}
         return out;
