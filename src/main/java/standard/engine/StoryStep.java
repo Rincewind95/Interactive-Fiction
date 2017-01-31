@@ -195,13 +195,23 @@ public class StoryStep implements Comparable
         }
 
         // test if all the children are satisfied, and if so, this is not our hint candidate
-        boolean children_sat = !(child_steps.isEmpty());
+        boolean children_sat = true;
         for(String child_id : child_steps.keySet())
         {
             StoryStep child = child_steps.get(child_id);
             children_sat = children_sat && child.isSatisfied();
         }
-        return res && !children_sat;
+        return res && ((!child_steps.isEmpty() && !children_sat) || isWinning());
+    }
+
+    public boolean isWinning()
+    {
+        for(Consequence cons: consequences)
+        {
+            if (cons.getType() == Consequence.ConsType.win)
+                return true;
+        }
+        return false;
     }
 
     public int lastParentSatisfactionTime(int currentTime)

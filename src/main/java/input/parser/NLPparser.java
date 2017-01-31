@@ -71,6 +71,7 @@ public class NLPparser
         twoArgumentsynonyms.put("obtain", "remove");
         twoArgumentsynonyms.put("claim", "remove");
         twoArgumentsynonyms.put("pick", "remove");
+        twoArgumentsynonyms.put("get", "remove");
 
         twoArgumentConnectors = new HashMap<>();
         twoArgumentConnectors.put("use", new ArrayList<>(Arrays.asList("with", "on")));
@@ -97,7 +98,6 @@ public class NLPparser
 
         oneArgumentWords = new ArrayList<>(Arrays.asList("take", "drop", "examine", "move"));
         oneArgumentsynonyms = new HashMap<>();
-        oneArgumentsynonyms.put("get", "take");
         oneArgumentsynonyms.put("drop", "drop");
         oneArgumentsynonyms.put("leave", "drop");
         oneArgumentsynonyms.put("examine", "examine");
