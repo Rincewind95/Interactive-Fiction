@@ -49,7 +49,7 @@ public class MainExecutor
                 out.println("Attempting to load story file...");
                 out.flush();
                 transwriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(transcript), "utf-8"));
-                if(log.equals("nolog"))
+                if(!log.equals("nolog"))
                     logwriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(log), "utf-8"));
                 new Scanner(new File(story_location)).next(); // test if the file is there
             } catch (IOException e)
