@@ -274,7 +274,7 @@ public class Engine
 
                     // prepare the initial logging message
                     String logoutput = enhanced ? "type: ENHANCED" : "type: STANDARD";
-                    logoutput += "\ntimestamp: " + time;
+                    logoutput += "\ntimestamp: " + origtime;
                     logoutput += "\n> " + command.getOriginal() +
                                  "\ncommand: (" + command.getType().toString() + ")";
                     for(String arg : command.getArgs())
