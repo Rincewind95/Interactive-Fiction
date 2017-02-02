@@ -7,11 +7,26 @@
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/main/java/standard/engine/Command.java" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" line="558" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" line="582" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/input/parser/NLPparser$1.class" afterPath="$PROJECT_DIR$/target/classes/input/parser/NLPparser$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/input/parser/NLPparser$2.class" afterPath="$PROJECT_DIR$/target/classes/input/parser/NLPparser$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/input/parser/NLPparser.class" afterPath="$PROJECT_DIR$/target/classes/input/parser/NLPparser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/runnable/MainExecutor.class" afterPath="$PROJECT_DIR$/target/classes/runnable/MainExecutor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Command$Type.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Command$Type.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine$1.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine$response.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine$response.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Utility$1.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Utility$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Utility.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Utility.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java" afterPath="$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java" afterPath="$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Command.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Command.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
     </list>
     <ignored path="InteractiveFiction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +51,8 @@
       <file leaf-file-name="Engine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="283" column="56" lean-forward="false" selection-start-line="283" selection-start-column="56" selection-end-line="283" selection-end-column="56" />
+            <state relative-caret-position="17">
+              <caret line="302" column="83" lean-forward="false" selection-start-line="302" selection-start-column="83" selection-end-line="302" selection-end-column="83" />
               <folding>
                 <element signature="docComment;class#Engine#0" expanded="false" />
                 <element signature="e#3223#3224#0" expanded="true" />
@@ -58,19 +73,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="952">
               <caret line="73" column="20" lean-forward="false" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#375#376#0" expanded="false" />
-                <element signature="e#416#417#0" expanded="false" />
-                <element signature="e#458#459#0" expanded="false" />
-                <element signature="e#518#519#0" expanded="false" />
-                <element signature="e#558#559#0" expanded="false" />
-                <element signature="e#606#607#0" expanded="false" />
-                <element signature="e#791#792#0" expanded="false" />
-                <element signature="e#819#820#0" expanded="false" />
-                <element signature="e#856#857#0" expanded="false" />
-                <element signature="e#887#888#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,8 +81,8 @@
       <file leaf-file-name="NLPparser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="34" column="139" lean-forward="true" selection-start-line="34" selection-start-column="139" selection-end-line="34" selection-end-column="139" />
+            <state relative-caret-position="1768">
+              <caret line="120" column="153" lean-forward="false" selection-start-line="120" selection-start-column="153" selection-end-line="120" selection-end-column="153" />
               <folding />
             </state>
           </provider>
@@ -88,8 +91,8 @@
       <file leaf-file-name="MainExecutor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="53" column="90" lean-forward="true" selection-start-line="53" selection-start-column="90" selection-end-line="53" selection-end-column="90" />
+            <state relative-caret-position="323">
+              <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -108,7 +111,7 @@
       <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Item.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-160">
+            <state relative-caret-position="2907">
               <caret line="382" column="34" lean-forward="false" selection-start-line="382" selection-start-column="34" selection-end-line="382" selection-end-column="34" />
               <folding>
                 <element signature="method#Item#1;class#Item#0" expanded="false" />
@@ -130,62 +133,15 @@
             <state relative-caret-position="2023">
               <caret line="203" column="65" lean-forward="false" selection-start-line="203" selection-start-column="65" selection-end-line="203" selection-end-column="65" />
               <folding>
-                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#StoryStep#0" expanded="false" />
                 <element signature="method#StoryStep#0;class#StoryStep#0" expanded="false" />
                 <element signature="method#StoryStep#1;class#StoryStep#0" expanded="false" />
                 <element signature="method#StoryStep#2;class#StoryStep#0" expanded="false" />
-                <element signature="e#2907#2908#0" expanded="false" />
-                <element signature="e#2950#2951#0" expanded="false" />
-                <element signature="e#3003#3004#0" expanded="false" />
-                <element signature="e#3047#3048#0" expanded="false" />
-                <element signature="e#3103#3104#0" expanded="false" />
-                <element signature="e#3153#3154#0" expanded="false" />
-                <element signature="e#3207#3208#0" expanded="false" />
-                <element signature="e#3255#3256#0" expanded="false" />
                 <element signature="method#compareTo#0;class#StoryStep#0" expanded="false" />
-                <element signature="e#3659#3660#0" expanded="false" />
-                <element signature="e#3691#3692#0" expanded="false" />
-                <element signature="e#3750#3751#0" expanded="false" />
-                <element signature="e#3784#3785#0" expanded="false" />
-                <element signature="e#3842#3843#0" expanded="false" />
-                <element signature="e#3877#3878#0" expanded="false" />
-                <element signature="e#3915#3916#0" expanded="false" />
-                <element signature="e#3945#3946#0" expanded="false" />
-                <element signature="e#3995#3996#0" expanded="false" />
-                <element signature="e#4033#4034#0" expanded="false" />
-                <element signature="e#4072#4073#0" expanded="false" />
-                <element signature="e#4102#4103#0" expanded="false" />
-                <element signature="e#4153#4154#0" expanded="false" />
-                <element signature="e#4191#4192#0" expanded="false" />
-                <element signature="e#4224#4225#0" expanded="false" />
-                <element signature="e#4251#4252#0" expanded="false" />
-                <element signature="e#4296#4297#0" expanded="false" />
-                <element signature="e#4328#4329#0" expanded="false" />
-                <element signature="e#4394#4395#0" expanded="false" />
-                <element signature="e#4442#4443#0" expanded="false" />
-                <element signature="e#4511#4512#0" expanded="false" />
-                <element signature="e#4562#4563#0" expanded="false" />
-                <element signature="e#7168#7169#0" expanded="false" />
-                <element signature="e#7198#7199#0" expanded="false" />
                 <element signature="method#addCondition#0;class#StoryStep#0" expanded="false" />
-                <element signature="e#7584#7585#0" expanded="false" />
-                <element signature="e#7617#7618#0" expanded="false" />
-                <element signature="e#7674#7675#0" expanded="false" />
-                <element signature="e#7709#7710#0" expanded="false" />
                 <element signature="method#addConsequence#0;class#StoryStep#0" expanded="false" />
                 <element signature="method#invokeConsequences#0;class#StoryStep#0" expanded="false" />
-                <element signature="e#8619#8620#0" expanded="false" />
-                <element signature="e#8664#8665#0" expanded="false" />
-                <element signature="e#8715#8716#0" expanded="false" />
-                <element signature="e#8761#8762#0" expanded="false" />
-                <element signature="e#8798#8799#0" expanded="false" />
-                <element signature="e#8830#8831#0" expanded="false" />
-                <element signature="e#8881#8882#0" expanded="false" />
-                <element signature="e#8923#8924#0" expanded="false" />
                 <element signature="method#setHint#0;class#StoryStep#0" expanded="false" />
-                <element signature="e#9138#9139#0" expanded="false" />
-                <element signature="e#9165#9166#0" expanded="false" />
                 <element signature="method#getHint#0;class#StoryStep#0" expanded="false" />
               </folding>
             </state>
@@ -195,8 +151,8 @@
       <file leaf-file-name="Utility.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Utility.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="272" column="9" lean-forward="true" selection-start-line="272" selection-start-column="9" selection-end-line="272" selection-end-column="9" />
+            <state relative-caret-position="2805">
+              <caret line="245" column="5" lean-forward="false" selection-start-line="245" selection-start-column="5" selection-end-line="245" selection-end-column="5" />
               <folding>
                 <element signature="method#removeWhiteSpace#0;class#Utility#0" expanded="false" />
                 <element signature="method#pre_tokenise#0;class#Utility#0" expanded="false" />
@@ -205,8 +161,13 @@
                 <element signature="method#addAorAn#0;class#Utility#0" expanded="false" />
                 <element signature="method#isSingular#0;class#Utility#0" expanded="false" />
                 <element signature="method#isAre#0;class#Utility#0" expanded="false" />
-                <element signature="method#dashedLine#0;class#Utility#0" expanded="false" />
+                <element signature="e#9926#9927#0" expanded="true" />
+                <element signature="e#9980#9981#0" expanded="true" />
+                <element signature="e#10089#10090#0" expanded="true" />
+                <element signature="method#volumeChangeMessage#0;class#Utility#0" expanded="false" />
                 <element signature="method#joinArrays#0;class#Utility#0" expanded="false" />
+                <element signature="e#12795#12796#0" expanded="true" />
+                <element signature="e#12824#12825#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -215,16 +176,9 @@
       <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Command.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding>
-                <element signature="e#6945#6946#0" expanded="false" />
-                <element signature="e#6972#6973#0" expanded="false" />
-                <element signature="e#7457#7458#0" expanded="false" />
-                <element signature="e#7488#7489#0" expanded="false" />
-                <element signature="e#7534#7535#0" expanded="false" />
-                <element signature="e#7561#7562#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="629">
+              <caret line="37" column="41" lean-forward="false" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -232,7 +186,7 @@
       <file leaf-file-name="FinalCompleter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/FinalCompleter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
+            <state relative-caret-position="323">
               <caret line="25" column="23" lean-forward="false" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -252,12 +206,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hot</find>
-      <find>write</find>
-      <find>take</find>
-      <find>moveIte</find>
-      <find>keyset</find>
-      <find>items</find>
       <find>remove</find>
       <find>drop</find>
       <find>contained</find>
@@ -275,13 +223,19 @@
       <find>suggest</find>
       <find>inven</find>
       <find>suggestion</find>
-      <find>split</find>
       <find>hint</find>
       <find>checkConstraints</find>
       <find>executeCommand</find>
       <find>examine</find>
       <find>examin</find>
       <find>enhanced</find>
+      <find>invalidate</find>
+      <find>invalida</find>
+      <find>split</find>
+      <find>help</find>
+      <find>tipMessage</find>
+      <find>logout</find>
+      <find>dash</find>
     </findStrings>
     <replaceStrings>
       <replace>warm</replace>
@@ -341,7 +295,6 @@
         <option value="$PROJECT_DIR$/src/main/java/test/java/FinalCompleter.java" />
         <option value="$PROJECT_DIR$/src/main/java/test/java/NLPtest.java" />
         <option value="$PROJECT_DIR$/src/main/java/test/java/IOtest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Command.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Room.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Player.java" />
@@ -353,8 +306,9 @@
         <option value="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java" />
         <option value="$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
+        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Command.java" />
         <option value="$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
       </list>
     </option>
@@ -390,6 +344,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -505,10 +462,6 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="story" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -572,41 +525,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parser" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InteractiveFiction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InteractiveFiction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="out" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -991,14 +915,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18526544" sideWeight="0.4914712" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16901408" sideWeight="0.48400852" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1010,7 +933,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49573562" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21268657" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21481876" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4767064" sideWeight="0.5042644" order="12" side_tool="false" content_ui="tabs" x="-237" y="994" width="1876" height="300" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1023,6 +946,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17009751" sideWeight="0.48400852" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.4946695" order="1" side_tool="false" content_ui="tabs" />
@@ -1271,7 +1195,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="903" column="18" lean-forward="false" selection-start-line="903" selection-start-column="18" selection-end-line="903" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1321,32 +1244,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1955">
           <caret line="188" column="12" lean-forward="false" selection-start-line="188" selection-start-column="12" selection-end-line="188" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="e#365#366#0" expanded="false" />
-            <element signature="e#399#400#0" expanded="false" />
-            <element signature="e#440#441#0" expanded="false" />
-            <element signature="e#466#467#0" expanded="false" />
-            <element signature="method#visitMessage#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseBrief#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseDescription#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseMessage_id#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseMessage_text#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseRoom_id#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseLevel_id#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#visitRoom#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#addExitTo#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseDirection#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseItem_id#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseSpecial_id#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#visitSpecial#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseStep_id#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#visitStep#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseRequiredSteps#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseConditions#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseConsequences#0;class#StoryTreeVisitor#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1362,100 +1259,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
           <caret line="73" column="20" lean-forward="false" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#375#376#0" expanded="false" />
-            <element signature="e#416#417#0" expanded="false" />
-            <element signature="e#458#459#0" expanded="false" />
-            <element signature="e#518#519#0" expanded="false" />
-            <element signature="e#558#559#0" expanded="false" />
-            <element signature="e#606#607#0" expanded="false" />
-            <element signature="e#791#792#0" expanded="false" />
-            <element signature="e#819#820#0" expanded="false" />
-            <element signature="e#856#857#0" expanded="false" />
-            <element signature="e#887#888#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Command.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding>
-            <element signature="e#6945#6946#0" expanded="false" />
-            <element signature="e#6972#6973#0" expanded="false" />
-            <element signature="e#7457#7458#0" expanded="false" />
-            <element signature="e#7488#7489#0" expanded="false" />
-            <element signature="e#7534#7535#0" expanded="false" />
-            <element signature="e#7561#7562#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2023">
-          <caret line="203" column="65" lean-forward="false" selection-start-line="203" selection-start-column="65" selection-end-line="203" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="docComment;class#StoryStep#0" expanded="false" />
-            <element signature="method#StoryStep#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#StoryStep#1;class#StoryStep#0" expanded="false" />
-            <element signature="method#StoryStep#2;class#StoryStep#0" expanded="false" />
-            <element signature="e#2907#2908#0" expanded="false" />
-            <element signature="e#2950#2951#0" expanded="false" />
-            <element signature="e#3003#3004#0" expanded="false" />
-            <element signature="e#3047#3048#0" expanded="false" />
-            <element signature="e#3103#3104#0" expanded="false" />
-            <element signature="e#3153#3154#0" expanded="false" />
-            <element signature="e#3207#3208#0" expanded="false" />
-            <element signature="e#3255#3256#0" expanded="false" />
-            <element signature="method#compareTo#0;class#StoryStep#0" expanded="false" />
-            <element signature="e#3659#3660#0" expanded="false" />
-            <element signature="e#3691#3692#0" expanded="false" />
-            <element signature="e#3750#3751#0" expanded="false" />
-            <element signature="e#3784#3785#0" expanded="false" />
-            <element signature="e#3842#3843#0" expanded="false" />
-            <element signature="e#3877#3878#0" expanded="false" />
-            <element signature="e#3915#3916#0" expanded="false" />
-            <element signature="e#3945#3946#0" expanded="false" />
-            <element signature="e#3995#3996#0" expanded="false" />
-            <element signature="e#4033#4034#0" expanded="false" />
-            <element signature="e#4072#4073#0" expanded="false" />
-            <element signature="e#4102#4103#0" expanded="false" />
-            <element signature="e#4153#4154#0" expanded="false" />
-            <element signature="e#4191#4192#0" expanded="false" />
-            <element signature="e#4224#4225#0" expanded="false" />
-            <element signature="e#4251#4252#0" expanded="false" />
-            <element signature="e#4296#4297#0" expanded="false" />
-            <element signature="e#4328#4329#0" expanded="false" />
-            <element signature="e#4394#4395#0" expanded="false" />
-            <element signature="e#4442#4443#0" expanded="false" />
-            <element signature="e#4511#4512#0" expanded="false" />
-            <element signature="e#4562#4563#0" expanded="false" />
-            <element signature="e#7168#7169#0" expanded="false" />
-            <element signature="e#7198#7199#0" expanded="false" />
-            <element signature="method#addCondition#0;class#StoryStep#0" expanded="false" />
-            <element signature="e#7584#7585#0" expanded="false" />
-            <element signature="e#7617#7618#0" expanded="false" />
-            <element signature="e#7674#7675#0" expanded="false" />
-            <element signature="e#7709#7710#0" expanded="false" />
-            <element signature="method#addConsequence#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#invokeConsequences#0;class#StoryStep#0" expanded="false" />
-            <element signature="e#8619#8620#0" expanded="false" />
-            <element signature="e#8664#8665#0" expanded="false" />
-            <element signature="e#8715#8716#0" expanded="false" />
-            <element signature="e#8761#8762#0" expanded="false" />
-            <element signature="e#8798#8799#0" expanded="false" />
-            <element signature="e#8830#8831#0" expanded="false" />
-            <element signature="e#8881#8882#0" expanded="false" />
-            <element signature="e#8923#8924#0" expanded="false" />
-            <element signature="method#setHint#0;class#StoryStep#0" expanded="false" />
-            <element signature="e#9138#9139#0" expanded="false" />
-            <element signature="e#9165#9166#0" expanded="false" />
-            <element signature="method#getHint#0;class#StoryStep#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1467,27 +1271,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="34" column="139" lean-forward="true" selection-start-line="34" selection-start-column="139" selection-end-line="34" selection-end-column="139" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/FinalCompleter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="25" column="23" lean-forward="false" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Item.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-160">
+        <state relative-caret-position="2907">
           <caret line="382" column="34" lean-forward="false" selection-start-line="382" selection-start-column="34" selection-end-line="382" selection-end-column="34" />
           <folding>
             <element signature="method#Item#1;class#Item#0" expanded="false" />
@@ -1502,10 +1288,63 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1768">
+          <caret line="120" column="153" lean-forward="false" selection-start-line="120" selection-start-column="153" selection-end-line="120" selection-end-column="153" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/FinalCompleter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" column="23" lean-forward="false" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2023">
+          <caret line="203" column="65" lean-forward="false" selection-start-line="203" selection-start-column="65" selection-end-line="203" selection-end-column="65" />
+          <folding>
+            <element signature="docComment;class#StoryStep#0" expanded="false" />
+            <element signature="method#StoryStep#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#StoryStep#1;class#StoryStep#0" expanded="false" />
+            <element signature="method#StoryStep#2;class#StoryStep#0" expanded="false" />
+            <element signature="method#compareTo#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#addCondition#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#addConsequence#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#invokeConsequences#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#setHint#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#getHint#0;class#StoryStep#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="41" lean-forward="false" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="272" column="9" lean-forward="true" selection-start-line="272" selection-start-column="9" selection-end-line="272" selection-end-column="9" />
+        <state relative-caret-position="2805">
+          <caret line="245" column="5" lean-forward="false" selection-start-line="245" selection-start-column="5" selection-end-line="245" selection-end-column="5" />
           <folding>
             <element signature="method#removeWhiteSpace#0;class#Utility#0" expanded="false" />
             <element signature="method#pre_tokenise#0;class#Utility#0" expanded="false" />
@@ -1514,24 +1353,21 @@
             <element signature="method#addAorAn#0;class#Utility#0" expanded="false" />
             <element signature="method#isSingular#0;class#Utility#0" expanded="false" />
             <element signature="method#isAre#0;class#Utility#0" expanded="false" />
-            <element signature="method#dashedLine#0;class#Utility#0" expanded="false" />
+            <element signature="e#9926#9927#0" expanded="true" />
+            <element signature="e#9980#9981#0" expanded="true" />
+            <element signature="e#10089#10090#0" expanded="true" />
+            <element signature="method#volumeChangeMessage#0;class#Utility#0" expanded="false" />
             <element signature="method#joinArrays#0;class#Utility#0" expanded="false" />
+            <element signature="e#12795#12796#0" expanded="true" />
+            <element signature="e#12824#12825#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="53" column="90" lean-forward="true" selection-start-line="53" selection-start-column="90" selection-end-line="53" selection-end-column="90" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="283" column="56" lean-forward="false" selection-start-line="283" selection-start-column="56" selection-end-line="283" selection-end-column="56" />
+        <state relative-caret-position="17">
+          <caret line="302" column="83" lean-forward="false" selection-start-line="302" selection-start-column="83" selection-end-line="302" selection-end-column="83" />
           <folding>
             <element signature="docComment;class#Engine#0" expanded="false" />
             <element signature="e#3223#3224#0" expanded="true" />

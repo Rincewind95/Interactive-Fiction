@@ -99,11 +99,14 @@ public class Engine
             // start the game once the engine is loaded
             boolean gameRunning = true;
 
-            Utility.write(writer, Utility.tipMessage, transcriptWriter);
+            Utility.write(writer, Utility.getTipMessage(), transcriptWriter);
 
             Utility.write(writer, "\n"
                                   + welcome.getMsg() + "\n"
                                   + player.getLocation().getBrief() + "\n", transcriptWriter);
+
+            // set the initial logoutput
+            String logoutput = "";
 
             findroom.get(start_location_id).visit();
             // main input loop
@@ -141,6 +144,29 @@ public class Engine
                 Pair<response, String> out = executeCommand(command);
                 response resp = out.getKey();
                 String out_to_user = out.getValue();
+
+                if(doEvaluation)
+                {
+                    // first test if the command is the special invalidation command for the previous evaluation
+                    if (resp == response.invalidateprevious)
+                    {
+                        if(!logoutput.equals(""))
+                        {
+                            Utility.write(this.writer, Utility.invalidationSuccessful + "\n", transcriptWriter);
+                            logoutput = "";
+                        }
+                        else
+                        {
+                            Utility.write(this.writer, Utility.invalidationFailed + "\n", transcriptWriter);
+                        }
+                        continue;
+                    }
+                    else
+                    {
+                        logWriter.write(logoutput);
+                        logWriter.flush();
+                    }
+                }
 
                 // the command is valid so we add it to the list of previous commands
                 if (resp != Engine.response.badinput)
@@ -271,10 +297,10 @@ public class Engine
 
                 if(askForEvaluation && doEvaluation)
                 {
-
                     // prepare the initial logging message
-                    String logoutput = enhanced ? "type: ENHANCED" : "type: STANDARD";
+                    logoutput = enhanced ? "type: ENHANCED" : "type: STANDARD";
                     logoutput += "\ntimestamp: " + origtime;
+                    logoutput += "\nlocation:" + player.getLocation().getRoom_id();
                     logoutput += "\n> " + command.getOriginal() +
                                  "\ncommand: (" + command.getType().toString() + ")";
                     for(String arg : command.getArgs())
@@ -293,9 +319,7 @@ public class Engine
                     }
                     Utility.write(writer, Utility.successfulOptionReply + "\n", transcriptWriter);
                     logoutput += "evaluation: " + evaluation;
-                    logoutput += "\n" + Utility.dashedLine() + "\n";
-                    logWriter.write(logoutput);
-                    logWriter.flush();
+                    logoutput += "\n" + Utility.charLineOfLength("-", 40) + "\n";
                 }
 
             }
@@ -665,7 +689,7 @@ public class Engine
                 out = "Time passes.";
                 break;
             case help:
-                out = Utility.helpMessage;
+                out = Utility.getHelpMessage(doEvaluation);
                 resp = response.skip;
                 break;
             case hint:
@@ -705,6 +729,17 @@ public class Engine
             case exit:
                 out = "Game terminating...";
                 resp = response.exit;
+                break;
+            case invalidate:
+                if(doEvaluation)
+                {
+                    out = Utility.invalidationSuccessful + "\n";
+                    resp = resp.invalidateprevious;
+                }
+                else
+                {
+                    resp = response.badinput;
+                }
                 break;
             case badcomm:
                 resp = response.badinput;
@@ -974,7 +1009,7 @@ public class Engine
     // enumerates the possible response types which can be generated when processing user commands
     public enum response
     {
-        good, skip, badinput, load, save, restart, exit, takeall, dropall, removeall, examineall, examineinventory
+        good, skip, badinput, load, save, restart, exit, takeall, dropall, removeall, examineall, examineinventory, invalidateprevious
     }
 
     public boolean isEnhanced()

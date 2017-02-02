@@ -118,7 +118,7 @@ public class NLPparser
         oneArguments.put("examine", argType.item);
         oneArguments.put("move", argType.dir);
 
-        zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit", "inventory", "restart", "hint", "help"));
+        zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit", "inventory", "restart", "hint", "help", "invalidate"));
 
         zeroArgumentsynonyms = new HashMap<>();
         zeroArgumentsynonyms.put("brief", "brief");
@@ -129,6 +129,7 @@ public class NLPparser
         zeroArgumentsynonyms.put("restart", "restart");
         zeroArgumentsynonyms.put("hint", "hint");
         zeroArgumentsynonyms.put("help", "help");
+        zeroArgumentsynonyms.put("invalidate", "invalidate");
 
         dirMapping = new HashMap<>();
         dirMapping.put("north", "n");

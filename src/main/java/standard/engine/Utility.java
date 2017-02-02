@@ -9,10 +9,12 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
 import input.parser.NLPparser;
+import jline.Terminal;
 import jline.console.ConsoleReader;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Reader;
 import java.io.Writer;
 import java.util.*;
 
@@ -25,38 +27,56 @@ public class Utility
 
     public static final HashSet<String> theAlls;
 
+    private static ConsoleReader reader;
+
     public static final String helpMessage =
-            "[Tab]         - autocomplete, cycles through suggestions when pressed again\n" +
-            "[Shift]+[Tab] - autocomplete, returns to previous suggestion when pressed\n" +
-            "[Up]/[Down]   - navigates through previous responses\n" +
-            "use     <item>             - uses an item\n" +
+            "\n[Tab] ---------------------- autocomplete, cycles suggestions on repress\n" +
+            "[Shift]+[Tab] -------------- returns to previous suggestion when pressed\n" +
+            "[Up]/[Down] ---------------- navigates through previous responses\n" +
+            "use     <item> ------------- uses an item\n" +
             "use     <item> on   <item> - uses an item on another item\n" +
             "combine <item> with <item> - combines two items (ordering is irrelevant)\n" +
             "put     <item> in   <item> - adds an item to a container\n" +
             "remove  <item> from <item> - removes an item from a container\n" +
             "remove  all    from <item> - removes all of the containers contents\n" +
-            "take    <item>             - adds the item to your inventory\n" +
-            "take    all                - adds all items in the room to your inventory\n" +
-            "drop    <item>             - removes the item from your inventory\n" +
-            "drop    all                - removes all items from your inventory\n" +
-            "examine <item>             - gives the items description and contents\n" +
-            "examine all                - examines all items in current room\n" +
-            "examine inventory          - examines all items in your inventory\n" +
-            "move    <direction>        - moves the player north/east/south/west\n" +
-            "<special command>          - exact string of event triggering characters\n" +
-            "inventory - lists the items stored in your inventory\n" +
-            "look      - gives a rooms short description, its contents and its exits\n" +
-            "wait      - waits a unit of time\n" +
-            "hint      - gives useful tips with respect to current progress\n" +
-            "help      - prints the general help message\n" +
-            "brief     - prints a room's introductory message\n" +
-            "history   - presents a list of all previous successful user commands\n" +
-            "restart   - [CAUTION] restarts the game, and all progress is lost\n" +
-            "quit      - [CAUTION] exits the game, and all progress is lost\n" +
+            "take    <item> ------------- adds the item to your inventory\n" +
+            "take    all ---------------- adds all items in the room to your inventory\n" +
+            "drop    <item> ------------- removes the item from your inventory\n" +
+            "drop    all ---------------- removes all items from your inventory\n" +
+            "examine <item> ------------- gives the items description and contents\n" +
+            "examine all ---------------- examines all items in current room\n" +
+            "examine inventory ---------- examines all items in your inventory\n" +
+            "move    <direction> -------- moves the player north/east/south/west\n" +
+            "<special command> ---------- exact string of event triggering characters\n" +
+            "inventory ------------------ lists the items stored in your inventory\n" +
+            "look ----------------------- gives a rooms short description, its contents and its exits\n" +
+            "wait ----------------------- waits a unit of time\n" +
+            "hint ----------------------- gives useful tips with respect to current progress\n" +
+            "help ----------------------- prints the general help message\n" +
+            "brief ---------------------- prints a room's introductory message\n" +
+            "history -------------------- presents a list of all previous successful user commands\n" +
+            "restart -------------------- [CAUTION] restarts the game, and all progress is lost\n" +
+            "quit ----------------------- [CAUTION] exits the game, and all progress is lost\n" +
             "N.B. The list of responses given above is nothing more than a suggestion. " +
             "You can be creative with synonyms, but there is no guarantee that all synonym options will work.";
 
-    public static final String tipMessage ="------------- Tip: Type 'help' for a list of response suggestions -------------";
+    public static final String helpMessageAddition =
+            "\ninvalidate ----------------- [CAUTION] irreversibly invalidates only the last estimation\n" +
+            "Response usefulness options:\n" +
+            "(1 - Very Poor) (2 - Poor) (3 - Fair) (4 - Good) (5 - Very Good)";
+
+    public static String getHelpMessage(boolean doEvaluation)
+    {
+        String res = padBothSidesWithChar("gameplay mechanics", "_") + helpMessage;
+        if(doEvaluation)
+            res += "\n" + padBothSidesWithChar("estimation mechanics", "_") + helpMessageAddition;
+        return res;
+    }
+
+    public static String getTipMessage()
+    {
+        return padBothSidesWithChar(" Tip: Type 'help' for a list of response suggestions ", "-");
+    }
 
     private static final HashSet<Character> vowels;
     public static final HashMap<String, String> exitMap;
@@ -66,6 +86,8 @@ public class Utility
     public static final String invalidOptionReply;
     public static final String evaluationQuestion;
     public static final String successfulOptionReply;
+    public static final String invalidationSuccessful;
+    public static final String invalidationFailed;
 
     static
     {
@@ -104,6 +126,8 @@ public class Utility
         invalidOptionReply = "*Invalid estimation. Please select a number from the options below: *" +
                            "\n*(1 - Very Poor) (2 - Poor) (3 - Fair) (4 - Good) (5 - Very Good)   *";
         successfulOptionReply = "*Estimation recorded. Continuing...*";
+        invalidationSuccessful = "*Previous estimation successfully invalidated. Continuing...*";
+        invalidationFailed =     "*Invalidation failed. Previous estimation was already invalidated or does not exist. Continuing...*";
 
     }
 
@@ -213,9 +237,34 @@ public class Utility
         return res + input.substring(1);
     }
 
+    public static int getTerminalWidth()
+    {
+        return reader.getTerminal().getWidth();
+    }
+
     public static String dashedLine()
     {
-        return "-------------------------------------------------------------------------------";
+        return charLineOfLength("-", getTerminalWidth());
+    }
+
+    public static String charLineOfLength(String ch, int len)
+    {
+        String res = "";
+        for(int i = 0; i < len; i++)
+            res += ch;
+        return res;
+    }
+
+    public static String padBothSidesWithChar(String toWrap, String ch)
+    {
+        String res = "";
+        int lenTotal = getTerminalWidth();
+        int lenFir = (lenTotal-toWrap.length())/2;
+        int lenSec = lenFir >= 0 ? lenTotal - lenFir - toWrap.length() : 0;
+        for(int i = 0; i < lenFir; i++) res += ch;
+        res += toWrap;
+        for(int i = 0; i < lenSec; i++) res += ch;
+        return res;
     }
 
     public static String volumeChangeMessage(Item item, Item.Temperature finaltmp)
@@ -287,5 +336,10 @@ public class Utility
                 return true;
         }
         return false;
+    }
+
+    public static void setReader(ConsoleReader read)
+    {
+        reader = read;
     }
 }

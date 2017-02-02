@@ -192,7 +192,7 @@ public class Command
 
     public enum Type
     {
-        take, drop, use, useon, putin, remove, combine, inventory, examine, move, look, brief, wait, save, load, history, restart, exit, special, empty, badcomm, hint, help
+        take, drop, use, useon, putin, remove, combine, inventory, examine, move, look, brief, wait, save, load, history, restart, exit, special, empty, badcomm, hint, help, invalidate
     }
 
     public String cmdToString()

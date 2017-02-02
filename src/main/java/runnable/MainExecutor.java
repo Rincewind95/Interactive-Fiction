@@ -1,5 +1,7 @@
 package runnable;
 
+import jline.Terminal;
+import jline.TerminalFactory;
 import jline.console.ConsoleReader;
 import jline.console.completer.Completer;
 import standard.engine.Engine;
@@ -27,7 +29,9 @@ public class MainExecutor
             String trigger = null;
             boolean color = false;
 
+
             ConsoleReader reader = new ConsoleReader();
+            Utility.setReader(reader);
             reader.setPrompt("> ");
 
             String line;
