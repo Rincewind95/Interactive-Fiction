@@ -37,8 +37,10 @@ public class Engine
     private boolean askForEvaluation;                        // true if the current step will ask the player for evaluation
 
     private ConsoleReader reader;
+
     private PrintWriter writer;
     private Writer transcriptWriter;
+
     private Writer logWriter;
     private FinalCompleter completer;
     private ArrayList<String> command_suggestions;
@@ -116,13 +118,13 @@ public class Engine
                 // save the original timestamp
                 int origtime = time;
                 // update the enhanced/unenhanced engine state
-                if(alternate)
+                if (alternate)
                 {
                     // randomly select which response will be returned
                     Random rnd = new Random();
                     int value = rnd.nextInt(2);
 
-                    if(value == 0)
+                    if (value == 0)
                         enhanced = true;
                     else
                         enhanced = false;
@@ -167,6 +169,7 @@ public class Engine
                     {
                         logWriter.write(logoutput);
                         logWriter.flush();
+                        logoutput = "";
                     }
                 }
 
@@ -297,7 +300,7 @@ public class Engine
                 final_out_to_user = "\r\n" + final_out_to_user + "\r\n";
                 Utility.write(writer, final_out_to_user, transcriptWriter);
 
-                // test if an evaluation is needed
+                // do an evaluation if needed
                 if(askForEvaluation && doEvaluation)
                 {
                     int idx = Utility.wasImportant(command, this);
@@ -346,7 +349,6 @@ public class Engine
                         logoutput += "\r\n" + Utility.charLineOfLength("-", 40) + "\r\n";
                     }
                 }
-
             }
 
             reader.removeCompleter(completer);
@@ -1024,6 +1026,21 @@ public class Engine
     public NLPparser getParser()
     {
         return parser;
+    }
+
+    public PrintWriter getWriter()
+    {
+        return writer;
+    }
+
+    public Writer getTranscriptWriter()
+    {
+        return transcriptWriter;
+    }
+
+    public Writer getLogWriter()
+    {
+        return logWriter;
     }
 
     public void waitTime(int t)

@@ -18,6 +18,7 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -429,6 +430,16 @@ public class Utility
         return res;
     }
 
+    public static String currTime()
+    {
+
+        long timeNow = System.currentTimeMillis();
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss.SSS");
+        String date = DATE_FORMAT.format(timeNow);
+
+        return date;
+    }
+
     public static void write(PrintWriter writer, String out, Writer transwriter)
     {
         try
@@ -445,7 +456,7 @@ public class Utility
         String out = reader.readLine();
         try
         {
-            transwriter.write("\r\n-[" + time + "]-> " + out + "\r\n");
+            transwriter.write("\r\n[" + currTime() + ", " + time + "]-> " + out + "\r\n");
             transwriter.flush();
         } catch (Exception e) {}
         return out;
