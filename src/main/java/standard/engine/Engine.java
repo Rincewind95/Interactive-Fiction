@@ -101,9 +101,9 @@ public class Engine
 
             Utility.write(writer, Utility.getTipMessage(), transcriptWriter);
 
-            Utility.write(writer, "\n"
-                                  + welcome.getMsg() + "\n"
-                                  + player.getLocation().getBrief() + "\n", transcriptWriter);
+            Utility.write(writer, "\r\n"
+                                  + welcome.getMsg() + "\r\n"
+                                  + player.getLocation().getBrief() + "\r\n", transcriptWriter);
 
             // set the initial logoutput
             String logoutput = "";
@@ -152,12 +152,12 @@ public class Engine
                     {
                         if(!logoutput.equals(""))
                         {
-                            Utility.write(this.writer, Utility.invalidationSuccessful + "\n", transcriptWriter);
+                            Utility.write(this.writer, Utility.invalidationSuccessful + "\r\n", transcriptWriter);
                             logoutput = "";
                         }
                         else
                         {
-                            Utility.write(this.writer, Utility.invalidationFailed + "\n", transcriptWriter);
+                            Utility.write(this.writer, Utility.invalidationFailed + "\r\n", transcriptWriter);
                         }
                         continue;
                     }
@@ -180,13 +180,13 @@ public class Engine
                 // now we determine what to do next
                 if (resp == Engine.response.exit)
                 {
-                    out_to_user = "\n" + out_to_user + "\n";
+                    out_to_user = "\r\n" + out_to_user + "\r\n";
                     Utility.write(writer, out_to_user, transcriptWriter);
                     break;
                 }
                 else if (resp == response.restart)
                 {
-                    out_to_user = "\n" + out_to_user + "\n";
+                    out_to_user = "\r\n" + out_to_user + "\r\n";
                     Utility.write(writer, out_to_user, transcriptWriter);
                     reader.removeCompleter(completer);
                     return resp;
@@ -194,7 +194,7 @@ public class Engine
                 else if (resp == Engine.response.badinput ||
                         resp == Engine.response.skip)
                 {
-                    out_to_user = "\n" + out_to_user + "\n";
+                    out_to_user = "\r\n" + out_to_user + "\r\n";
                     Utility.write(writer, out_to_user, transcriptWriter);
                     continue;
                 }
@@ -248,7 +248,7 @@ public class Engine
                         lastCommand = curr;
                         // modify the engines internal state with the command and determine the outcome
                         if(!final_out_to_user.equals(""))
-                            final_out_to_user += "\n";
+                            final_out_to_user += "\r\n";
                         if(type == Command.Type.examine)
                             final_out_to_user += "-- " + item + ": ";
                         final_out_to_user += executeCommand(curr).getValue();
@@ -292,22 +292,22 @@ public class Engine
                         final_out_to_user = "I don't understand.";
                 }
 
-                final_out_to_user = "\n" + final_out_to_user + "\n";
+                final_out_to_user = "\r\n" + final_out_to_user + "\r\n";
                 Utility.write(writer, final_out_to_user, transcriptWriter);
 
                 if(askForEvaluation && doEvaluation)
                 {
                     // prepare the initial logging message
                     logoutput = enhanced ? "type: ENHANCED" : "type: STANDARD";
-                    logoutput += "\ntimestamp: " + origtime;
-                    logoutput += "\nlocation:" + player.getLocation().getRoom_id();
-                    logoutput += "\n> " + command.getOriginal() +
-                                 "\ncommand: (" + command.getType().toString() + ")";
+                    logoutput += "\r\ntimestamp: " + origtime;
+                    logoutput += "\r\nlocation:" + player.getLocation().getRoom_id();
+                    logoutput += "\r\n> " + command.getOriginal() +
+                                 "\r\ncommand: (" + command.getType().toString() + ")";
                     for(String arg : command.getArgs())
                     {
                         logoutput += " [" + arg + "]";
                     }
-                    logoutput += "\nresponse:" + final_out_to_user;
+                    logoutput += "\r\nresponse:" + final_out_to_user;
 
                     Utility.write(writer, Utility.evaluationQuestion, transcriptWriter);
 
@@ -317,9 +317,9 @@ public class Engine
                         Utility.write(writer, Utility.invalidOptionReply, transcriptWriter);
                         evaluation = Utility.readLn(reader, transcriptWriter, Integer.toString(origtime));
                     }
-                    Utility.write(writer, Utility.successfulOptionReply + "\n", transcriptWriter);
+                    Utility.write(writer, Utility.successfulOptionReply + "\r\n", transcriptWriter);
                     logoutput += "evaluation: " + evaluation;
-                    logoutput += "\n" + Utility.charLineOfLength("-", 40) + "\n";
+                    logoutput += "\r\n" + Utility.charLineOfLength("-", 40) + "\r\n";
                 }
 
             }
@@ -511,7 +511,7 @@ public class Engine
                                     if (enhanced)
                                     {
                                         if(!fitsvol)
-                                            out += "\n";
+                                            out += "\r\n";
                                         out += Utility.capitalise(Utility.addThe(fir.getIDWithTemp(enhanced))) + " " +
                                                 (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is" : "are") +
                                                 massOutput + "to be put into " + Utility.addThe(sec.getIDWithTemp(enhanced)) + ".";
@@ -665,7 +665,7 @@ public class Engine
                 resp = response.skip;
                 break;
             case restart:
-                out = "All unsaved progress is lost, game restarting...\n"
+                out = "All unsaved progress is lost, game restarting...\r\n"
                 +     Utility.dashedLine();
                 resp = response.restart;
                 break;
@@ -733,7 +733,7 @@ public class Engine
             case invalidate:
                 if(doEvaluation)
                 {
-                    out = Utility.invalidationSuccessful + "\n";
+                    out = Utility.invalidationSuccessful + "\r\n";
                     resp = resp.invalidateprevious;
                 }
                 else
@@ -748,7 +748,7 @@ public class Engine
 
         // write responses if the command was bad
         if (resp == response.badinput)
-            out = "I don't understand.";
+            out = "I don't understand your response.";
         return new Pair<>(resp, out);
     }
 
@@ -930,7 +930,7 @@ public class Engine
             hist += "Command history:";
             for (Pair<Command, Integer> com : prev_commands)
             {
-                hist += "\n> [" + com.getValue() + "] " + com.getKey().getOriginal();
+                hist += "\r\n> [" + com.getValue() + "] " + com.getKey().getOriginal();
                 dashcnt = Math.max(dashcnt, 5 + com.getValue().toString().length() + com.getKey().getOriginal().length());
             }
         }
@@ -939,7 +939,7 @@ public class Engine
             hist += "Command history is empty.";
             dashcnt = 31;
         }
-        hist += "\n";
+        hist += "\r\n";
         for(int i = 0; i < dashcnt; i++) hist += "-";
         return hist;
     }

@@ -30,46 +30,46 @@ public class Utility
     private static ConsoleReader reader;
 
     public static final String helpMessage =
-            "\n[Tab] ---------------------- autocomplete, cycles suggestions on repress\n" +
-            "[Shift]+[Tab] -------------- returns to previous suggestion when pressed\n" +
-            "[Up]/[Down] ---------------- navigates through previous responses\n" +
-            "use     <item> ------------- uses an item\n" +
-            "use     <item> on   <item> - uses an item on another item\n" +
-            "combine <item> with <item> - combines two items (ordering is irrelevant)\n" +
-            "put     <item> in   <item> - adds an item to a container\n" +
-            "remove  <item> from <item> - removes an item from a container\n" +
-            "remove  all    from <item> - removes all of the containers contents\n" +
-            "take    <item> ------------- adds the item to your inventory\n" +
-            "take    all ---------------- adds all items in the room to your inventory\n" +
-            "drop    <item> ------------- removes the item from your inventory\n" +
-            "drop    all ---------------- removes all items from your inventory\n" +
-            "examine <item> ------------- gives the items description and contents\n" +
-            "examine all ---------------- examines all items in current room\n" +
-            "examine inventory ---------- examines all items in your inventory\n" +
-            "move    <direction> -------- moves the player north/east/south/west\n" +
-            "<special command> ---------- exact string of event triggering characters\n" +
-            "inventory ------------------ lists the items stored in your inventory\n" +
-            "look ----------------------- gives a rooms short description, its contents and its exits\n" +
-            "wait ----------------------- waits a unit of time\n" +
-            "hint ----------------------- gives useful tips with respect to current progress\n" +
-            "help ----------------------- prints the general help message\n" +
-            "brief ---------------------- prints a room's introductory message\n" +
-            "history -------------------- presents a list of all previous successful user commands\n" +
-            "restart -------------------- [CAUTION] restarts the game, and all progress is lost\n" +
-            "quit ----------------------- [CAUTION] exits the game, and all progress is lost\n" +
+            "\r\n[Tab] ---------------------- autocomplete, cycles suggestions on repress\r\n" +
+            "[Shift]+[Tab] -------------- returns to previous suggestion when pressed\r\n" +
+            "[Up]/[Down] ---------------- navigates through previous responses\r\n" +
+            "use     <item> ------------- uses an item\r\n" +
+            "use     <item> on   <item> - uses an item on another item\r\n" +
+            "combine <item> with <item> - combines two items (ordering is irrelevant)\r\n" +
+            "put     <item> in   <item> - adds an item to a container\r\n" +
+            "remove  <item> from <item> - removes an item from a container\r\n" +
+            "remove  all    from <item> - removes all of the containers contents\r\n" +
+            "take    <item> ------------- adds the item to your inventory\r\n" +
+            "take    all ---------------- adds all items in the room to your inventory\r\n" +
+            "drop    <item> ------------- removes the item from your inventory\r\n" +
+            "drop    all ---------------- removes all items from your inventory\r\n" +
+            "examine <item> ------------- gives the items description and contents\r\n" +
+            "examine all ---------------- examines all items in current room\r\n" +
+            "examine inventory ---------- examines all items in your inventory\r\n" +
+            "move    <direction> -------- moves the player north/east/south/west\r\n" +
+            "<special command> ---------- exact string of event triggering characters\r\n" +
+            "inventory ------------------ lists the items stored in your inventory\r\n" +
+            "look ----------------------- gives a rooms short description, its contents and its exits\r\n" +
+            "wait ----------------------- waits a unit of time\r\n" +
+            "hint ----------------------- gives useful tips with respect to current progress\r\n" +
+            "help ----------------------- prints the general help message\r\n" +
+            "brief ---------------------- prints a room's introductory message\r\n" +
+            "history -------------------- presents a list of all previous successful user commands\r\n" +
+            "restart -------------------- [CAUTION] restarts the game, and all progress is lost\r\n" +
+            "quit ----------------------- [CAUTION] exits the game, and all progress is lost\r\n" +
             "N.B. The list of responses given above is nothing more than a suggestion. " +
             "You can be creative with synonyms, but there is no guarantee that all synonym options will work.";
 
     public static final String helpMessageAddition =
-            "\ninvalidate ----------------- [CAUTION] irreversibly invalidates only the last estimation\n" +
-            "Response usefulness options:\n" +
+            "invalidate ----------------- [CAUTION] irreversibly invalidates only the last estimation\r\n" +
+            "Response usefulness options:\r\n" +
             "(1 - Very Poor) (2 - Poor) (3 - Fair) (4 - Good) (5 - Very Good)";
 
     public static String getHelpMessage(boolean doEvaluation)
     {
-        String res = padBothSidesWithChar("gameplay mechanics", "_") + helpMessage;
+        String res = padBothSidesWithChar("gameplay mechanics", "_") + "\r\n" + helpMessage;
         if(doEvaluation)
-            res += "\n" + padBothSidesWithChar("estimation mechanics", "_") + helpMessageAddition;
+            res += "\r\n" + padBothSidesWithChar("estimation mechanics", "_") + helpMessageAddition;
         return res;
     }
 
@@ -122,9 +122,9 @@ public class Utility
         evaluationOptions.add("5");
 
         evaluationQuestion = "*Please estimate the usefulness of this response. Options:       *" +
-                           "\n*(1 - Very Poor) (2 - Poor) (3 - Fair) (4 - Good) (5 - Very Good)*";
+                           "\r\n*(1 - Very Poor) (2 - Poor) (3 - Fair) (4 - Good) (5 - Very Good)*";
         invalidOptionReply = "*Invalid estimation. Please select a number from the options below: *" +
-                           "\n*(1 - Very Poor) (2 - Poor) (3 - Fair) (4 - Good) (5 - Very Good)   *";
+                           "\r\n*(1 - Very Poor) (2 - Poor) (3 - Fair) (4 - Good) (5 - Very Good)   *";
         successfulOptionReply = "*Estimation recorded. Continuing...*";
         invalidationSuccessful = "*Previous estimation successfully invalidated. Continuing...*";
         invalidationFailed =     "*Invalidation failed. Previous estimation was already invalidated or does not exist. Continuing...*";
@@ -267,12 +267,109 @@ public class Utility
         return res;
     }
 
+    public static String[] getAllLines(String str)
+    {
+        // remove the extra carriage returns
+        String tmp = str.replace("\r\n", "\n");
+        return tmp.split("\\n", -1);
+    }
+
+    public static int lastIndexBefore(String str, char search, int maxLen)
+    {
+        int res = 0;
+
+        if(maxLen >= str.length())
+            maxLen = str.length() - 1;
+        else if(maxLen < 0)
+            return -1;
+
+        for(res = maxLen; res >= 0; res--)
+        {
+            if(str.charAt(res) == search)
+            {
+                break;
+            }
+        }
+
+        return res;
+    }
+
+    public static String chopToTerminalWidth(String str)
+    {
+        return chopToFitWidth(str, getTerminalWidth());
+    }
+
+    public static String chopToFitWidth(String str, int width)
+    {
+        String[] allLines = getAllLines(str);
+        String res = "";
+        boolean firstIteration = true;
+        for(String line : allLines)
+        {
+            if(line.length() > width)
+            {
+                String chopped = "";
+                boolean notDone = true;
+                while(notDone)
+                {
+                    if(line.length() < width)
+                    {
+                        // nothing left to chop, write whats left to result
+                        chopped += line;
+                        notDone = false;
+                    }
+                    else
+                    {
+                        int endIdx = 0;
+                        if(line.charAt(width) == ' ')
+                        {
+                            endIdx = width;
+                        }
+                        else
+                        {
+                            endIdx = lastIndexBefore(line, ' ', width);
+                        }
+
+                        if(endIdx == -1)
+                        {
+                            // the line is either a single word or does not conatain " ", so we cannot chop the string correctly
+                            return str;
+                        }
+
+                        String prefix = line.substring(0, endIdx);
+                        chopped += prefix + "\r\n";
+                        int startIdx = endIdx+1;
+                        if(line.startsWith(" ", startIdx))
+                        {
+                            for(; startIdx < line.length() && line.charAt(startIdx) == ' '; startIdx++);
+                        }
+                        if(startIdx < line.length())
+                            line = line.substring(startIdx);
+                        else
+                        {
+                            // there is only whitespace left in the string, so we ignore it
+                            notDone = false;
+                        }
+
+                    }
+                }
+                line = chopped;
+            }
+            if(!firstIteration)
+                res += "\r\n";
+            else
+                firstIteration = false;
+            res += line;
+        }
+        return res;
+    }
+
     public static String volumeChangeMessage(Item item, Item.Temperature finaltmp)
     {
         String out = "";
         if (finaltmp != item.getTemperature())
         {
-            out += ".\nThe volume of " + Utility.addThe(item.getItem_id());
+            out += ".\r\nThe volume of " + Utility.addThe(item.getItem_id());
             if (finaltmp.ordinal() > item.getTemperature().ordinal())
                 out += " has increased to ";
             else
@@ -311,7 +408,7 @@ public class Utility
             transwriter.write(out);
             transwriter.flush();
         } catch (Exception e) {}
-        writer.println(out);
+        writer.println(chopToTerminalWidth(out));
         writer.flush();
     }
 
