@@ -9,6 +9,7 @@ import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
 import input.parser.NLPparser;
+import javafx.util.Pair;
 import jline.Terminal;
 import jline.console.ConsoleReader;
 
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -23,71 +25,27 @@ import java.util.*;
  */
 public class Utility
 {
-    private static String[] special_chars = {"\\(", "\\)", "\\[", "\\]", "\\{", "\\}", "\\\"", ";"};
-
     public static final HashSet<String> theAlls;
-
     private static ConsoleReader reader;
 
-    public static final String helpMessage =
-            "\r\n[Tab] ---------------------- autocomplete, cycles suggestions on repress\r\n" +
-            "[Shift]+[Tab] -------------- returns to previous suggestion when pressed\r\n" +
-            "[Up]/[Down] ---------------- navigates through previous responses\r\n" +
-            "use     <item> ------------- uses an item\r\n" +
-            "use     <item> on   <item> - uses an item on another item\r\n" +
-            "combine <item> with <item> - combines two items (ordering is irrelevant)\r\n" +
-            "put     <item> in   <item> - adds an item to a container\r\n" +
-            "remove  <item> from <item> - removes an item from a container\r\n" +
-            "remove  all    from <item> - removes all of the containers contents\r\n" +
-            "take    <item> ------------- adds the item to your inventory\r\n" +
-            "take    all ---------------- adds all items in the room to your inventory\r\n" +
-            "drop    <item> ------------- removes the item from your inventory\r\n" +
-            "drop    all ---------------- removes all items from your inventory\r\n" +
-            "examine <item> ------------- gives the items description and contents\r\n" +
-            "examine all ---------------- examines all items in current room\r\n" +
-            "examine inventory ---------- examines all items in your inventory\r\n" +
-            "move    <direction> -------- moves the player north/east/south/west\r\n" +
-            "<special command> ---------- exact string of event triggering characters\r\n" +
-            "inventory ------------------ lists the items stored in your inventory\r\n" +
-            "look ----------------------- gives a rooms short description, its contents and its exits\r\n" +
-            "wait ----------------------- waits a unit of time\r\n" +
-            "hint ----------------------- gives useful tips with respect to current progress\r\n" +
-            "help ----------------------- prints the general help message\r\n" +
-            "brief ---------------------- prints a room's introductory message\r\n" +
-            "history -------------------- presents a list of all previous successful user commands\r\n" +
-            "restart -------------------- [CAUTION] restarts the game, and all progress is lost\r\n" +
-            "quit ----------------------- [CAUTION] exits the game, and all progress is lost\r\n" +
-            "N.B. The list of responses given above is nothing more than a suggestion. " +
-            "You can be creative with synonyms, but there is no guarantee that all synonym options will work.";
-
-    public static final String helpMessageAddition =
-            "invalidate ----------------- [CAUTION] irreversibly invalidates only the last estimation\r\n" +
-            "Response usefulness options:\r\n" +
-            "(1 - Very Poor) (2 - Poor) (3 - Fair) (4 - Good) (5 - Very Good)";
-
-    public static String getHelpMessage(boolean doEvaluation)
-    {
-        String res = padBothSidesWithChar("gameplay mechanics", "_") + "\r\n" + helpMessage;
-        if(doEvaluation)
-            res += "\r\n" + padBothSidesWithChar("estimation mechanics", "_") + helpMessageAddition;
-        return res;
-    }
-
-    public static String getTipMessage()
-    {
-        return padBothSidesWithChar(" Tip: Type 'help' for a list of response suggestions ", "-");
-    }
-
+    private static String[] special_chars = {"\\(", "\\)", "\\[", "\\]", "\\{", "\\}", "\\\"", ";"};
     private static final HashSet<Character> vowels;
     public static final HashMap<String, String> exitMap;
     public static final ArrayList<String> commands_list;
     public static final ArrayList<String> connectors_list;
+
     public static final HashSet<String> evaluationOptions;
     public static final String invalidOptionReply;
     public static final String evaluationQuestion;
     public static final String successfulOptionReply;
     public static final String invalidationSuccessful;
     public static final String invalidationFailed;
+    public static final String helpMessageAddition;
+
+    public static final ArrayList<ImportantCommand> importantCommands;
+    public static final int percentageThreshold;
+
+    public static final String helpMessage;
 
     static
     {
@@ -121,14 +79,84 @@ public class Utility
         evaluationOptions.add("4");
         evaluationOptions.add("5");
 
-        evaluationQuestion = "*Please estimate the usefulness of this response. Options:       *" +
-                           "\r\n*(1 - Very Poor) (2 - Poor) (3 - Fair) (4 - Good) (5 - Very Good)*";
-        invalidOptionReply = "*Invalid estimation. Please select a number from the options below: *" +
-                           "\r\n*(1 - Very Poor) (2 - Poor) (3 - Fair) (4 - Good) (5 - Very Good)   *";
-        successfulOptionReply = "*Estimation recorded. Continuing...*";
-        invalidationSuccessful = "*Previous estimation successfully invalidated. Continuing...*";
-        invalidationFailed =     "*Invalidation failed. Previous estimation was already invalidated or does not exist. Continuing...*";
+        evaluationQuestion = "*I feel this response helps me advance the game.                                                         *" +
+                         "\r\n*(1 - Strongly disagree) (2 - Disagree) (3 - Neither agree nor disagree) (4 - Agree) (5 - Strongly agree)*";
+        invalidOptionReply = "*Invalid entry. Please select a number from the options below:                                           *" +
+                         "\r\n*(1 - Strongly disagree) (2 - Disagree) (3 - Neither agree nor disagree) (4 - Agree) (5 - Strongly agree)*";
+        successfulOptionReply =  "*Entry recorded. Continuing...*";
+        invalidationSuccessful = "*Previous entry successfully invalidated. Continuing...*";
+        invalidationFailed =     "*Invalidation failed. Previous entry was already invalidated or does not exist. Continuing...*";
 
+        helpMessage  =
+            "\r\n[Tab] ---------------------- autocomplete, cycles suggestions on repress\r\n" +
+                "[Shift]+[Tab] -------------- returns to previous suggestion when pressed\r\n" +
+                "[Up]/[Down] ---------------- navigates through previous responses\r\n" +
+                "use     <item> ------------- uses an item\r\n" +
+                "use     <item> on   <item> - uses an item on another item\r\n" +
+                "combine <item> with <item> - combines two items (ordering is irrelevant)\r\n" +
+                "put     <item> in   <item> - adds an item to a container\r\n" +
+                "remove  <item> from <item> - removes an item from a container\r\n" +
+                "remove  all    from <item> - removes all of the containers contents\r\n" +
+                "take    <item> ------------- adds the item to your inventory\r\n" +
+                "take    all ---------------- adds all items in the room to your inventory\r\n" +
+                "drop    <item> ------------- removes the item from your inventory\r\n" +
+                "drop    all ---------------- removes all items from your inventory\r\n" +
+                "examine <item> ------------- gives the items description and contents\r\n" +
+                "examine all ---------------- examines all items in current room\r\n" +
+                "examine inventory ---------- examines all items in your inventory\r\n" +
+                "move    <direction> -------- moves the player north/east/south/west\r\n" +
+                "<special command> ---------- exact string of event triggering characters\r\n" +
+                "inventory ------------------ lists the items stored in your inventory\r\n" +
+                "look ----------------------- gives a rooms short description, its contents and its exits\r\n" +
+                "wait ----------------------- waits a unit of time\r\n" +
+                "hint ----------------------- gives useful tips with respect to current progress\r\n" +
+                "help ----------------------- prints the general help message\r\n" +
+                "brief ---------------------- prints a room's introductory message\r\n" +
+                "history -------------------- presents a list of all previous successful user commands\r\n" +
+                "restart -------------------- [CAUTION] restarts the game, and all progress is lost\r\n" +
+                "quit ----------------------- [CAUTION] exits the game, and all progress is lost\r\n" +
+                "N.B. The list of responses given above is nothing more than a suggestion. " +
+                "You can be creative with synonyms, but there is no guarantee that all synonym options will work.";
+        helpMessageAddition =
+                "invalidate ----------------- [CAUTION] irreversibly invalidates only the last entry\r\n" +
+                "Question format:\r\n"
+                + evaluationQuestion;
+
+        percentageThreshold = 15; // in percent
+        importantCommands = new ArrayList<>();
+        importantCommands.add(new ImportantCommand(new Command(Command.Type.putin, new ArrayList<>(Arrays.asList("book", "wide bookshelf slot"))),
+                                                   new HashSet<>(Arrays.asList(
+                                                   new Condition("isnotfrozen", new ArrayList<>(Arrays.asList("book")))
+                                                   ))
+                                                   ));
+
+    }
+
+    public static int wasImportant(Command command, Engine eng)
+    {
+        int index = 0;
+        for(; index < importantCommands.size(); index++)
+        {
+            ImportantCommand curr = importantCommands.get(index);
+            if(curr.wasExecuted(command, eng) && !curr.wasTriggered())
+            {
+                return index;
+            }
+        }
+        return -1;
+    }
+
+    public static String getHelpMessage(boolean doEvaluation)
+    {
+        String res = padBothSidesWithChar("gameplay mechanics", "_") + "\r\n" + helpMessage;
+        if(doEvaluation)
+            res += "\r\n" + padBothSidesWithChar("estimation mechanics", "_") + helpMessageAddition;
+        return res;
+    }
+
+    public static String getTipMessage()
+    {
+        return padBothSidesWithChar(" Tip: Type 'help' for a list of response suggestions ", "-");
     }
 
     public static String removeWhiteSpace(String input)

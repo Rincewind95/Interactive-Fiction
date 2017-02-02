@@ -108,6 +108,7 @@ public class Engine
             // set the initial logoutput
             String logoutput = "";
 
+            askForEvaluation = false;
             findroom.get(start_location_id).visit();
             // main input loop
             while (gameRunning)
@@ -128,6 +129,7 @@ public class Engine
                 }
 
                 // update the request for evaluation
+                boolean evaluationPending = askForEvaluation;
                 askForEvaluation = false;
 
                 updateItemSuggestions();
@@ -145,7 +147,7 @@ public class Engine
                 response resp = out.getKey();
                 String out_to_user = out.getValue();
 
-                if(doEvaluation)
+                if(doEvaluation && evaluationPending)
                 {
                     // first test if the command is the special invalidation command for the previous evaluation
                     if (resp == response.invalidateprevious)
@@ -295,31 +297,54 @@ public class Engine
                 final_out_to_user = "\r\n" + final_out_to_user + "\r\n";
                 Utility.write(writer, final_out_to_user, transcriptWriter);
 
+                // test if an evaluation is needed
                 if(askForEvaluation && doEvaluation)
                 {
-                    // prepare the initial logging message
-                    logoutput = enhanced ? "type: ENHANCED" : "type: STANDARD";
-                    logoutput += "\r\ntimestamp: " + origtime;
-                    logoutput += "\r\nlocation:" + player.getLocation().getRoom_id();
-                    logoutput += "\r\n> " + command.getOriginal() +
-                                 "\r\ncommand: (" + command.getType().toString() + ")";
-                    for(String arg : command.getArgs())
+                    int idx = Utility.wasImportant(command, this);
+                    if(idx >= 0)
                     {
-                        logoutput += " [" + arg + "]";
+                        // always ask for opinion on the first instance of the important commands
+                        // and then let it behave like the rest
+                        Utility.importantCommands.get(idx).trigger();
                     }
-                    logoutput += "\r\nresponse:" + final_out_to_user;
-
-                    Utility.write(writer, Utility.evaluationQuestion, transcriptWriter);
-
-                    String evaluation = Utility.readLn(reader, transcriptWriter, Integer.toString(origtime));
-                    while(!Utility.evaluationOptions.contains(evaluation))
+                    else
                     {
-                        Utility.write(writer, Utility.invalidOptionReply, transcriptWriter);
-                        evaluation = Utility.readLn(reader, transcriptWriter, Integer.toString(origtime));
+                        Random rnd = new Random();
+                        int prob = rnd.nextInt(100);
+                        if (prob >= Utility.percentageThreshold)
+                        {
+                            // only ask for evaluation in 15% of normal cases
+                            askForEvaluation = false;
+                            logoutput = "";
+                        }
                     }
-                    Utility.write(writer, Utility.successfulOptionReply + "\r\n", transcriptWriter);
-                    logoutput += "evaluation: " + evaluation;
-                    logoutput += "\r\n" + Utility.charLineOfLength("-", 40) + "\r\n";
+
+                    if(askForEvaluation)
+                    {
+                        // prepare the initial logging message
+                        logoutput = enhanced ? "type: ENHANCED" : "type: STANDARD";
+                        logoutput += "\r\ntimestamp: " + origtime;
+                        logoutput += "\r\nlocation:" + player.getLocation().getRoom_id();
+                        logoutput += "\r\n> " + command.getOriginal() +
+                                "\r\ncommand: (" + command.getType().toString() + ")";
+                        for(String arg : command.getArgs())
+                        {
+                            logoutput += " [" + arg + "]";
+                        }
+                        logoutput += "\r\nresponse:" + final_out_to_user;
+
+                        Utility.write(writer, Utility.evaluationQuestion, transcriptWriter);
+
+                        String evaluation = Utility.readLn(reader, transcriptWriter, Integer.toString(origtime));
+                        while(!Utility.evaluationOptions.contains(evaluation))
+                        {
+                            Utility.write(writer, Utility.invalidOptionReply, transcriptWriter);
+                            evaluation = Utility.readLn(reader, transcriptWriter, Integer.toString(origtime));
+                        }
+                        Utility.write(writer, Utility.successfulOptionReply + "\r\n", transcriptWriter);
+                        logoutput += "evaluation: " + evaluation;
+                        logoutput += "\r\n" + Utility.charLineOfLength("-", 40) + "\r\n";
+                    }
                 }
 
             }

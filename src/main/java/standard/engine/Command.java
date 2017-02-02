@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Command issues by user on the command line
  */
-public class Command
+public class Command implements Comparable
 {
     private Type type;
     private ArrayList<String> args;
@@ -29,6 +29,13 @@ public class Command
         this.type = type;
         this.args = args;
         this.original = original;
+    }
+
+    public Command(Type type, ArrayList<String> args)
+    {
+        this.type = type;
+        this.args = args;
+        this.original = "";
     }
 
     public Command(String input)
@@ -215,5 +222,32 @@ public class Command
     public ArrayList<String> getArgs()
     {
         return args;
+    }
+
+    @Override
+    public int compareTo(Object o)
+    {
+        Command other = (Command) o;
+        if(!type.equals(other.type))
+        {
+            return type.compareTo(other.type);
+        }
+        int i;
+        for(i = 0; i < args.size() && i < other.args.size(); i++)
+        {
+            if(!(args.get(i).equals(other.args.get(i))))
+                return args.get(i).compareTo(other.args.get(i));
+        }
+        if(i < args.size())
+            return 1;
+        if(i < other.args.size())
+            return -1;
+        return 0;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        return this.compareTo(obj) == 0;
     }
 }
