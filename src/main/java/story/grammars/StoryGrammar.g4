@@ -33,11 +33,13 @@ INVENTORY: '_inv';       // if the item is in inventory
 PRODUCED: '_prod';       // if the item is not yet produced (is not in game yet)
 IN_ROOM: '_inroom';      // if the item is in a room
 IN_CONTAINER: '_incont'; // if the item is in a container
+VALUE: NUMERIC;          // the general numeric value field
 // volume related
-VOLUME: NUMERIC;         // the volume of the item
+VOLUMEID: '_vol';        // volume identifier
 IS_CONTAINER: '_iscont'; // item is a container type
 IS_ITEM: '_isitem';      // item is of item type
 // temperature related
+TEMPID: '_temp';         // temperature identifier
 // temperature levels
 HOT: '_hot';
 WARM: '_warm';
@@ -48,7 +50,7 @@ FROZEN: '_frozen';
 VARIABLE: '_variable';   // if the temperature is variable
 CONSTANT: '_constant';   // if the temperature is constant
 // mass related
-MASS: OPEN_PAREN_CURLY NUMERIC CLOS_PAREN_CURLY;         // the volume of the item
+MASSID: '_mass';         // mass identifier
 MIN: '_min';
 MAX: '_max';
 EQUAL: '_equal';
@@ -132,7 +134,29 @@ brief: message_text
 description: message_text
            | message_id;
 
-item: ITEM_ OPEN_PAREN_CURLY item_id SEMICOLON mobility SEMICOLON location SEMICOLON VOLUME SEMICOLON itemtype SEMICOLON mass_field SEMICOLON temp_level SEMICOLON temp_variability SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
+/*
+_item
+{
+	[massive oakwood door];
+	_fixed;
+	_inroom [dining room];
+	_isitem;
+	_vol 20;
+	_mass _surpress {10000};
+	_temp _normal, _constant;
+"Door.";
+}
+
+*/
+
+item: ITEM_
+      OPEN_PAREN_CURLY
+          item_id SEMICOLON
+          mobility SEMICOLON
+          location SEMICOLON
+          parameter_fields
+          description SEMICOLON
+      CLOS_PAREN_CURLY;
 
 mobility: TAKEABLE
         | FIXED;
@@ -142,17 +166,26 @@ location: IN_ROOM room_id
         | PRODUCED
         | IN_CONTAINER item_id;
 
+itemtype: IS_CONTAINER COMMA holding_type COMMA holding_mass
+        | IS_ITEM;
+
+parameter_fields: (itemtype SEMICOLON | )
+                  (volume_field SEMICOLON | )
+                  (mass_field SEMICOLON | )
+                  (temp_field SEMICOLON | );
+
+volume_field: VOLUMEID VALUE;
+
 holding_type: MIN
             | MAX
             | EQUAL;
 
-holding_mass: MASS;
+holding_mass: VALUE;
 
-itemtype: IS_CONTAINER COMMA holding_type COMMA holding_mass
-        | IS_ITEM;
+mass_field: MASSID SURPRESS VALUE
+          | MASSID VALUE;
 
-mass_field: SURPRESS MASS
-          | MASS;
+temp_field: TEMPID temp_level COMMA temp_variability;
 
 temp_level: HOT
           | WARM

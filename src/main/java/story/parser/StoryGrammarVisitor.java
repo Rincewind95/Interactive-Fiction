@@ -113,6 +113,24 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLocation(StoryGrammarParser.LocationContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#itemtype}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitItemtype(StoryGrammarParser.ItemtypeContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#parameter_fields}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParameter_fields(StoryGrammarParser.Parameter_fieldsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#volume_field}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVolume_field(StoryGrammarParser.Volume_fieldContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#holding_type}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -125,17 +143,17 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitHolding_mass(StoryGrammarParser.Holding_massContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link StoryGrammarParser#itemtype}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitItemtype(StoryGrammarParser.ItemtypeContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#mass_field}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitMass_field(StoryGrammarParser.Mass_fieldContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#temp_field}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTemp_field(StoryGrammarParser.Temp_fieldContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#temp_level}.
 	 * @param ctx the parse tree

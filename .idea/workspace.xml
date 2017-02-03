@@ -11,65 +11,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Condition$1.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Condition$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Condition$CondType.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Condition$CondType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Condition.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Condition.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarLexer.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarLexer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$BriefContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$BriefContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConditionContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConditionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConditionsContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConditionsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConsequenceContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConsequenceContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConsequencesContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ConsequencesContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$DescriptionContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$DescriptionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$DirectionContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$DirectionContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_cndContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_cndContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_cnd_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_cnd_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_consContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_consContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_cons_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Double_arg_cons_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ExitContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ExitContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ExitsContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ExitsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Four_arg_consContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Four_arg_consContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Four_arg_cons_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Four_arg_cons_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Gate_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Gate_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$HintContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$HintContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Holding_massContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Holding_massContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Holding_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Holding_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ItemContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ItemContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Item_idContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Item_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ItemtypeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$ItemtypeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Level_idContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Level_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$LocationContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$LocationContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Mass_fieldContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Mass_fieldContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$MessageContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$MessageContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Message_idContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Message_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Message_textContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Message_textContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$MobilityContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$MobilityContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$No_arg_consContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$No_arg_consContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Required_stepsContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Required_stepsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$RoomContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$RoomContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Room_idContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Room_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_cndContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_cndContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_cnd_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_cnd_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_consContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_consContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_cons_typeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Single_arg_cons_typeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$SpecialContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$SpecialContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Special_idContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Special_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$StepContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$StepContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Step_beforeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Step_beforeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Step_idContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Step_idContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Story_elementsContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Story_elementsContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Temp_levelContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Temp_levelContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Temp_variabilityContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$Temp_variabilityContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$WelcomeContext.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser$WelcomeContext.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser.class" afterPath="$PROJECT_DIR$/target/classes/story/parser/StoryGrammarParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java" afterPath="$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Condition.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Condition.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/compiler/StoryTreeVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/story/compiler/StoryTreeVisitor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" afterPath="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammar.tokens" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammar.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarBaseListener.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarBaseListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarBaseVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarBaseVisitor.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarLexer.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarLexer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarLexer.tokens" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarLexer.tokens" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarListener.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarListener.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarParser.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarParser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarVisitor.java" />
     </list>
     <ignored path="InteractiveFiction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,6 +37,26 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="StoryGrammar.g4" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="287">
+                    <caret line="170" column="0" lean-forward="true" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="InteractiveFiction" />
@@ -94,7 +66,7 @@
       <file leaf-file-name="Engine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
+            <state relative-caret-position="552">
               <caret line="171" column="39" lean-forward="false" selection-start-line="171" selection-start-column="39" selection-end-line="171" selection-end-column="39" />
               <folding>
                 <element signature="docComment;class#Engine#0" expanded="false" />
@@ -139,16 +111,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StoryGrammar.g4" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Consequence.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Consequence.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -174,16 +136,67 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
               <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding />
+              <folding>
+                <marker date="1486157105229" expanded="true" signature="6615:6645" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="6647:6788" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="6867:6897" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="6899:7040" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="7131:7161" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="7163:7304" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="7383:7413" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="7415:7556" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="7629:7659" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="7661:7802" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="7875:7905" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="7907:8048" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="8115:8145" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="8147:8288" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="8355:8385" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="8387:8528" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="8609:8639" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="8641:8782" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="8869:8899" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="8901:9042" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="9121:9151" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="9153:9294" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="9371:9401" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="9403:9544" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="9631:9661" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="9663:9804" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="9901:9931" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="9933:10074" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="10161:10191" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="10193:10334" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="10431:10461" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="10463:10604" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="10687:10717" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="10719:10860" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="10941:10971" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="10973:11114" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="11195:11225" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="11227:11368" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="11457:11487" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="11489:11630" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="11729:11759" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="11761:11902" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="11991:12021" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="12023:12164" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="12263:12293" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="12295:12436" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="12521:12551" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="12553:12694" ph="/**...*/" />
+                <marker date="1486157105229" expanded="true" signature="12789:12819" ph="{...}" />
+                <marker date="1486157105229" expanded="true" signature="12821:12962" ph="/**...*/" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StoryTreeVisitor.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StoryTreeVisitor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/story/compiler/StoryTreeVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2924">
-              <caret line="253" column="22" lean-forward="false" selection-start-line="253" selection-start-column="13" selection-end-line="253" selection-end-column="22" />
+            <state relative-caret-position="-1298">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#StoryTreeVisitor#0" expanded="false" />
                 <element signature="method#visitMessage#0;class#StoryTreeVisitor#0" expanded="false" />
@@ -268,8 +281,8 @@
       <find>\r\n</find>
       <find>\n</find>
       <find>hasConditionsSatisfied</find>
-      <find>write</find>
       <find>condition</find>
+      <find>write</find>
     </findStrings>
     <replaceStrings>
       <replace>warm</replace>
@@ -333,7 +346,6 @@
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Room.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/story/compiler/StoryLinker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/story/compiler/StoryTreeVisitor.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/FinalCompleter.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Item.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java" />
@@ -343,8 +355,9 @@
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Condition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" />
         <option value="$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java" />
+        <option value="$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4" />
+        <option value="$PROJECT_DIR$/src/main/java/story/compiler/StoryTreeVisitor.java" />
       </list>
     </option>
   </component>
@@ -659,7 +672,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="D:/!!!M/!MILOS/Cambridge/Course materials/Part II/Lent/Advanced Graphics/Teaching/AdvGraph1617/OpenGL Demos/.project" />
+    <property name="last_opened_file_path" value="D:/!!!M/!MILOS/Cambridge/Part II project Interactive Fiction/Jars/Study/results_and_data/test_story.txt" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="project.structure.last.edited" value="Problems" />
@@ -1060,7 +1073,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18869936" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4767064" sideWeight="0.5042644" order="12" side_tool="false" content_ui="tabs" x="-237" y="994" width="1876" height="300" />
+      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5915493" sideWeight="0.5042644" order="12" side_tool="false" content_ui="tabs" x="-237" y="994" width="1876" height="300" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1469,20 +1482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="171" column="39" lean-forward="false" selection-start-line="171" selection-start-column="39" selection-end-line="171" selection-end-column="39" />
-          <folding>
-            <element signature="docComment;class#Engine#0" expanded="false" />
-            <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
-            <element signature="method#checkConstraints#0;class#Engine#0" expanded="false" />
-            <element signature="method#setWelcome#0;class#Engine#0" expanded="false" />
-            <element signature="method#getLastCommand#0;class#Engine#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="474">
@@ -1517,32 +1516,57 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/story/compiler/StoryTreeVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2924">
-          <caret line="253" column="22" lean-forward="false" selection-start-line="253" selection-start-column="13" selection-end-line="253" selection-end-column="22" />
           <folding>
-            <element signature="docComment;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#visitMessage#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseBrief#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseDescription#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseMessage_id#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseMessage_text#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseRoom_id#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseLevel_id#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#visitRoom#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#addExitTo#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseDirection#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseItem_id#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseSpecial_id#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#visitSpecial#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseStep_id#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseRequiredSteps#0;class#StoryTreeVisitor#0" expanded="false" />
-            <element signature="method#parseConsequences#0;class#StoryTreeVisitor#0" expanded="false" />
+            <marker date="1486157105229" expanded="true" signature="6615:6645" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="6647:6788" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="6867:6897" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="6899:7040" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="7131:7161" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="7163:7304" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="7383:7413" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="7415:7556" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="7629:7659" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="7661:7802" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="7875:7905" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="7907:8048" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="8115:8145" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="8147:8288" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="8355:8385" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="8387:8528" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="8609:8639" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="8641:8782" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="8869:8899" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="8901:9042" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="9121:9151" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="9153:9294" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="9371:9401" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="9403:9544" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="9631:9661" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="9663:9804" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="9901:9931" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="9933:10074" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="10161:10191" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="10193:10334" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="10431:10461" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="10463:10604" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="10687:10717" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="10719:10860" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="10941:10971" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="10973:11114" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="11195:11225" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="11227:11368" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="11457:11487" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="11489:11630" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="11729:11759" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="11761:11902" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="11991:12021" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="12023:12164" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="12263:12293" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="12295:12436" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="12521:12551" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="12553:12694" ph="/**...*/" />
+            <marker date="1486157105229" expanded="true" signature="12789:12819" ph="{...}" />
+            <marker date="1486157105229" expanded="true" signature="12821:12962" ph="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1563,11 +1587,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="171" column="39" lean-forward="false" selection-start-line="171" selection-start-column="39" selection-end-line="171" selection-end-column="39" />
+          <folding>
+            <element signature="docComment;class#Engine#0" expanded="false" />
+            <element signature="method#executeCommand#0;class#Engine#0" expanded="false" />
+            <element signature="method#checkConstraints#0;class#Engine#0" expanded="false" />
+            <element signature="method#setWelcome#0;class#Engine#0" expanded="false" />
+            <element signature="method#getLastCommand#0;class#Engine#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/story/grammars/StoryGrammar.g4">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
+        <state relative-caret-position="287">
+          <caret line="170" column="0" lean-forward="true" selection-start-line="170" selection-start-column="0" selection-end-line="170" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/story/compiler/StoryTreeVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1298">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#visitMessage#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseBrief#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseDescription#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseMessage_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseMessage_text#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseRoom_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseLevel_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#visitRoom#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#addExitTo#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseDirection#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseItem_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseSpecial_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#visitSpecial#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseStep_id#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseRequiredSteps#0;class#StoryTreeVisitor#0" expanded="false" />
+            <element signature="method#parseConsequences#0;class#StoryTreeVisitor#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

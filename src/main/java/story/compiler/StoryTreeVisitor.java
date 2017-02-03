@@ -171,41 +171,62 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
             location = new Room(parseRoom_id(ctx.location().room_id()));
         }
 
-        int volume = Integer.parseInt(ctx.VOLUME().getText());
-
-        String itemType = Utility.strip_special_chars(ctx.itemtype().getText());
 
 
-        Boolean isContainer;
-        int holdingMass = 0;
+
+        // retrieve the parameter_fields if they exist, otherwise default to standard values
+        Boolean isContainer = false;
         Item.HoldingType holdingType = Item.HoldingType.min;
+        int holdingMass = 0;
+        int volume = 0;
+        int mass = 0;
+        boolean surpress = true;
+        Boolean fixedTemp = true;
+        Item.Temperature temp = Item.Temperature.normal;
 
-        if (ctx.itemtype().IS_CONTAINER() != null)
+        if(ctx.parameter_fields() != null)
         {
-            isContainer = true;
-            holdingType = Item.HoldingType.valueOf(Utility.strip_special_chars(ctx.itemtype().holding_type().getText()));
-            holdingMass = Integer.parseInt(Utility.strip_special_chars(ctx.itemtype().holding_mass().MASS().getText()));
-        }
-        else
-        {
-            isContainer = false;
-        }
+            // retrieve the item_type field
+            if(ctx.parameter_fields().itemtype() != null)
+            {
+                if (ctx.parameter_fields().itemtype().IS_CONTAINER() != null)
+                {
+                    isContainer = true;
+                    holdingType = Item.HoldingType.valueOf(Utility.strip_special_chars(ctx.parameter_fields().itemtype().holding_type().getText()));
+                    holdingMass = Integer.parseInt(Utility.strip_special_chars(ctx.parameter_fields().itemtype().holding_mass().VALUE().getText()));
+                }
+                else
+                {
+                    isContainer = false;
+                }
+            }
 
-        int mass = Integer.parseInt(Utility.strip_special_chars(ctx.mass_field().MASS().getText()));
-        boolean surpress = ctx.mass_field().SURPRESS() != null;
+            // retrieve voulme field parameters
+            if (ctx.parameter_fields().volume_field() != null)
+                volume = Integer.parseInt(ctx.parameter_fields().volume_field().VALUE().getText());
 
-        Item.Temperature temp = Item.Temperature.valueOf(Utility.strip_special_chars(ctx.temp_level().getText()));
+            // retrieve mass_field parameters
+            if(ctx.parameter_fields().mass_field() != null)
+            {
+                mass = Integer.parseInt(Utility.strip_special_chars(ctx.parameter_fields().mass_field().VALUE().getText()));
+                surpress = ctx.parameter_fields().mass_field().SURPRESS() != null;
+            }
 
-        String variability = Utility.strip_special_chars(ctx.temp_variability().getText());
-        Boolean fixedTemp;
-        switch (variability)
-        {
-            case "constant":
-                fixedTemp = true;
-                break;
-            default:
-                fixedTemp = false;
-                break;
+            // retrieve temp_field parameters
+            if(ctx.parameter_fields().temp_field() != null)
+            {
+                temp = Item.Temperature.valueOf(Utility.strip_special_chars(ctx.parameter_fields().temp_field().temp_level().getText()));
+                String variability = Utility.strip_special_chars(ctx.parameter_fields().temp_field().temp_variability().getText());
+                switch (variability)
+                {
+                    case "constant":
+                        fixedTemp = true;
+                        break;
+                    default:
+                        fixedTemp = false;
+                        break;
+                }
+            }
         }
 
         Message description = parseDescription(ctx.description());
