@@ -115,11 +115,27 @@ message_text: QUOTED_TEXT;
 
 story_elements: welcome (room|item|message|special|step)*;
 
-welcome: WELCOME_ OPEN_PAREN_CURLY step_id SEMICOLON room_id SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
+welcome: WELCOME_
+         OPEN_PAREN_CURLY
+             step_id SEMICOLON
+             room_id SEMICOLON
+             description SEMICOLON
+         CLOS_PAREN_CURLY;
 
-message: MESSAGE_ OPEN_PAREN_CURLY message_id SEMICOLON message_text SEMICOLON CLOS_PAREN_CURLY;
+message: MESSAGE_
+         OPEN_PAREN_CURLY
+             message_id SEMICOLON
+             message_text SEMICOLON
+         CLOS_PAREN_CURLY;
 
-room: ROOM_ OPEN_PAREN_CURLY room_id SEMICOLON level_id SEMICOLON exits SEMICOLON brief SEMICOLON description SEMICOLON CLOS_PAREN_CURLY;
+room: ROOM_
+      OPEN_PAREN_CURLY
+          room_id SEMICOLON
+          level_id SEMICOLON
+          exits SEMICOLON
+          brief SEMICOLON
+          description SEMICOLON
+      CLOS_PAREN_CURLY;
 
 exits: exit (COMMA exit)*;
 
@@ -133,21 +149,6 @@ brief: message_text
 
 description: message_text
            | message_id;
-
-/*
-_item
-{
-	[massive oakwood door];
-	_fixed;
-	_inroom [dining room];
-	_isitem;
-	_vol 20;
-	_mass _surpress {10000};
-	_temp _normal, _constant;
-"Door.";
-}
-
-*/
 
 item: ITEM_
       OPEN_PAREN_CURLY
@@ -197,12 +198,23 @@ temp_variability: CONSTANT
                 | VARIABLE;
 
 special_id: ID;
-special: SPECIAL_ OPEN_PAREN_CURLY special_id SEMICOLON CLOS_PAREN_CURLY;
+special: SPECIAL_
+         OPEN_PAREN_CURLY
+             special_id SEMICOLON
+         CLOS_PAREN_CURLY;
 
 step_id: ID;
 hint: description;
-step: STEP_ OPEN_PAREN_CURLY step_id SEMICOLON gate_type SEMICOLON required_steps SEMICOLON conditions SEMICOLON consequences SEMICOLON description SEMICOLON CLOS_PAREN_CURLY
-    | STEP_ OPEN_PAREN_CURLY step_id SEMICOLON gate_type SEMICOLON required_steps SEMICOLON conditions SEMICOLON consequences SEMICOLON description SEMICOLON hint SEMICOLON CLOS_PAREN_CURLY;
+step: STEP_
+      OPEN_PAREN_CURLY
+          step_id SEMICOLON
+          gate_type SEMICOLON
+          required_steps SEMICOLON
+          conditions SEMICOLON
+          consequences SEMICOLON
+          description SEMICOLON
+          (hint SEMICOLON | )
+      CLOS_PAREN_CURLY;
 
 step_before: step_id TIME;
 

@@ -148,6 +148,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
                 takeable = false;
                 break;
         }
+
         Item.flag flag;
         ItemLocation location = null;
 
@@ -163,16 +164,12 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         {
             flag = Item.flag.valueOf(Utility.strip_special_chars(ctx.location().IN_CONTAINER().toString()));
             location = new Item(parseItem_id(ctx.location().item_id()));
-
         }
         else
         {
             flag = Item.flag.inroom;
             location = new Room(parseRoom_id(ctx.location().room_id()));
         }
-
-
-
 
         // retrieve the parameter_fields if they exist, otherwise default to standard values
         Boolean isContainer = false;
@@ -201,7 +198,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
                 }
             }
 
-            // retrieve voulme field parameters
+            // retrieve volume field parameters
             if (ctx.parameter_fields().volume_field() != null)
                 volume = Integer.parseInt(ctx.parameter_fields().volume_field().VALUE().getText());
 
