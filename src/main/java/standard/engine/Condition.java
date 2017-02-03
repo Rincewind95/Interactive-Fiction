@@ -166,6 +166,11 @@ public class Condition implements Comparable
                 resp = com != null
                         && com.getType() == Command.Type.special
                         && com.getArgs().get(0).equals(args.get(0));
+            case putin:
+                resp = com != null
+                        && com.getType() == Command.Type.putin
+                        && com.getArgs().get(0).equals(args.get(0))
+                        && com.getArgs().get(1).equals(args.get(1));
                 break;
         }
 
@@ -215,6 +220,6 @@ public class Condition implements Comparable
     public enum CondType
     {
         plir, plnir, plilv, itir, itnir, itinv, itninv, iticon, itnicon, isfrozen, iscold, isnormal, iswarm, ishot
-        , isnotfrozen, isnotcold, isnotnormal, isnotwarm, isnothot, combine, examine, use, useon, move, special
+        , isnotfrozen, isnotcold, isnotnormal, isnotwarm, isnothot, combine, examine, use, useon, move, special, putin
     }
 }

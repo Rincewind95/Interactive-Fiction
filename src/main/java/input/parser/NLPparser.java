@@ -26,14 +26,11 @@ public class NLPparser
     private ArrayList<String> item_compounds;
     private HashMap<String, String> item_originals;
     private Engine eng;
-    private static final ArrayList<String> twoArgumentWords;                       // the words which take two arguments
     private static final HashMap<String, ArrayList<argType>> twoArguments;         // a map of their respective argument types
     private static final HashMap<String, ArrayList<String>> twoArgumentConnectors; // the set of connectors expected by the two Argument words
     private static final HashMap<String, String> twoArgumentsynonyms;              // the map of all the synonyms for two argument commands
-    private static final ArrayList<String> oneArgumentWords;                       // the words which take one argument
     private static final HashMap<String, argType> oneArguments;                    // a map of their respective argument types
     private static final HashMap<String, String> oneArgumentsynonyms;              // the map of all the synonyms for one argument commands
-    private static final ArrayList<String> zeroArgumentWords;                      // the map of all the words with no arguments
     private static final HashMap<String, String> zeroArgumentsynonyms;             // the map of all the synonyms for zero argument commands
     private static final HashMap<String, String> dirMapping;                       // all the possible direction mappings we take
 
@@ -48,7 +45,6 @@ public class NLPparser
 
     static
     {
-        twoArgumentWords = new ArrayList<>(Arrays.asList("use", "combine", "put", "remove"));
         twoArgumentsynonyms = new HashMap<>();
         twoArgumentsynonyms.put("use", "use");
         twoArgumentsynonyms.put("utilize", "use");
@@ -62,6 +58,7 @@ public class NLPparser
         twoArgumentsynonyms.put("meld", "combine");
         twoArgumentsynonyms.put("compound", "combine");
         twoArgumentsynonyms.put("put", "put");
+        twoArgumentsynonyms.put("insert", "put");
         twoArgumentsynonyms.put("place", "put");
         twoArgumentsynonyms.put("position", "put");
         twoArgumentsynonyms.put("remove", "remove");
@@ -96,7 +93,6 @@ public class NLPparser
         twoArguments.put("put", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
         twoArguments.put("remove", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
 
-        oneArgumentWords = new ArrayList<>(Arrays.asList("take", "drop", "examine", "move"));
         oneArgumentsynonyms = new HashMap<>();
         oneArgumentsynonyms.put("drop", "drop");
         oneArgumentsynonyms.put("leave", "drop");
@@ -117,8 +113,6 @@ public class NLPparser
         oneArguments.put("drop", argType.item);
         oneArguments.put("examine", argType.item);
         oneArguments.put("move", argType.dir);
-
-        zeroArgumentWords = new ArrayList<>(Arrays.asList("look", "brief", "wait", "history", "exit", "inventory", "restart", "hint", "help", "invalidate"));
 
         zeroArgumentsynonyms = new HashMap<>();
         zeroArgumentsynonyms.put("brief", "brief");

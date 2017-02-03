@@ -84,6 +84,7 @@ CON_USE:    '_use';
 CON_USEON:  '_useon';
 CON_MOVE:   '_move';
 CON_SPECIAL:'_special';
+CON_PUTIN:'_putin';
 // consequence type
 NONE: '_none';
 TELEPORT: '_jmp';
@@ -206,7 +207,8 @@ double_arg_cnd_type: ITEM_IN_ROOM
                    | ITEM_IN_CONTAINER
                    | ITEM_NOT_IN_CONTAINER
                    | CON_COMBINE
-                   | CON_USEON;
+                   | CON_USEON
+                   | CON_PUTIN;
 
 consequences: consequence (COMMA consequence)*;
 
