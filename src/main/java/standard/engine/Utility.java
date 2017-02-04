@@ -257,6 +257,17 @@ public class Utility
             case 1: oneArgumentsynonyms.put(synonym, val.getValue());
                     break;
             case 2: twoArgumentsynonyms.put(synonym, val.getValue());
+                    // in the case of two arguments, add all the connectors
+                    ArrayList<String> connectors = cond.getConnectors(synonym);
+                    if(!twoArgumentConnectors.containsKey(synonym))
+                    {
+                        twoArgumentConnectors.put(synonym, connectors);
+                    }
+                    else
+                    {
+                        twoArgumentConnectors.get(synonym).addAll(connectors);
+                    }
+                    //System.out.println(twoArgumentConnectors);
                     break;
         }
     }
@@ -275,6 +286,7 @@ public class Utility
         String verb = command.getOriginalVerb();
         String type = command.getType().toString();
         ArrayList<String> args = command.getArgs();
+        //System.out.println("command: ["+type+"] " + args);
         // first test if the command is not an extra synonym at all
         if(twoArgumentMasterSynonyms.containsKey(verb) ||
             oneArgumentMasterSynonyms.containsKey(verb) ||
@@ -286,6 +298,7 @@ public class Utility
         if(!conditionsWithSynonyms.containsKey(type))
         {
             // if no this command is not supposed to have extra synonyms
+            //System.out.println("not supposed to have");
             return false;
         }
         else
@@ -311,13 +324,37 @@ public class Utility
                                 break;
                             }
                         }
+
+                        // test for the special case of a custom two argument command
+                        if(args.size() == 2)
+                        {
+                            // if its a double argument condition, we need to check the connectors as well
+                            String connector = command.getOriginalConnector();
+                            ArrayList<String> connOptions = condition.getConnectors(verb);
+                            //System.out.print("options: " );
+                            boolean worked = false;
+                            for (String con : connOptions)
+                            {
+                                //System.out.print(" <" + con + ">");
+                                if (connector.equals(con))
+                                {
+                                    worked = true;
+                                }
+                            }
+                            success &= worked;
+                            //System.out.println();
+                            //System.out.println("connector: <" + connector + ">");
+                        }
+                        //System.out.print("worked: " + success);
                         if (success)
                         {
+                            //System.out.print("return true");
                             return true;
                         }
                     }
                 }
             }
+            //System.out.print("return false");
             return false;
         }
     }

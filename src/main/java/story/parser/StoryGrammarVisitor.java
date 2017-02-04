@@ -233,6 +233,18 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitSingle_arg_cnd_type(StoryGrammarParser.Single_arg_cnd_typeContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#command}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCommand(StoryGrammarParser.CommandContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#extra_synonyms_single}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExtra_synonyms_single(StoryGrammarParser.Extra_synonyms_singleContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#double_arg_cnd}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -245,17 +257,23 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDouble_arg_cnd_type(StoryGrammarParser.Double_arg_cnd_typeContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link StoryGrammarParser#command}.
+	 * Visit a parse tree produced by {@link StoryGrammarParser#connector}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCommand(StoryGrammarParser.CommandContext ctx);
+	T visitConnector(StoryGrammarParser.ConnectorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link StoryGrammarParser#extra_synonyms}.
+	 * Visit a parse tree produced by {@link StoryGrammarParser#double_command}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExtra_synonyms(StoryGrammarParser.Extra_synonymsContext ctx);
+	T visitDouble_command(StoryGrammarParser.Double_commandContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#extra_synonyms_double}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExtra_synonyms_double(StoryGrammarParser.Extra_synonyms_doubleContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#consequences}.
 	 * @param ctx the parse tree

@@ -378,6 +378,26 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 */
 	void exitSingle_arg_cnd_type(StoryGrammarParser.Single_arg_cnd_typeContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#command}.
+	 * @param ctx the parse tree
+	 */
+	void enterCommand(StoryGrammarParser.CommandContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#command}.
+	 * @param ctx the parse tree
+	 */
+	void exitCommand(StoryGrammarParser.CommandContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#extra_synonyms_single}.
+	 * @param ctx the parse tree
+	 */
+	void enterExtra_synonyms_single(StoryGrammarParser.Extra_synonyms_singleContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#extra_synonyms_single}.
+	 * @param ctx the parse tree
+	 */
+	void exitExtra_synonyms_single(StoryGrammarParser.Extra_synonyms_singleContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#double_arg_cnd}.
 	 * @param ctx the parse tree
 	 */
@@ -398,25 +418,35 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 */
 	void exitDouble_arg_cnd_type(StoryGrammarParser.Double_arg_cnd_typeContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StoryGrammarParser#command}.
+	 * Enter a parse tree produced by {@link StoryGrammarParser#connector}.
 	 * @param ctx the parse tree
 	 */
-	void enterCommand(StoryGrammarParser.CommandContext ctx);
+	void enterConnector(StoryGrammarParser.ConnectorContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StoryGrammarParser#command}.
+	 * Exit a parse tree produced by {@link StoryGrammarParser#connector}.
 	 * @param ctx the parse tree
 	 */
-	void exitCommand(StoryGrammarParser.CommandContext ctx);
+	void exitConnector(StoryGrammarParser.ConnectorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link StoryGrammarParser#extra_synonyms}.
+	 * Enter a parse tree produced by {@link StoryGrammarParser#double_command}.
 	 * @param ctx the parse tree
 	 */
-	void enterExtra_synonyms(StoryGrammarParser.Extra_synonymsContext ctx);
+	void enterDouble_command(StoryGrammarParser.Double_commandContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StoryGrammarParser#extra_synonyms}.
+	 * Exit a parse tree produced by {@link StoryGrammarParser#double_command}.
 	 * @param ctx the parse tree
 	 */
-	void exitExtra_synonyms(StoryGrammarParser.Extra_synonymsContext ctx);
+	void exitDouble_command(StoryGrammarParser.Double_commandContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#extra_synonyms_double}.
+	 * @param ctx the parse tree
+	 */
+	void enterExtra_synonyms_double(StoryGrammarParser.Extra_synonyms_doubleContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#extra_synonyms_double}.
+	 * @param ctx the parse tree
+	 */
+	void exitExtra_synonyms_double(StoryGrammarParser.Extra_synonyms_doubleContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#consequences}.
 	 * @param ctx the parse tree

@@ -230,7 +230,7 @@ condition: single_arg_cnd
          | double_arg_cnd
          | CON_MOVE direction;
 
-single_arg_cnd: single_arg_cnd_type extra_synonyms item_id;
+single_arg_cnd: single_arg_cnd_type extra_synonyms_single item_id;
 single_arg_cnd_type: PLAYER_IN_ROOM
                    | PLAYER_NOT_IN_ROOM
                    | PLAYER_ON_LEVEL
@@ -249,8 +249,10 @@ single_arg_cnd_type: PLAYER_IN_ROOM
                    | ITEM_IS_NOT_NORMAL
                    | ITEM_IS_NOT_WARM
                    | ITEM_IS_NOT_HOT;
+command: SYNONYM;
+extra_synonyms_single: (command | OPEN_PAREN_CURLY command (COMMA command)+ CLOS_PAREN_CURLY | );
 
-double_arg_cnd: double_arg_cnd_type extra_synonyms item_id room_id;
+double_arg_cnd: double_arg_cnd_type extra_synonyms_double item_id room_id;
 double_arg_cnd_type: ITEM_IN_ROOM
                    | ITEM_NOT_IN_ROOM
                    | ITEM_IN_CONTAINER
@@ -258,8 +260,10 @@ double_arg_cnd_type: ITEM_IN_ROOM
                    | CON_COMBINE
                    | CON_USEON
                    | CON_PUTIN;
-command: SYNONYM;
-extra_synonyms: (command | OPEN_PAREN_CURLY command (COMMA command)+ CLOS_PAREN_CURLY | );
+
+connector: SYNONYM;
+double_command: OPEN_PAREN_ROUND command (COMMA connector)+ CLOS_PAREN_ROUND;
+extra_synonyms_double: (double_command | OPEN_PAREN_CURLY double_command (COMMA double_command)+ CLOS_PAREN_CURLY | );
 
 consequences: consequence (COMMA consequence)*;
 

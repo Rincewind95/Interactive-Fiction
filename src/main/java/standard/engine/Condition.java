@@ -2,6 +2,7 @@ package standard.engine;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 
 /**
@@ -12,9 +13,9 @@ public class Condition implements Comparable
     private CondType type;          // the type of the condition
     private ArrayList<String> args; // a list of the arguments the condition has
 
-    private boolean hasSynonyms;      // true if referring to a command, and if this command has custom defined synonyms
-    private HashSet<String> synonyms; // the set of synonyms we remember
-    private StoryStep parent;         // the story step which contains it
+    private boolean hasSynonyms;                         // true if referring to a command, and if this command has custom defined synonyms
+    private HashMap<String, ArrayList<String>> synonyms; // the set of synonyms we remember (with their connectors if they had any
+    private StoryStep parent;                            // the story step which contains it
 
     // input creator
     public Condition(String str_type, ArrayList<String> args)
@@ -22,11 +23,11 @@ public class Condition implements Comparable
         type = CondType.valueOf(str_type);
         this.args = args;
         hasSynonyms = false;
-        synonyms = new HashSet<>();
+        synonyms = new HashMap<>();
         parent = null;
     }
 
-    public Condition(String str_type, HashSet<String> synonyms, ArrayList<String> args, StoryStep parent)
+    public Condition(String str_type, HashMap<String, ArrayList<String>> synonyms, ArrayList<String> args, StoryStep parent)
     {
         type = CondType.valueOf(str_type);
         this.args = args;
@@ -45,7 +46,12 @@ public class Condition implements Comparable
 
     public HashSet<String> getSynonyms()
     {
-        return synonyms;
+        return new HashSet<>(synonyms.keySet());
+    }
+
+    public ArrayList<String> getConnectors(String synonym)
+    {
+        return synonyms.get(synonym);
     }
 
     @Override
@@ -85,6 +91,15 @@ public class Condition implements Comparable
         Item item, item1, item2;
         Room room;
         Command com = eng.getLastCommand();
+
+        if(Utility.extraSynonymOriginConditions.containsKey(com.getOriginalVerb())
+            && com.getArgs().size() == 2
+            && !getConnectors(com.getOriginalVerb()).contains(com.getOriginalConnector()))
+        {
+            //System.out.println("2 command: ["+type+"] " + args);
+            return false;
+        }
+
         switch (type)
         {
             case plir:

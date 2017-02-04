@@ -12,6 +12,8 @@ public class Command implements Comparable
     private String original;
     private String originalVerb;
 
+    private String originalConnector; // not null only int the case the command has 2 arguments
+
     public Command(Type type)
     {
         this.type = type;
@@ -24,6 +26,7 @@ public class Command implements Comparable
         args = new ArrayList<>();
         this.original = original;
         this.originalVerb = originalVerb;
+        this.originalConnector = "";
     }
 
     public Command(Type type, ArrayList<String> args, String original, String originalVerb)
@@ -32,6 +35,16 @@ public class Command implements Comparable
         this.args = args;
         this.original = original;
         this.originalVerb = originalVerb;
+        this.originalConnector = "";
+    }
+
+    public Command(Type type, ArrayList<String> args, String original, String originalVerb, String originalConnector)
+    {
+        this.type = type;
+        this.args = args;
+        this.original = original;
+        this.originalVerb = originalVerb;
+        this.originalConnector = originalConnector;
     }
 
     public Command(Type type, ArrayList<String> args)
@@ -40,6 +53,7 @@ public class Command implements Comparable
         this.args = args;
         this.original = "";
         this.originalVerb = type.toString();
+        this.originalConnector = "";
     }
 
     public Command(String input)
@@ -204,6 +218,11 @@ public class Command implements Comparable
     public String getOriginalVerb()
     {
         return originalVerb;
+    }
+
+    public String getOriginalConnector()
+    {
+        return originalConnector;
     }
 
     public enum Type

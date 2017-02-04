@@ -459,32 +459,23 @@ public class Engine
                 else resp = response.badinput;
                 break;
             case useon:
+            case combine:
                 // first test for input validity
                 if (finditem.containsKey(args.get(0)) && finditem.containsKey(args.get(1)))
                 {
                     Item useItem = finditem.get(args.get(0));
                     Item onItem = finditem.get(args.get(1));
-                    if (!(player.hasItem(useItem) && player.getLocation().containsItem(onItem)))
+                    if ((!player.hasItem(useItem) && !player.getLocation().containsItem(useItem))
+                     || (!player.hasItem(onItem) && !player.getLocation().containsItem(onItem)))
                     {
                         // conditions were not met so fail
                         resp = response.badinput;
                     }
                 }
-                else resp = response.badinput;
-                break;
-            case combine:
-                // first test for input validity
-                if (finditem.containsKey(args.get(0)) && finditem.containsKey(args.get(1)))
+                else
                 {
-                    Item fir = finditem.get(args.get(0));
-                    Item sec = finditem.get(args.get(1));
-                    if (!player.hasItem(fir) || !player.hasItem(sec))
-                    {
-                        // conditions were not met so fail
-                        resp = response.badinput;
-                    }
+                    resp = response.badinput;
                 }
-                else resp = response.badinput;
                 break;
             case putin:
                 askForEvaluation = true;

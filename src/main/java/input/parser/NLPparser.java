@@ -157,6 +157,7 @@ public class NLPparser
 
             // retrieve the arguments
             int curr_arg = 0;
+            String originalConnector = "";
             ArrayList<String> args = new ArrayList<>();
             for (IndexedWord arg : all)
             {
@@ -178,7 +179,11 @@ public class NLPparser
                                     if (curr_child == null)
                                         continue;
                                     if (curr_children.contains(curr_child))
+                                    {
+                                        originalConnector = connector;
                                         works = true;
+                                        break;
+                                    }
                                 }
                                 if (works)
                                 {
@@ -207,7 +212,7 @@ public class NLPparser
                 if(keyword.equals("use"))
                 {
                     // this means we in fact have use and not useon
-                    return new Command(Command.Type.valueOf(keyword), args, original, word);
+                    return new Command(Command.Type.use, args, original, word);
                 }
                  else if(keyword.equals("remove"))
                 {
@@ -228,7 +233,7 @@ public class NLPparser
             if (keyword.equals("put"))
                 keyword = "putin";
             //System.out.println(word + " " + args);
-            return new Command(Command.Type.valueOf(keyword), args, original, word);
+            return new Command(Command.Type.valueOf(keyword), args, original, word, originalConnector);
         }
 
         for (String word : Utility.oneArgumentsynonyms.keySet())

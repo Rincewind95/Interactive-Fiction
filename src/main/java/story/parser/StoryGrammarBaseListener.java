@@ -460,6 +460,30 @@ public class StoryGrammarBaseListener implements StoryGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterCommand(StoryGrammarParser.CommandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCommand(StoryGrammarParser.CommandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExtra_synonyms_single(StoryGrammarParser.Extra_synonyms_singleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExtra_synonyms_single(StoryGrammarParser.Extra_synonyms_singleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDouble_arg_cnd(StoryGrammarParser.Double_arg_cndContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -484,25 +508,37 @@ public class StoryGrammarBaseListener implements StoryGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCommand(StoryGrammarParser.CommandContext ctx) { }
+	@Override public void enterConnector(StoryGrammarParser.ConnectorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCommand(StoryGrammarParser.CommandContext ctx) { }
+	@Override public void exitConnector(StoryGrammarParser.ConnectorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExtra_synonyms(StoryGrammarParser.Extra_synonymsContext ctx) { }
+	@Override public void enterDouble_command(StoryGrammarParser.Double_commandContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExtra_synonyms(StoryGrammarParser.Extra_synonymsContext ctx) { }
+	@Override public void exitDouble_command(StoryGrammarParser.Double_commandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExtra_synonyms_double(StoryGrammarParser.Extra_synonyms_doubleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExtra_synonyms_double(StoryGrammarParser.Extra_synonyms_doubleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
