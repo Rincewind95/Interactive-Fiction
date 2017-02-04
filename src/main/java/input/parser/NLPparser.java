@@ -131,7 +131,6 @@ public class NLPparser
 
         // this is the Stanford dependency graph of the current sentence
         SemanticGraph dependencies = sentence.get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
-        
         // process the sentence and retrieve the command
 
         // first search for longer commands which take two arguments (useon and combine)
@@ -160,7 +159,6 @@ public class NLPparser
             all.addAll(parents);
             all.addAll(siblings);
             all.addAll(children);
-
             // retrieve the arguments
             int curr_arg = 0;
             String originalConnector = "";
@@ -431,6 +429,18 @@ public class NLPparser
                 item_compounds.add(item);
                 item_originals.put(item, itemId);
             }
+        }
+
+        // add all the versions starting with the or a/an
+        ArrayList<String> current_compounds = new ArrayList<>(item_compounds);
+        for(String compound : current_compounds)
+        {
+            String newCompoundThe = Utility.addThe(compound);
+            String newCompoundAAn = Utility.addAorAn(compound);
+            item_compounds.add(newCompoundThe);
+            item_compounds.add(newCompoundAAn);
+            item_originals.put(newCompoundThe, item_originals.get(compound));
+            item_originals.put(newCompoundAAn, item_originals.get(compound));
         }
 
         // add the special command all at the end
