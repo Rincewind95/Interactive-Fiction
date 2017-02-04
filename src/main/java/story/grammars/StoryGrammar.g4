@@ -1,6 +1,8 @@
 grammar StoryGrammar;
 
 // lexer rules
+OPEN_PAREN_SHARP: '<';
+CLOS_PAREN_SHARP: '>';
 OPEN_PAREN_CURLY: '{';
 CLOS_PAREN_CURLY: '}';
 OPEN_PAREN_BLOCK: '[';
@@ -101,9 +103,11 @@ WAIT: '_wait';
 
 QUOTED_TEXT: DOUBLEQUOT (~('"'))* DOUBLEQUOT;
 ALPHANUMERIC: [a-z0-9]+([a-z0-9 ])*;
+ATOZ: [a-z]+;
 NUMERIC: [0-9]+;
 ID: OPEN_PAREN_BLOCK ALPHANUMERIC CLOS_PAREN_BLOCK;
 TIME: OPEN_PAREN_ROUND NUMERIC CLOS_PAREN_ROUND;
+SYNONYM: OPEN_PAREN_SHARP ATOZ CLOS_PAREN_SHARP;
 WS: [ \n\t\r\u000C]+ -> skip;
 
 // parser rules
@@ -226,7 +230,7 @@ condition: single_arg_cnd
          | double_arg_cnd
          | CON_MOVE direction;
 
-single_arg_cnd: single_arg_cnd_type item_id;
+single_arg_cnd: single_arg_cnd_type extra_synonyms item_id;
 single_arg_cnd_type: PLAYER_IN_ROOM
                    | PLAYER_NOT_IN_ROOM
                    | PLAYER_ON_LEVEL
@@ -246,7 +250,7 @@ single_arg_cnd_type: PLAYER_IN_ROOM
                    | ITEM_IS_NOT_WARM
                    | ITEM_IS_NOT_HOT;
 
-double_arg_cnd: double_arg_cnd_type item_id room_id;
+double_arg_cnd: double_arg_cnd_type extra_synonyms item_id room_id;
 double_arg_cnd_type: ITEM_IN_ROOM
                    | ITEM_NOT_IN_ROOM
                    | ITEM_IN_CONTAINER
@@ -254,6 +258,8 @@ double_arg_cnd_type: ITEM_IN_ROOM
                    | CON_COMBINE
                    | CON_USEON
                    | CON_PUTIN;
+command: SYNONYM;
+extra_synonyms: (command | OPEN_PAREN_CURLY command (COMMA command)+ CLOS_PAREN_CURLY | );
 
 consequences: consequence (COMMA consequence)*;
 

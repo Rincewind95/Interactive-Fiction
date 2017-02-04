@@ -48,6 +48,20 @@ public class Utility
 
     public static final String helpMessage;
 
+    public static HashMap<String, String> twoArgumentsynonyms;                // the map of all the synonyms for two argument commands
+    public static HashMap<String, ArrayList<String>> twoArgumentConnectors;   // the set of connectors expected by the two Argument words
+    public static HashMap<String, ArrayList<NLPparser.argType>> twoArguments; // a map of their respective argument types
+    public static HashMap<String, String> oneArgumentsynonyms;                // the map of all the synonyms for one argument commands
+    public static HashMap<String, NLPparser.argType> oneArguments;            // a map of their respective argument types
+    public static HashMap<String, String> zeroArgumentsynonyms;               // the map of all the synonyms for zero argument commands
+    public static HashMap<String, String> dirMapping;                         // all the possible direction mappings we take
+
+    public static HashMap<String, Pair<Integer, String>> conditionsWithSynonyms;
+    public static HashMap<String, HashSet<Condition>> extraSynonymOriginConditions;
+    public static HashMap<String, String> twoArgumentMasterSynonyms;                // the map of all the engine specified synonyms for two argument commands
+    public static HashMap<String, String> oneArgumentMasterSynonyms;                // the map of all the engine specified synonyms for one argument commands
+    public static HashMap<String, String> zeroArgumentMasterSynonyms;               // the map of all the engine specified synonyms for zero argument commands
+
     static
     {
         theAlls = new HashSet<>();
@@ -131,6 +145,181 @@ public class Utility
                                                    ))
                                                    ));
 
+        twoArgumentMasterSynonyms = new HashMap<>();
+        twoArgumentMasterSynonyms.put("use", "use");
+        twoArgumentMasterSynonyms.put("utilize", "use");
+        twoArgumentMasterSynonyms.put("utilise", "use");
+        twoArgumentMasterSynonyms.put("apply", "use");
+        twoArgumentMasterSynonyms.put("employ", "use");
+        twoArgumentMasterSynonyms.put("combine", "combine");
+        twoArgumentMasterSynonyms.put("merge", "combine");
+        twoArgumentMasterSynonyms.put("mix", "combine");
+        twoArgumentMasterSynonyms.put("fuse", "combine");
+        twoArgumentMasterSynonyms.put("meld", "combine");
+        twoArgumentMasterSynonyms.put("compound", "combine");
+        twoArgumentMasterSynonyms.put("put", "put");
+        twoArgumentMasterSynonyms.put("insert", "put");
+        twoArgumentMasterSynonyms.put("place", "put");
+        twoArgumentMasterSynonyms.put("position", "put");
+        twoArgumentMasterSynonyms.put("remove", "remove");
+        twoArgumentMasterSynonyms.put("take", "remove");
+        twoArgumentMasterSynonyms.put("collect", "remove");
+        twoArgumentMasterSynonyms.put("acquire", "remove");
+        twoArgumentMasterSynonyms.put("obtain", "remove");
+        twoArgumentMasterSynonyms.put("claim", "remove");
+        twoArgumentMasterSynonyms.put("pick", "remove");
+        twoArgumentMasterSynonyms.put("get", "remove");
+        twoArgumentsynonyms = new HashMap<>();
+        twoArgumentsynonyms.putAll(twoArgumentMasterSynonyms);
+
+        twoArgumentConnectors = new HashMap<>();
+        twoArgumentConnectors.put("use", new ArrayList<>(Arrays.asList("with", "on", "and")));
+        twoArgumentConnectors.put("utilize", new ArrayList<>(Arrays.asList("with")));
+        twoArgumentConnectors.put("utilise", new ArrayList<>(Arrays.asList("with")));
+        twoArgumentConnectors.put("apply", new ArrayList<>(Arrays.asList("to")));
+        twoArgumentConnectors.put("employ", new ArrayList<>(Arrays.asList("with")));
+        twoArgumentConnectors.put("combine", new ArrayList<>(Arrays.asList("with", "and")));
+        twoArgumentConnectors.put("merge", new ArrayList<>(Arrays.asList("with")));
+        twoArgumentConnectors.put("mix", new ArrayList<>(Arrays.asList("with")));
+        twoArgumentConnectors.put("fuse", new ArrayList<>(Arrays.asList("with")));
+        twoArgumentConnectors.put("meld", new ArrayList<>(Arrays.asList("with")));
+        twoArgumentConnectors.put("compound", new ArrayList<>(Arrays.asList("with")));
+        twoArgumentConnectors.put("put", new ArrayList<>(Arrays.asList("in", "into")));
+        twoArgumentConnectors.put("place", new ArrayList<>(Arrays.asList("in", "into")));
+        twoArgumentConnectors.put("position", new ArrayList<>(Arrays.asList("in")));
+        twoArgumentConnectors.put("remove", new ArrayList<>(Arrays.asList("from")));
+
+        twoArguments = new HashMap<>();
+        twoArguments.put("use", new ArrayList<>(Arrays.asList(NLPparser.argType.item, NLPparser.argType.item)));
+        twoArguments.put("combine", new ArrayList<>(Arrays.asList(NLPparser.argType.item, NLPparser.argType.item)));
+        twoArguments.put("put", new ArrayList<>(Arrays.asList(NLPparser.argType.item, NLPparser.argType.item)));
+        twoArguments.put("remove", new ArrayList<>(Arrays.asList(NLPparser.argType.item, NLPparser.argType.item)));
+
+        oneArgumentMasterSynonyms = new HashMap<>();
+        oneArgumentMasterSynonyms.put("drop", "drop");
+        oneArgumentMasterSynonyms.put("leave", "drop");
+        oneArgumentMasterSynonyms.put("examine", "examine");
+        oneArgumentMasterSynonyms.put("analyze", "examine");
+        oneArgumentMasterSynonyms.put("analyse", "examine");
+        oneArgumentMasterSynonyms.put("inspect", "examine");
+        oneArgumentMasterSynonyms.put("observe", "examine");
+        oneArgumentMasterSynonyms.put("investigate", "examine");
+        oneArgumentMasterSynonyms.put("look", "examine");
+        oneArgumentMasterSynonyms.put("move", "move");
+        oneArgumentMasterSynonyms.put("go", "move");
+        oneArgumentMasterSynonyms.put("proceed", "move");
+        oneArgumentMasterSynonyms.put("advance", "move");
+        oneArgumentMasterSynonyms.put("travel", "move");
+        oneArgumentsynonyms = new HashMap<>();
+        oneArgumentsynonyms.putAll(oneArgumentMasterSynonyms);
+
+        oneArguments = new HashMap<>();
+        oneArguments.put("drop", NLPparser.argType.item);
+        oneArguments.put("examine", NLPparser.argType.item);
+        oneArguments.put("move", NLPparser.argType.dir);
+
+        zeroArgumentMasterSynonyms = new HashMap<>();
+        zeroArgumentMasterSynonyms.put("brief", "brief");
+        zeroArgumentMasterSynonyms.put("wait", "wait");
+        zeroArgumentMasterSynonyms.put("history", "history");
+        zeroArgumentMasterSynonyms.put("quit", "exit");
+        zeroArgumentMasterSynonyms.put("inventory", "inventory");
+        zeroArgumentMasterSynonyms.put("restart", "restart");
+        zeroArgumentMasterSynonyms.put("hint", "hint");
+        zeroArgumentMasterSynonyms.put("help", "help");
+        zeroArgumentMasterSynonyms.put("invalidate", "invalidate");
+        zeroArgumentsynonyms = new HashMap<>();
+        zeroArgumentsynonyms.putAll(zeroArgumentMasterSynonyms);
+
+        dirMapping = new HashMap<>();
+        dirMapping.put("north", "n");
+        dirMapping.put("east", "e");
+        dirMapping.put("south", "s");
+        dirMapping.put("west", "w");
+
+        // also gives the mapping to the number of arguments and to what is the synonym of
+        conditionsWithSynonyms = new HashMap<>();
+        conditionsWithSynonyms.put("use", new Pair<>(2, "use"));
+        conditionsWithSynonyms.put("useon", new Pair<>(2, "use"));
+        conditionsWithSynonyms.put("combine", new Pair<>(2, "combine"));
+
+        extraSynonymOriginConditions = new HashMap<>();
+    }
+
+    public static void addSynonym(String synonym, Condition cond)
+    {
+        rememberExtraSynonymConditionLink(synonym, cond);
+        Pair<Integer, String> val = conditionsWithSynonyms.get(cond.getType().toString());
+        switch (val.getKey())
+        {
+            case 0: zeroArgumentsynonyms.put(synonym, val.getValue());
+                    break;
+            case 1: oneArgumentsynonyms.put(synonym, val.getValue());
+                    break;
+            case 2: twoArgumentsynonyms.put(synonym, val.getValue());
+                    break;
+        }
+    }
+
+    public static void rememberExtraSynonymConditionLink(String synonym, Condition cond)
+    {
+        if(!extraSynonymOriginConditions.containsKey(synonym))
+        {
+            extraSynonymOriginConditions.put(synonym, new HashSet<>());
+        }
+        extraSynonymOriginConditions.get(synonym).add(cond);
+    }
+
+    public static boolean commandUsesSynonymCorrectly(Command command)
+    {
+        String verb = command.getOriginalVerb();
+        String type = command.getType().toString();
+        ArrayList<String> args = command.getArgs();
+        // first test if the command is not an extra synonym at all
+        if(twoArgumentMasterSynonyms.containsKey(verb) ||
+            oneArgumentMasterSynonyms.containsKey(verb) ||
+            zeroArgumentMasterSynonyms.containsKey(verb))
+        {
+            return true;
+        }
+
+        if(!conditionsWithSynonyms.containsKey(type))
+        {
+            // if no this command is not supposed to have extra synonyms
+            return false;
+        }
+        else
+        {
+            if (extraSynonymOriginConditions.containsKey(verb))
+            {
+                // retrieve the set of conditions which may contain the synonym
+                HashSet<Condition> options = extraSynonymOriginConditions.get(verb);
+                for (Condition condition : options)
+                {
+                    String conditionType = condition.getType().toString();
+                    ArrayList<String> conditionArgs = condition.getArgs();
+                    // test if the command matches the one requested in the condition
+                    if (conditionType.equals(type) &&
+                        conditionArgs.size() == args.size())
+                    {
+                        boolean success = true;
+                        for (int i = 0; i < args.size(); i++)
+                        {
+                            if (!conditionArgs.get(i).equals(args.get(i)))
+                            {
+                                success = false;
+                                break;
+                            }
+                        }
+                        if (success)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
     }
 
     public static int wasImportant(Command command, Engine eng)
@@ -183,7 +372,10 @@ public class Utility
 
     public static String strip_special_chars(String input)
     {
-        String res = input.replace("[", "");
+        String res = input;
+        res = res.replace("<", "");
+        res = res.replace(">", "");
+        res = res.replace("[", "");
         res = res.replace("]", "");
         res = res.replace("(", "");
         res = res.replace(")", "");

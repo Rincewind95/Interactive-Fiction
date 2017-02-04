@@ -26,15 +26,8 @@ public class NLPparser
     private ArrayList<String> item_compounds;
     private HashMap<String, String> item_originals;
     private Engine eng;
-    private static final HashMap<String, ArrayList<argType>> twoArguments;         // a map of their respective argument types
-    private static final HashMap<String, ArrayList<String>> twoArgumentConnectors; // the set of connectors expected by the two Argument words
-    private static final HashMap<String, String> twoArgumentsynonyms;              // the map of all the synonyms for two argument commands
-    private static final HashMap<String, argType> oneArguments;                    // a map of their respective argument types
-    private static final HashMap<String, String> oneArgumentsynonyms;              // the map of all the synonyms for one argument commands
-    private static final HashMap<String, String> zeroArgumentsynonyms;             // the map of all the synonyms for zero argument commands
-    private static final HashMap<String, String> dirMapping;                       // all the possible direction mappings we take
 
-    private enum argType
+    public enum argType
     {
         item, dir, saveloc
     } // the possible argument types
@@ -42,95 +35,6 @@ public class NLPparser
 
     private Properties props;
     private StanfordCoreNLP pipeline;
-
-    static
-    {
-        twoArgumentsynonyms = new HashMap<>();
-        twoArgumentsynonyms.put("use", "use");
-        twoArgumentsynonyms.put("utilize", "use");
-        twoArgumentsynonyms.put("utilise", "use");
-        twoArgumentsynonyms.put("apply", "use");
-        twoArgumentsynonyms.put("employ", "use");
-        twoArgumentsynonyms.put("combine", "combine");
-        twoArgumentsynonyms.put("merge", "combine");
-        twoArgumentsynonyms.put("mix", "combine");
-        twoArgumentsynonyms.put("fuse", "combine");
-        twoArgumentsynonyms.put("meld", "combine");
-        twoArgumentsynonyms.put("compound", "combine");
-        twoArgumentsynonyms.put("put", "put");
-        twoArgumentsynonyms.put("insert", "put");
-        twoArgumentsynonyms.put("place", "put");
-        twoArgumentsynonyms.put("position", "put");
-        twoArgumentsynonyms.put("remove", "remove");
-        twoArgumentsynonyms.put("take", "remove");
-        twoArgumentsynonyms.put("collect", "remove");
-        twoArgumentsynonyms.put("acquire", "remove");
-        twoArgumentsynonyms.put("obtain", "remove");
-        twoArgumentsynonyms.put("claim", "remove");
-        twoArgumentsynonyms.put("pick", "remove");
-        twoArgumentsynonyms.put("get", "remove");
-
-        twoArgumentConnectors = new HashMap<>();
-        twoArgumentConnectors.put("use", new ArrayList<>(Arrays.asList("with", "on")));
-        twoArgumentConnectors.put("utilize", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("utilise", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("apply", new ArrayList<>(Arrays.asList("to")));
-        twoArgumentConnectors.put("employ", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("combine", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("merge", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("mix", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("fuse", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("meld", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("compound", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("put", new ArrayList<>(Arrays.asList("in", "into")));
-        twoArgumentConnectors.put("place", new ArrayList<>(Arrays.asList("in", "into")));
-        twoArgumentConnectors.put("position", new ArrayList<>(Arrays.asList("in")));
-        twoArgumentConnectors.put("remove", new ArrayList<>(Arrays.asList("from")));
-
-        twoArguments = new HashMap<>();
-        twoArguments.put("use", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
-        twoArguments.put("combine", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
-        twoArguments.put("put", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
-        twoArguments.put("remove", new ArrayList<>(Arrays.asList(argType.item, argType.item)));
-
-        oneArgumentsynonyms = new HashMap<>();
-        oneArgumentsynonyms.put("drop", "drop");
-        oneArgumentsynonyms.put("leave", "drop");
-        oneArgumentsynonyms.put("examine", "examine");
-        oneArgumentsynonyms.put("analyze", "examine");
-        oneArgumentsynonyms.put("analyse", "examine");
-        oneArgumentsynonyms.put("inspect", "examine");
-        oneArgumentsynonyms.put("observe", "examine");
-        oneArgumentsynonyms.put("investigate", "examine");
-        oneArgumentsynonyms.put("look", "examine");
-        oneArgumentsynonyms.put("move", "move");
-        oneArgumentsynonyms.put("go", "move");
-        oneArgumentsynonyms.put("proceed", "move");
-        oneArgumentsynonyms.put("advance", "move");
-        oneArgumentsynonyms.put("travel", "move");
-
-        oneArguments = new HashMap<>();
-        oneArguments.put("drop", argType.item);
-        oneArguments.put("examine", argType.item);
-        oneArguments.put("move", argType.dir);
-
-        zeroArgumentsynonyms = new HashMap<>();
-        zeroArgumentsynonyms.put("brief", "brief");
-        zeroArgumentsynonyms.put("wait", "wait");
-        zeroArgumentsynonyms.put("history", "history");
-        zeroArgumentsynonyms.put("quit", "exit");
-        zeroArgumentsynonyms.put("inventory", "inventory");
-        zeroArgumentsynonyms.put("restart", "restart");
-        zeroArgumentsynonyms.put("hint", "hint");
-        zeroArgumentsynonyms.put("help", "help");
-        zeroArgumentsynonyms.put("invalidate", "invalidate");
-
-        dirMapping = new HashMap<>();
-        dirMapping.put("north", "n");
-        dirMapping.put("east", "e");
-        dirMapping.put("south", "s");
-        dirMapping.put("west", "w");
-    }
 
     public NLPparser(Engine eng)
     {
@@ -163,7 +67,17 @@ public class NLPparser
         return pipeline;
     }
 
+    // here we only let the correct commands pass through
     public Command parseInput(String input)
+    {
+        Command com = parseWithLessCare(input);
+        if(Utility.commandUsesSynonymCorrectly(com))
+            return com;
+        return new Command(Command.Type.badcomm);
+    }
+
+    // here we parse with less care, not paying attention if the user defined synonyms are correctly used
+    private Command parseWithLessCare(String input)
     {
         if (input == null || input.length() == 0)
         {
@@ -176,7 +90,7 @@ public class NLPparser
         String original = input;
         // now test for special commands before any NLP is done
         if (eng.hasSpecial(input))
-            return new Command(Command.Type.special, new ArrayList<>(Arrays.asList(input)), original);
+            return new Command(Command.Type.special, new ArrayList<>(Arrays.asList(input)), original, original);
 
         // find all the occurrences of items in the sentence and map them to "item1", "item2" etc.
         HashMap<String, String> itemMapping = new HashMap<>();
@@ -217,15 +131,13 @@ public class NLPparser
 
         // this is the Stanford dependency graph of the current sentence
         SemanticGraph dependencies = sentence.get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
-        //System.out.println(sentence + "\n" + dependencies);
 
         // process the sentence and retrieve the command
 
-
         // first search for longer commands which take two arguments (useon and combine)
-        for (String word : twoArgumentsynonyms.keySet())
+        for (String word : Utility.twoArgumentsynonyms.keySet())
         {
-            String keyword = twoArgumentsynonyms.get(word); // the identifying word from the synonyms set
+            String keyword = Utility.twoArgumentsynonyms.get(word); // the identifying word from the synonyms set
             IndexedWord verb = findIndexedWord(dependencies, word);
             if (verb == null)
                 continue;
@@ -249,7 +161,7 @@ public class NLPparser
             for (IndexedWord arg : all)
             {
                 String lemma = arg.get(CoreAnnotations.LemmaAnnotation.class);
-                switch (twoArguments.get(keyword).get(curr_arg))
+                switch (Utility.twoArguments.get(keyword).get(curr_arg))
                 {
                     case item:
                         if (itemMapping.containsKey(lemma))
@@ -260,7 +172,7 @@ public class NLPparser
                             {
                                 boolean works = false;
                                 Set<IndexedWord> curr_children = dependencies.getChildren(arg);
-                                for (String connector : twoArgumentConnectors.get(keyword))
+                                for (String connector : Utility.twoArgumentConnectors.get(keyword))
                                 {
                                     IndexedWord curr_child = findIndexedWord(dependencies, connector);
                                     if (curr_child == null)
@@ -295,12 +207,12 @@ public class NLPparser
                 if(keyword.equals("use"))
                 {
                     // this means we in fact have use and not useon
-                    return new Command(Command.Type.valueOf(keyword), args, original);
+                    return new Command(Command.Type.valueOf(keyword), args, original, word);
                 }
                  else if(keyword.equals("remove"))
                 {
                     //we in fact have a take command
-                    return new Command(Command.Type.take, args, original);
+                    return new Command(Command.Type.take, args, original, word);
                 }
                 else
                 {
@@ -316,12 +228,12 @@ public class NLPparser
             if (keyword.equals("put"))
                 keyword = "putin";
             //System.out.println(word + " " + args);
-            return new Command(Command.Type.valueOf(keyword), args, original);
+            return new Command(Command.Type.valueOf(keyword), args, original, word);
         }
 
-        for (String word : oneArgumentsynonyms.keySet())
+        for (String word : Utility.oneArgumentsynonyms.keySet())
         {
-            String keyword = oneArgumentsynonyms.get(word);
+            String keyword = Utility.oneArgumentsynonyms.get(word);
             IndexedWord verb = findIndexedWord(dependencies, word);
             if (verb == null)
                 continue;
@@ -339,7 +251,7 @@ public class NLPparser
             for (IndexedWord arg : all)
             {
                 String lemma = arg.get(CoreAnnotations.LemmaAnnotation.class);
-                switch (oneArguments.get(keyword))
+                switch (Utility.oneArguments.get(keyword))
                 {
                     case item:
                         if (itemMapping.containsKey(lemma))
@@ -359,11 +271,11 @@ public class NLPparser
                         }
                         break;
                     case dir:
-                        if (dirMapping.containsKey(lemma))
+                        if (Utility.dirMapping.containsKey(lemma))
                         {
                             if (curr_arg == 1)
                                 return new Command(Command.Type.badcomm);
-                            args.add(dirMapping.get(lemma));
+                            args.add(Utility.dirMapping.get(lemma));
                             curr_arg++;
                         }
                         break;
@@ -374,7 +286,7 @@ public class NLPparser
                 if(keyword.equals("examine"))
                 {
                     // it is in fact a look type response
-                    return new Command(Command.Type.look, args, original);
+                    return new Command(Command.Type.look, args, original, word);
                 }
                 else
                 {
@@ -383,19 +295,19 @@ public class NLPparser
             }
 
             //System.out.println(word + " " + args);
-            return new Command(Command.Type.valueOf(keyword), args, original);
+            return new Command(Command.Type.valueOf(keyword), args, original, word);
 
         }
 
         // test for zero argument commands
-        for (String word : zeroArgumentsynonyms.keySet())
+        for (String word : Utility.zeroArgumentsynonyms.keySet())
         {
-            String keyword = zeroArgumentsynonyms.get(word);
+            String keyword = Utility.zeroArgumentsynonyms.get(word);
             IndexedWord verb = findIndexedWord(dependencies, word);
             if (verb == null)
                 continue;
             //System.out.println(word);
-            return new Command(Command.Type.valueOf(keyword), original);
+            return new Command(Command.Type.valueOf(keyword), original, word);
         }
 
         return new Command(Command.Type.badcomm);

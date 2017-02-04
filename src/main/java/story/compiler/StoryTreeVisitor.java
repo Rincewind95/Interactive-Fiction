@@ -1,10 +1,12 @@
 package story.compiler;
 
+import org.apache.commons.lang.text.StrTokenizer;
 import standard.engine.*;
 import story.parser.StoryGrammarBaseVisitor;
 import story.parser.StoryGrammarParser;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -305,16 +307,21 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         {
             String type = null;
             ArrayList<String> args = new ArrayList<>();
+            HashSet<String> synonyms = new HashSet<>();
             if(cnd.single_arg_cnd() != null)
             {
                 StoryGrammarParser.Single_arg_cndContext cmd_ctx = cnd.single_arg_cnd();
                 type = Utility.strip_special_chars(cmd_ctx.single_arg_cnd_type().getText());
+                if(cnd.single_arg_cnd().extra_synonyms() != null)
+                    synonyms = parseSynonyms(cnd.single_arg_cnd().extra_synonyms());
                 args.add(parseItem_id(cmd_ctx.item_id()));
             }
             else if(cnd.double_arg_cnd() != null)
             {
                 StoryGrammarParser.Double_arg_cndContext cmd_ctx = cnd.double_arg_cnd();
                 type = Utility.strip_special_chars(cmd_ctx.double_arg_cnd_type().getText());
+                if(cnd.double_arg_cnd().extra_synonyms() != null)
+                    synonyms = parseSynonyms(cnd.double_arg_cnd().extra_synonyms());
                 args.add(parseItem_id(cmd_ctx.item_id()));
                 args.add(parseRoom_id(cmd_ctx.room_id()));
             }
@@ -325,8 +332,18 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
                 args.add(Utility.strip_special_chars(cnd.CON_MOVE().getText()));
             }
 
-            step.addCondition(new Condition(type, args));
+            step.addCondition(new Condition(type, synonyms, args, step));
         }
+    }
+
+    private HashSet<String> parseSynonyms(StoryGrammarParser.Extra_synonymsContext ctx)
+    {
+        HashSet<String> synonyms = new HashSet<>();
+        for(StoryGrammarParser.CommandContext cmd : ctx.command())
+        {
+            synonyms.add(Utility.strip_special_chars(cmd.SYNONYM().getText()));
+        }
+        return synonyms;
     }
 
     public void parseConsequences(StoryStep step, StoryGrammarParser.ConsequencesContext ctx)

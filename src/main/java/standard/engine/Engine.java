@@ -249,7 +249,7 @@ public class Engine
                         args.add(item);
                         if(resp == response.removeall)
                             args.add(command.getArgs().get(1));
-                        Command curr = new Command(type, args, "");
+                        Command curr = new Command(type, args);
                         lastCommand = curr;
                         // modify the engines internal state with the command and determine the outcome
                         if(!final_out_to_user.equals(""))
@@ -368,6 +368,7 @@ public class Engine
 
         response resp = response.good;
         String out = "";
+
         switch (type)
         {
             case take:

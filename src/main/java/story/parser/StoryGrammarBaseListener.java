@@ -484,6 +484,30 @@ public class StoryGrammarBaseListener implements StoryGrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterCommand(StoryGrammarParser.CommandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCommand(StoryGrammarParser.CommandContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExtra_synonyms(StoryGrammarParser.Extra_synonymsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExtra_synonyms(StoryGrammarParser.Extra_synonymsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterConsequences(StoryGrammarParser.ConsequencesContext ctx) { }
 	/**
 	 * {@inheritDoc}

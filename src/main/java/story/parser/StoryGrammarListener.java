@@ -398,6 +398,26 @@ public interface StoryGrammarListener extends ParseTreeListener {
 	 */
 	void exitDouble_arg_cnd_type(StoryGrammarParser.Double_arg_cnd_typeContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#command}.
+	 * @param ctx the parse tree
+	 */
+	void enterCommand(StoryGrammarParser.CommandContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#command}.
+	 * @param ctx the parse tree
+	 */
+	void exitCommand(StoryGrammarParser.CommandContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StoryGrammarParser#extra_synonyms}.
+	 * @param ctx the parse tree
+	 */
+	void enterExtra_synonyms(StoryGrammarParser.Extra_synonymsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StoryGrammarParser#extra_synonyms}.
+	 * @param ctx the parse tree
+	 */
+	void exitExtra_synonyms(StoryGrammarParser.Extra_synonymsContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link StoryGrammarParser#consequences}.
 	 * @param ctx the parse tree
 	 */

@@ -1,6 +1,8 @@
 package standard.engine;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Created by Milos on 06/11/2016.
@@ -10,11 +12,40 @@ public class Condition implements Comparable
     private CondType type;          // the type of the condition
     private ArrayList<String> args; // a list of the arguments the condition has
 
+    private boolean hasSynonyms;      // true if referring to a command, and if this command has custom defined synonyms
+    private HashSet<String> synonyms; // the set of synonyms we remember
+    private StoryStep parent;         // the story step which contains it
+
     // input creator
     public Condition(String str_type, ArrayList<String> args)
     {
         type = CondType.valueOf(str_type);
         this.args = args;
+        hasSynonyms = false;
+        synonyms = new HashSet<>();
+        parent = null;
+    }
+
+    public Condition(String str_type, HashSet<String> synonyms, ArrayList<String> args, StoryStep parent)
+    {
+        type = CondType.valueOf(str_type);
+        this.args = args;
+        if(!synonyms.isEmpty())
+            hasSynonyms = true;
+        else
+            hasSynonyms = false;
+        this.synonyms = synonyms;
+        this.parent = parent;
+    }
+
+    public boolean hasSynonyms()
+    {
+        return hasSynonyms;
+    }
+
+    public HashSet<String> getSynonyms()
+    {
+        return synonyms;
     }
 
     @Override
@@ -166,6 +197,7 @@ public class Condition implements Comparable
                 resp = com != null
                         && com.getType() == Command.Type.special
                         && com.getArgs().get(0).equals(args.get(0));
+                break;
             case putin:
                 resp = com != null
                         && com.getType() == Command.Type.putin

@@ -245,6 +245,18 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDouble_arg_cnd_type(StoryGrammarParser.Double_arg_cnd_typeContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#command}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCommand(StoryGrammarParser.CommandContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#extra_synonyms}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExtra_synonyms(StoryGrammarParser.Extra_synonymsContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#consequences}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

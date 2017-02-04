@@ -106,7 +106,7 @@ public class StoryLinker
                 // set the hint message
                 curr_step.setHint(linkMessage(curr_step.getHintMessage(), step_id, eng));
             }
-
+            // TODO deduplicate conditions and consequences
             // TODO check story consistency
         }
 
@@ -178,6 +178,34 @@ public class StoryLinker
                 linkStoryItem(args.get(1), condtype, parent_id, eng);
                 break;
         }
+        // test if the condition is supposed to have synonyms
+        if(cond.hasSynonyms())
+        {
+            if(!Utility.conditionsWithSynonyms.containsKey(type.toString()))
+            {
+                // the command is not supposed to have synonyms
+                error_report += "The condition " + type + " in object [" + parent_id + "] cannot have synonyms\r\n";
+                error_cnt++;
+            }
+            else
+            {
+                // test if the synonyms are valid
+                for (String synonym : cond.getSynonyms())
+                {
+                    // add the synonym to the database and record that the synonym was linked to the appropriate condition
+                    Utility.addSynonym(synonym, cond);
+                    if(Utility.twoArgumentMasterSynonyms.containsKey(synonym) ||
+                        Utility.oneArgumentMasterSynonyms.containsKey(synonym) ||
+                        Utility.zeroArgumentMasterSynonyms.containsKey(synonym) ||
+                        Utility.dirMapping.containsKey(synonym) ||
+                        Utility.theAlls.contains(synonym))
+                    {
+                        error_report += "The synonym <" + synonym + "> in object [" + parent_id + "] is invalid\r\n";
+                        error_cnt++;
+                    }
+                }
+            }
+        }
     }
 
     private void linkStoryItem(String item_id, String type, String parent_id, Engine eng)
@@ -206,7 +234,7 @@ public class StoryLinker
 
     private void recordStoryStepLinkerError(String child, String type, String parent)
     {
-        error_report += "Dangling reference [" + child + "] for function " + type + " in story step [" + parent + "]\n";
+        error_report += "Dangling reference [" + child + "] for function " + type + " in story step [" + parent + "]\r\n";
         error_cnt++;
     }
 
@@ -272,7 +300,7 @@ public class StoryLinker
         Item container = eng.findItem(cont.getItem_id());
         if(!container.isContainer())
         {
-            error_report += "Item [" + container.getItem_id() + "] is not a container (in object [" + i.getItem_id() + "])\n";
+            error_report += "Item [" + container.getItem_id() + "] is not a container (in object [" + i.getItem_id() + "])\r\n";
             error_cnt++;
             return null;
         }
@@ -280,14 +308,14 @@ public class StoryLinker
         {
             if(container.getVolume(eng) < i.getTotalVolume() )
             {
-                error_report += "Volume of container [" + container.getItem_id() + "] is too small (in object [" + i.getItem_id() + "])\n";
+                error_report += "Volume of container [" + container.getItem_id() + "] is too small (in object [" + i.getItem_id() + "])\r\n";
                 error_cnt++;
                 return null;
             }
             Pair<Boolean, String> resp = container.canAddItemsMass(i, eng);
             if(!resp.getKey())
             {
-                error_report += "Mass of item [" + i.getItem_id() + "] is" + resp.getKey() + "to fit into [" + container.getItem_id() +"] (in object [" + i.getItem_id() + "])\n";
+                error_report += "Mass of item [" + i.getItem_id() + "] is" + resp.getKey() + "to fit into [" + container.getItem_id() +"] (in object [" + i.getItem_id() + "])\r\n";
                 error_cnt++;
                 return null;
             }
@@ -298,7 +326,7 @@ public class StoryLinker
 
     private void recordLinkerError(String child, String parent)
     {
-        error_report += "Dangling reference [" + child + "] in object [" + parent + "]\n";
+        error_report += "Dangling reference [" + child + "] in object [" + parent + "]\r\n";
         error_cnt++;
     }
 }

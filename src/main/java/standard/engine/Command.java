@@ -10,6 +10,7 @@ public class Command implements Comparable
     private Type type;
     private ArrayList<String> args;
     private String original;
+    private String originalVerb;
 
     public Command(Type type)
     {
@@ -17,18 +18,20 @@ public class Command implements Comparable
         args = new ArrayList<>();
     }
 
-    public Command(Type type, String original)
+    public Command(Type type, String original, String originalVerb)
     {
         this.type = type;
         args = new ArrayList<>();
         this.original = original;
+        this.originalVerb = originalVerb;
     }
 
-    public Command(Type type, ArrayList<String> args, String original)
+    public Command(Type type, ArrayList<String> args, String original, String originalVerb)
     {
         this.type = type;
         this.args = args;
         this.original = original;
+        this.originalVerb = originalVerb;
     }
 
     public Command(Type type, ArrayList<String> args)
@@ -36,6 +39,7 @@ public class Command implements Comparable
         this.type = type;
         this.args = args;
         this.original = "";
+        this.originalVerb = type.toString();
     }
 
     public Command(String input)
@@ -195,6 +199,11 @@ public class Command implements Comparable
     public Type getType()
     {
         return type;
+    }
+
+    public String getOriginalVerb()
+    {
+        return originalVerb;
     }
 
     public enum Type
