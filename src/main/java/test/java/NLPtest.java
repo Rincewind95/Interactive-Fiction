@@ -2,17 +2,15 @@ package test.java;
 
 import com.google.common.io.Files;
 
-import de.tudarmstadt.ukp.dkpro.core.api.syntax.type.constituent.S;
 import input.parser.NLPparser;
-import standard.engine.Command;
-import standard.engine.Engine;
-import standard.engine.Item;
-import standard.engine.Message;
+import standard.engine.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.SyncFailedException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 /**
  * A simple corenlp example ripped directly from the Stanford CoreNLP website using text from wikinews.
@@ -29,9 +27,27 @@ public class NLPtest
         String expected = Files.toString(outputFile, Charset.forName("UTF-8"));
         text = text.toLowerCase();
         Engine eng = new Engine();
-        eng.addItem("laser", new Item("laser"));
-        eng.addItem("beam", new Item("beam"));
-        eng.addItem("laser beam", new Item("laser beam"));
+        Room testroom = new Room("test", "first");
+        Item laser = new Item("laser");
+        Item beam = new Item("beam");
+        Item laser_beam = new Item("laser beam");
+
+        HashMap<String, ArrayList<String>> synonyms = new HashMap<>();
+        synonyms.put("open", new ArrayList<>(Arrays.asList("use", "with")));
+        Condition testcond = new Condition("useon", synonyms, new ArrayList<>(Arrays.asList("laser", "beam")), null);
+        Utility.addSynonym("open", testcond);
+
+        testroom.addItem(laser);
+        testroom.addItem(beam);
+        testroom.addItem(laser_beam);
+        eng.addRoom("test", testroom);
+        eng.addItem("laser", laser);
+        eng.addItem("beam", beam);
+        eng.addItem("laser beam", laser_beam);
+        eng.makePlayer(testroom);
+        eng.setEnhanced(false);
+        Utility.setOrderedTwoArgumentSynonyms();
+
         NLPparser parser = new NLPparser(eng);
         String[] sentences = text.split("\r\n");
         String[] expectedResult = expected.split("\r\n");

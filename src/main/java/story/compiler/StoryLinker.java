@@ -110,6 +110,9 @@ public class StoryLinker
             // TODO check story consistency
         }
 
+        // after all the conditions in all steps have been visited collect the data
+        Utility.setOrderedTwoArgumentSynonyms();
+
         if(error_cnt == 0)
             return eng;
 

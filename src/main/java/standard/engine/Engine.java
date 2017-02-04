@@ -1050,4 +1050,9 @@ public class Engine
     {
         return enhanced;
     }
+
+    public void setEnhanced(boolean enhanced)
+    {
+        this.enhanced = enhanced;
+    }
 }

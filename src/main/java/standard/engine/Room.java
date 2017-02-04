@@ -18,10 +18,21 @@ public class Room extends ItemLocation
     private Message brief;       // message printed upon first entry to the room
     private Message description; // short description printed upon consequent entries
     private HashMap<String, Item> items; // list of all items currently contained in the room
+
     public Room(String room_id)
     {
         // placeholder constructor
         this.room_id = room_id;
+    }
+
+    public Room(String room_id, String level_id)
+    {
+        this.room_id = room_id;
+        this.level_id = level_id;
+        this.leads_to = new HashMap<>();
+        this.dead_end = new HashMap<>();
+        this.items = new HashMap<>();
+        visited = false;
     }
 
     public Room(String room_id,

@@ -131,29 +131,35 @@ public class NLPparser
 
         // this is the Stanford dependency graph of the current sentence
         SemanticGraph dependencies = sentence.get(SemanticGraphCoreAnnotations.CollapsedCCProcessedDependenciesAnnotation.class);
-
+        
         // process the sentence and retrieve the command
 
         // first search for longer commands which take two arguments (useon and combine)
-        for (String word : Utility.twoArgumentsynonyms.keySet())
+        for (String word : Utility.orderedTwoArgumentSynonyms)
         {
             String keyword = Utility.twoArgumentsynonyms.get(word); // the identifying word from the synonyms set
             IndexedWord verb = findIndexedWord(dependencies, word);
             if (verb == null)
                 continue;
 
+            TreeSet<IndexedWord> all = new TreeSet<>();
             TreeSet<IndexedWord> parents = getParents(dependencies, verb);
             TreeSet<IndexedWord> siblings = getSiblings(dependencies, verb);
             TreeSet<IndexedWord> children = getChildren(dependencies, verb);
+            for(IndexedWord sibling : siblings)
+            {
+                // add all the children of the siblings as well
+                children.addAll(getChildren(dependencies, sibling));
+            }
+            for (IndexedWord child : children)
+            {
+                // as well as all the possible grandchildren
+                all.addAll(getChildren(dependencies, child));
+            }
 
-            TreeSet<IndexedWord> all = new TreeSet<>();
             all.addAll(parents);
             all.addAll(siblings);
             all.addAll(children);
-            for (IndexedWord child : children)
-            {
-                all.addAll(getChildren(dependencies, child));
-            }
 
             // retrieve the arguments
             int curr_arg = 0;
@@ -172,18 +178,14 @@ public class NLPparser
                             else if (curr_arg == 1)
                             {
                                 boolean works = false;
-                                Set<IndexedWord> curr_children = dependencies.getChildren(arg);
-                                for (String connector : Utility.twoArgumentConnectors.get(keyword))
+                                for (String connector : Utility.twoArgumentConnectors.get(word))
                                 {
                                     IndexedWord curr_child = findIndexedWord(dependencies, connector);
                                     if (curr_child == null)
                                         continue;
-                                    if (curr_children.contains(curr_child))
-                                    {
-                                        originalConnector = connector;
-                                        works = true;
-                                        break;
-                                    }
+                                    originalConnector = connector;
+                                    works = true;
+                                    break;
                                 }
                                 if (works)
                                 {

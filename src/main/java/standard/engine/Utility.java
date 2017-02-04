@@ -48,6 +48,7 @@ public class Utility
 
     public static final String helpMessage;
 
+    public static ArrayList<String> orderedTwoArgumentSynonyms;               // the ordered list of all the synonyms for two argument commands
     public static HashMap<String, String> twoArgumentsynonyms;                // the map of all the synonyms for two argument commands
     public static HashMap<String, ArrayList<String>> twoArgumentConnectors;   // the set of connectors expected by the two Argument words
     public static HashMap<String, ArrayList<NLPparser.argType>> twoArguments; // a map of their respective argument types
@@ -179,11 +180,11 @@ public class Utility
         twoArgumentConnectors.put("apply", new ArrayList<>(Arrays.asList("to")));
         twoArgumentConnectors.put("employ", new ArrayList<>(Arrays.asList("with")));
         twoArgumentConnectors.put("combine", new ArrayList<>(Arrays.asList("with", "and")));
-        twoArgumentConnectors.put("merge", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("mix", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("fuse", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("meld", new ArrayList<>(Arrays.asList("with")));
-        twoArgumentConnectors.put("compound", new ArrayList<>(Arrays.asList("with")));
+        twoArgumentConnectors.put("merge", new ArrayList<>(Arrays.asList("with", "and")));
+        twoArgumentConnectors.put("mix", new ArrayList<>(Arrays.asList("with", "and")));
+        twoArgumentConnectors.put("fuse", new ArrayList<>(Arrays.asList("with", "and")));
+        twoArgumentConnectors.put("meld", new ArrayList<>(Arrays.asList("with", "and")));
+        twoArgumentConnectors.put("compound", new ArrayList<>(Arrays.asList("with", "and")));
         twoArgumentConnectors.put("put", new ArrayList<>(Arrays.asList("in", "into")));
         twoArgumentConnectors.put("place", new ArrayList<>(Arrays.asList("in", "into")));
         twoArgumentConnectors.put("position", new ArrayList<>(Arrays.asList("in")));
@@ -244,6 +245,13 @@ public class Utility
         conditionsWithSynonyms.put("combine", new Pair<>(2, "combine"));
 
         extraSynonymOriginConditions = new HashMap<>();
+    }
+
+    public static void setOrderedTwoArgumentSynonyms()
+    {
+        orderedTwoArgumentSynonyms = new ArrayList<>();
+        orderedTwoArgumentSynonyms.addAll(extraSynonymOriginConditions.keySet());
+        orderedTwoArgumentSynonyms.addAll(twoArgumentMasterSynonyms.keySet());
     }
 
     public static void addSynonym(String synonym, Condition cond)
