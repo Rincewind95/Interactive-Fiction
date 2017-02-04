@@ -505,7 +505,7 @@ public class Utility
 
     public static int getTerminalWidth()
     {
-        return reader.getTerminal().getWidth();
+        return reader.getTerminal().getWidth()-1;
     }
 
     public static String dashedLine()
@@ -616,7 +616,6 @@ public class Utility
                             // there is only whitespace left in the string, so we ignore it
                             notDone = false;
                         }
-
                     }
                 }
                 line = chopped;
