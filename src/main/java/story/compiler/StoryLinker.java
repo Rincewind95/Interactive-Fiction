@@ -76,6 +76,11 @@ public class StoryLinker
                     curr_item.setLocation(linkItemWithItem((Item)curr_item.getLocation(), curr_item, eng));
                     break;
             }
+
+            if(curr_item.getTmpToState() == null)
+            {
+
+            }
         }
 
         Set<String> stepKeySet = eng.getStepKeySet();

@@ -1,14 +1,12 @@
 package story.compiler;
 
+import javafx.util.Pair;
 import org.apache.commons.lang.text.StrTokenizer;
 import standard.engine.*;
 import story.parser.StoryGrammarBaseVisitor;
 import story.parser.StoryGrammarParser;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Creates an engine from a parse tree
@@ -17,9 +15,12 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
 {
     private Engine eng;
 
+    public String errorOut;
+
     public StoryTreeVisitor()
     {
         eng = new Engine();
+        errorOut = "";
     }
 
     public Engine extractEngine()
@@ -183,6 +184,13 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
         boolean surpress = true;
         Boolean fixedTemp = true;
         Item.Temperature temp = Item.Temperature.normal;
+        HashMap<Item.Temperature, Item.State> tmpToState = new HashMap<>();
+        boolean stateChanges = false;
+        tmpToState.put(Item.Temperature.frozen, Item.State.solid);
+        tmpToState.put(Item.Temperature.cold, Item.State.solid);
+        tmpToState.put(Item.Temperature.normal, Item.State.solid);
+        tmpToState.put(Item.Temperature.warm, Item.State.solid);
+        tmpToState.put(Item.Temperature.hot, Item.State.solid);
 
         if(ctx.parameter_fields() != null)
         {
@@ -227,6 +235,107 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
                         break;
                 }
             }
+
+            // retrieve state data
+            if(ctx.parameter_fields().state_field() != null)
+            {
+                ArrayList<Pair<Item.Temperature, Item.State>> tmpToStateArray = new ArrayList<>();
+                for(StoryGrammarParser.Scale_fieldContext sctx : ctx.parameter_fields().state_field().scale_field())
+                {
+                    // iterate through the scale fields and collect them
+                    Item.State state = Item.State.valueOf(Utility.strip_special_chars(sctx.state_level().getText()));
+                    Item.Temperature temperature = Item.Temperature.valueOf(Utility.strip_special_chars(sctx.temp_level().getText()));
+                    for(Pair<Item.Temperature, Item.State> keyVal : tmpToStateArray)
+                    {
+                        if(keyVal.getKey() == temperature)
+                        {
+                            errorOut += "Duplicate temperature in item [" + item_id + "]," +
+                                        "state field <" + state.toString() + ", " + temperature.toString() + ">\r\n";
+                        }
+                    }
+                    if(errorOut.equals(""))
+                        tmpToStateArray.add(new Pair<>(temperature, state));
+                }
+                if(errorOut.equals(""))
+                {
+                    // if we succeeded, we continue
+                    tmpToState = new HashMap<>();
+                    Collections.sort(tmpToStateArray, (pair1, pair2) -> pair1.getKey().compareTo(pair2.getKey()));
+                    for (int i = 1; i < tmpToStateArray.size(); i++)
+                    {
+                        // test for correct state ordering
+                        Item.State state0 = tmpToStateArray.get(i-1).getValue();
+                        Item.State state1 = tmpToStateArray.get(i).getValue();
+                        if(state0.compareTo(state1) >= 0)
+                        {
+                            errorOut += "Invalid state ordering [" + item_id + "], " +
+                                        "state fields <" + tmpToStateArray.get(i-1).getKey().toString() +", " + state0.toString() +  "> and" +
+                                        "<" +  tmpToStateArray.get(i).getKey().toString() + ", " + state1.toString() + ">\r\n";
+                        }
+                    }
+                    for(Pair<Item.Temperature, Item.State> keyVal : tmpToStateArray)
+                    {
+                        // explaination:
+                        // assuming that the drawing belos is the temperature scale (frozen at top, hot at bottom)
+                        // then the solid/liquid/gaseous scale as follows: (-+ <=> ->)
+                        // +
+                        // |
+                        // * solid
+                        //
+                        // +
+                        // |
+                        // * liquid
+                        // |
+                        // +
+                        //
+                        // * gaseous
+                        // |
+                        // +
+
+                        switch (keyVal.getValue())
+                        {
+                            case solid:
+                                for(int i = 0; i <= keyVal.getKey().ordinal(); i++)
+                                {
+                                    tmpToState.put(Item.Temperature.values()[i], keyVal.getValue());
+                                }
+                                break;
+                            case liquid:
+                                for(int i = 0; i < Item.Temperature.values().length; i++)
+                                {
+                                    if(!tmpToState.containsKey(Item.Temperature.values()[i]))
+                                        tmpToState.put(Item.Temperature.values()[i], keyVal.getValue());
+                                }
+                                break;
+                            case gaseous:
+                                for(int i = 4; i >= keyVal.getKey().ordinal(); i--)
+                                {
+                                    tmpToState.put(Item.Temperature.values()[i], keyVal.getValue());
+                                }
+                                break;
+                        }
+                    }
+
+                    // more error testing
+                    if(tmpToState.size() != 5)
+                    {
+                        errorOut += "Missing <temperature, state> mapping in [" + item_id + "], " +
+                                "mapping does not cover temperature interval [frozen,hot]\r\n";
+                    }
+
+                    // finally test if the state changes at all
+                    Item.State st = tmpToState.get(Item.Temperature.frozen);
+                    for(Item.Temperature tmp : tmpToState.keySet())
+                    {
+                        Item.State curr = tmpToState.get(tmp);
+                        if(curr != st)
+                        {
+                            stateChanges = true;
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         Message description = parseDescription(ctx.description());
@@ -234,6 +343,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
                                       volume, isContainer, holdingType, holdingMass,
                                       mass, surpress,
                                       temp, fixedTemp,
+                                      tmpToState, stateChanges,
                                       description));
         return null;
     }

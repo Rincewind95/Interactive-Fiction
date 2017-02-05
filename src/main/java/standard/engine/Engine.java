@@ -1,14 +1,11 @@
 package standard.engine;
 
-import com.sun.javafx.webkit.UtilitiesImpl;
 import input.parser.NLPparser;
 import javafx.util.Pair;
 import jline.console.ConsoleReader;
 
 import java.io.PrintWriter;
-import java.io.Reader;
 import java.io.Writer;
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -255,7 +252,7 @@ public class Engine
                         if(!final_out_to_user.equals(""))
                             final_out_to_user += "\r\n";
                         if(type == Command.Type.examine)
-                            final_out_to_user += "-- " + item + ": ";
+                            final_out_to_user += "-- " + findItem(item).getIDWithTempAndState(enhanced) + ": ";
                         final_out_to_user += executeCommand(curr).getValue();
                         // we advance time, check constraints and potentially generate another response
                         advanceTime();
@@ -382,7 +379,7 @@ public class Engine
                     if(toTake.isTakeable() && flag == flag.inroom && (toTake.getLocation()) == player.getLocation())
                     {
                         // if the player is in the same room as the item, and does not have the item he can take it
-                        out = "You take " + Utility.addThe(toTake.getIDWithTemp(enhanced)) + ".";
+                        out = "You take " + Utility.addThe(toTake.getIDWithTempAndState(enhanced)) + ".";
                         toTake.moveItem(flag.inv, null, this);
                     }
                     else if(toTake.isTakeable() && flag == flag.incont &&
@@ -390,12 +387,12 @@ public class Engine
                                     player.hasItem((Item)toTake.getLocation())))
                     {
                         // if the player is in the same room as the items container, or has it, he can take the item
-                        out = "You remove " + Utility.addThe(toTake.getIDWithTemp(enhanced)) + " from " + Utility.addThe(((Item)toTake.getLocation()).getIDWithTemp(enhanced)) + ".";
+                        out = "You remove " + Utility.addThe(toTake.getIDWithTempAndState(enhanced)) + " from " + Utility.addThe(((Item)toTake.getLocation()).getIDWithTempAndState(enhanced)) + ".";
                         toTake.moveItem(flag.inv, null, this);
                     }
                     else if (!toTake.isTakeable())
                     {
-                        out = "You cannot take " + Utility.addThe(toTake.getIDWithTemp(enhanced)) + ".";
+                        out = "You cannot take " + Utility.addThe(toTake.getIDWithTempAndState(enhanced)) + ".";
                     }
                     else
                     {
@@ -419,7 +416,7 @@ public class Engine
                     if (player.hasItem(toDrop))
                     {
                         // if the player has the item
-                        out = "You drop " + Utility.addThe(toDrop.getIDWithTemp(enhanced));
+                        out = "You drop " + Utility.addThe(toDrop.getIDWithTempAndState(enhanced));
                         toDrop.moveItem(Item.flag.inroom, player.getLocation(), this);
                         // all rooms are at room temperature, so items dropped in them are set to room temperature
                         if (enhanced)
@@ -488,7 +485,7 @@ public class Engine
                     {
                         if(enhanced)
                         {
-                            out = "You cannot put " + Utility.addThe(fir.getIDWithTemp(enhanced)) + " in itself.";
+                            out = "You cannot put " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) + " in itself.";
                         }
                         else
                         {
@@ -501,7 +498,7 @@ public class Engine
                         {
                             if (!fir.isTakeable())
                             {
-                                out = "You cannot move " + Utility.addThe(fir.getIDWithTemp(enhanced)) + ".";
+                                out = "You cannot move " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) + ".";
                             }
                             else
                             {
@@ -511,9 +508,9 @@ public class Engine
                                     fitsvol = false;
                                     if (enhanced)
                                     {
-                                        out += Utility.capitalise(Utility.addThe(fir.getIDWithTemp(enhanced))) + " " +
+                                        out += Utility.capitalise(Utility.addThe(fir.getIDWithTempAndState(enhanced))) + " " +
                                                 (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is" : "are") +
-                                                " too big to fit into " + Utility.addThe(sec.getIDWithTemp(enhanced)) + ".";
+                                                " too big to fit into " + Utility.addThe(sec.getIDWithTempAndState(enhanced)) + ".";
                                     }
                                     else
                                     {
@@ -531,9 +528,9 @@ public class Engine
                                     {
                                         if(!fitsvol)
                                             out += "\r\n";
-                                        out += Utility.capitalise(Utility.addThe(fir.getIDWithTemp(enhanced))) + " " +
+                                        out += Utility.capitalise(Utility.addThe(fir.getIDWithTempAndState(enhanced))) + " " +
                                                 (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is" : "are") +
-                                                massOutput + "to be put into " + Utility.addThe(sec.getIDWithTemp(enhanced)) + ".";
+                                                massOutput + "to be put into " + Utility.addThe(sec.getIDWithTempAndState(enhanced)) + ".";
                                     }
                                     else
                                     {
@@ -546,11 +543,16 @@ public class Engine
                                     if(fitsvol && massfits)
                                     {
                                         fir.moveItem(Item.flag.incont, sec, this);
-                                        out = "You put " + Utility.addThe(fir.getIDWithTemp(enhanced)) + " into " + Utility.addThe(sec.getIDWithTemp(enhanced));
+                                        out = "You put " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) + " into " + Utility.addThe(sec.getIDWithTempAndState(enhanced));
+
+                                        Item.State oldfir = fir.getTmpToState().get(fir.getTemperature());
+                                        Item.State oldsec = fir.getTmpToState().get(sec.getTemperature());
                                         String result = Item.modifyTemperatures(fir, sec, parser.getPipeline());
                                         if (enhanced)
                                             out += result;
                                         out += ".";
+                                        if(enhanced)
+                                            out += fir.getStateChangeMessage(fir, oldfir, sec, oldsec);
                                     }
                                 }
                                 else
@@ -571,7 +573,7 @@ public class Engine
                         {
                             if (enhanced)
                             {
-                                out = Utility.capitalise(Utility.addThe(sec.getIDWithTemp(enhanced))) + " is not a container.";
+                                out = Utility.capitalise(Utility.addThe(sec.getIDWithTempAndState(enhanced))) + " is not a container.";
                                 resp = response.good;
                             }
                             else
@@ -593,7 +595,7 @@ public class Engine
                     if(fir.isTakeable() && sec.contains(fir) && (player.hasItem(sec) || player.getLocation().containsItem(sec)))
                     {
                         fir.moveItem(Item.flag.inv, null, this);
-                        out = "You remove " + Utility.addThe(fir.getIDWithTemp(enhanced)) + " from " + Utility.addThe(sec.getIDWithTemp(enhanced)) + ".";
+                        out = "You remove " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) + " from " + Utility.addThe(sec.getIDWithTempAndState(enhanced)) + ".";
                     }
                 }
                 else if(args.get(0).equals("all") && finditem.containsKey(args.get(1)) &&
@@ -802,13 +804,13 @@ public class Engine
         ArrayList<String> itemsPresent = current.listAllItems(this);
         for(String itemId : itemsPresent)
         {
-            item_suggestions.add(findItem(itemId).getIDWithTemp(enhanced));
+            item_suggestions.add(findItem(itemId).getIDWithTempAndState(enhanced));
         }
 
         ArrayList<String> itemsInv = player.listAllItems(this);
         for(String itemId : itemsInv)
         {
-            item_suggestions.add(findItem(itemId).getIDWithTemp(enhanced));
+            item_suggestions.add(findItem(itemId).getIDWithTempAndState(enhanced));
         }
 
         ArrayList<String> extras = new ArrayList<>();

@@ -11,20 +11,22 @@ import java.util.Set;
  */
 public class Item extends ItemLocation implements Comparable
 {
-    private String item_id;                  // the unique identifier of the item used to refer to it
-    private boolean takeable;                // true if the item can be taken from its respective room (if the item is not fixed in place)
-    private flag location_flag;              // flag that determines the location of the item (room if its in a room, inv for inventory, cont for in a container and prod means it will be produced later)
-    private ItemLocation location;           // the location of the item (room_id, inv, item or null (if the item has not yet been produced))
-    private int volume;                      // the volume of the item
-    private boolean isContainer;             // true if the item is a container
-    private int mass;                        // the mass of the container
-    private boolean surpress;                // true if the mass of the item is non-examinable
-    private int holdingMass;                 // the holding mass of the container
-    private HoldingType holdingType;         // the min/max/equal type of the holding mass
-    private HashMap<String, Item> contained; // the items contained if the item is a container
-    private Temperature temperature;         // the temperature of the item
-    private boolean hasConstantTemp;         // true if the temperature level cannot change
-    private Message description;             // items short description
+    private String item_id;                         // the unique identifier of the item used to refer to it
+    private boolean takeable;                       // true if the item can be taken from its respective room (if the item is not fixed in place)
+    private flag location_flag;                     // flag that determines the location of the item (room if its in a room, inv for inventory, cont for in a container and prod means it will be produced later)
+    private ItemLocation location;                  // the location of the item (room_id, inv, item or null (if the item has not yet been produced))
+    private int volume;                             // the volume of the item
+    private int holdingMass;                        // the holding mass of the container
+    private HoldingType holdingType;                // the min/max/equal type of the holding mass
+    private boolean isContainer;                    // true if the item is a container
+    private Temperature temperature;                // the temperature of the item
+    private boolean hasConstantTemp;                // true if the temperature level cannot change
+    private int mass;                               // the mass of the container
+    private boolean surpress;                       // true if the mass of the item is non-examinable
+    private HashMap<Temperature, State> tmpToState; // the mapping from all of the temperatures to state
+    private boolean stateChanges;                   // true only if at least one of the entries in tmpToState is different
+    private HashMap<String, Item> contained;        // the items contained if the item is a container
+    private Message description;                    // items short description
 
     public Item(String item_id,
                 boolean takeable,
@@ -38,6 +40,8 @@ public class Item extends ItemLocation implements Comparable
                 boolean surpress,
                 Temperature temperature,
                 boolean constTemp,
+                HashMap<Temperature, State> tempToState,
+                boolean stateChanges,
                 Message description)
     {
         this.item_id = item_id;
@@ -53,6 +57,9 @@ public class Item extends ItemLocation implements Comparable
         this.surpress = surpress;
         this.temperature = temperature;
         this.hasConstantTemp = constTemp;
+        this.tmpToState = tempToState;
+        this.stateChanges = false;
+        this.stateChanges = stateChanges;
         contained = new HashMap<>();
     }
 
@@ -69,6 +76,36 @@ public class Item extends ItemLocation implements Comparable
         this.volume = 0;
         this.isContainer = false;
         contained = new HashMap<>();
+    }
+
+    public HashMap<Temperature, State> getTmpToState()
+    {
+        return tmpToState;
+    }
+
+    public static String getStateChangeMessage(Item fir, State oldfir, Item sec, State oldsec)
+    {
+        String resp = "";
+        if(!oldfir.equals(fir.tmpToState.get(fir.temperature)))
+        {
+            resp = "\r\nIn addition to this, the state of " + Utility.addThe(fir.item_id)+
+                    " has changed to " + fir.tmpToState.get(fir.temperature).toString();
+        }
+        if(!resp.equals(""))
+        {
+            resp += ", and the ";
+        }
+        if(!oldsec.equals(sec.tmpToState.get(sec.temperature)))
+        {
+            if(resp.equals(""))
+                resp = "\r\nIn addition to this, the ";
+
+            resp += "state of " + Utility.addThe(sec.item_id)+
+                    " has changed to " + sec.tmpToState.get(sec.temperature).toString();
+        }
+        if(!resp.equals(""))
+            resp += ".";
+        return resp;
     }
 
     public static String modifyTemperatures(Item item1, Item item2, StanfordCoreNLP pipeline)
@@ -308,25 +345,43 @@ public class Item extends ItemLocation implements Comparable
         return contained.containsKey(item.getItem_id());
     }
 
-    public int getTotalVolume()
+    public double getVolumeChangeCoef()
     {
-        int vol = volume;
+        double change = 0;
         switch (temperature)
         {
             case hot:
-                vol += vol * 0.2;
+                change = 0.1;
                 break;
             case warm:
-                vol += vol * 0.1;
+                change = 0.05;
+                break;
+            case normal:
+                change = 0;
                 break;
             case cold:
-                vol -= vol * 0.1;
+                change = -0.05;
                 break;
             case frozen:
-                vol -= vol * 0.2;
+                change = -0.1;
                 break;
         }
-        return vol;
+        switch (tmpToState.get(temperature))
+        {
+            case gaseous:
+                change *= 1.2;
+                break;
+            case solid:
+                change *= 0.8;
+                break;
+        }
+
+        return 1-change;
+    }
+
+    public int getTotalVolume()
+    {
+        return (int)(volume*getVolumeChangeCoef());
     }
 
     public int getVolume(Engine eng)
@@ -354,12 +409,24 @@ public class Item extends ItemLocation implements Comparable
         }
     }
 
-    public String getIDWithTemp(boolean enhanced)
+    public String getIDWithTempAndState(boolean enhanced)
     {
         if(!enhanced)
             return item_id;
-        if (hasConstantTemp || temperature == Temperature.normal)
+        String insert_string = "";
+        if (temperature != Temperature.normal)
+        {
+            insert_string += temperature.toString();
+        }
+        if(stateChanges)
+        {
+            if (!insert_string.equals(""))
+                insert_string += " ";
+            insert_string += tmpToState.get(temperature).toString();
+        }
+        if(insert_string.equals(""))
             return item_id;
+
         String res = item_id;
         String[] prefixes = {"the ", "a ", "an "};
         String prefix = "";
@@ -371,13 +438,13 @@ public class Item extends ItemLocation implements Comparable
                 res = res.substring(pre.length());
             }
         }
-        res = prefix + temperature.toString() + " " + res;
+        res = prefix + insert_string + " " + res;
         return res;
     }
 
     public String listContents(Engine eng, String prefix)
     {
-        String res = "\n" + prefix + "- " + getIDWithTemp(eng.isEnhanced());
+        String res = "\n" + prefix + "- " + getIDWithTempAndState(eng.isEnhanced());
         for (String child : contained.keySet())
         {
             res += eng.findItem(child).listContents(eng, prefix + "   ");
@@ -397,34 +464,45 @@ public class Item extends ItemLocation implements Comparable
                 result += eng.findItem(item).listContents(eng, "");
             }
         }
-        if (!hasConstantTemp && eng.isEnhanced())
+        if(eng.isEnhanced())
         {
-            switch (temperature)
+            if (!hasConstantTemp)
             {
-                case hot:
-                    result += "\nThe volume of " + Utility.addThe(item_id) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at 120% its normal size.";
-                    result += "\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently hot.";
-                    break;
-                case warm:
-                    result += "\nThe volume of " + Utility.addThe(item_id) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at 110% its normal size.";
-                    result += "\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently warm.";
-                    break;
-                case normal:
-                    result += "\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at normal temperature.";
-                    break;
-                case cold:
-                    result += "\nThe volume of " + Utility.addThe(item_id) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at 90% its normal size.";
-                    result += "\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently cold.";
-                    break;
-                case frozen:
-                    result += "\nThe volume of " + Utility.addThe(item_id) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at 80% its normal size.";
-                    result += "\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently frozen.";
-                    break;
+                if (temperature != Temperature.normal)
+                {
+                    int coef = (int) (getVolumeChangeCoef() * 100);
+                    result += "\r\nThe volume of " + Utility.addThe(item_id) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at " + coef + "% its normal size.";
+                    result += "\r\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently " + temperature.toString() + ".";
+                }
+                else
+                {
+                    result += "\r\nThe volume of " + Utility.addThe(item_id) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at its normal size.";
+                    result += "\r\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at normal temperature.";
+                }
             }
-        }
-        if(eng.isEnhanced() && !surpress)
-        {
-            result += "\nThe mass of " + Utility.addThe(item_id) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " " + mass +"g.";
+            else
+            {
+                if(temperature != temperature.normal)
+                    result += "\r\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " always " + temperature.toString() + ".";
+                else
+                    result += "\r\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " always at normal temperature.";
+            }
+            if (!surpress)
+            {
+                result += "\r\nThe mass of " + Utility.addThe(item_id) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " " + mass + "g.";
+            }
+            if (stateChanges)
+            {
+                String state = tmpToState.get(temperature).toString();
+                result += "\r\n" + Utility.capitalise(Utility.addThe(item_id)) + " " +
+                        Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently in " + state + " state.";
+            }
+            else
+            {
+                String state = tmpToState.get(temperature).toString();
+                result += "\r\n" + Utility.capitalise(Utility.addThe(item_id)) + " " +
+                        Utility.isAre(item_id, eng.getParser().getPipeline()) + " always in " + state + " state.";
+            }
         }
         return result;
     }
@@ -442,5 +520,10 @@ public class Item extends ItemLocation implements Comparable
     public enum HoldingType
     {
         min, max, equal
+    }
+
+    public enum State
+    {
+        solid, liquid, gaseous
     }
 }

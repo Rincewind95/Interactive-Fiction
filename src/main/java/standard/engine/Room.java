@@ -218,7 +218,7 @@ public class Room extends ItemLocation
             {
                 info += "\nThere " +
                         (Utility.isSingular(item_id, eng.getParser().getPipeline()) ?
-                                "is " + Utility.addAorAn(item_id):
+                                "is " + Utility.addAorAn(eng.findItem(item_id).getIDWithTempAndState(eng.isEnhanced())):
                                 "are " + item_id) +
                         " here.";
                         //eng.findItem(item_id).listContents(eng, "");

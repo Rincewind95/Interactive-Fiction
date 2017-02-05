@@ -243,6 +243,7 @@ public class Utility
         conditionsWithSynonyms.put("use", new Pair<>(2, "use"));
         conditionsWithSynonyms.put("useon", new Pair<>(2, "use"));
         conditionsWithSynonyms.put("combine", new Pair<>(2, "combine"));
+        conditionsWithSynonyms.put("putin", new Pair<>(2, "put"));
 
         extraSynonymOriginConditions = new HashMap<>();
     }

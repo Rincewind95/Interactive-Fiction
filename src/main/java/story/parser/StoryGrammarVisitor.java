@@ -167,6 +167,24 @@ public interface StoryGrammarVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTemp_variability(StoryGrammarParser.Temp_variabilityContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#state_field}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitState_field(StoryGrammarParser.State_fieldContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#scale_field}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitScale_field(StoryGrammarParser.Scale_fieldContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StoryGrammarParser#state_level}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitState_level(StoryGrammarParser.State_levelContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link StoryGrammarParser#special_id}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

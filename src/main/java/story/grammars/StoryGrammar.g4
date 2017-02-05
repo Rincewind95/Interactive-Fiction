@@ -57,6 +57,11 @@ MIN: '_min';
 MAX: '_max';
 EQUAL: '_equal';
 SURPRESS: '_surpress';
+// state related
+STATEID: '_state';
+SOLID: '_solid';
+LIQUID: '_liquid';
+GAS: '_gaseous';
 
 // step related
 // and vs or
@@ -177,7 +182,8 @@ itemtype: IS_CONTAINER COMMA holding_type COMMA holding_mass
 parameter_fields: (itemtype SEMICOLON | )
                   (volume_field SEMICOLON | )
                   (mass_field SEMICOLON | )
-                  (temp_field SEMICOLON | );
+                  (temp_field SEMICOLON | )
+                  (state_field SEMICOLON | );
 
 volume_field: VOLUMEID VALUE;
 
@@ -200,6 +206,16 @@ temp_level: HOT
 
 temp_variability: CONSTANT
                 | VARIABLE;
+
+state_field: STATEID scale_field
+            ((COMMA scale_field) | )
+            ((COMMA scale_field) | );
+
+scale_field: OPEN_PAREN_SHARP temp_level COMMA state_level CLOS_PAREN_SHARP;
+
+state_level: SOLID
+           | LIQUID
+           | GAS;
 
 special_id: ID;
 special: SPECIAL_

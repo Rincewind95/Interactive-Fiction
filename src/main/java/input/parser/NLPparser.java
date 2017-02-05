@@ -3,11 +3,9 @@ package input.parser;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.IndexedWord;
 import edu.stanford.nlp.pipeline.Annotation;
-import edu.stanford.nlp.pipeline.CoreNLPProtos;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
-import edu.stanford.nlp.trees.GrammaticalRelation;
 import edu.stanford.nlp.util.CoreMap;
 import standard.engine.Command;
 import standard.engine.Engine;
@@ -419,13 +417,13 @@ public class NLPparser
         {
             for (String itemId : itemsPresent)
             {
-                String item = eng.findItem(itemId).getIDWithTemp(eng.isEnhanced());
+                String item = eng.findItem(itemId).getIDWithTempAndState(eng.isEnhanced());
                 item_compounds.add(item);
                 item_originals.put(item, itemId);
             }
             for (String itemId : itemsInv)
             {
-                String item = eng.findItem(itemId).getIDWithTemp(eng.isEnhanced());
+                String item = eng.findItem(itemId).getIDWithTempAndState(eng.isEnhanced());
                 item_compounds.add(item);
                 item_originals.put(item, itemId);
             }

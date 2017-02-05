@@ -35,9 +35,17 @@ public class StoryCompiler
             }
 
             StoryTreeVisitor visitor = new StoryTreeVisitor();
+            visitor.errorOut = "";
             // evaluate the tree
             visitor.visit(tree);
             eng = visitor.extractEngine();
+
+            if(!visitor.errorOut.equals(""))
+            {
+                // there was an error, so we fail
+                System.out.println(visitor.errorOut);
+                return null;
+            }
 
             StoryLinker linker = new StoryLinker();
             eng = linker.linkEngine(eng);
