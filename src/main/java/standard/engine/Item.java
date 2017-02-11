@@ -345,7 +345,7 @@ public class Item extends ItemLocation implements Comparable
         return contained.containsKey(item.getItem_id());
     }
 
-    public double getVolumeChangeCoef()
+    public static double getVolumeChangeCoef(Temperature temperature, Item item)
     {
         double change = 0;
         switch (temperature)
@@ -366,7 +366,7 @@ public class Item extends ItemLocation implements Comparable
                 change = -0.1;
                 break;
         }
-        switch (tmpToState.get(temperature))
+        switch (item.getTmpToState().get(temperature))
         {
             case gaseous:
                 change *= 1.2;
@@ -376,12 +376,12 @@ public class Item extends ItemLocation implements Comparable
                 break;
         }
 
-        return 1-change;
+        return 1+change;
     }
 
     public int getTotalVolume()
     {
-        return (int)(volume*getVolumeChangeCoef());
+        return (int)(volume*getVolumeChangeCoef(temperature, this));
     }
 
     public int getVolume(Engine eng)
@@ -414,7 +414,7 @@ public class Item extends ItemLocation implements Comparable
         if(!enhanced)
             return item_id;
         String insert_string = "";
-        if (temperature != Temperature.normal)
+        if (!hasConstantTemp && temperature != Temperature.normal)
         {
             insert_string += temperature.toString();
         }
@@ -470,7 +470,7 @@ public class Item extends ItemLocation implements Comparable
             {
                 if (temperature != Temperature.normal)
                 {
-                    int coef = (int) (getVolumeChangeCoef() * 100);
+                    int coef = (int) (getVolumeChangeCoef(temperature, this) * 100);
                     result += "\r\nThe volume of " + Utility.addThe(item_id) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently at " + coef + "% its normal size.";
                     result += "\r\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently " + temperature.toString() + ".";
                 }
@@ -484,8 +484,6 @@ public class Item extends ItemLocation implements Comparable
             {
                 if(temperature != temperature.normal)
                     result += "\r\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " always " + temperature.toString() + ".";
-                else
-                    result += "\r\n" + Utility.capitalise(Utility.addThe(item_id)) + " " + Utility.isAre(item_id, eng.getParser().getPipeline()) + " always at normal temperature.";
             }
             if (!surpress)
             {
@@ -496,12 +494,6 @@ public class Item extends ItemLocation implements Comparable
                 String state = tmpToState.get(temperature).toString();
                 result += "\r\n" + Utility.capitalise(Utility.addThe(item_id)) + " " +
                         Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently in " + state + " state.";
-            }
-            else
-            {
-                String state = tmpToState.get(temperature).toString();
-                result += "\r\n" + Utility.capitalise(Utility.addThe(item_id)) + " " +
-                        Utility.isAre(item_id, eng.getParser().getPipeline()) + " always in " + state + " state.";
             }
         }
         return result;

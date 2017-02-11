@@ -185,9 +185,9 @@ public class Utility
         twoArgumentConnectors.put("fuse", new ArrayList<>(Arrays.asList("with", "and")));
         twoArgumentConnectors.put("meld", new ArrayList<>(Arrays.asList("with", "and")));
         twoArgumentConnectors.put("compound", new ArrayList<>(Arrays.asList("with", "and")));
-        twoArgumentConnectors.put("put", new ArrayList<>(Arrays.asList("in", "into")));
-        twoArgumentConnectors.put("place", new ArrayList<>(Arrays.asList("in", "into")));
-        twoArgumentConnectors.put("position", new ArrayList<>(Arrays.asList("in")));
+        twoArgumentConnectors.put("put", new ArrayList<>(Arrays.asList("in", "into", "on")));
+        twoArgumentConnectors.put("place", new ArrayList<>(Arrays.asList("in", "into", "on")));
+        twoArgumentConnectors.put("position", new ArrayList<>(Arrays.asList("in", "on")));
         twoArgumentConnectors.put("remove", new ArrayList<>(Arrays.asList("from")));
 
         twoArguments = new HashMap<>();
@@ -272,7 +272,7 @@ public class Utility
                     {
                         twoArgumentConnectors.put(synonym, connectors);
                     }
-                    else
+                    else if(connectors != null)
                     {
                         twoArgumentConnectors.get(synonym).addAll(connectors);
                     }
@@ -640,21 +640,9 @@ public class Utility
                 out += " has increased to ";
             else
                 out += " has decreased to ";
-            switch (finaltmp)
-            {
-                case hot:
-                    out += "120% its normal size";
-                    break;
-                case warm:
-                    out += "110% its normal size";
-                    break;
-                case cold:
-                    out += "90% its normal size";
-                    break;
-                case frozen:
-                    out += "80% its normal size";
-                    break;
-            }
+
+            int coef = (int)(Item.getVolumeChangeCoef(finaltmp, item)*100);
+            out += coef + "% its normal size";
         }
         return out;
     }

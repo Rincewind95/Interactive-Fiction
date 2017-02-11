@@ -102,6 +102,7 @@ REMOVE_ITEM: '_rmit';
 KILL: '_kill';
 WIN: '_win';
 ADD_ITEM_TO_ROOM: '_additr';
+ADD_ITEM_TO_CONTAINER: '_additcont';
 ADD_CONNECTOR: '_addcon';
 REMOVE_CONNECTOR: '_rmcon';
 WAIT: '_wait';
@@ -296,7 +297,8 @@ single_arg_cons_type: TELEPORT
                     | ADD_ITEM_TO_INV
                     | REMOVE_ITEM;
 double_arg_cons: double_arg_cons_type item_id room_id;
-double_arg_cons_type: ADD_ITEM_TO_ROOM;
+double_arg_cons_type: ADD_ITEM_TO_ROOM
+                    | ADD_ITEM_TO_CONTAINER;
 four_arg_cons: four_arg_cons_type room_id direction room_id direction;
 four_arg_cons_type: ADD_CONNECTOR
                   | REMOVE_CONNECTOR;

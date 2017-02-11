@@ -252,7 +252,11 @@ public class Engine
                         if(!final_out_to_user.equals(""))
                             final_out_to_user += "\r\n";
                         if(type == Command.Type.examine)
-                            final_out_to_user += "-- " + findItem(item).getIDWithTempAndState(enhanced) + ": ";
+                        {
+                            if(!final_out_to_user.equals(""))
+                                final_out_to_user += "\r\n";
+                            final_out_to_user += "-- " + findItem(item).getIDWithTempAndState(enhanced) + ":\r\n";
+                        }
                         final_out_to_user += executeCommand(curr).getValue();
                         // we advance time, check constraints and potentially generate another response
                         advanceTime();
@@ -833,7 +837,7 @@ public class Engine
                 boolean shouldAdd = true;
                 for (String curr : item_suggestions)
                 {
-                    if (curr.contains(suffix) && !curr.equals(item))
+                    if (curr.endsWith(suffix) && !curr.equals(item))
                     {
                         shouldAdd = false;
                         break;

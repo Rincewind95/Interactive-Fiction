@@ -83,6 +83,12 @@ public class Consequence implements Comparable
                 roomto = eng.findRoom(args.get(1));
                 item.moveItem(Item.flag.inroom, roomto, eng);
                 break;
+            case additcont:
+                // moves the item to the given container (wherever the item was before)
+                item = eng.findItem(args.get(0));
+                container = eng.findItem(args.get(1));
+                item.moveItem(Item.flag.incont, container, eng);
+                break;
             case addcon:
                 // adds a new "connector" between rooms
                 roomfrom = eng.findRoom(args.get(0));
@@ -145,7 +151,7 @@ public class Consequence implements Comparable
 
     public enum ConsType
     {
-        none, jmp, additinv, rmit, kill, win, additr, addcon, rmcon, wait
+        none, jmp, additinv, rmit, kill, win, additr, additcont, addcon, rmcon, wait
     }
 
     public enum Effect

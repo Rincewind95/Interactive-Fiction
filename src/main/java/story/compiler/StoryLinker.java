@@ -146,6 +146,10 @@ public class StoryLinker
                 linkStoryItem(args.get(0), constype, parent_id, eng);
                 linkStoryRoom(args.get(1), constype, parent_id, eng);
                 break;
+            case additcont:
+                linkStoryItem(args.get(0), constype, parent_id, eng);
+                linkStoryItem(args.get(1), constype, parent_id, eng);
+                break;
             case addcon:
             case rmcon:
                 linkStoryRoom(args.get(0), constype, parent_id, eng);
