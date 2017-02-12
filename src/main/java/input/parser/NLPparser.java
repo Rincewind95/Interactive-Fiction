@@ -398,7 +398,7 @@ public class NLPparser
                 boolean shouldAdd = true;
                 for (String curr : item_compounds)
                 {
-                    if (curr.contains(suffix) && !curr.equals(item))
+                    if (curr.endsWith(suffix) && !curr.equals(item))
                     {
                         shouldAdd = false;
                         break;

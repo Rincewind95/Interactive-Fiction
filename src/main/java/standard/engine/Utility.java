@@ -96,55 +96,56 @@ public class Utility
         evaluationOptions.add("5");
 
         evaluationQuestion = "*I feel this response helps me advance the game.                                                         *" +
-                         "\r\n*(1 - Strongly disagree) (2 - Disagree) (3 - Neither agree nor disagree) (4 - Agree) (5 - Strongly agree)*";
+                "\r\n*(1 - Strongly disagree) (2 - Disagree) (3 - Neither agree nor disagree) (4 - Agree) (5 - Strongly agree)*";
         invalidOptionReply = "*Invalid entry. Please select a number from the options below:                                           *" +
-                         "\r\n*(1 - Strongly disagree) (2 - Disagree) (3 - Neither agree nor disagree) (4 - Agree) (5 - Strongly agree)*";
-        successfulOptionReply =  "*Entry recorded. Continuing...*";
+                "\r\n*(1 - Strongly disagree) (2 - Disagree) (3 - Neither agree nor disagree) (4 - Agree) (5 - Strongly agree)*";
+        successfulOptionReply = "*Entry recorded. Continuing...*";
         invalidationSuccessful = "*Previous entry successfully invalidated. Continuing...*";
-        invalidationFailed =     "*Invalidation failed. Previous entry was already invalidated or does not exist. Continuing...*";
+        invalidationFailed = "*Invalidation failed. Previous entry was already invalidated or does not exist. Continuing...*";
 
-        helpMessage  =
-            "\r\n[Tab] ---------------------- autocomplete, cycles suggestions on repress\r\n" +
-                "[Shift]+[Tab] -------------- returns to previous suggestion when pressed\r\n" +
-                "[Up]/[Down] ---------------- navigates through previous responses\r\n" +
-                "use     <item> ------------- uses an item\r\n" +
-                "use     <item> on   <item> - uses an item on another item\r\n" +
-                "combine <item> with <item> - combines two items (ordering is irrelevant)\r\n" +
-                "put     <item> in   <item> - adds an item to a container\r\n" +
-                "remove  <item> from <item> - removes an item from a container\r\n" +
-                "remove  all    from <item> - removes all of the containers contents\r\n" +
-                "take    <item> ------------- adds the item to your inventory\r\n" +
-                "take    all ---------------- adds all items in the room to your inventory\r\n" +
-                "drop    <item> ------------- removes the item from your inventory\r\n" +
-                "drop    all ---------------- removes all items from your inventory\r\n" +
-                "examine <item> ------------- gives the items description and contents\r\n" +
-                "examine all ---------------- examines all items in current room\r\n" +
-                "examine inventory ---------- examines all items in your inventory\r\n" +
-                "move    <direction> -------- moves the player north/east/south/west\r\n" +
-                "<special command> ---------- exact string of event triggering characters\r\n" +
-                "inventory ------------------ lists the items stored in your inventory\r\n" +
-                "look ----------------------- gives a rooms short description, its contents and its exits\r\n" +
-                "wait ----------------------- waits a unit of time\r\n" +
-                "hint ----------------------- gives useful tips with respect to current progress\r\n" +
-                "help ----------------------- prints the general help message\r\n" +
-                "brief ---------------------- prints a room's introductory message\r\n" +
-                "history -------------------- presents a list of all previous successful user commands\r\n" +
-                "restart -------------------- [CAUTION] restarts the game, and all progress is lost\r\n" +
-                "quit ----------------------- [CAUTION] exits the game, and all progress is lost\r\n" +
-                "N.B. The list of responses given above is nothing more than a suggestion. " +
-                "You can be creative with synonyms, but there is no guarantee that all synonym options will work.";
+        helpMessage =
+                    "\\center" +
+                    "\r\n[Tab] ---------------------- autocomplete, cycles suggestions on repress\r\n" +
+                        "[Shift]+[Tab] -------------- returns to previous suggestion when pressed\r\n" +
+                        "[Up]/[Down] ---------------- navigates through previous responses\r\n" +
+                        "use     <item> ------------- uses an item\r\n" +
+                        "use     <item> on   <item> - uses an item on another item\r\n" +
+                        "combine <item> with <item> - combines two items (ordering is irrelevant)\r\n" +
+                        "put     <item> in   <item> - adds an item to a container\r\n" +
+                        "remove  <item> from <item> - removes an item from a container\r\n" +
+                        "remove  all    from <item> - removes all of the containers contents\r\n" +
+                        "take    <item> ------------- adds the item to your inventory\r\n" +
+                        "take    all ---------------- adds all items in the room to your inventory\r\n" +
+                        "drop    <item> ------------- removes the item from your inventory\r\n" +
+                        "drop    all ---------------- removes all items from your inventory\r\n" +
+                        "examine <item> ------------- gives the items description and contents\r\n" +
+                        "examine all ---------------- examines all items in current room\r\n" +
+                        "examine inventory ---------- examines all items in your inventory\r\n" +
+                        "move    <direction> -------- moves the player north/east/south/west\r\n" +
+                        "<special command> ---------- exact string of event triggering characters\r\n" +
+                        "inventory ------------------ lists the items stored in your inventory\r\n" +
+                        "look ----------------------- gives a rooms short description, its contents and its exits\r\n" +
+                        "wait ----------------------- waits a unit of time\r\n" +
+                        "hint ----------------------- gives useful tips with respect to current progress\r\n" +
+                        "help ----------------------- prints the general help message\r\n" +
+                        "brief ---------------------- prints a room's introductory message\r\n" +
+                        "history -------------------- presents a list of all previous successful user commands\r\n" +
+                        "restart -------------------- [CAUTION] restarts the game, and all progress is lost\r\n" +
+                        "quit ----------------------- [CAUTION] exits the game, and all progress is lost\r\n" +
+                        "N.B. The list of responses given above is nothing more than a suggestion. You can be\r\n" +
+                        "creative with synonyms, but there is no guarantee that all synonym options will work.";
         helpMessageAddition =
                 "invalidate ----------------- [CAUTION] irreversibly invalidates only the last entry\r\n" +
-                "Question format:\r\n"
-                + evaluationQuestion;
+                        "Question format:\r\n"
+                        + evaluationQuestion;
 
         percentageThreshold = 15; // in percent
         importantCommands = new ArrayList<>();
         importantCommands.add(new ImportantCommand(new Command(Command.Type.putin, new ArrayList<>(Arrays.asList("book", "wide bookshelf slot"))),
-                                                   new HashSet<>(Arrays.asList(
-                                                   new Condition("isnotfrozen", new ArrayList<>(Arrays.asList("book")))
-                                                   ))
-                                                   ));
+                new HashSet<>(Arrays.asList(
+                        new Condition("isnotfrozen", new ArrayList<>(Arrays.asList("book")))
+                ))
+        ));
 
         twoArgumentMasterSynonyms = new HashMap<>();
         twoArgumentMasterSynonyms.put("use", "use");
@@ -261,29 +262,32 @@ public class Utility
         Pair<Integer, String> val = conditionsWithSynonyms.get(cond.getType().toString());
         switch (val.getKey())
         {
-            case 0: zeroArgumentsynonyms.put(synonym, val.getValue());
-                    break;
-            case 1: oneArgumentsynonyms.put(synonym, val.getValue());
-                    break;
-            case 2: twoArgumentsynonyms.put(synonym, val.getValue());
-                    // in the case of two arguments, add all the connectors
-                    ArrayList<String> connectors = cond.getConnectors(synonym);
-                    if(!twoArgumentConnectors.containsKey(synonym))
-                    {
-                        twoArgumentConnectors.put(synonym, connectors);
-                    }
-                    else if(connectors != null)
-                    {
-                        twoArgumentConnectors.get(synonym).addAll(connectors);
-                    }
-                    //System.out.println(twoArgumentConnectors);
-                    break;
+            case 0:
+                zeroArgumentsynonyms.put(synonym, val.getValue());
+                break;
+            case 1:
+                oneArgumentsynonyms.put(synonym, val.getValue());
+                break;
+            case 2:
+                twoArgumentsynonyms.put(synonym, val.getValue());
+                // in the case of two arguments, add all the connectors
+                ArrayList<String> connectors = cond.getConnectors(synonym);
+                if (!twoArgumentConnectors.containsKey(synonym))
+                {
+                    twoArgumentConnectors.put(synonym, connectors);
+                }
+                else if (connectors != null)
+                {
+                    twoArgumentConnectors.get(synonym).addAll(connectors);
+                }
+                //System.out.println(twoArgumentConnectors);
+                break;
         }
     }
 
     public static void rememberExtraSynonymConditionLink(String synonym, Condition cond)
     {
-        if(!extraSynonymOriginConditions.containsKey(synonym))
+        if (!extraSynonymOriginConditions.containsKey(synonym))
         {
             extraSynonymOriginConditions.put(synonym, new HashSet<>());
         }
@@ -297,14 +301,14 @@ public class Utility
         ArrayList<String> args = command.getArgs();
         //System.out.println("command: ["+type+"] " + args);
         // first test if the command is not an extra synonym at all
-        if(twoArgumentMasterSynonyms.containsKey(verb) ||
-            oneArgumentMasterSynonyms.containsKey(verb) ||
-            zeroArgumentMasterSynonyms.containsKey(verb))
+        if (twoArgumentMasterSynonyms.containsKey(verb) ||
+                oneArgumentMasterSynonyms.containsKey(verb) ||
+                zeroArgumentMasterSynonyms.containsKey(verb))
         {
             return true;
         }
 
-        if(!conditionsWithSynonyms.containsKey(type))
+        if (!conditionsWithSynonyms.containsKey(type))
         {
             // if no this command is not supposed to have extra synonyms
             //System.out.println("not supposed to have");
@@ -322,7 +326,7 @@ public class Utility
                     ArrayList<String> conditionArgs = condition.getArgs();
                     // test if the command matches the one requested in the condition
                     if (conditionType.equals(type) &&
-                        conditionArgs.size() == args.size())
+                            conditionArgs.size() == args.size())
                     {
                         boolean success = true;
                         for (int i = 0; i < args.size(); i++)
@@ -335,7 +339,7 @@ public class Utility
                         }
 
                         // test for the special case of a custom two argument command
-                        if(args.size() == 2)
+                        if (args.size() == 2)
                         {
                             // if its a double argument condition, we need to check the connectors as well
                             String connector = command.getOriginalConnector();
@@ -371,10 +375,10 @@ public class Utility
     public static int wasImportant(Command command, Engine eng)
     {
         int index = 0;
-        for(; index < importantCommands.size(); index++)
+        for (; index < importantCommands.size(); index++)
         {
             ImportantCommand curr = importantCommands.get(index);
-            if(curr.wasExecuted(command, eng) && !curr.wasTriggered())
+            if (curr.wasExecuted(command, eng) && !curr.wasTriggered())
             {
                 return index;
             }
@@ -385,7 +389,7 @@ public class Utility
     public static String getHelpMessage(boolean doEvaluation)
     {
         String res = padBothSidesWithChar("gameplay mechanics", "_") + "\r\n" + helpMessage;
-        if(doEvaluation)
+        if (doEvaluation)
             res += "\r\n" + padBothSidesWithChar("estimation mechanics", "_") + helpMessageAddition;
         return res;
     }
@@ -479,7 +483,7 @@ public class Utility
             // Retrieve and add the lemma for each word into the list of lemmas
             String lemma = token.get(CoreAnnotations.LemmaAnnotation.class);
             String posTag = token.get(CoreAnnotations.PartOfSpeechAnnotation.class);
-            if(posTag.contains("VB"))
+            if (posTag.contains("VB"))
             {
                 // we ignore all verbs
                 i++;
@@ -506,7 +510,7 @@ public class Utility
 
     public static int getTerminalWidth()
     {
-        return reader.getTerminal().getWidth()-1;
+        return reader.getTerminal().getWidth() - 1;
     }
 
     public static String dashedLine()
@@ -517,7 +521,7 @@ public class Utility
     public static String charLineOfLength(String ch, int len)
     {
         String res = "";
-        for(int i = 0; i < len; i++)
+        for (int i = 0; i < len; i++)
             res += ch;
         return res;
     }
@@ -525,12 +529,12 @@ public class Utility
     public static String padBothSidesWithChar(String toWrap, String ch)
     {
         String res = "";
-        int lenTotal = getTerminalWidth();
-        int lenFir = (lenTotal-toWrap.length())/2;
+        int lenTotal = getTerminalWidth()-1;
+        int lenFir = (lenTotal - toWrap.length()) / 2;
         int lenSec = lenFir >= 0 ? lenTotal - lenFir - toWrap.length() : 0;
-        for(int i = 0; i < lenFir; i++) res += ch;
+        for (int i = 0; i < lenFir; i++) res += ch;
         res += toWrap;
-        for(int i = 0; i < lenSec; i++) res += ch;
+        for (int i = 0; i < lenSec; i++) res += ch;
         return res;
     }
 
@@ -545,14 +549,14 @@ public class Utility
     {
         int res = 0;
 
-        if(maxLen >= str.length())
+        if (maxLen >= str.length())
             maxLen = str.length() - 1;
-        else if(maxLen < 0)
+        else if (maxLen < 0)
             return -1;
 
-        for(res = maxLen; res >= 0; res--)
+        for (res = maxLen; res >= 0; res--)
         {
-            if(str.charAt(res) == search)
+            if (str.charAt(res) == search)
             {
                 break;
             }
@@ -571,15 +575,15 @@ public class Utility
         String[] allLines = getAllLines(str);
         String res = "";
         boolean firstIteration = true;
-        for(String line : allLines)
+        for (String line : allLines)
         {
-            if(line.length() > width)
+            if (line.length() > width)
             {
                 String chopped = "";
                 boolean notDone = true;
-                while(notDone)
+                while (notDone)
                 {
-                    if(line.length() < width)
+                    if (line.length() < width)
                     {
                         // nothing left to chop, write whats left to result
                         chopped += line;
@@ -588,7 +592,7 @@ public class Utility
                     else
                     {
                         int endIdx = 0;
-                        if(line.charAt(width) == ' ')
+                        if (line.charAt(width) == ' ')
                         {
                             endIdx = width;
                         }
@@ -597,7 +601,7 @@ public class Utility
                             endIdx = lastIndexBefore(line, ' ', width);
                         }
 
-                        if(endIdx == -1)
+                        if (endIdx == -1)
                         {
                             // the line is either a single word or does not conatain " ", so we cannot chop the string correctly
                             return str;
@@ -605,12 +609,12 @@ public class Utility
 
                         String prefix = line.substring(0, endIdx);
                         chopped += prefix + "\r\n";
-                        int startIdx = endIdx+1;
-                        if(line.startsWith(" ", startIdx))
+                        int startIdx = endIdx + 1;
+                        if (line.startsWith(" ", startIdx))
                         {
-                            for(; startIdx < line.length() && line.charAt(startIdx) == ' '; startIdx++);
+                            for (; startIdx < line.length() && line.charAt(startIdx) == ' '; startIdx++) ;
                         }
-                        if(startIdx < line.length())
+                        if (startIdx < line.length())
                             line = line.substring(startIdx);
                         else
                         {
@@ -621,7 +625,7 @@ public class Utility
                 }
                 line = chopped;
             }
-            if(!firstIteration)
+            if (!firstIteration)
                 res += "\r\n";
             else
                 firstIteration = false;
@@ -634,9 +638,9 @@ public class Utility
     {
         int res = 0;
         String[] lines = input.split("\r\n");
-        for(String line: lines)
+        for (String line : lines)
         {
-            if(line.length() > res)
+            if (line.length() > res)
                 res = line.length();
         }
         return res;
@@ -658,6 +662,20 @@ public class Utility
 
     public static final String centerStartKeyword = "\\center\r\n";
     public static final String centerEndKeyword = "\r\n\\endcenter";
+
+    // partially fixes centering of the input string
+    public static String fixCentering(String input)
+    {
+        if(input.contains(centerStartKeyword) && !input.contains(centerEndKeyword))
+        {
+            return input + centerEndKeyword;
+        }
+        if(!input.contains(centerStartKeyword) && input.contains(centerEndKeyword))
+        {
+            return centerStartKeyword + input;
+        }
+        return input;
+    }
 
     // performs centering if special centering command is peresent
     public static String performCentering(String input, int width)
@@ -754,6 +772,21 @@ public class Utility
         String date = DATE_FORMAT.format(timeNow);
 
         return date;
+    }
+
+    public static String getThinkTimeAverage(ArrayList<Long> thinkTimes)
+    {
+        String res = "\r\nAverage Think Time:\r\n";
+        if(thinkTimes.size() > 1)
+        {
+            SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss.SSS");
+            res += DATE_FORMAT.format(thinkTimes.get(thinkTimes.size() - 1) - thinkTimes.get(0));
+        }
+        else
+        {
+            res += "Invalid";
+        }
+        return res;
     }
 
     public static void write(PrintWriter writer, String out, Writer transwriter)

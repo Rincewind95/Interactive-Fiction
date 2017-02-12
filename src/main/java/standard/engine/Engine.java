@@ -4,6 +4,7 @@ import input.parser.NLPparser;
 import javafx.util.Pair;
 import jline.console.ConsoleReader;
 
+import javax.rmi.CORBA.Util;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.*;
@@ -32,6 +33,7 @@ public class Engine
     private boolean alternate;                               // true if the engine should alternate responses
     private boolean doEvaluation;                            // true if the engine should request evaluation
     private boolean askForEvaluation;                        // true if the current step will ask the player for evaluation
+    private ArrayList<Long> thinkTimes;                   // the array of all the think times between engine and response
 
     private ConsoleReader reader;
 
@@ -70,6 +72,7 @@ public class Engine
 
         item_suggestions = new HashSet<>();
 
+        thinkTimes = new ArrayList<>();
     }
 
     public void setLogging(boolean log)
@@ -94,6 +97,9 @@ public class Engine
             this.completer = new FinalCompleter(new ArrayList<>());
             reader.addCompleter(completer);
             reader.setPrompt("> ");
+
+            // reset the think times
+            thinkTimes = new ArrayList<>();
 
             // start the game once the engine is loaded
             boolean gameRunning = true;
@@ -257,12 +263,15 @@ public class Engine
                                 final_out_to_user += "\r\n";
                             final_out_to_user += "-- " + findItem(item).getIDWithTempAndState(enhanced) + ":\r\n";
                         }
-                        final_out_to_user += executeCommand(curr).getValue();
+                        String needsCentering = executeCommand(curr).getValue();
+
                         // we advance time, check constraints and potentially generate another response
                         advanceTime();
                         Pair<Consequence.Effect, String> final_out = checkConstraints();
                         Consequence.Effect eff = final_out.getKey();
-                        final_out_to_user += final_out.getValue();
+                        needsCentering += final_out.getValue();
+
+                        final_out_to_user += Utility.fixCentering(needsCentering);
                         switch (eff)
                         {
                             case kill:
@@ -326,6 +335,7 @@ public class Engine
                     if(askForEvaluation)
                     {
                         // prepare the initial logging message
+                        thinkTimes.add(System.currentTimeMillis());
                         logoutput = enhanced ? "type: ENHANCED" : "type: STANDARD";
                         logoutput += "\r\ntimestamp: " + origtime;
                         logoutput += "\r\nlocation:" + player.getLocation().getRoom_id();
@@ -692,6 +702,11 @@ public class Engine
             case restart:
                 out = "All unsaved progress is lost, game restarting...\r\n"
                 +     Utility.dashedLine();
+                try
+                {
+                    logWriter.write(Utility.getThinkTimeAverage(thinkTimes));
+                    logWriter.flush();
+                } catch (Exception e) {}
                 resp = response.restart;
                 break;
             case history:
@@ -753,6 +768,11 @@ public class Engine
                 break;
             case exit:
                 out = "Game terminating...";
+                try
+                {
+                    logWriter.write(Utility.getThinkTimeAverage(thinkTimes));
+                    logWriter.flush();
+                } catch (Exception e) {}
                 resp = response.exit;
                 break;
             case invalidate:
