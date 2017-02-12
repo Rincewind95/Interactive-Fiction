@@ -141,9 +141,19 @@ public class Utility
 
         percentageThreshold = 15; // in percent
         importantCommands = new ArrayList<>();
-        importantCommands.add(new ImportantCommand(new Command(Command.Type.putin, new ArrayList<>(Arrays.asList("book", "wide bookshelf slot"))),
+        importantCommands.add(new ImportantCommand(new Command(Command.Type.putin, new ArrayList<>(Arrays.asList("golden key", "hexagonal lock"))),
                 new HashSet<>(Arrays.asList(
-                        new Condition("isnotfrozen", new ArrayList<>(Arrays.asList("book")))
+                        new Condition("plir", new ArrayList<>(Arrays.asList("main room")))
+                ))
+        ));
+        importantCommands.add(new ImportantCommand(new Command(Command.Type.putin, new ArrayList<>(Arrays.asList("golden key", "open freezer"))),
+                new HashSet<>(Arrays.asList(
+                        new Condition("plir", new ArrayList<>(Arrays.asList("main room")))
+                ))
+        ));
+        importantCommands.add(new ImportantCommand(new Command(Command.Type.putin, new ArrayList<>(Arrays.asList("loose brick", "scale plate"))),
+                new HashSet<>(Arrays.asList(
+                        new Condition("plir", new ArrayList<>(Arrays.asList("secret room")))
                 ))
         ));
 
@@ -674,6 +684,20 @@ public class Utility
         {
             return centerStartKeyword + input;
         }
+
+        if(input.contains(centerStartKeyword) && input.contains(centerEndKeyword))
+        {
+            String res = input;
+            if(input.indexOf(centerStartKeyword) > input.indexOf(centerEndKeyword))
+            {
+                res = centerStartKeyword + input;
+            }
+            if(res.lastIndexOf(centerEndKeyword) < res.lastIndexOf(centerStartKeyword))
+            {
+                res += centerEndKeyword;
+            }
+            return res;
+        }
         return input;
     }
 
@@ -780,7 +804,7 @@ public class Utility
         if(thinkTimes.size() > 1)
         {
             SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss.SSS");
-            res += DATE_FORMAT.format(thinkTimes.get(thinkTimes.size() - 1) - thinkTimes.get(0));
+            res += DATE_FORMAT.format((thinkTimes.get(thinkTimes.size() - 1) - thinkTimes.get(0))/(thinkTimes.size()-1));
         }
         else
         {

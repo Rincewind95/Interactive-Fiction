@@ -307,6 +307,7 @@ public class Engine
                         final_out_to_user = "I don't understand.";
                 }
 
+                final_out_to_user = Utility.fixCentering(final_out_to_user);
                 final_out_to_user = "\r\n" + final_out_to_user + "\r\n";
                 Utility.write(writer, final_out_to_user, transcriptWriter);
 
