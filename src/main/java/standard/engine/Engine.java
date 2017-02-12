@@ -381,6 +381,9 @@ public class Engine
         response resp = response.good;
         String out = "";
 
+        String verb = command.getOriginalVerb();
+        String connector = command.getOriginalConnector();
+
         switch (type)
         {
             case take:
@@ -500,7 +503,7 @@ public class Engine
                     {
                         if(enhanced)
                         {
-                            out = "You cannot put " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) + " in itself.";
+                            out = "You cannot "+ verb + " " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) + " " + connector + " itself.";
                         }
                         else
                         {
@@ -525,7 +528,8 @@ public class Engine
                                     {
                                         out += Utility.capitalise(Utility.addThe(fir.getIDWithTempAndState(enhanced))) + " " +
                                                 (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is" : "are") +
-                                                " too big to fit into " + Utility.addThe(sec.getIDWithTempAndState(enhanced)) + ".";
+                                                " too big to fit " + connector + " " +
+                                                Utility.addThe(sec.getIDWithTempAndState(enhanced)) + ".";
                                     }
                                     else
                                     {
@@ -545,7 +549,10 @@ public class Engine
                                             out += "\r\n";
                                         out += Utility.capitalise(Utility.addThe(fir.getIDWithTempAndState(enhanced))) + " " +
                                                 (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is" : "are") +
-                                                massOutput + "to be put into " + Utility.addThe(sec.getIDWithTempAndState(enhanced)) + ".";
+                                                massOutput + "for you to " + verb + " " +
+                                                (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "it" : "them")
+                                                + " " + connector + " " +
+                                                Utility.addThe(sec.getIDWithTempAndState(enhanced)) + ".";
                                     }
                                     else
                                     {
@@ -558,7 +565,8 @@ public class Engine
                                     if(fitsvol && massfits)
                                     {
                                         fir.moveItem(Item.flag.incont, sec, this);
-                                        out = "You put " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) + " into " + Utility.addThe(sec.getIDWithTempAndState(enhanced));
+                                        out = "You " + verb + " " + Utility.addThe(fir.getIDWithTempAndState(enhanced))
+                                                + " " + connector + " " + Utility.addThe(sec.getIDWithTempAndState(enhanced));
 
                                         Item.State oldfir = fir.getTmpToState().get(fir.getTemperature());
                                         Item.State oldsec = fir.getTmpToState().get(sec.getTemperature());
