@@ -18,6 +18,7 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Array;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -798,13 +799,43 @@ public class Utility
         return date;
     }
 
+    private static String addZero(long time)
+    {
+        return  (time < 10 ? "0" + Long.toString(time) : Long.toString(time));
+    }
+
+    private static String getForamttedDate(long time)
+    {
+
+        DecimalFormat decimalFormatHMS = new DecimalFormat("00");
+        DecimalFormat decimalFormatMILI = new DecimalFormat("000");
+        long seconds = time/1000;
+        long remaining_milis = time - seconds*1000;
+        long minutes = seconds/60;
+        long remaining_seconds = seconds - minutes*60;
+        long hours = minutes/60;
+        long remaining_minutes = minutes - hours*60;
+        String res =
+                decimalFormatHMS.format(hours) + ":" +
+                decimalFormatHMS.format(remaining_minutes) + ":" +
+                decimalFormatHMS.format(remaining_seconds) + "." +
+                decimalFormatMILI.format(remaining_milis);
+        return res;
+    }
+
     public static String getThinkTimeAverage(ArrayList<Long> thinkTimes)
     {
-        String res = "\r\nAverage Think Time:\r\n";
+        String res = "\r\nAverage think time: ";
         if(thinkTimes.size() > 1)
         {
-            SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss.SSS");
-            res += DATE_FORMAT.format((thinkTimes.get(thinkTimes.size() - 1) - thinkTimes.get(0))/(thinkTimes.size()-1));
+            long totalThinkTime = thinkTimes.get(thinkTimes.size() - 1) - thinkTimes.get(0);
+            long numberOfIntervals = (long)thinkTimes.size() - 1;
+            long averageThinkTime = totalThinkTime/numberOfIntervals;
+
+
+            res += getForamttedDate(averageThinkTime);
+            res += "\r\nTotal time in game: ";
+            res += getForamttedDate(totalThinkTime);
         }
         else
         {

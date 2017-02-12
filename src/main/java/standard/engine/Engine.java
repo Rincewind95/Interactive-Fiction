@@ -120,6 +120,12 @@ public class Engine
             {
                 // save the original timestamp
                 int origtime = time;
+                if(doEvaluation)
+                {
+                    // this is just for logging
+                    thinkTimes.add(System.currentTimeMillis());
+                }
+
                 // update the enhanced/unenhanced engine state
                 if (alternate)
                 {
@@ -196,6 +202,16 @@ public class Engine
                 {
                     out_to_user = "\r\n" + out_to_user + "\r\n";
                     Utility.write(writer, out_to_user, transcriptWriter);
+                    if(doEvaluation)
+                    {
+                        try
+                        {
+                            logWriter.write(Utility.getThinkTimeAverage(thinkTimes));
+                            logWriter.flush();
+                        } catch (Exception e)
+                        {
+                        }
+                    }
                     reader.removeCompleter(completer);
                     return resp;
                 }
@@ -336,12 +352,11 @@ public class Engine
                     if(askForEvaluation)
                     {
                         // prepare the initial logging message
-                        thinkTimes.add(System.currentTimeMillis());
                         logoutput = enhanced ? "type: ENHANCED" : "type: STANDARD";
-                        logoutput += "\r\ntimestamp: " + origtime;
+                        logoutput += "\r\ntimestamp: [" + Utility.currTime() + ", " + origtime +"]";
                         logoutput += "\r\nlocation:" + player.getLocation().getRoom_id();
                         logoutput += "\r\n> " + command.getOriginal() +
-                                "\r\ncommand: (" + command.getType().toString() + ")";
+                                     "\r\ncommand: (" + command.getType().toString() + ")";
                         for(String arg : command.getArgs())
                         {
                             logoutput += " [" + arg + "]";
@@ -363,11 +378,41 @@ public class Engine
                 }
             }
 
+            if(doEvaluation)
+            {
+                try
+                {
+                    logWriter.write(Utility.getThinkTimeAverage(thinkTimes));
+                    logWriter.flush();
+                } catch (Exception e)
+                {
+                }
+            }
             reader.removeCompleter(completer);
             return response.exit;
         } catch (Throwable t)
         {
+            if(doEvaluation)
+            {
+                try
+                {
+                    logWriter.write(Utility.getThinkTimeAverage(thinkTimes));
+                    logWriter.flush();
+                } catch (Exception e)
+                {
+                }
+            }
             t.printStackTrace();
+        }
+        if(doEvaluation)
+        {
+            try
+            {
+                logWriter.write(Utility.getThinkTimeAverage(thinkTimes));
+                logWriter.flush();
+            } catch (Exception e)
+            {
+            }
         }
         reader.removeCompleter(completer);
         return  response.exit;
@@ -711,11 +756,6 @@ public class Engine
             case restart:
                 out = "All unsaved progress is lost, game restarting...\r\n"
                 +     Utility.dashedLine();
-                try
-                {
-                    logWriter.write(Utility.getThinkTimeAverage(thinkTimes));
-                    logWriter.flush();
-                } catch (Exception e) {}
                 resp = response.restart;
                 break;
             case history:
@@ -777,11 +817,6 @@ public class Engine
                 break;
             case exit:
                 out = "Game terminating...";
-                try
-                {
-                    logWriter.write(Utility.getThinkTimeAverage(thinkTimes));
-                    logWriter.flush();
-                } catch (Exception e) {}
                 resp = response.exit;
                 break;
             case invalidate:
