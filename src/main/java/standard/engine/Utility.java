@@ -848,7 +848,7 @@ public class Utility
     {
         try
         {
-            transwriter.write(out);
+            transwriter.write(chopToTerminalWidth(centerToScreenWidth(out)));
             transwriter.flush();
         } catch (Exception e) {}
         writer.println(chopToTerminalWidth(centerToScreenWidth(out)));
