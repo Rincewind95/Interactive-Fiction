@@ -630,6 +630,97 @@ public class Utility
         return res;
     }
 
+    public static int getMaxLineWidth(String input)
+    {
+        int res = 0;
+        String[] lines = input.split("\r\n");
+        for(String line: lines)
+        {
+            if(line.length() > res)
+                res = line.length();
+        }
+        return res;
+    }
+
+
+    public static String centerToScreenWidth(String input)
+    {
+        return performCentering(input, getTerminalWidth());
+    }
+
+    private static String stripCentering(String input)
+    {
+        String result = input;
+        result = result.replaceAll(centerStartKeyword, "");
+        result = result.replaceAll(centerEndKeyword, "");
+        return result;
+    }
+
+    public static final String centerStartKeyword = "\\center\r\n";
+    public static final String centerEndKeyword = "\r\n\\endcenter";
+
+    // performs centering if special centering command is peresent
+    public static String performCentering(String input, int width)
+    {
+        if (!input.contains(centerStartKeyword))
+        {
+            return input;
+        }
+        String tmp = input;
+        String res = "";
+        while (!tmp.equals(""))
+        {
+            int startingPoint = tmp.indexOf(centerStartKeyword);
+            if (startingPoint < 0)
+            {
+                res += stripCentering(tmp);
+                break;
+            }
+            startingPoint += centerStartKeyword.length();
+            int endingPoint = tmp.indexOf(centerEndKeyword);
+            if (endingPoint < 0)
+                endingPoint = tmp.length();
+            if (startingPoint > endingPoint)
+            {
+                return stripCentering(input);
+            }
+            String prefix = "";
+            if(startingPoint - centerStartKeyword.length() > 0)
+                prefix = tmp.substring(0, startingPoint - centerStartKeyword.length());
+            String currParagraph = "";
+            if(startingPoint < endingPoint)
+                currParagraph = tmp.substring(startingPoint, endingPoint);
+
+            String suffix = "";
+            if(endingPoint + centerEndKeyword.length() < tmp.length())
+                suffix = tmp.substring(endingPoint + centerEndKeyword.length(), tmp.length());
+
+            int maxLineWidth = getMaxLineWidth(currParagraph);
+            int windowWidth = width;
+            if(maxLineWidth < windowWidth)
+            {
+                // we perform centering
+                int offset = (windowWidth-maxLineWidth)/2;
+                String[] lines = getAllLines(currParagraph);
+                String newParagraph = "";
+                for(String line : lines)
+                {
+                    if(!newParagraph.equals(""))
+                        newParagraph+="\r\n";
+                    String spaces = "";
+                    for(int i = 0; i < offset; i++)
+                        spaces += " ";
+                    newParagraph += spaces + line;
+                }
+                currParagraph = newParagraph;
+            }
+
+            res += prefix + currParagraph;
+            tmp = suffix;
+        }
+        return res;
+    }
+
     public static String volumeChangeMessage(Item item, Item.Temperature finaltmp)
     {
         String out = "";
@@ -672,7 +763,7 @@ public class Utility
             transwriter.write(out);
             transwriter.flush();
         } catch (Exception e) {}
-        writer.println(chopToTerminalWidth(out));
+        writer.println(chopToTerminalWidth(centerToScreenWidth(out)));
         writer.flush();
     }
 
