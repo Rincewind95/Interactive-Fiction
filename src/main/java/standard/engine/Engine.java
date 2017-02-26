@@ -98,6 +98,13 @@ public class Engine
             reader.addCompleter(completer);
             reader.setPrompt("> ");
 
+            // log the tipe of engine and current date
+            logWriter.write("ENGINE: " + (enhanced ? "ENHANCED" : "STANDARD") + "\r\n");
+            logWriter.write("DATE: [" + Utility.currDate() + "]\r\n");
+            logWriter.write("ENGINE INIT TIME: [" + Utility.currTime() + "]\r\n");
+            logWriter.write(Utility.charLineOfLength("-", 40));
+            logWriter.flush();
+
             // reset the think times
             thinkTimes = new ArrayList<>();
 
@@ -351,20 +358,8 @@ public class Engine
 
                     if(askForEvaluation)
                     {
-                        // prepare the initial logging message
-                        logoutput = enhanced ? "type: ENHANCED" : "type: STANDARD";
-                        logoutput += "\r\ntimestamp: [" + Utility.currTime() + ", " + origtime +"]";
-                        logoutput += "\r\nlocation:" + player.getLocation().getRoom_id();
-                        logoutput += "\r\n> " + command.getOriginal() +
-                                     "\r\ncommand: (" + command.getType().toString() + ")";
-                        for(String arg : command.getArgs())
-                        {
-                            logoutput += " [" + arg + "]";
-                        }
-                        logoutput += "\r\nresponse:" + final_out_to_user;
-
+                        // obtain evaluation
                         Utility.write(writer, Utility.evaluationQuestion, transcriptWriter);
-
                         String evaluation = Utility.readLn(reader, transcriptWriter, Integer.toString(origtime));
                         while(!Utility.evaluationOptions.contains(evaluation))
                         {
@@ -372,7 +367,49 @@ public class Engine
                             evaluation = Utility.readLn(reader, transcriptWriter, Integer.toString(origtime));
                         }
                         Utility.write(writer, Utility.successfulOptionReply + "\r\n", transcriptWriter);
-                        logoutput += "evaluation: " + evaluation;
+
+                        // save the logging message
+                        if(alternating)
+                            logoutput = "\r\nENGINE TYPE_:" + (enhanced ? "ENHANCED" : "STANDARD");
+                        logoutput +=    "\r\nTIMESTAMP: [" + Utility.currTime() + ", " + origtime +"]";
+                        logoutput +=    "\r\nEVALUATION RESPONSE: " + evaluation;
+                        switch(Integer.parseInt(evaluation))
+                        {
+                            case 1: logoutput += " - Strongly disagree"; break;
+                            case 2: logoutput += " - Disagree"; break;
+                            case 3: logoutput += " - Neither agree nor disagree"; break;
+                            case 4: logoutput += " - Agree"; break;
+                            case 5: logoutput += " - Strongly agree"; break;
+                        }
+                        logoutput += "\r\nUSER INPUT:";
+                        logoutput += "\r\n> " + command.getOriginal() +
+                                     "\r\n\r\nCOMMAND INTERPRETATION:" +
+                                     "\r\n(" + command.getType().toString() + ")";
+                        for(String arg : command.getArgs())
+                        {
+                            logoutput += " [" + arg + "]";
+                        }
+                        logoutput += "\r\n\r\nENGINE RESPONSE:" + Utility.chopToTerminalWidth(Utility.centerToScreenWidth(final_out_to_user));
+
+                        logoutput += "\r\n\r\nRELEVANT ENGINE STATE:";
+                        logoutput += "\r\nPLAYER LOCATION: [" + player.getLocation().getRoom_id() + "]";
+
+                        String items = "";
+                        for(String arg : command.getArgs())
+                        {
+                            if(Utility.theAlls.contains(arg) || arg.equals("inventory"))
+                            {
+                                // we skip this case because we generaly do not care about state here
+                                continue;
+                            }
+                            if(items.equals(""))
+                                items = "\r\n\r\nITEMS:";
+                            items += "\r\n\r\n[" + arg + "]";
+                            Item it = findItem(arg);
+                            items += it.getState(this);
+                        }
+                        logoutput += items;
+
                         logoutput += "\r\n" + Utility.charLineOfLength("-", 40) + "\r\n";
                     }
                 }
@@ -552,7 +589,7 @@ public class Engine
                         }
                         else
                         {
-                            resp = response.badinput;
+                            resp = response.badstandard;
                         }
                     }
                     else
@@ -578,7 +615,7 @@ public class Engine
                                     }
                                     else
                                     {
-                                        resp = response.badinput;
+                                        resp = response.badstandard;
                                     }
                                 }
 
@@ -591,17 +628,24 @@ public class Engine
                                     if (enhanced)
                                     {
                                         if(!fitsvol)
-                                            out += "\r\n";
-                                        out += Utility.capitalise(Utility.addThe(fir.getIDWithTempAndState(enhanced))) + " " +
-                                                (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is" : "are") +
-                                                massOutput + "for you to " + verb + " " +
+                                            out += " It ";
+                                        else
+                                            out += "There is no point doing that, " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) + " ";
+                                        out += (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is " : "are ") +
+                                                massOutput;
+                                        if(!fitsvol)
+                                            out += " as well.";
+                                        else
+                                            out += ".";
+
+                                               /* + "for you to " + verb + " " +
                                                 (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "it" : "them")
                                                 + " " + connector + " " +
-                                                Utility.addThe(sec.getIDWithTempAndState(enhanced)) + ".";
+                                                Utility.addThe(sec.getIDWithTempAndState(enhanced)) + ".";*/
                                     }
                                     else
                                     {
-                                        resp = response.badinput;
+                                        resp = response.badstandard;
                                     }
                                 }
 
@@ -632,7 +676,7 @@ public class Engine
                                     }
                                     else
                                     {
-                                        resp = response.badinput;
+                                        resp = response.badstandard;
                                     }
                                 }
                             }
@@ -646,7 +690,7 @@ public class Engine
                             }
                             else
                             {
-                                resp = response.badinput;
+                                resp = response.badstandard;
                             }
                         }
                     }
@@ -1113,7 +1157,7 @@ public class Engine
     // enumerates the possible response types which can be generated when processing user commands
     public enum response
     {
-        good, skip, badinput, load, save, restart, exit, takeall, dropall, removeall, examineall, examineinventory, invalidateprevious
+        good, skip, badinput, load, save, restart, exit, takeall, dropall, removeall, examineall, examineinventory, invalidateprevious, badstandard
     }
 
     public boolean isEnhanced()

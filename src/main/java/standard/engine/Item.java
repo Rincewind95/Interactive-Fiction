@@ -196,11 +196,11 @@ public class Item extends ItemLocation implements Comparable
         {
             if (newContainedMass > holdingMass)
             {
-                massOutput = " too heavy ";
+                massOutput = "too heavy";
             }
             else if (newContainedMass < holdingMass)
             {
-                massOutput = " not heavy enough ";
+                massOutput = "not heavy enough";
             }
         }
         switch (holdingType)
@@ -496,6 +496,30 @@ public class Item extends ItemLocation implements Comparable
                         Utility.isAre(item_id, eng.getParser().getPipeline()) + " currently in " + state + " state.";
             }
         }
+        return result;
+    }
+
+    // used only in evaluation
+    public String getState(Engine eng)
+    {
+        String result = "";
+        result += "\r\nLOCATION: " + location_flag.toString();
+        if (!contained.isEmpty())
+        {
+            result += "\r\nCONTAINS:";
+            for (String item : contained.keySet())
+            {
+                result += eng.findItem(item).listContents(eng, "");
+            }
+        }
+
+        result += "\r\nTEMPERATURE: " + temperature.toString();
+        int coef = (int) (getVolumeChangeCoef(temperature, this) * 100);
+        result += "\r\nVOLUME: " + volume;
+        result += "\r\nVOLUME COEF: " + coef;
+        result += "\r\nMASS: " + mass + "g.";
+        result += "\r\nSTATE: " + tmpToState.get(temperature).toString();
+
         return result;
     }
 

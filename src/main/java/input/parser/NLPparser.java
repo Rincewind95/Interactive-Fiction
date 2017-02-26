@@ -286,7 +286,7 @@ public class NLPparser
             }
             if (curr_arg == 0)
             {
-                if(keyword.equals("examine"))
+                if(keyword.equals("examine") && word.equals("look"))
                 {
                     // it is in fact a look type response
                     return new Command(Command.Type.look, args, original, word);

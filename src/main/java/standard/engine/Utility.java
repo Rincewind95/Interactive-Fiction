@@ -96,13 +96,48 @@ public class Utility
         evaluationOptions.add("4");
         evaluationOptions.add("5");
 
-        evaluationQuestion = "*I feel this response helps me advance the game.                                                         *" +
-                "\r\n*(1 - Strongly disagree) (2 - Disagree) (3 - Neither agree nor disagree) (4 - Agree) (5 - Strongly agree)*";
-        invalidOptionReply = "*Invalid entry. Please select a number from the options below:                                           *" +
-                "\r\n*(1 - Strongly disagree) (2 - Disagree) (3 - Neither agree nor disagree) (4 - Agree) (5 - Strongly agree)*";
-        successfulOptionReply = "*Entry recorded. Continuing...*";
-        invalidationSuccessful = "*Previous entry successfully invalidated. Continuing...*";
-        invalidationFailed = "*Invalidation failed. Previous entry was already invalidated or does not exist. Continuing...*";
+        evaluationQuestion =     ">-------------------------------------------------<" +
+                             "\r\n> I feel this response helps me advance the game. <" +
+                             "\r\n> 1 - Strongly disagree                           <" +
+                             "\r\n> 2 - Disagree                                    <" +
+                             "\r\n> 3 - Neither agree nor disagree                  <" +
+                             "\r\n> 4 - Agree                                       <" +
+                             "\r\n> 5 - Strongly agree                              <";
+        invalidOptionReply =     "> Invalid entry.                                  <" +
+                             "\r\n> Please select a digit from the options below:   <" +
+                             "\r\n> 1 - Strongly disagree                           <" +
+                             "\r\n> 2 - Disagree                                    <" +
+                             "\r\n> 3 - Neither agree nor disagree                  <" +
+                             "\r\n> 4 - Agree                                       <" +
+                             "\r\n> 5 - Strongly agree                              <";
+        successfulOptionReply =  "> Entry recorded. Continuing...                   <" +
+                             "\r\n>-------------------------------------------------<";
+        invalidationSuccessful = ">-------------------------------------------------<" +
+                             "\r\n> Previous entry successfully invalidated.        <" +
+                             "\r\n> Continuing...                                   <" +
+                             "\r\n>-------------------------------------------------<";
+        invalidationFailed =     ">-------------------------------------------------<" +
+                             "\r\n> Invalidation failed.                            <" +
+                             "\r\n> Previous entry was already invalidated or does  <" +
+                             "\r\n> not exist. Continuing...                        <" +
+                             "\r\n>-------------------------------------------------<";
+        /*
+        evaluationQuestion =    "************************************************************************************************************" +
+                            "\r\n* I feel this response helps me advance the game.                                                          *" +
+                            "\r\n* (1 - Strongly disagree) (2 - Disagree) (3 - Neither agree nor disagree) (4 - Agree) (5 - Strongly agree) *";
+        invalidOptionReply =    "* Invalid entry. Please select a number from the options below:                                            *" +
+                            "\r\n* (1 - Strongly disagree) (2 - Disagree) (3 - Neither agree nor disagree) (4 - Agree) (5 - Strongly agree) *";
+        successfulOptionReply = "* Entry recorded. Continuing...                                                                            *" +
+                            "\r\n************************************************************************************************************";
+        */
+        /*
+        invalidationSuccessful = "**********************************************************" +
+                             "\r\n* Previous entry successfully invalidated. Continuing... *" +
+                             "\r\n**********************************************************";
+        invalidationFailed = "************************************************************************************************" +
+                         "\r\n* Invalidation failed. Previous entry was already invalidated or does not exist. Continuing... *" +
+                         "\r\n************************************************************************************************";
+                         */
 
         helpMessage =
                     "\\center" +
@@ -123,7 +158,6 @@ public class Utility
                         "examine all ---------------- examines all items in current room\r\n" +
                         "examine inventory ---------- examines all items in your inventory\r\n" +
                         "move    <direction> -------- moves the player north/east/south/west\r\n" +
-                        "<special command> ---------- exact string of event triggering characters\r\n" +
                         "inventory ------------------ lists the items stored in your inventory\r\n" +
                         "look ----------------------- gives a rooms short description, its contents and its exits\r\n" +
                         "wait ----------------------- waits a unit of time\r\n" +
@@ -136,7 +170,7 @@ public class Utility
                         "N.B. The list of responses given above is nothing more than a suggestion. You can be\r\n" +
                         "creative with synonyms, but there is no guarantee that all synonym options will work.";
         helpMessageAddition =
-                "invalidate ----------------- [CAUTION] irreversibly invalidates only the last entry\r\n" +
+                        "invalidate ----------------- [CAUTION] irreversibly invalidates only the last entry\r\n" +
                         "Question format:\r\n"
                         + evaluationQuestion;
 
@@ -201,6 +235,13 @@ public class Utility
         twoArgumentConnectors.put("place", new ArrayList<>(Arrays.asList("in", "into", "on")));
         twoArgumentConnectors.put("position", new ArrayList<>(Arrays.asList("in", "on")));
         twoArgumentConnectors.put("remove", new ArrayList<>(Arrays.asList("from")));
+        twoArgumentConnectors.put("take", new ArrayList<>(Arrays.asList("from")));
+        twoArgumentConnectors.put("collect", new ArrayList<>(Arrays.asList("from")));
+        twoArgumentConnectors.put("acquire", new ArrayList<>(Arrays.asList("from")));
+        twoArgumentConnectors.put("obtain", new ArrayList<>(Arrays.asList("from")));
+        twoArgumentConnectors.put("claim", new ArrayList<>(Arrays.asList("from")));
+        twoArgumentConnectors.put("pick", new ArrayList<>(Arrays.asList("from")));
+        twoArgumentConnectors.put("get", new ArrayList<>(Arrays.asList("from")));
 
         twoArguments = new HashMap<>();
         twoArguments.put("use", new ArrayList<>(Arrays.asList(NLPparser.argType.item, NLPparser.argType.item)));
@@ -791,9 +832,17 @@ public class Utility
 
     public static String currTime()
     {
-
         long timeNow = System.currentTimeMillis();
-        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss.SSS");
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("hh:mm:ss.SSS");
+        String date = DATE_FORMAT.format(timeNow);
+
+        return date;
+    }
+
+    public static String currDate()
+    {
+        long timeNow = System.currentTimeMillis();
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd:mm:yyyy");
         String date = DATE_FORMAT.format(timeNow);
 
         return date;
@@ -804,7 +853,7 @@ public class Utility
         return  (time < 10 ? "0" + Long.toString(time) : Long.toString(time));
     }
 
-    private static String getForamttedDate(long time)
+    public static String getForamttedDate(long time)
     {
 
         DecimalFormat decimalFormatHMS = new DecimalFormat("00");
@@ -840,6 +889,20 @@ public class Utility
         else
         {
             res += "Invalid";
+        }
+        return res;
+    }
+
+    public static String newLineTheList(ArrayList<String> list)
+    {
+        if(list.isEmpty())
+            return "EMPTY";
+        String res = "";
+        for(String elem : list)
+        {
+            if(!res.equals(""))
+                res += "\r\n";
+            res += elem;
         }
         return res;
     }
