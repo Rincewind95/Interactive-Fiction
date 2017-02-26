@@ -389,9 +389,9 @@ public class Engine
                         {
                             logoutput += " [" + arg + "]";
                         }
-                        logoutput += "\r\n\r\nENGINE RESPONSE:" + Utility.chopToTerminalWidth(Utility.centerToScreenWidth(final_out_to_user));
+                        logoutput += "\r\n\r\nENGINE RESPONSE:" + Utility.formatText(final_out_to_user);
 
-                        logoutput += "\r\n\r\nRELEVANT ENGINE STATE:";
+                        logoutput += "\r\nRELEVANT ENGINE STATE:";
                         logoutput += "\r\nPLAYER LOCATION: [" + player.getLocation().getRoom_id() + "]";
 
                         String items = "";

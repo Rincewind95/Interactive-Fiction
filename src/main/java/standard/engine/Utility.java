@@ -698,6 +698,25 @@ public class Utility
         return res;
     }
 
+    // performs the complete text formatting
+    public static String formatText(String input)
+    {
+        return chopToTerminalWidth(centerToScreenWidth(executeTextOverride(input)));
+    }
+
+    public static final String overrideKeyword = "\\override\r\n";
+
+    // performs override if there was any
+    public static String executeTextOverride(String input)
+    {
+        if(input.contains(overrideKeyword))
+        {
+            // perform override on the last of them
+            int idx = input.lastIndexOf(overrideKeyword) + overrideKeyword.length();
+            input = input.substring(idx);
+        }
+        return input;
+    }
 
     public static String centerToScreenWidth(String input)
     {
@@ -911,10 +930,10 @@ public class Utility
     {
         try
         {
-            transwriter.write(chopToTerminalWidth(centerToScreenWidth(out)));
+            transwriter.write(formatText(out));
             transwriter.flush();
         } catch (Exception e) {}
-        writer.println(chopToTerminalWidth(centerToScreenWidth(out)));
+        writer.println(formatText(out));
         writer.flush();
     }
 

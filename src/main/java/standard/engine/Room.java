@@ -68,11 +68,8 @@ public class Room extends ItemLocation
 
     public static void createPath(Room r1, String dir1, Room r2, String dir2)
     {
-        if (!r1.leads_to.containsKey(dir1) && !r2.leads_to.containsKey(dir2))
-        {
-            r1.leads_to.put(dir1, r2);
-            r2.leads_to.put(dir2, r1);
-        }
+        r1.leads_to.put(dir1, r2);
+        r2.leads_to.put(dir2, r1);
     }
 
     // works assuming the path was there in the first place
