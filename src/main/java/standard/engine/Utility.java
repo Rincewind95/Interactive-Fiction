@@ -861,7 +861,7 @@ public class Utility
     public static String currDate()
     {
         long timeNow = System.currentTimeMillis();
-        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd:mm:yyyy");
+        SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd:MM:yyyy");
         String date = DATE_FORMAT.format(timeNow);
 
         return date;
