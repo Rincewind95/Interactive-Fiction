@@ -440,7 +440,7 @@ public class StoryTreeVisitor extends StoryGrammarBaseVisitor<Void>
                 {
                     for(StoryGrammarParser.Double_commandContext cmd : cnd.double_arg_cnd().extra_synonyms_double().double_command())
                     {
-                        String command = Utility.strip_special_chars(cmd.command().getText());
+                        String command = Utility.strip_special_chars(cmd.command().SYNONYM().getText());
                         ArrayList<String> connectors = new ArrayList<>();
 
                         // collect all the connectors and add them to the map

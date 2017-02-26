@@ -94,9 +94,11 @@ public class Condition implements Comparable
 
         if(Utility.extraSynonymOriginConditions.containsKey(com.getOriginalVerb())
             && com.getArgs().size() == 2
+            && getConnectors(com.getOriginalVerb()) != null
             && !getConnectors(com.getOriginalVerb()).contains(com.getOriginalConnector()))
         {
-            //System.out.println("2 command: ["+type+"] " + args);
+            //System.out.println("2 command: ["+type+"] " + args + " ["+com.getOriginalVerb()+"]");
+            //System.out.println(synonyms);
             return false;
         }
 
