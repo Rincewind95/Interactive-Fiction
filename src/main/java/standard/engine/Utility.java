@@ -96,31 +96,31 @@ public class Utility
         evaluationOptions.add("4");
         evaluationOptions.add("5");
 
-        evaluationQuestion =     ">-------------------------------------------------<" +
-                             "\r\n> I feel this response helps me advance the game. <" +
-                             "\r\n> 1 - Strongly disagree                           <" +
-                             "\r\n> 2 - Disagree                                    <" +
-                             "\r\n> 3 - Neither agree nor disagree                  <" +
-                             "\r\n> 4 - Agree                                       <" +
-                             "\r\n> 5 - Strongly agree                              <";
-        invalidOptionReply =     "> Invalid entry.                                  <" +
-                             "\r\n> Please select a digit from the options below:   <" +
-                             "\r\n> 1 - Strongly disagree                           <" +
-                             "\r\n> 2 - Disagree                                    <" +
-                             "\r\n> 3 - Neither agree nor disagree                  <" +
-                             "\r\n> 4 - Agree                                       <" +
-                             "\r\n> 5 - Strongly agree                              <";
-        successfulOptionReply =  "> Entry recorded. Continuing...                   <" +
-                             "\r\n>-------------------------------------------------<";
-        invalidationSuccessful = ">-------------------------------------------------<" +
-                             "\r\n> Previous entry successfully invalidated.        <" +
-                             "\r\n> Continuing...                                   <" +
-                             "\r\n>-------------------------------------------------<";
-        invalidationFailed =     ">-------------------------------------------------<" +
-                             "\r\n> Invalidation failed.                            <" +
-                             "\r\n> Previous entry was already invalidated or does  <" +
-                             "\r\n> not exist. Continuing...                        <" +
-                             "\r\n>-------------------------------------------------<";
+        evaluationQuestion =     ">-------------------------------------------------------------<" +
+                             "\r\n> I feel this response helps me to make progress in the game. <" +
+                             "\r\n> 1 - Strongly disagree                                       <" +
+                             "\r\n> 2 - Disagree                                                <" +
+                             "\r\n> 3 - Neither agree nor disagree                              <" +
+                             "\r\n> 4 - Agree                                                   <" +
+                             "\r\n> 5 - Strongly agree                                          <";
+        invalidOptionReply =     "> Invalid entry.                                              <" +
+                             "\r\n> Please select a digit from the options below:               <" +
+                             "\r\n> 1 - Strongly disagree                                       <" +
+                             "\r\n> 2 - Disagree                                                <" +
+                             "\r\n> 3 - Neither agree nor disagree                              <" +
+                             "\r\n> 4 - Agree                                                   <" +
+                             "\r\n> 5 - Strongly agree                                          <";
+        successfulOptionReply =  "> Entry recorded. Continuing...                               <" +
+                             "\r\n>-------------------------------------------------------------<";
+        invalidationSuccessful = ">-------------------------------------------------------------<" +
+                             "\r\n> Previous entry successfully invalidated.                    <" +
+                             "\r\n> Continuing...                                               <" +
+                             "\r\n>-------------------------------------------------------------<";
+        invalidationFailed =     ">-------------------------------------------------------------<" +
+                             "\r\n> Invalidation failed.                                        <" +
+                             "\r\n> Previous entry was already invalidated or does not exist.   <" +
+                             "\r\n> Continuing...                                               <" +
+                             "\r\n>-------------------------------------------------------------<";
         /*
         evaluationQuestion =    "************************************************************************************************************" +
                             "\r\n* I feel this response helps me advance the game.                                                          *" +
@@ -143,7 +143,7 @@ public class Utility
                     "\\center" +
                     "\r\n[Tab] ---------------------- autocomplete, cycles suggestions on repress\r\n" +
                         "[Shift]+[Tab] -------------- returns to previous suggestion when pressed\r\n" +
-                        "[Up]/[Down] ---------------- navigates through previous responses\r\n" +
+                        "[Up]/[Down] ---------------- navigates through previous inputs\r\n" +
                         "use     <item> ------------- uses an item\r\n" +
                         "use     <item> on   <item> - uses an item on another item\r\n" +
                         "combine <item> with <item> - combines two items (ordering is irrelevant)\r\n" +
@@ -167,7 +167,7 @@ public class Utility
                         "history -------------------- presents a list of all previous successful user commands\r\n" +
                         "restart -------------------- [CAUTION] restarts the game, and all progress is lost\r\n" +
                         "quit ----------------------- [CAUTION] exits the game, and all progress is lost\r\n" +
-                        "N.B. The list of responses given above is nothing more than a suggestion. You can be\r\n" +
+                        "N.B. The list of inputs given above is nothing more than a suggestion. You can be\r\n" +
                         "creative with synonyms, but there is no guarantee that all synonym options will work.";
         helpMessageAddition =
                         "invalidate ----------------- [CAUTION] irreversibly invalidates only the last entry\r\n" +

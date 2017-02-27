@@ -327,7 +327,7 @@ public class Engine
                     if(enhanced)
                         final_out_to_user = "Nothing happens.";
                     else
-                        final_out_to_user = "I don't understand.";
+                        final_out_to_user = "I don't understand your input.";
                 }
 
                 final_out_to_user = Utility.fixCentering(final_out_to_user);
@@ -881,7 +881,7 @@ public class Engine
 
         // write responses if the command was bad
         if (resp == response.badinput)
-            out = "I don't understand your response.";
+            out = "I don't understand your input.";
         return new Pair<>(resp, out);
     }
 
