@@ -174,6 +174,11 @@ public class NLPparser
                             else if (curr_arg == 1)
                             {
                                 boolean works = false;
+                                if(Utility.twoArgumentConnectors.get(word) == null)
+                                {
+                                    // it is a special case (probably use) so we fail it as a bad command
+                                    return new Command(Command.Type.badcomm);
+                                }
                                 for (String connector : Utility.twoArgumentConnectors.get(word))
                                 {
                                     IndexedWord curr_child = findIndexedWord(dependencies, connector);
