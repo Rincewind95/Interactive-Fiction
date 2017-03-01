@@ -291,8 +291,8 @@ public class Engine
                         advanceTime();
                         Pair<Consequence.Effect, String> final_out = checkConstraints();
                         Consequence.Effect eff = final_out.getKey();
-                        needsCentering += final_out.getValue();
 
+                        needsCentering += final_out.getValue();
                         final_out_to_user += Utility.fixCentering(needsCentering);
                         switch (eff)
                         {
@@ -301,6 +301,12 @@ public class Engine
                                 askForEvaluation = false;
                                 gameRunning = false;
                                 break;
+                        }
+                        if(!final_out.getValue().equals(""))
+                        {
+                            // an event triggered during batch operation, so we interrupt it
+                            final_out_to_user += "\r\n" + Utility.padBothSidesWithChar("remainder_of_batch_suspended_due_to_event", "_");
+                            break;
                         }
                         if(!gameRunning)
                             break;
@@ -582,7 +588,17 @@ public class Engine
                 {
                     Item fir = finditem.get(args.get(0));
                     Item sec = finditem.get(args.get(1));
-                    if(fir == sec)
+                    if(!player.hasItem(fir))
+                    {
+                        // require for us to have the first item in inventory
+                        if(enhanced)
+                        {
+                            out = "You do not have " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) +" in your inventory.";
+                        }
+                        else
+                            resp = response.badinput;
+                    }
+                    else if(fir == sec)
                     {
                         if(enhanced)
                         {
