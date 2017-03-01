@@ -1,6 +1,7 @@
 package test.java;
 
 import jline.console.ConsoleReader;
+import jline.console.completer.CandidateListCompletionHandler;
 import jline.console.completer.Completer;
 import standard.engine.FinalCompleter;
 
@@ -43,6 +44,7 @@ public class IOtest
             ConsoleReader reader = new ConsoleReader();
 
             reader.setPrompt("> ");
+            reader.setPrompt("\u001B[42mfoo\u001B[0m@bar\u001B[32m@baz\u001B[0m> ");
 
             if ((args == null) || (args.length == 0))
             {

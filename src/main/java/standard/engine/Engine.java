@@ -287,7 +287,9 @@ public class Engine
                             final_out_to_user += "-- " + findItem(item).getIDWithTempAndState(enhanced) + ":\r\n";
                         }
                         String needsCentering = executeCommand(curr).getValue();
-
+                        //TESTING
+                        final_out_to_user += Utility.fixCentering(needsCentering);
+/*
                         // we advance time, check constraints and potentially generate another response
                         advanceTime();
                         Pair<Consequence.Effect, String> final_out = checkConstraints();
@@ -303,11 +305,11 @@ public class Engine
                                 break;
                         }
                         if(!gameRunning)
-                            break;
+                            break;*/
                     }
-                }
+                }/*
                 else
-                {
+                {*/
                     // we advance time, check constraints and potentially generate another response
                     advanceTime();
                     Pair<Consequence.Effect, String> final_out = checkConstraints();
@@ -320,7 +322,7 @@ public class Engine
                             gameRunning = false;
                             break;
                     }
-                }
+                //}
 
                 if (final_out_to_user.equals(""))
                 {
