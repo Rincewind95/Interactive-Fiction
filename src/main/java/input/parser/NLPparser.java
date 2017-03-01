@@ -14,6 +14,8 @@ import standard.engine.Utility;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.*;
 
 /**
@@ -68,10 +70,24 @@ public class NLPparser
     // here we only let the correct commands pass through
     public Command parseInput(String input)
     {
-        Command com = parseWithLessCare(input);
-        if(Utility.commandUsesSynonymCorrectly(com))
-            return com;
-        return new Command(Command.Type.badcomm);
+        try
+        {
+            Command com = parseWithLessCare(input);
+            if (Utility.commandUsesSynonymCorrectly(com))
+                return com;
+            return new Command(Command.Type.badcomm);
+        }
+        catch (Exception e)
+        {
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+
+            Utility.write(eng.getWriter(), "\u001B[31;1mAn irreversible error has occurred while parsing your input. Pease request assistance immediately!\r\n"
+                    + sw.toString()
+                    + "\u001B[0m", eng.getTranscriptWriter());
+            return new Command(Command.Type.badcomm);
+        }
     }
 
     // here we parse with less care, not paying attention if the user defined synonyms are correctly used
@@ -164,6 +180,7 @@ public class NLPparser
             for (IndexedWord arg : all)
             {
                 String lemma = arg.get(CoreAnnotations.LemmaAnnotation.class);
+                // TODO fix here
                 switch (Utility.twoArguments.get(keyword).get(curr_arg))
                 {
                     case item:
