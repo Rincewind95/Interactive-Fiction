@@ -170,7 +170,7 @@ public class Utility
                         "N.B. The list of inputs given above is nothing more than a suggestion. You can be\r\n" +
                         "creative with synonyms, but there is no guarantee that all synonym options will work.";
         helpMessageAddition =
-                        "invalidate ----------------- [CAUTION] irreversibly invalidates only the last entry\r\n" +
+                        "\r\ninvalidate ----------------- [CAUTION] irreversibly invalidates only the last entry\r\n" +
                         "Question format:\r\n"
                         + evaluationQuestion;
 
@@ -440,9 +440,9 @@ public class Utility
 
     public static String getHelpMessage(boolean doEvaluation)
     {
-        String res = padBothSidesWithChar("gameplay mechanics", "_") + "\r\n" + helpMessage;
+        String res = padBothSidesWithChar("gameplay_mechanics", "_") + "\r\n" + helpMessage;
         if (doEvaluation)
-            res += "\r\n" + padBothSidesWithChar("estimation mechanics", "_") + helpMessageAddition;
+            res += "\r\n" + padBothSidesWithChar("estimation_mechanics", "_") + helpMessageAddition + "\r\n" + dashedLine();
         return res;
     }
 
@@ -581,7 +581,7 @@ public class Utility
     public static String padBothSidesWithChar(String toWrap, String ch)
     {
         String res = "";
-        int lenTotal = getTerminalWidth()-1;
+        int lenTotal = getTerminalWidth();
         int lenFir = (lenTotal - toWrap.length()) / 2;
         int lenSec = lenFir >= 0 ? lenTotal - lenFir - toWrap.length() : 0;
         for (int i = 0; i < lenFir; i++) res += ch;

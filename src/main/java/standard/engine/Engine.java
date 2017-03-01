@@ -290,7 +290,6 @@ public class Engine
                         final_out_to_user += Utility.fixCentering(needsCentering);
                     }
                 }
-
                 // we advance time, check constraints and potentially generate another response
                 advanceTime();
                 Pair<Consequence.Effect, String> final_out = checkConstraints();
@@ -303,7 +302,7 @@ public class Engine
                         gameRunning = false;
                         break;
                 }
-                
+
                 if (final_out_to_user.equals(""))
                 {
                     if(enhanced)
