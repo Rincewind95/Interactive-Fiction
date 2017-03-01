@@ -142,7 +142,6 @@ public class Utility
         helpMessage =
                     "\\center" +
                     "\r\n[Tab] ---------------------- autocomplete, cycles suggestions on repress\r\n" +
-                        "[Shift]+[Tab] -------------- returns to previous suggestion when pressed\r\n" +
                         "[Up]/[Down] ---------------- navigates through previous inputs\r\n" +
                         "use     <item> ------------- uses an item\r\n" +
                         "use     <item> on   <item> - uses an item on another item\r\n" +

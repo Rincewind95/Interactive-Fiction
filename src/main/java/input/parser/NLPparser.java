@@ -180,7 +180,6 @@ public class NLPparser
             for (IndexedWord arg : all)
             {
                 String lemma = arg.get(CoreAnnotations.LemmaAnnotation.class);
-                // TODO fix here
                 if(curr_arg >= 2)
                 {
                     // no more arguments are expected at this point, so we just test if the word matches any of the
