@@ -42,7 +42,6 @@ public class Engine
 
     private Writer logWriter;
     private FinalCompleter completer;
-    private ArrayList<String> command_suggestions;
     private HashSet<String> item_suggestions;
 
     public Engine()
@@ -888,7 +887,7 @@ public class Engine
         return new Pair<>(Consequence.Effect.procede, out);
     }
 
-    // adds new items to the item suggestions list and returns true if new items were added
+    // adds new items to the item suggestions list
     private void updateItemSuggestions()
     {
         Room current = player.getLocation();

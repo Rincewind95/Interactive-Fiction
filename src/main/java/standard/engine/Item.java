@@ -516,7 +516,7 @@ public class Item extends ItemLocation implements Comparable
         result += "\r\nTEMPERATURE: " + temperature.toString();
         int coef = (int) (getVolumeChangeCoef(temperature, this) * 100);
         result += "\r\nVOLUME: " + volume;
-        result += "\r\nVOLUME COEF: " + coef;
+        result += "\r\nVOLUME COEF: " + coef + "%";
         result += "\r\nMASS: " + mass + "g.";
         result += "\r\nSTATE: " + tmpToState.get(temperature).toString();
 

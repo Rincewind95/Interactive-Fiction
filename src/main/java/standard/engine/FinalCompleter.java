@@ -1,11 +1,14 @@
 package standard.engine;
 
+import edu.emory.mathcs.backport.java.util.Collections;
 import javafx.util.Pair;
 import jline.console.ConsoleReader;
 import jline.console.completer.Completer;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 public class FinalCompleter implements Completer
@@ -37,6 +40,7 @@ public class FinalCompleter implements Completer
     public void updateObjectSuggestions(ArrayList<String> newSuggestions)
     {
         objectSuggestions = newSuggestions;
+        sortSuggestions();
     }
 
     private void sortSuggestions()
@@ -190,6 +194,17 @@ public class FinalCompleter implements Completer
                     sugs.add(new Pair<>(elem, new Integer(buffer.length())));
             }
         }
+
+        Collections.sort(sugs, new Comparator()
+        {
+            @Override
+            public int compare(Object o1, Object o2)
+            {
+                Pair<String, Integer> p1 = (Pair<String, Integer>) o1;
+                Pair<String, Integer> p2 = (Pair<String, Integer>) o2;
+                return p1.getKey().compareTo(p2.getKey());
+            }
+        });
 
         return sugs;
     }
