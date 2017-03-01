@@ -12,12 +12,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine$1.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine$response.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine$response.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Utility.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Utility.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
     </list>
     <ignored path="InteractiveFiction.iws" />
@@ -169,8 +163,8 @@
       <file leaf-file-name="Utility.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Utility.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="583" column="41" lean-forward="false" selection-start-line="583" selection-start-column="41" selection-end-line="583" selection-end-column="41" />
+            <state relative-caret-position="1276">
+              <caret line="173" column="25" lean-forward="false" selection-start-line="173" selection-start-column="25" selection-end-line="173" selection-end-column="25" />
               <folding>
                 <element signature="method#rememberExtraSynonymConditionLink#0;class#Utility#0" expanded="false" />
                 <element signature="method#commandUsesSynonymCorrectly#0;class#Utility#0" expanded="false" />
@@ -183,16 +177,16 @@
                 <element signature="method#addThe#0;class#Utility#0" expanded="false" />
                 <element signature="method#addAorAn#0;class#Utility#0" expanded="false" />
                 <element signature="method#isSingular#0;class#Utility#0" expanded="false" />
-                <element signature="e#29072#29073#0" expanded="true" />
-                <element signature="e#29130#29131#0" expanded="true" />
-                <element signature="e#29175#29176#0" expanded="true" />
-                <element signature="e#29239#29240#0" expanded="true" />
+                <element signature="e#29134#29135#0" expanded="true" />
+                <element signature="e#29192#29193#0" expanded="true" />
+                <element signature="e#29237#29238#0" expanded="true" />
+                <element signature="e#29301#29302#0" expanded="true" />
                 <element signature="method#charLineOfLength#0;class#Utility#0" expanded="false" />
                 <element signature="method#getAllLines#0;class#Utility#0" expanded="false" />
                 <element signature="method#lastIndexBefore#0;class#Utility#0" expanded="false" />
                 <element signature="method#chopToFitWidth#0;class#Utility#0" expanded="false" />
-                <element signature="e#33876#33877#0" expanded="true" />
-                <element signature="e#33942#33943#0" expanded="true" />
+                <element signature="e#33938#33939#0" expanded="true" />
+                <element signature="e#34004#34005#0" expanded="true" />
                 <element signature="method#joinArrays#0;class#Utility#0" expanded="false" />
                 <element signature="method#readLn#0;class#Utility#0" expanded="false" />
                 <element signature="method#hasWord#0;class#Utility#0" expanded="false" />
@@ -1011,7 +1005,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3163597" sideWeight="0.4914712" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17768148" sideWeight="0.47974414" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17768148" sideWeight="0.47974414" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1501,8 +1495,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="583" column="41" lean-forward="false" selection-start-line="583" selection-start-column="41" selection-end-line="583" selection-end-column="41" />
+        <state relative-caret-position="1276">
+          <caret line="173" column="25" lean-forward="false" selection-start-line="173" selection-start-column="25" selection-end-line="173" selection-end-column="25" />
           <folding>
             <element signature="method#rememberExtraSynonymConditionLink#0;class#Utility#0" expanded="false" />
             <element signature="method#commandUsesSynonymCorrectly#0;class#Utility#0" expanded="false" />
@@ -1515,16 +1509,16 @@
             <element signature="method#addThe#0;class#Utility#0" expanded="false" />
             <element signature="method#addAorAn#0;class#Utility#0" expanded="false" />
             <element signature="method#isSingular#0;class#Utility#0" expanded="false" />
-            <element signature="e#29072#29073#0" expanded="true" />
-            <element signature="e#29130#29131#0" expanded="true" />
-            <element signature="e#29175#29176#0" expanded="true" />
-            <element signature="e#29239#29240#0" expanded="true" />
+            <element signature="e#29134#29135#0" expanded="true" />
+            <element signature="e#29192#29193#0" expanded="true" />
+            <element signature="e#29237#29238#0" expanded="true" />
+            <element signature="e#29301#29302#0" expanded="true" />
             <element signature="method#charLineOfLength#0;class#Utility#0" expanded="false" />
             <element signature="method#getAllLines#0;class#Utility#0" expanded="false" />
             <element signature="method#lastIndexBefore#0;class#Utility#0" expanded="false" />
             <element signature="method#chopToFitWidth#0;class#Utility#0" expanded="false" />
-            <element signature="e#33876#33877#0" expanded="true" />
-            <element signature="e#33942#33943#0" expanded="true" />
+            <element signature="e#33938#33939#0" expanded="true" />
+            <element signature="e#34004#34005#0" expanded="true" />
             <element signature="method#joinArrays#0;class#Utility#0" expanded="false" />
             <element signature="method#readLn#0;class#Utility#0" expanded="false" />
             <element signature="method#hasWord#0;class#Utility#0" expanded="false" />

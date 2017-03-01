@@ -168,11 +168,11 @@ public class Utility
                         "restart -------------------- [CAUTION] restarts the game, and all progress is lost\r\n" +
                         "quit ----------------------- [CAUTION] exits the game, and all progress is lost\r\n" +
                         "N.B. The list of inputs given above is nothing more than a suggestion. You can be\r\n" +
-                        "creative with synonyms, but there is no guarantee that all synonym options will work.";
+                        "creative with synonyms, but there is no guarantee that all synonym options will work.\r\n\\endcenter";
         helpMessageAddition =
-                        "\r\ninvalidate ----------------- [CAUTION] irreversibly invalidates only the last entry\r\n" +
+                        "\r\n\\center\r\ninvalidate - [CAUTION] irreversibly invalidates only the last entry\r\n" +
                         "Question format:\r\n"
-                        + evaluationQuestion;
+                        + evaluationQuestion + "\r\n\\endcenter";
 
         percentageThreshold = 15; // in percent
         importantCommands = new ArrayList<>();
@@ -442,7 +442,7 @@ public class Utility
     {
         String res = padBothSidesWithChar("gameplay_mechanics", "_") + "\r\n" + helpMessage;
         if (doEvaluation)
-            res += "\r\n" + padBothSidesWithChar("estimation_mechanics", "_") + helpMessageAddition + "\r\n" + dashedLine();
+            res += "\r\n\r\n" + padBothSidesWithChar("feedback_mechanics", "_") + helpMessageAddition + "\r\n" + charLineOfLength("_", getTerminalWidth());
         return res;
     }
 
