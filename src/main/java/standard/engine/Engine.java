@@ -287,43 +287,23 @@ public class Engine
                             final_out_to_user += "-- " + findItem(item).getIDWithTempAndState(enhanced) + ":\r\n";
                         }
                         String needsCentering = executeCommand(curr).getValue();
-                        //TESTING
                         final_out_to_user += Utility.fixCentering(needsCentering);
-/*
-                        // we advance time, check constraints and potentially generate another response
-                        advanceTime();
-                        Pair<Consequence.Effect, String> final_out = checkConstraints();
-                        Consequence.Effect eff = final_out.getKey();
-                        needsCentering += final_out.getValue();
-
-                        final_out_to_user += Utility.fixCentering(needsCentering);
-                        switch (eff)
-                        {
-                            case kill:
-                            case win:
-                                gameRunning = false;
-                                break;
-                        }
-                        if(!gameRunning)
-                            break;*/
                     }
-                }/*
-                else
-                {*/
-                    // we advance time, check constraints and potentially generate another response
-                    advanceTime();
-                    Pair<Consequence.Effect, String> final_out = checkConstraints();
-                    Consequence.Effect eff = final_out.getKey();
-                    final_out_to_user += final_out.getValue();
-                    switch (eff)
-                    {
-                        case kill:
-                        case win:
-                            gameRunning = false;
-                            break;
-                    }
-                //}
+                }
 
+                // we advance time, check constraints and potentially generate another response
+                advanceTime();
+                Pair<Consequence.Effect, String> final_out = checkConstraints();
+                Consequence.Effect eff = final_out.getKey();
+                final_out_to_user += final_out.getValue();
+                switch (eff)
+                {
+                    case kill:
+                    case win:
+                        gameRunning = false;
+                        break;
+                }
+                
                 if (final_out_to_user.equals(""))
                 {
                     if(enhanced)
