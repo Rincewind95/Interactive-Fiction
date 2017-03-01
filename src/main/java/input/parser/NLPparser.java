@@ -181,43 +181,60 @@ public class NLPparser
             {
                 String lemma = arg.get(CoreAnnotations.LemmaAnnotation.class);
                 // TODO fix here
-                switch (Utility.twoArguments.get(keyword).get(curr_arg))
+                if(curr_arg >= 2)
                 {
-                    case item:
-                        if (itemMapping.containsKey(lemma))
+                    // no more arguments are expected at this point, so we just test if the word matches any of the
+                    // arguments, in which case this is a bad command
+                    for(argType twoArgType : Utility.twoArguments.get(keyword))
+                    {
+                        if (twoArgType == argType.item)
                         {
-                            if (curr_arg >= 2)
-                                return new Command(Command.Type.badcomm);
-                            else if (curr_arg == 1)
+                            if (itemMapping.containsKey(lemma))
                             {
-                                boolean works = false;
-                                if(Utility.twoArgumentConnectors.get(word) == null)
+                                // the breaking case
+                                return new Command(Command.Type.badcomm);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    switch (Utility.twoArguments.get(keyword).get(curr_arg))
+                    {
+                        case item:
+                            if (itemMapping.containsKey(lemma))
+                            {
+                                if (curr_arg == 1)
                                 {
-                                    // it is a special case (probably use) so we fail it as a bad command
-                                    return new Command(Command.Type.badcomm);
+                                    boolean works = false;
+                                    if (Utility.twoArgumentConnectors.get(word) == null)
+                                    {
+                                        // it is a special case (probably use) so we fail it as a bad command
+                                        return new Command(Command.Type.badcomm);
+                                    }
+                                    for (String connector : Utility.twoArgumentConnectors.get(word))
+                                    {
+                                        IndexedWord curr_child = findIndexedWord(dependencies, connector);
+                                        if (curr_child == null)
+                                            continue;
+                                        originalConnector = connector;
+                                        works = true;
+                                        break;
+                                    }
+                                    if (works)
+                                    {
+                                        args.add(itemMapping.get(lemma));
+                                        curr_arg++;
+                                    }
                                 }
-                                for (String connector : Utility.twoArgumentConnectors.get(word))
-                                {
-                                    IndexedWord curr_child = findIndexedWord(dependencies, connector);
-                                    if (curr_child == null)
-                                        continue;
-                                    originalConnector = connector;
-                                    works = true;
-                                    break;
-                                }
-                                if (works)
+                                else
                                 {
                                     args.add(itemMapping.get(lemma));
                                     curr_arg++;
                                 }
                             }
-                            else
-                            {
-                                args.add(itemMapping.get(lemma));
-                                curr_arg++;
-                            }
-                        }
-                        break;
+                            break;
+                    }
                 }
             }
             if (curr_arg == 0)
