@@ -1,7 +1,6 @@
 package standard.engine;
 
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
-import javafx.util.Pair;
 
 import java.util.HashMap;
 import java.util.Set;

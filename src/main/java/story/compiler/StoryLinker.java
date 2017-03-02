@@ -1,6 +1,5 @@
 package story.compiler;
 
-import javafx.util.Pair;
 import standard.engine.*;
 
 import java.util.ArrayList;

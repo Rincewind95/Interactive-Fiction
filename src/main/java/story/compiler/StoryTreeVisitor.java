@@ -1,6 +1,5 @@
 package story.compiler;
 
-import javafx.util.Pair;
 import org.apache.commons.lang.text.StrTokenizer;
 import standard.engine.*;
 import story.parser.StoryGrammarBaseVisitor;

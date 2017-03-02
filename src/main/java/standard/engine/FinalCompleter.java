@@ -1,7 +1,6 @@
 package standard.engine;
 
 import edu.emory.mathcs.backport.java.util.Collections;
-import javafx.util.Pair;
 import jline.console.ConsoleReader;
 import jline.console.completer.Completer;
 
