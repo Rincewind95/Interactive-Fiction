@@ -45,7 +45,7 @@ _step
 	[try to put key in lock first time](1);
 	_plir [main room];
 	_additr [old fuse] [main room];
-"
+" *click* *click* *click*
 
 You hear a strange clicking noise, and notice that a minor hole has opened in the ceiling. You can make out a small object being lowered through it on a thin silver string. You watch in a combination of fear and excitement as it comes down, and wait to see what will happen next. To your disappointment, the little object softly touches down on the ground. The string then detaches and swiftly returns to its ceiling hole, which closes seamlessly behind it. Now you definitely know that something is wrong here, but decide to act now and question later.";
 "Help might come from above, you never know...";
