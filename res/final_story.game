@@ -1,0 +1,1241 @@
+_welcome
+{
+	[start];
+	[main room];
+	[prolog];
+}
+
+_step
+{
+	[take loose brick];
+	[and];
+	[start](0);
+	_itinv [loose brick];
+	_additcont [golden key] [rectangular hole];
+    [brick obtained message];
+"There is something in the rectangular hole, consider taking it.";
+}
+
+_step
+{
+	[take key];
+	[and];
+	[take loose brick](0);
+	_itinv [golden key];
+	_none;
+    [key obtaining message];
+"There is something else in the rectangular hole, consider taking it.";
+}
+
+_step
+{
+	[try to put key in lock first time];
+	[and];
+	[take key](0);
+	_putin [golden key] [hexagonal lock];
+	_none;
+"";
+"Does the key's shape remind you of something?";
+}
+
+_step
+{
+	[fuse comes down on a string];
+	[and];
+	[try to put key in lock first time](1);
+	_plir [main room];
+	_additr [old fuse] [main room];
+"
+
+You hear a strange clicking noise, and notice that a minor hole has opened in the ceiling. You can make out a small object being lowered through it on a thin silver string. You watch in a combination of fear and excitement as it comes down, and wait to see what will happen next. To your disappointment, the little object softly touches down on the ground. The string then detaches and swiftly returns to its ceiling hole, which closes seamlessly behind it. Now you definitely know that something is wrong here, but decide to act now and question later.";
+"Help might come from above, you never know...";
+}
+
+_step
+{
+	[got fuse];
+	[and];
+	[fuse comes down on a string](0);
+	_itinv [old fuse];
+	_none;
+    [fuse obtained message];
+"Did you try to take the item that just came down from the ceiling?";
+}
+
+_step
+{
+	[open fusebox];
+	[and];
+	[start](0);
+	_itir [dusty metal fusebox] [main room], _use <open> [dusty metal fusebox];
+	_rmit [dusty metal fusebox], _additr [open fusebox] [main room];
+    [open fusebox message];
+"Did you try to open the fusebox?";
+}
+
+_step
+{
+	[try to close fusebox];
+	[and];
+	[start](0);
+	_plir [main room], _itir [open fusebox] [main room],
+	_use <close> [open fusebox];
+	_none;
+"The door won't budge, it seems to be stuck open due the care you took while opening it earlier.";
+}
+
+_step
+{
+	[try to open freezer one];
+	[and];
+	[start](0);
+	_itir [dusty metal fusebox] [main room], _use <open> [unpowered freezer];
+	_none;
+"Sadly the freezer doors seem to have an electrical lock on them, and refuse to move however hard you pull.";
+}
+
+_step
+{
+	[try to open freezer two];
+	[and];
+	[start](0);
+	_itir [open fusebox] [main room], _use <open> [unpowered freezer];
+	_none;
+"Sadly the freezer doors seem to have an electrical lock on them. This lock will probably disengage once power is restored to the Manor though.";
+}
+
+_step
+{
+	[put fuse in fusebox];
+	[and];
+	[open fusebox](0), [got fuse](0);
+	_itir [open fusebox] [main room], _iticon [old fuse] [open fusebox];
+	_rmit [old fuse], _rmit [open fusebox], _additr [powered fusebox] [main room],
+	_rmit [unpowered freezer], _additr [freezer] [main room];
+    [fuse in fusebox message];
+"Find a way to restore power.";
+}
+
+_step
+{
+	[try to close powered fusebox];
+	[and];
+	[put fuse in fusebox](0);
+	_plir [main room], _itir [powered fusebox] [main room],
+	_use <close> [powered fusebox];
+	_none;
+"The door won't budge, it seems to be stuck open due the care you took while opening it earlier.";
+}
+
+_step
+{
+	[open freezer];
+	[and];
+	[put fuse in fusebox](0);
+	_use <open> [freezer];
+	_rmit [freezer], _additr [open freezer] [main room];
+    [freezer opens message];
+"Did you consider to open the freezer?";
+}
+
+_step
+{
+	[try to close freezer];
+	[and];
+	[open freezer](0);
+	_plir [main room], _use <close> [open freezer];
+	_none;
+"Why on earth would you do that? It was too warm here anyway.";
+}
+
+_step
+{
+	[put frozen key in hexagonal lock];
+	[and];
+	[open freezer](0);
+	_iticon [golden key] [hexagonal lock];
+	_rmit [golden key], _rmit [hexagonal lock],
+	_rmit [fireplace], _additr [open fireplace] [main room],
+	_addcon [main room] _N [secret room] _S;
+    [fireplace opens];
+"Find a way to fit the key in the hexagonal lock. Hint: temperature";
+}
+
+_step
+{
+	[try to open hidraulic door];
+	[and];
+	[put frozen key in hexagonal lock](0);
+	_plir [secret room], _use <open> [hidraulic door];
+	_none;
+"You try to put your fingers between the sliding doors, but you cannot even find the slightest bit of room. There is no way you can pry this thing open manually. You do feel that the lever located right besides the hidraulic door is taunting you though.";
+}
+
+_step
+{
+	[try to close hidraulic door];
+	[and];
+	[put frozen key in hexagonal lock](0);
+	_plir [secret room], _use <close> [hidraulic door];
+	_none;
+"The hidraulic doors are as closed as they can be, you cannot help them to become more closed no matter how hard you try.";
+}
+
+_step
+{
+	[pull lever];
+	[and];
+	[put frozen key in hexagonal lock](0);
+	_plir [secret room], _use <pull> [lever];
+	_none;
+"You pull as hard as you can on the lever, and see the hidraulic doors slowly start to budge open. However, as soon as you let go, they nearly immediately close shut with a loud noise. You will have to find another way to hold the lever down.";
+}
+
+_step
+{
+	[put brick on plate];
+	[and];
+	[put frozen key in hexagonal lock](0);
+	_plir [secret room], _putin [loose brick] [scale plate];
+	_none;
+"";
+"Did you try to hold the lever down with something? For example a brick?";
+}
+
+_step
+{
+	[hear shaking];
+	[and];
+	[put brick on plate](3);
+	_plnir [main room];
+	_rmcon [main room] _N [secret room] _S,
+    _addcon [devastated main room] _N [secret room] _S,
+	_additr [open freezer] [devastated main room],
+	_additr [powered fusebox] [devastated main room],
+	_additr [rectangular hole] [devastated main room],
+	_additr [open fireplace] [devastated main room];
+"
+
+You feel the ground shaking, as if an earthquake is happening right now. Coincidence? You think not! Well either way, you believe that it had something to do with your experimentation with the lever. Suddenly, while you were mid-thought, a more violent shake hits the manor and you hear a very loud shattering noise coming from the other room. You wait for the shock-waves to stop and consider going back to the main room through the stairs the south, to investigate the damage.";
+"Don't look at me like that, I thought that would work too. Maybe you could try a different approach? Waiting is also not a bad idea...";
+}
+
+_step
+{
+	[got chandelier chunk];
+	[and];
+	[hear shaking](0);
+	_itinv [chandelier chunk];
+	_none;
+	[chandelier chunk obtained];
+	"There might be something you can salvage from the main room.";
+}
+
+_step
+{
+	[end the game];
+	[and];
+	[got chandelier chunk](0);
+	_iticon [chandelier chunk] [scale plate];
+	_win;
+	[end message];
+"Maybe the chandelier chunk can hold down the lever?";
+}
+
+_step
+{
+	[throw brick at chandelier];
+	[and];
+	[start](0);
+	_plir [main room], _useon {(<throw>, <at>), (<toss>, <at>)} [loose brick] [large chandelier];
+	_none;
+"You attempt to throw the brick at the chandelier, but completely miss your target. This reminds you of how bad your aim actually is. You walk the walk of shame and take back your brick.";
+}
+
+_step
+{
+	[try to break window];
+	[and];
+	[start](0);
+	_plir [main room], _useon {(<throw>, <at>), (<toss>, <at>), (<smash>, <with>), (<break>, <with>)} [odd window] [loose brick];
+	_none;
+"You give it your best shot, however the brick bounces off the glass without leaving even a scratch. It feels like that window is sturdier than it should be, almost like its made from bullet-proof glass. Oh whell, you retrieve your brick and carry on.";
+}
+
+
+_room
+{
+	[main room];
+	[first level];
+	_N - [main room exit north];
+	[main room intro];
+	"You are in the main room of the mysterious manor.";
+}
+
+_room
+{
+	[devastated main room];
+	[first level];
+	_N [secret room];
+	[devastated main room intro];
+	"You are in the main room of the mysterious manor.";
+}
+
+_room
+{
+	[secret room];
+	[first level];
+	_N - [secret room exit north];
+	[secret room intro];
+	"You are in a secret room of the mysterious manor.";
+}
+
+_item
+{
+	[rectangular hole];
+	_fixed;
+	_inroom [main room];
+	_iscont, _min, 0;
+	_vol 300;
+	_temp _warm, _constant;
+   [rectangular hole description];
+}
+
+_item
+{
+	[loose brick];
+	_takeable;
+	_incont [rectangular hole];
+	_isitem;
+	_vol 200;
+	_mass 1000;
+	_temp _warm, _variable;
+   [brick description];
+}
+
+_item
+{
+	[golden key];
+	_takeable;
+	_prod;
+	_isitem;
+	_vol 100;
+	_mass 100;
+	_temp _warm, _variable;
+	_state <_warm, _solid>, <_hot, _liquid>;
+   [golden key description];
+}
+
+_item
+{
+	[hexagonal lock];
+	_fixed;
+	_inroom [main room];
+	_iscont, _min, 0;
+	_vol 92;
+	_temp _warm, _constant;
+   [hexagonal lock description];
+}
+
+_item
+{
+	[overgrown bonsai tree];
+	_fixed;
+	_inroom [main room];
+	_isitem;
+   [overgrown bonsai description];
+}
+
+_item
+{
+	[survivor bonsai tree];
+	_fixed;
+	_inroom [devastated main room];
+	_isitem;
+   [survivor bonsai description];
+}
+
+_item
+{
+	[odd window];
+	_fixed;
+	_inroom [main room];
+	_isitem;
+    [odd window description];
+}
+
+_item
+{
+	[broken screen];
+	_fixed;
+	_inroom [devastated main room];
+	_isitem;
+   [broken screen description];
+}
+
+_item
+{
+	[fireplace];
+	_fixed;
+	_inroom [main room];
+	_isitem;
+	[fireplace description];
+}
+
+_item
+{
+	[open fireplace];
+	_fixed;
+	_inroom [devastated main room];
+	_isitem;
+	[open fireplace description];
+}
+
+_item
+{
+	[large chandelier];
+	_fixed;
+	_inroom [main room];
+	_isitem;
+   [chandelier description];
+}
+
+_item
+{
+	[chandelier chunk];
+	_takeable;
+	_inroom [devastated main room];
+	_isitem;
+	_vol 350;
+	_mass 2500;
+	_temp _normal, _variable;
+   [chandelier piece description];
+}
+
+_item
+{
+	[old fuse];
+	_takeable;
+	_prod;
+	_isitem;
+	_vol 50;
+	_mass 100;
+	_temp _cold, _variable;
+   [fuse description];
+}
+
+_item
+{
+	[dusty metal fusebox];
+	_fixed;
+	_inroom [main room];
+	_isitem;
+   [dusty metal fusebox description];
+}
+
+_item
+{
+	[open fusebox];
+	_fixed;
+	_prod;
+	_iscont, _min, 0;
+	_vol 60;
+   [open fusebox description];
+}
+
+_item
+{
+	[powered fusebox];
+	_fixed;
+	_prod;
+	_isitem;
+   [powered fusebox description];
+}
+
+_item
+{
+	[unpowered freezer];
+	_fixed;
+	_inroom [main room];
+	_isitem;
+   [unpowered freezer description];
+}
+
+_item
+{
+	[freezer];
+	_fixed;
+	_prod;
+	_isitem;
+   [freezer description];
+}
+
+_item
+{
+	[open freezer];
+	_fixed;
+	_prod;
+	_iscont, _min, 0;
+	_vol 1000;
+	_temp _frozen, _constant;
+   [open freezer description];
+}
+
+_item
+{
+	[lever];
+	_fixed;
+	_inroom [secret room];
+	_isitem;
+   [lever description];
+}
+
+_item
+{
+	[scale plate];
+	_fixed;
+	_inroom [secret room];
+	_iscont, _min, 2000;
+	_vol 1000;
+   [scale plate description];
+}
+
+_item
+{
+	[hidraulic door];
+	_fixed;
+	_inroom [secret room];
+	_isitem;
+   [metal door description];
+}
+
+_message
+{
+	[fireplace description];
+"\center
+         |____|____|____|/|
+         |__|____|____|_|/|
+         |____|____|____|/\        A old looking brick fireplace.
+        /___|____|____|__\/\       There are two holes in its front
+       /_|____|____|____|_\/\      facing wall. One is rectangular
+      /_____|____|____|____\/\     and brick-sized, the other is
+     /___|____|____|____|___\/\    a hexagonal lock and seems to
+    /_|_o_|  .  ..  .  |___|_\/|   be of a considerably smaller
+    |_____| . ./\/\  . |_[ ]_|/|   diameter.
+   _|_|___| . (oo)o)  .|___|_|/|_
+  / |_____|  [======]  |_____|/ /| Oh yeah, the fire is nice too.
+ /_____________________________//
+|______________________________/
+\endcenter";
+}
+
+_message
+{
+	[open fireplace description];
+"\center
+         |____|____|____|/|
+         |__|____|____|_|/|
+         |____|____|____|/\        A fireplace without a fire.
+        /___|____|____|__\/\       Ok, there are some stairs as well.
+       /_|____|____|____|_\/\      And the hexagonal lock is gone.
+      /_____|____|____|____\/\
+     /___|____|____|____|___\/\
+    /_|___|  |         |___|_\/|   Nothing much really...   
+    |_____|  |_________|_[ ]_|/|
+   _|_|___| /    /__   |___|_|/|_
+  / |_____|/____/__/|__|_____|/ /|
+ /_____________________________//
+|______________________________/
+\endcenter";
+}
+
+_message
+{
+	[rectangular hole description];
+"\center
+~--.-----------.--~
+~  | /         |  ~   A brick-sized hole in the
+~  |/          |  ~   fireplace's front-facing wall.
+~--`-----.-----`--~
+\endcenter\center
+";  
+}
+
+_message
+{
+	[brick description];
+"\center
+       ________
+     /        /\
+    /________/ /   A piece of an average brown brick.
+   |         \/\   Nothing much to it really.
+   |  B R I C/ /
+   |_________\/
+\endcenter\center
+";
+}
+
+_message
+{
+	[brick obtained message];
+" You have a brick now, yay!
+\endcenter
+
+\center
+    \       |        /  
+     \  ________    /
+       /        /\
+      /________/ /  
+- -  |         \/\  - -
+     |  B R I C/ /
+     |_________\/
+                   \
+   /        |       \
+\endcenter
+
+\center
+As the light enters the hole in the fireplace, you notice that there is something
+else inside, lying at the far end. You consider examining the rectangular hole to
+see what it is.";
+}
+
+_message
+{
+	[golden key description];
+"\center
+ _____
+/ __  \_____________   A key made out of solid gold. You know how keys should look,
+\ \ \  \__\__\__\__\\  but this one seems to have a completely smooth surface without
+/ / /  /__/__/__/__//  any dents or bumps. The end which you imagine goes in a lock
+\ \/ _/                is hexagonal in shape.
+ \__/
+\endcenter\center
+";
+}
+
+_message
+{
+	[key obtaining message];
+"
+It glimmers under the light of the fireplace.
+\endcenter
+
+\center
+     \         |          /  
+     _____     |         /
+    / __  \_____________ 
+-   \ \ \  \__\__\__\__\\  - -
+    / / /  /__/__/__/__//
+    \ \/ _/              
+     \__/      |       \
+   /           |        \
+\endcenter";
+}
+
+_message
+{
+	[hexagonal lock description];
+"\center
+~--.-----__----.--~
+~  |    /  \   |  ~   A small hexagonal lock in the
+~  |    \__/   |  ~   fireplace's front-facing wall.
+~--`-----.-----`--~
+\endcenter\center
+";
+}
+
+_message
+{
+	[overgrown bonsai description];
+"\center
+               * *
+          *    *  *
+     *  *    *     *  *
+    *     *    *  *    *
+* *   *    *    *    *   *
+*     *  *    * * .#  *   *
+*   *     * #.  .# *   *
+ *     '#.  #: #' * *    *   A pretty, yet surprisingly large bonsai tree.
+*   * * '#. ##'       *      It reminds you of your favourite haiku:
+  *       '###
+            '##
+             ##.             bonsai fascicles
+             .##:            frilling in susurrant breeze
+             :###            resilient evergreen 
+             ;###
+           ,####.            
+         _.######._          You feel calmer now.
+        (__________)
+         (________)
+\endcenter";
+}
+
+_message
+{
+	[survivor bonsai description];
+"\center
+                *
+            *    *
+      *  *    *     *  *
+     *     *    *       *
+ *     *    *    *    *   *
+ *     *       * * .#  *
+     *     * #.  .# *   *
+  *     '#.  #: #' *      *  The tree seems to have survived, but barely.
+ *   * * '#. ##'             A good number of its leaves are on the ground.
+   *       '###
+             '##             Sadly, there is nothing you can do about it.
+              ##.
+    |         .##:   \/  /
+     \/       :###    \  \
+     /        ;###    /\ /
+|____\_______,####._____|__
+       *  _.######._
+       * (__________)  *
+   *      (________) *
+        *      *   *
+           *          *
+\endcenter";
+}
+
+_message
+{
+	[chandelier description];
+"\center
+                 |
+                 |
+                (o)                  A large golden chandelier. You fear it might be 
+      )        /___\        )        a bit heavy for the thin string it is suspended
+ (   (_)  ..==|~***~|==..  (_)   (   on, but there is nothing you can do about this
+(_)  |`| //  ..\~*~/..  \\ |`|  (_)  matter. The flickering light of the big candles
+|`|   \\//  //  \|/  \\  \\//   |`|  gives the room a warm feeling.
+ \\    //==''    0    ''==\\    //
+  ''==''                   ''==''
+\endcenter";
+}
+
+_message
+{
+	[chandelier piece description];
+"\center
+ \   (   /
+    )^)       A good chunk of the chandelier, with the candle intact.
+-  (  ^(  -   The shadows on the gold gently shimmer under the
+    \^ /      flickering candle-light. Gold is beautiful, isn't it?
+ /  |__| \
+     \ \
+      \_\
+\endcenter\center
+";
+}
+
+_message
+{
+	[odd window description];
+"\center
+ _______________________
+|  ** *   ** *     **  *|   
+| *  **   *|*    ** **  |  If this window is to be trusted, it's a
+|~ *|* .~~~| ~~.~ *|* .~|  wonderful day outside, in what seems to
+|.~~|~~~.~.~~~.~~.~|.~~~|  be a lush forest. But somehow, you are
+|~.~~~.~.~~.~~.~~.~~~~.~|  not convinced.
+'-----------------------'
+\endcenter
+";
+}
+
+_message
+{
+	[broken screen description];
+"\center
+ _______________________
+|   |      \ O \    /   |
+| O/      \/\/\/  \/  O |  It was a screen after all! A number of glass pieces
+|_/\/\    /\ \   \/\    |  have broken off,  and you clearly see several cameras
+| \        /\    / /\   |  where they used to be. All of the cameras are pointed
+|  \/                \/\|  directly at you!
+'-----------------------'
+\endcenter
+";
+}
+
+_message
+{
+	[chandelier chunk obtained];
+" What a nice chunk it is, don't you think?
+\center
+         |
+    \          /
+     \   (    / 
+        )^)  
+- - -  (  ^(  - - -
+        \^ / 
+     /  |__|  \ 
+    /    \ \   \
+          \_\    
+\endcenter";
+}
+
+_message
+{
+	[fuse description];
+"\center
+ _____
+|_____|
+ | | |   A very old rod-shaped fuse.
+ | | |   It comprises of a glass cylinder and two metal caps.
+ | | |   You are certain that they don't make these any more.
+ |_|_|
+|_____|
+\endcenter\center
+";
+}
+
+_message
+{
+	[fuse obtained message];
+"
+It's a bit oldfashioned, but it should do the trick.
+\endcenter
+
+\center
+   \     |     /
+    \  _____  /
+      |_____|
+       | | | 
+- - -  | | |  - - -
+       | | | 
+       |_|_|
+      |_____|
+    /         \
+   /     |     \
+\endcenter
+";
+}
+
+_message
+{
+	[dusty metal fusebox description];
+"\center
+   __________
+ /__________/|
+|          | |  A dusty metal fusebox hanging on the northern wall.
+|        @ | |  It seems to be closed shut, so you currently cannot
+|        | | |  see or access whatever is inside it.
+|        @ | |
+|          | |
+|__________|/
+\endcenter";  
+}
+
+_message
+{
+	[open fusebox description];
+"\center
+      ___________
+     /__________/|
+   /| |        | |
+  / | |[ ] [|] | |  A dusty metal box, housing the electric fuses.
+ /  | |     |  | |  Now that its open, you notice two places where
+|   | |[ ] [|] | |  a fuse could be placed, however one of the fuses
+|   | |________| |  is missing.
+|   |/_________|/
+|  /
+| /
+|/
+\endcenter\center
+";
+}
+
+_message
+{
+	[open fusebox message];
+"\center
+You find a way to grip the front panel and pull strongly. The front
+panel flies open, accompanied by a loud, scratching noise.
+\endcenter
+\center
+       __________                             ___________
+     /__________/|                          /___________/|
+    |          | |                         /| |        | |
+    |        @ | |      _____\`-._        / | |[ ] [|] | |
+    |     <- | | |     |_____    _ >     /  | |     |  | |
+    |        @ | |           /.-'       |   | |[ ] [|] | |
+    |          | |                      |   | |________| |
+    |__________|/                       |   |/_________|/
+                                        |  /
+                                        | /
+                                        |/
+\endcenter";
+}
+
+_message
+{
+	[fuse in fusebox message];
+"
+You hear a fritzy sound of electronics coming to life.
+\endcenter
+\center
+      ___________                             ___________
+    /___________/|                          /___________/|
+   /| |        | |                         /| |        | |
+  / | |[ ] [|] | |      _____\`-._        / | |[|] [|] | |
+ /  | |     |  | |     |_____    _ >     /  | | |   |  | |
+|   | |[ ] [|] | |           /.-'       |   | |[|] [|] | |
+|   | |________| |                      |   | |________| |
+|   |/_________|/                       |   |/_________|/
+|  /                                    |  /
+| /                                     | /
+|/                                      |/
+\endcenter
+
+\center
+Soon after the freezer turns on and hums away while it cools down to its working temperature.";
+}
+
+_message
+{
+	[powered fusebox description];
+"\center
+      ___________
+     /__________/|
+   /| |        | |
+  / | |[|] [|] | |  A dusty metal fusebox, housing the electric
+ /  | | |   |  | |  fuses. With both fuses now in place, the
+|   | |[|] [|] | |  whole manor has power.
+|   | |________| |
+|   |/_________|/
+|  /
+| /
+|/
+\endcenter";
+}
+
+_message
+{
+	[unpowered freezer description];
+"\center
+    _______
+  /       /|
+ /______ / |
+| ----- |  |  A freezer which is not cold at all.
+|       |  |  Without power it is useless at the only job
+|     @ |  |  it is supposed to do, that is freezing stuff.
+|     | |  |
+|     @ |  :
+|       | /
+|_______|/
+\endcenter";
+}
+
+_message
+{
+	[freezer description];
+"\center
+    _______
+  /       /|
+ /______ / |
+| ----- |  |  A very cold freezer.
+|       |  |  You can feel the immense cold coming from its
+|     @ |  |  inside, even though its doors are closed shut.
+|     | |  |
+|     @ |  :
+|       | / 
+|_______|/
+\endcenter\center
+";  
+}
+
+_message
+{
+	[open freezer description];
+"\center
+       _______
+     /       /|
+    /______ / |
+  /|  |____|  |  A very cold freezer.
+ / | /     |  |  With the door open, it feels as cold as the
+|  |/______|  |  heart of your ex, and does not promise to
+| /|  |    |  |  get any warmer soon.
+|/ |  |____|  :
+|  | /     | / 
+|  |/______|/
+| /
+|/
+\endcenter\center
+";
+}
+_message
+{
+	[freezer opens message];
+"You find a way to grip the door, and after a little bit
+of elbow grease the freezer is wide open.
+\endcenter
+\center
+    _______                              _______
+  /       /|                           /       /|
+ /______ / |                          /______ / |
+| ----- |  |      _____\`-._        /|  |____|  |
+|       |  |     |_____    _ >     / | /     |  |
+|     @ |  |           /.-'       |  |/______|  |
+|  <- | |  |                      | /|  |    |  |
+|     @ |  :                      |/ |  |____|  :
+|       | /                       |  | /     | / 
+|_______|/                        |  |/______|/
+                                  | /
+                                  |/
+\endcenter
+
+\center
+You are surprised by just how cold the insides of this thing are.";
+}
+
+_message
+{
+	[lever description];
+"\center
+         (O)
+ _____  //|
+||.-.||// |
+|| | |//  |     A metal lever with a scale plate attached to it.
+|| | //  /^\    It seems that this mechanisms is somehow attached
+|| |//| /   \   to the metal door next to it.
+||(//||(_____)
+|| | ||
+|| | ||
+|| | ||
+'-----'
+\endcenter";
+}
+
+_message
+{
+	[scale plate description];
+"\center
+       |
+      /|\
+     / | \       The scale plate attached to the lever.
+    /  |  \      It is (again) made out of gold, which makes
+   /   |   \     you wonder how much money went into the
+  /  __|__  \    making of this place. Either way, it seems
+ /.-'     `-.\   that you can put stuff on this.
+/             \
+\             /
+ ``-._____.-''
+\endcenter";
+}
+
+_message
+{
+	[metal door description];
+"\center
+  Surface
+ _________ 
+|    |    |   A heavy hidraulic metal door. Since there is a large
+|    |    |   'Surface' sign above it, your current assumption is
+|    |    |   that this must lead you there somehow. If only you
+|    |    |   could open it.
+|    |    |
+|____|____|
+\endcenter";
+}
+
+_message
+{
+	[fireplace opens];
+"
+\endcenter
+\center
+ _______________________________________________________________________________________
+|                      --------------------------------------------                     |
+|                          |      |      |      |      |      |                         |
+|                          |      |      |      |      |      |                         |
+|                      .--__--.---`------`------`------`--.------.                      |
+|                      | /  \ | `.------------------------|      |                      |
+|                      | \__/ |  |::::::::::::::::::::::::|      |                      |
+|                      `--.---|--|------------------------|---.--`                      |
+|                         |   |  |::::::::::::::::::::::::|   |                         |
+|                         |   | ,|------------------------|   |                         |
+|                      .--`---.' |::::::::::::::::::::::::|---'--.                      |
+|                      |      | /|________________________| /    |                      |
+|                      |__ ___|/ /               |--.__   |/__ __|                      |
+|                         |   | /                |  |  |-.|   |                         |
+|                         |   |/_________________|__|__|__|   |                         |
+|                      ===`===`---------------------------`===`===                      |
+|                      ____/_____/_________________|_____\_____\___                     |
+-----------------------------------------------------------------------------------------
+   You hear a complex mechanism of cogs working followed by the fire in the fireplace
+   extinguishing itself as if by some magic. The stone slabs below it move to the side,
+   revealing a dark and mossy stairway. You feel that you should go north through the
+   newly opened passage and investigate.
+\endcenter";
+}
+
+_message
+{
+	[devastated main room intro];
+"\center
+ _______________________________________________________________________________________
+|   |        |                |      |____|____|____|/|         |                   \   |
+|   |       / \/              |      |__|____|____|_|/|        / \                  /   |
+|   |      /\  \                     |____|____|____|/|           |                /\   |
+|   |      \   |                     |__|____|___ |_|/|          / \         *       \  |
+|   |         / \                    |____|____|_ __|/|         /        *    *         |
+|  /|        /                       |__|____|___ |_|/|         \  *  *    *     *  *   |
+| /*|        \                       |____|____|_ __|/| \/\       *     *    *       *  |
+|/* |        /                       |__|____|____|_|/|_/     *     *    *    *    *   *|
+| */|        \                       |____|____|____|/| \/    *     *       * * .#  *   |
+|*/ |        /              \        |__|____|____|_|/|  \        *     * #.  .# *   *  |
+|/  |        \             \/        |____|____|____|/\  /     *     '#.  #: #' *      *|
+|   |       _______         \/\/    /___|____|____|__\/\      *   * * '#. ##'           |
+|   |     /       /|     ___/  \   /_|____|____|____|_\/\       *       '###            |
+|   |    /______ / |   /|   |     /_____|____|____|____\/\                '##           |
+|   |  /|  |____|  |  | || ||    /___|____|____|____|___\/\                ##.          |
+|   | / | /     |  |  | |___|   /_|___|  |         |___|_\/|     |         .##:   \/  / |
+|   ||  |/______|  |  |/    \   |_____|  |_________|_[ ]_|/|      \/       :###    \  \ |
+|   || /|  |    |  |      \ /  _|_|___| /    /__   |___|_|/|_     /        ;###    /\ / |
+|   ||/ |  |____|  :_______|_ / |_____|/____/__/|__|_____|/ /|____\_______,####._____|__|
+|   /|  | /     | /          /_____________________________//       *  _.######._       |
+|  / |  |/______|/      (   |______________________________/        * (__________)  *   |
+| /  | /               (_)       / ~ ~ ~~ ~ ~ ~ ~~ ~ /          *      (________) *     |
+|/   |/                |`|      / ~ ~~~ ~ ~ ~~ ~ ~~ /                *      *   *       |
+|                       \\     /_-_-_-_-_-_-_-_-_-_/                    *          *    |
+-----------------------------------------------------------------------------------------
+\endcenter
+You find the main room in a state of total disrepair. The bonsai tree has lost a decent number of its leaves, the walls are cracked and you feel like the place could collapse any minute. Interestingly enough, most of the chandelier is nowhere to be found. You can only find a single chunk of it lying on the floor below the place where it was hung.";
+}
+
+_message
+{
+	[main room exit north];
+"You attempt to enter the fireplace. Right before you commit suicide though, it comes to you that you do not wish to die just yet.";
+}
+
+_message
+{
+	[secret room exit north];
+"You attempt to pry open the metal doors with your bare hands, but with no success. You cannot go this way yet.";
+}
+
+_message
+{
+	[prolog];
+"... You feel the darkness slowly taking over your vision and you let it engulf you. You wake up in a strange and foreign place, yet unseen by human eyes. Everything around you seems real, yet somehow ghostly and strange. As you slowly come to your senses, you can clearly see the room in front of you for the first time...";
+}
+
+_message
+{
+	[main room intro];
+"\center
+ _______________________________________________________________________________________
+|   |                          |     |____|____|____|/|                                 |
+|   |                          |     |__|____|____|_|/|                                 |
+|   |                         (o)    |_      __|____|/|                                 |
+|   |               )        /___\   |__  )       |_|/|                       * *       |
+|   |          (   (_)  ..==|~***~|==..  (_)   (  __|/|                  *    *  *      |
+|  /|         (_)  |`| //  ..\~*~/..  \\ |`|  (_) |_|/|            *  *    *     *  *   |
+| /*|         |`|   \\//  //  \|/  \\  \\//   |`| __|/|           *     *    *  *    *  |
+|/  |          \\    //==''    0    ''==\\    // _|_|/|       * *   *    *    *    *   *|
+|  /|           ''==''               |__ ''=='' ____|/|       *     *  *    * * .#  *   |
+| / |                                |__|____|____|_|/|       *   *     * #.  .# *   *  |
+|/  |                                |____|____|____|/\        *     '#.  #: #' * *    *|
+|   |       _______                 /___|____|____|__\/\      *   * * '#. ##'       *   |
+|   |     /       /|     ___       /_|____|____|____|_\/\       *       '###            |
+|   |    /______ / |    |   |     /_____|____|____|____\/\                '##           |
+|   |   | ----- |  |    |  I|    /___|____|____|____|___\/\                ##.          |
+|   |   |       |  |    |___|   /_|_o_|  .  ..  .  |___|_\/|               .##:         |
+|   |   |     @ |  |            |_____| . ./\/\  . |_[ ]_|/|               :###         |
+|   |   |     | |  |           _|_|___| . (oo)o)  .|___|_|/|_              ;###         |
+|   |___|     @ |  :_________ / |_____|  [======]  |_____|/ /|____________,####.________|
+|   /   |       | /          /_____________________________//          _.######._       |
+|  /    |_______|/          |______________________________/          (__________)      |
+| /                              / ~ ~ ~~ ~ ~ ~ ~~ ~ /                 (________)       |
+|/                              / ~ ~~~ ~ ~ ~~ ~ ~~ /                                   |
+|                              /_-_-_-_-_-_-_-_-_-_/                                    |
+-----------------------------------------------------------------------------------------
+\endcenter
+
+You find yourself in a softly lit room, illuminated primarily by the dancing flames of the fireplace. The candles in the chandelier hanging from the wooden roof, provide barely any additional light. The first thing that you notice, is the peculiar lack of doors on all four side-walls. There is also a rather large bonsai tree in the corner, and you wonder how it manages to thrive in such low-light conditions. You notice a freezer in the north-east corner of the room, with its front door closed shut. You don't hear the standard buzzing of the freezer's cooler, probably because there is no power in the room. You think to yourself that there must be a way to restore power, and this is when you notice a dusty metal fusebox in close proximity of the freezer. You are not sure what it could house inside, because it too is closed, but you think that it could somehow help you in solving the power issue. As you glance over the fireplace again, you notice two strange indentations in its front facing wall: a hexagonal lock and a rectangular hole. The former is rather small and dusty, and looks to be carefully carved in the brick face. The latter has a loose brick sticking out of it and is scruffy around the edges. That loose brick seems to you like it could come in handy, so you plan to start by taking it...
+
+There also seems to be an interesting window, seemingly looking out the west side of the room, but there is something off about it. It looks to you like the image flickers every now and then, as if it were a screen instead of a window. Either way, it gives you a sense of unease and you feel watched.
+
+Suddenly, you feel a shake in the ground and the whole manor stutters for a second. The chandelier is still swinging slightly, looking even more unstable now. You feel that this place could collapse any minute, and this brings with it a certain sense of anxiety. Adrenaline is still rushing through your veins, and you feel that you really should get on with somehow getting out of here...";
+}
+
+_message
+{
+	[secret room intro];
+"\center
+ _______________________________________________________________________________________
+|_|  |__| __|      )       |__|__|   __|__|   __|__|   __|__|   __   __|_|__|   __|__| _|
+|__|   __|        /(  (       __|__|    __|__|   __|__|  __|__|  __|   _ __|__|   __|___|
+|__|__| _    )   \ ^) /\  (    __|   __|__|   __|__|    __|__|   __|_  |__| _|   __|__|_|
+|   __|__    (/\ /  \/  )^)     _|__|   __|_|__|   __|__|   __|__|      __|___|__|   ___|
+|__|   __|    )^ )   \   (     |  __|__|    __|__|   __|__|   __|__| __|   _  __|__|   _|
+| __|__| __   \  \/      /   _|__|   __|__|_|   __|__|   __|__|  __|___|__| _|   __|__|_|
+|   __|__|   [____________]    __|__|   __|__| |____|__|__|_____|__|_____|_____|___|__|_|
+|__|   __|____________________|___|      |__| |                | |__|      _|_____|__| _|
+|__|__|   _|  ____________  |__ |_    )    _|/|   Surface      |\|_    (    _| ___|__| _|
+|   __|__| | |____|\| |\| | |__|_    (^(    | |  _________     | |    )^)    __|   __|  |
+|__|   __|_| |_____\|\| |\| | ___   )^  )   |/| |    |    | _  |\|   (  ^(   __|__|  |__|
+|__|__|   _| |______| |\| | |__|    \ ^/   _| | |    |    ||/| | |_   \^ /    | __|__ __|
+|   __|__| | |_______\| |\| |___|_  |__|  _ |/| |    |    ||(_)|\| _  |__|  _|__|   __| |
+|__|   __|_| |________|\| | |  |__| ______| | | |    |    |'-' | |__|   ____ __|__|  |__|
+|__|__|   _| |_________\|\| |___|____| __|__|/| |    |    |    |\|__|__|   _|   __|__ __|
+|   __|__| | |__________| | |__|   |__|   __| |_|____|____|____| |   __|__| |__|   __| _|
+|_____|__|_|_|___________\|_|___|____|__|___|/_/___________\____\|_____|__|____|__|__|__|
+|  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \|
+|\__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__|
+|_\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\ |
+|  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \__\  \|
+-----------------------------------------------------------------------------------------
+\endcenter
+
+You enter a large dungeon-like area, brightly lit by the many torches dotted around the walls. There is only a dim light coming from the foot of the cobble-stone staircase which you just descended, to the west. You immediately notice a large metal door with a sign that reads 'Surface' directly above it. It seems to be operated by a metal lever located right next to it. A scale plate is suspended on the lever with a heavy duty string. It looks like items can be placed on this plate. You immediately think of pulling the lever, but are unsure what effect this will have. You decide to explore your options and see what you can do to open what seems to be the exit from this place.";
+}
+
+   
+
+_message
+{
+	[end message];
+"
+\endcenter
+
+As soon as you do this, the lever slowly starts moving to its lowest setting, and the loud screeching of unlubricated hidraulics comes like music to your ears. You find a lavish elevator through the door. You quickly jump in, and press the button labelled 'Surface'. After a couple of minutes, which felt like an entire eternity, the doors open again, but this time they reveal the most amazing sight you have seen in a while. You did it, you managed to escape the manor! Let the road take you home from here...
+\center
+ _______________________________________________________________________________________
+|       \ \ \                                       / / /                               |
+|     \        \  \     \\    \                   /        /  /     //    /             |
+|  \                 \         \  \            /                 /         /  /         |
+|                  \                                           /                        |
+|                 \                \\                         /                //       |
+| \          \            \              \    /          /            /              /  |
+| \            '\,        \               \   /            '/,        /               / |
+| \              'b      *                    /              'b      *                  |
+|  \              '$    #\                \    /              '$    //                //|
+| \    \           $:   #:               \    /    /         $:    /:               /   |
+|\      \  \\      *#  @):        \   \ \   //      /  //     \@  @):        /   / /    |
+|            \     :@,@):   ,\**:'   \                   /     :@,@):   ,/**:'   /      |
+|\      \,         :@@*: \\**'      \   \    /      /,         :@@*: //**'      /   /   |
+|         '#o\    .:(@'.@*''  \                       '/o/    /:(@'/@*''  /             |
+| \  \       'bq,..:,@@*'   ,*      \  \      /  /       'bq,//:,@@*'   ,*      /  /    |
+|            ,p$q8,:@)'  \p*'      \                     ,p$q8,:@)'  /p*'      /        |
+|      \     '  \ '@@Pp@@*'    \  \      -------  /     '  / '@@Pp@@*'    /  /          |
+|/      \  \ \\    Y7'.'     \  \     .----------   /  / //    @Y7'.'     /  /    _/\\_/|
+| /\/            :@):.              \------------_             (@::.             ._\//_/|
+|\/ ._\//_\/.  .:@:'.  _ _/\\//_/__/------------/ _/__/\_     :@::'.  __/\//_/__/\._///||
+|\/ ._\//_/_  .::(@:., //__\\/_\/.------------|\_/__/\\/.   .:@):::.   ._\//_/__/\\/.  \|
+|\//_/\//_\/_\/.  \_//_ ._\//_/__-------------.\ ._/__/\\_//__/_ ._\//_/_/__/\//_/__/\._|
+|\/ ._\._\//_/__/\\_//__/_ ._\//_/__------------/__/\\_//__/_ ._\._\//_\/.  \_/_/\\//_/_|
+|\\\/ .//_\/.._\//_/__/\\/__/_ .._\//_-------------_\//_/__/\\_//__/_ ._\//_/_/__/\//_/_|
+|\/ ._\//_\/.  \_//__/_ ._\//_/._\//_/ --------------__/_ ._\//._\//_/__/\\\._///|_\/.\/|
+|                          _____  _            ___           _                          |
+|                         |_   _|| |_   ___   | __| _ _   __| |                         |
+|                           | |  | ' \ / -_)  | _| | ' \ / _` |                         |
+|                           |_|  |_||_|\___|  |___||_||_|\__,_|                         |
+-----------------------------------------------------------------------------------------
+\endcenter";
+}
+
+

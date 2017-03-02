@@ -25,11 +25,6 @@ public class MainExecutor
     {
         try
         {
-            Character mask = null;
-            String trigger = null;
-            boolean color = false;
-
-
             ConsoleReader reader = new ConsoleReader();
             Utility.setReader(reader);
             reader.setPrompt("> ");
@@ -67,7 +62,7 @@ public class MainExecutor
             while(eng == null)
             {
                 // repeatedly compile the story until the engine is non null
-                eng = StoryCompiler.complieStory(story_location);
+                eng = StoryCompiler.complieStory(new FileInputStream(story_location));
                 if(eng == null)
                 {
                     out.println("To recompile the story file press enter or type \"abort\" to quit.\n" +
@@ -96,7 +91,7 @@ public class MainExecutor
                 else if (resp == Engine.response.restart)
                 {
                     // recompile the story from zero
-                    eng = StoryCompiler.complieStory(story_location);
+                    eng = StoryCompiler.complieStory(new FileInputStream(story_location));
                 }
             }
         } catch (Throwable t)

@@ -216,6 +216,7 @@ public class Engine
                         {
                         }
                     }
+                    final_write();
                     reader.removeCompleter(completer);
                     return resp;
                 }
@@ -420,32 +421,21 @@ public class Engine
                 }
             }
 
-            if(doEvaluation)
-            {
-                try
-                {
-                    logWriter.write(Utility.getThinkTimeAverage(thinkTimes));
-                    logWriter.flush();
-                } catch (Exception e)
-                {
-                }
-            }
+            final_write();
             reader.removeCompleter(completer);
             return response.exit;
         } catch (Throwable t)
         {
-            if(doEvaluation)
-            {
-                try
-                {
-                    logWriter.write(Utility.getThinkTimeAverage(thinkTimes));
-                    logWriter.flush();
-                } catch (Exception e)
-                {
-                }
-            }
             t.printStackTrace();
         }
+
+        final_write();
+        reader.removeCompleter(completer);
+        return  response.exit;
+    }
+
+    private void final_write()
+    {
         if(doEvaluation)
         {
             try
@@ -456,8 +446,6 @@ public class Engine
             {
             }
         }
-        reader.removeCompleter(completer);
-        return  response.exit;
     }
 
     private Pair<response, String> executeCommand(Command command)

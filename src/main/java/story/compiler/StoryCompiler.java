@@ -9,19 +9,20 @@ import story.parser.StoryGrammarParser;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Compiles a story from a given file
  */
 public class StoryCompiler
 {
-    public static Engine complieStory(String story_loc)
+    public static Engine complieStory(InputStream story_loc)
     {
         Engine eng = null;
         try
         {
             System.setErr(System.out); // reroute err to out, to get lexer and parser errors
-            ANTLRInputStream in = new ANTLRInputStream(new FileInputStream(story_loc));
+            ANTLRInputStream in = new ANTLRInputStream(story_loc);
             StoryGrammarLexer lexer = new StoryGrammarLexer(in);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             StoryGrammarParser parser = new StoryGrammarParser(tokens);

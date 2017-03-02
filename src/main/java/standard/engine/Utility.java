@@ -901,6 +901,7 @@ public class Utility
         {
             res += "Invalid";
         }
+        res += "\r\n";
         return res;
     }
 
