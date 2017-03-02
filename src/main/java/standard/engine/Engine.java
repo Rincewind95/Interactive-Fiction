@@ -104,6 +104,11 @@ public class Engine
 
             // reset the think times
             thinkTimes = new ArrayList<>();
+            if(doEvaluation)
+            {
+                // this is just for logging
+                thinkTimes.add(System.currentTimeMillis());
+            }
 
             // start the game once the engine is loaded
             boolean gameRunning = true;
@@ -124,11 +129,6 @@ public class Engine
             {
                 // save the original timestamp
                 int origtime = time;
-                if(doEvaluation)
-                {
-                    // this is just for logging
-                    thinkTimes.add(System.currentTimeMillis());
-                }
 
                 // update the enhanced/unenhanced engine state
                 if (alternate)
@@ -153,6 +153,12 @@ public class Engine
 
                 //reader.setPrompt("[" + time + "] ");
                 String userInput = Utility.readLn(reader, transcriptWriter, Integer.toString(origtime));
+
+                if(doEvaluation)
+                {
+                    // this is just for logging (to determine the total think time later)
+                    thinkTimes.add(System.currentTimeMillis());
+                }
 
                 // input parsing
                 Command command = parser.parseInput(userInput);

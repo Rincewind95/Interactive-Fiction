@@ -7,11 +7,15 @@
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/main/java/standard/engine/Command.java" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" line="708" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" line="714" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/standard/engine/Item.java" line="84" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine$1.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine$response.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine$response.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
     </list>
     <ignored path="InteractiveFiction.iws" />
@@ -34,11 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Engine.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Engine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="207" column="73" lean-forward="false" selection-start-line="207" selection-start-column="73" selection-end-line="207" selection-end-column="73" />
+            <state relative-caret-position="243">
+              <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#Engine#0" expanded="false" />
@@ -49,21 +53,32 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="StoryStep.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="861">
+              <caret line="287" column="0" lean-forward="false" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
+              <folding>
+                <element signature="docComment;class#StoryStep#0" expanded="false" />
+                <element signature="method#StoryStep#0;class#StoryStep#0" expanded="false" />
+                <element signature="method#StoryStep#1;class#StoryStep#0" expanded="false" />
+                <element signature="method#StoryStep#2;class#StoryStep#0" expanded="false" />
+                <element signature="method#compareTo#0;class#StoryStep#0" expanded="false" />
+                <element signature="method#addCondition#0;class#StoryStep#0" expanded="false" />
+                <element signature="method#addConsequence#0;class#StoryStep#0" expanded="false" />
+                <element signature="method#invokeConsequences#0;class#StoryStep#0" expanded="false" />
+                <element signature="method#setHint#0;class#StoryStep#0" expanded="false" />
+                <element signature="method#getHint#0;class#StoryStep#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MainExecutor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="807">
               <caret line="90" column="57" lean-forward="false" selection-start-line="90" selection-start-column="57" selection-end-line="90" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NLPtest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/test/java/NLPtest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="53" column="24" lean-forward="false" selection-start-line="53" selection-start-column="24" selection-end-line="53" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -131,11 +146,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Utility.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Utility.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Utility.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="903" column="22" lean-forward="false" selection-start-line="903" selection-start-column="22" selection-end-line="903" selection-end-column="22" />
+            <state relative-caret-position="229">
+              <caret line="888" column="33" lean-forward="true" selection-start-line="888" selection-start-column="33" selection-end-line="888" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#rememberExtraSynonymConditionLink#0;class#Utility#0" expanded="false" />
@@ -172,8 +187,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>there i</find>
-      <find>override</find>
       <find>rmcon</find>
       <find>removepa</find>
       <find>OPEN_PAREN_CURLY</find>
@@ -196,12 +209,14 @@
       <find>Pair</find>
       <find>pair</find>
       <find>javafx</find>
-      <find>think</find>
       <find>return</find>
       <find>ret</find>
       <find>read</find>
       <find>final_write</find>
       <find>logWriter</find>
+      <find>time</find>
+      <find>think</find>
+      <find>thinkTimes</find>
     </findStrings>
     <replaceStrings>
       <replace>warm</replace>
@@ -429,40 +444,6 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="story" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InteractiveFiction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InteractiveFiction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="story" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="compiler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -513,28 +494,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="runnable" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InteractiveFiction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="InteractiveFiction" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -974,7 +933,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3163597" sideWeight="0.4914712" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1744312" sideWeight="0.47974414" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1744312" sideWeight="0.47974414" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1189,25 +1148,6 @@
           <folding>
             <element signature="method#getLookInfo#0;class#Room#0" expanded="false" />
             <element signature="method#getMoveInfo#0;class#Room#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3196">
-          <caret line="287" column="0" lean-forward="false" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#StoryStep#0" expanded="false" />
-            <element signature="method#StoryStep#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#StoryStep#1;class#StoryStep#0" expanded="false" />
-            <element signature="method#StoryStep#2;class#StoryStep#0" expanded="false" />
-            <element signature="method#compareTo#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#addCondition#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#addConsequence#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#invokeConsequences#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#setHint#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#getHint#0;class#StoryStep#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1429,10 +1369,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/runnable/ExperimentExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-197">
+          <caret line="116" column="17" lean-forward="false" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="287" column="0" lean-forward="false" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
+          <folding>
+            <element signature="docComment;class#StoryStep#0" expanded="false" />
+            <element signature="method#StoryStep#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#StoryStep#1;class#StoryStep#0" expanded="false" />
+            <element signature="method#StoryStep#2;class#StoryStep#0" expanded="false" />
+            <element signature="method#compareTo#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#addCondition#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#addConsequence#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#invokeConsequences#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#setHint#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#getHint#0;class#StoryStep#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="103" column="0" lean-forward="true" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Engine#0" expanded="false" />
+            <element signature="method#setWelcome#0;class#Engine#0" expanded="false" />
+            <element signature="method#getLastCommand#0;class#Engine#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="903" column="22" lean-forward="false" selection-start-line="903" selection-start-column="22" selection-end-line="903" selection-end-column="22" />
+        <state relative-caret-position="229">
+          <caret line="888" column="33" lean-forward="true" selection-start-line="888" selection-start-column="33" selection-end-line="888" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#rememberExtraSynonymConditionLink#0;class#Utility#0" expanded="false" />
@@ -1453,29 +1435,6 @@
             <element signature="method#joinArrays#0;class#Utility#0" expanded="false" />
             <element signature="method#readLn#0;class#Utility#0" expanded="false" />
             <element signature="method#hasWord#0;class#Utility#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/runnable/ExperimentExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-197">
-          <caret line="116" column="17" lean-forward="false" selection-start-line="116" selection-start-column="17" selection-end-line="116" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="207" column="73" lean-forward="false" selection-start-line="207" selection-start-column="73" selection-end-line="207" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#Engine#0" expanded="false" />
-            <element signature="method#setWelcome#0;class#Engine#0" expanded="false" />
-            <element signature="method#getLastCommand#0;class#Engine#0" expanded="false" />
           </folding>
         </state>
       </provider>
