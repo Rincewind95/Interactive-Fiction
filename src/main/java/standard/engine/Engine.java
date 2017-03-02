@@ -206,16 +206,6 @@ public class Engine
                 {
                     out_to_user = "\r\n" + out_to_user + "\r\n";
                     Utility.write(writer, out_to_user, transcriptWriter);
-                    if(doEvaluation)
-                    {
-                        try
-                        {
-                            logWriter.write(Utility.getThinkTimeAverage(thinkTimes));
-                            logWriter.flush();
-                        } catch (Exception e)
-                        {
-                        }
-                    }
                     final_write();
                     reader.removeCompleter(completer);
                     return resp;
