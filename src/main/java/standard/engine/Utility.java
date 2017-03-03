@@ -178,7 +178,7 @@ public class Utility
                         new Condition("plir", new ArrayList<>(Arrays.asList("main room")))
                 ))
         ));
-        importantCommands.add(new ImportantCommand(new Command(Command.Type.putin, new ArrayList<>(Arrays.asList("loose brick", "scale plate"))),
+        importantCommands.add(new ImportantCommand(new Command(Command.Type.putin, new ArrayList<>(Arrays.asList("loose brick", "scale"))),
                 new HashSet<>(Arrays.asList(
                         new Condition("plir", new ArrayList<>(Arrays.asList("secret room")))
                 ))
@@ -412,6 +412,15 @@ public class Utility
             }
             //System.out.print("return false");
             return false;
+        }
+    }
+
+    public static void resetImportantCommandTriggers()
+    {
+        // untriggers all the important commands
+        for(ImportantCommand curr : importantCommands)
+        {
+            curr.unTrigger();
         }
     }
 

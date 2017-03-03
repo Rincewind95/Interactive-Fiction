@@ -108,6 +108,8 @@ public class Engine
             {
                 // this is just for logging
                 thinkTimes.add(System.currentTimeMillis());
+                // reset the important commands
+                Utility.resetImportantCommandTriggers();
             }
 
             // start the game once the engine is loaded

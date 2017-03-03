@@ -47,7 +47,7 @@ _step
 	_additr [old fuse] [main room];
 " *click* *click* *click*
 
-You hear a strange clicking noise, and notice that a minor hole has opened in the ceiling. You can make out a small object being lowered through it on a thin silver string. You watch in a combination of fear and excitement as it comes down, and wait to see what will happen next. To your disappointment, the little object softly touches down on the ground. The string then detaches and swiftly returns to its ceiling hole, which closes seamlessly behind it. Now you definitely know that something is wrong here, but decide to act now and question later.";
+You hear a strange clicking noise, and notice that a minor hole has opened in the ceiling. You can make out a small object being lowered through it on a thin silver string. You watch in a combination of fear and excitement as it comes down, and wait to see what will happen next. To your disappointment, the little object softly touches down on the ground. The string then detaches and swiftly returns to its ceiling hole, which closes seamlessly behind it. As it is now a lot closer to you, you realise that the small object is in fact an old fuse! You feel oddly lucky, but have a hard time believing that this was just a mere coincidence. Oh well, better act now and ask questions later, you think to yourself.";
 "Help might come from above, you never know...";
 }
 
@@ -163,22 +163,22 @@ _step
 
 _step
 {
-	[try to open hidraulic door];
+	[try to open hydraulic door];
 	[and];
 	[put frozen key in hexagonal lock](0);
-	_plir [secret room], _use <open> [hidraulic door];
+	_plir [secret room], _use <open> [hydraulic door];
 	_none;
-"You try to put your fingers between the sliding doors, but you cannot even find the slightest bit of room. There is no way you can pry this thing open manually. You do feel that the lever located right besides the hidraulic door is taunting you though.";
+"You try to put your fingers between the sliding doors, but you cannot even find the slightest bit of room. There is no way you can pry this thing open manually. You do feel that the lever located right besides the hydraulic door is taunting you though.";
 }
 
 _step
 {
-	[try to close hidraulic door];
+	[try to close hydraulic door];
 	[and];
 	[put frozen key in hexagonal lock](0);
-	_plir [secret room], _use <close> [hidraulic door];
+	_plir [secret room], _use <close> [hydraulic door];
 	_none;
-"The hidraulic doors are as closed as they can be, you cannot help them to become more closed no matter how hard you try.";
+"The hydraulic doors are as closed as they can be, you cannot help them to become more closed no matter how hard you try.";
 }
 
 _step
@@ -188,15 +188,15 @@ _step
 	[put frozen key in hexagonal lock](0);
 	_plir [secret room], _use <pull> [lever];
 	_none;
-"You pull as hard as you can on the lever, and see the hidraulic doors slowly start to budge open. However, as soon as you let go, they nearly immediately close shut with a loud noise. You will have to find another way to hold the lever down.";
+"You pull as hard as you can on the lever, and see the hydraulic doors slowly start to budge open. However, as soon as you let go, they nearly immediately close shut with a loud noise. You will have to find another way to hold the lever down.";
 }
 
 _step
 {
-	[put brick on plate];
+	[put brick on scale];
 	[and];
 	[put frozen key in hexagonal lock](0);
-	_plir [secret room], _putin [loose brick] [scale plate];
+	_plir [secret room], _putin [loose brick] [scale];
 	_none;
 "";
 "Did you try to hold the lever down with something? For example a brick?";
@@ -206,7 +206,7 @@ _step
 {
 	[hear shaking];
 	[and];
-	[put brick on plate](3);
+	[put brick on scale](3);
 	_plnir [main room];
 	_rmcon [main room] _N [secret room] _S,
     _addcon [devastated main room] _N [secret room] _S,
@@ -236,7 +236,7 @@ _step
 	[end the game];
 	[and];
 	[got chandelier chunk](0);
-	_iticon [chandelier chunk] [scale plate];
+	_iticon [chandelier chunk] [scale];
 	_win;
 	[end message];
 "Maybe the chandelier chunk can hold down the lever?";
@@ -254,14 +254,23 @@ _step
 
 _step
 {
+	[try to break window first];
+	[and];
+	[start](0);
+	_plir [main room], _useon {(<throw>, <at>), (<toss>, <at>)} [loose brick] [odd window];
+	_none;
+"You give it your best shot, however the brick bounces off the glass without leaving even a scratch. It feels like that window is sturdier than it should be, almost like its made from bullet-proof glass. Oh well, you retrieve your brick and carry on.";
+}
+
+_step
+{
 	[try to break window];
 	[and];
 	[start](0);
-	_plir [main room], _useon {(<throw>, <at>), (<toss>, <at>), (<smash>, <with>), (<break>, <with>)} [odd window] [loose brick];
+	_plir [main room], _useon {(<smash>, <with>), (<break>, <with>)} [odd window] [loose brick];
 	_none;
-"You give it your best shot, however the brick bounces off the glass without leaving even a scratch. It feels like that window is sturdier than it should be, almost like its made from bullet-proof glass. Oh whell, you retrieve your brick and carry on.";
+"Sadly the window is too high up for you to hit it without throwing the brick at it.";
 }
-
 
 _room
 {
@@ -492,17 +501,17 @@ _item
 
 _item
 {
-	[scale plate];
+	[scale];
 	_fixed;
 	_inroom [secret room];
 	_iscont, _min, 2000;
 	_vol 1000;
-   [scale plate description];
+   [scale description];
 }
 
 _item
 {
-	[hidraulic door];
+	[hydraulic door];
 	_fixed;
 	_inroom [secret room];
 	_isitem;
@@ -515,15 +524,15 @@ _message
 "\center
          |____|____|____|/|
          |__|____|____|_|/|
-         |____|____|____|/\        A old looking brick fireplace.
-        /___|____|____|__\/\       There are two holes in its front
-       /_|____|____|____|_\/\      facing wall. One is rectangular
-      /_____|____|____|____\/\     and brick-sized, the other is
-     /___|____|____|____|___\/\    a hexagonal lock and seems to
-    /_|_o_|  .  ..  .  |___|_\/|   be of a considerably smaller
-    |_____| . ./\/\  . |_[ ]_|/|   diameter.
-   _|_|___| . (oo)o)  .|___|_|/|_
-  / |_____|  [======]  |_____|/ /| Oh yeah, the fire is nice too.
+         |____|____|____|/\        An old looking brick fireplace.
+        /___|____|____|__\/\       There are two indentations in its
+       /_|____|____|____|_\/\      front facing wall. One is a rectangular
+      /_____|____|____|____\/\     brick-sized hole and the other is a
+     /___|____|____|____|___\/\    hexagonal lock, which seems to be of
+    /_|_o_|  .  ..  .  |___|_\/|   a considerably smaller diameter.
+    |_____| . ./\/\  . |_[ ]_|/|
+   _|_|___| . (oo)o)  .|___|_|/|_  Oh yeah, the fire is nice too.
+  / |_____|  [======]  |_____|/ /|
  /_____________________________//
 |______________________________/
 \endcenter";
@@ -997,7 +1006,7 @@ _message
          (O)
  _____  //|
 ||.-.||// |
-|| | |//  |     A metal lever with a scale plate attached to it.
+|| | |//  |     A metal lever with a scale attached to it.
 || | //  /^\    It seems that this mechanisms is somehow attached
 || |//| /   \   to the metal door next to it.
 ||(//||(_____)
@@ -1010,11 +1019,11 @@ _message
 
 _message
 {
-	[scale plate description];
+	[scale description];
 "\center
        |
       /|\
-     / | \       The scale plate attached to the lever.
+     / | \       The scale attached to the lever.
     /  |  \      It is (again) made out of gold, which makes
    /   |   \     you wonder how much money went into the
   /  __|__  \    making of this place. Either way, it seems
@@ -1031,7 +1040,7 @@ _message
 "\center
   Surface
  _________ 
-|    |    |   A heavy hidraulic metal door. Since there is a large
+|    |    |   A heavy hydraulic metal door. Since there is a large
 |    |    |   'Surface' sign above it, your current assumption is
 |    |    |   that this must lead you there somehow. If only you
 |    |    |   could open it.
@@ -1191,7 +1200,7 @@ _message
 -----------------------------------------------------------------------------------------
 \endcenter
 
-You enter a large dungeon-like area, brightly lit by the many torches dotted around the walls. There is only a dim light coming from the foot of the cobble-stone staircase which you just descended, to the west. You immediately notice a large metal door with a sign that reads 'Surface' directly above it. It seems to be operated by a metal lever located right next to it. A scale plate is suspended on the lever with a heavy duty string. It looks like items can be placed on this plate. You immediately think of pulling the lever, but are unsure what effect this will have. You decide to explore your options and see what you can do to open what seems to be the exit from this place.";
+You enter a large dungeon-like area, brightly lit by the many torches dotted around the walls. There is only a dim light coming from the foot of the cobble-stone staircase which you just descended, to the west. You immediately notice a large metal door with a sign that reads 'Surface' directly above it. It seems to be operated by a metal lever located right next to it. A scale is suspended on the lever with a heavy duty string. It looks like items can be placed on it. You immediately think of pulling the lever, but are unsure what effect this will have. You decide to explore your options and see what you can do to open what seems to be the exit from this place.";
 }
 
    
@@ -1202,7 +1211,7 @@ _message
 "
 \endcenter
 
-As soon as you do this, the lever slowly starts moving to its lowest setting, and the loud screeching of unlubricated hidraulics comes like music to your ears. You find a lavish elevator through the door. You quickly jump in, and press the button labelled 'Surface'. After a couple of minutes, which felt like an entire eternity, the doors open again, but this time they reveal the most amazing sight you have seen in a while. You did it, you managed to escape the manor! Let the road take you home from here...
+As soon as you do this, the lever slowly starts moving to its lowest setting, and the loud screeching of unlubricated hydraulics comes like music to your ears. You find a lavish elevator through the door. You quickly jump in, and press the button labelled 'Surface'. After a couple of minutes, which felt like an entire eternity, the doors open again, but this time they reveal the most amazing sight you have seen in a while. You did it, you managed to escape the manor! Let the road take you home from here...
 \center
  _______________________________________________________________________________________
 |       \ \ \                                       / / /                               |

@@ -29,6 +29,11 @@ public class ImportantCommand
         return conditions;
     }
 
+    public void unTrigger()
+    {
+        triggered = false;
+    }
+
     public void trigger()
     {
         triggered = true;

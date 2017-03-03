@@ -7,16 +7,24 @@
   </component>
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/main/java/standard/engine/Command.java" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" line="714" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" line="716" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/standard/engine/Item.java" line="84" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a658546d-eaf4-4613-b617-1ade732b2da5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/runnable/ExperimentExecutor.class" afterPath="$PROJECT_DIR$/target/classes/runnable/ExperimentExecutor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/de_tudarmstadt_ukp_dkpro_core_de_tudarmstadt_ukp_dkpro_core_stanfordnlp_gpl_1_8_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/de_tudarmstadt_ukp_dkpro_core_de_tudarmstadt_ukp_dkpro_core_stanfordnlp_gpl_1_8_0.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/Milos.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine$1.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine$response.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine$response.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Engine.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Engine.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/ImportantCommand.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/ImportantCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/standard/engine/Utility.class" afterPath="$PROJECT_DIR$/target/classes/standard/engine/Utility.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/runnable/ExperimentExecutor.java" afterPath="$PROJECT_DIR$/src/main/java/runnable/ExperimentExecutor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/final_story.game" afterPath="$PROJECT_DIR$/res/final_story.game" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/ImportantCommand.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/ImportantCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" afterPath="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/final_story.game" afterPath="$PROJECT_DIR$/target/classes/final_story.game" />
     </list>
     <ignored path="InteractiveFiction.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,8 +49,8 @@
       <file leaf-file-name="Engine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="1479">
+              <caret line="100" column="82" lean-forward="true" selection-start-line="100" selection-start-column="82" selection-end-line="100" selection-end-column="82" />
               <folding>
                 <element signature="docComment;class#Engine#0" expanded="false" />
                 <element signature="method#setWelcome#0;class#Engine#0" expanded="false" />
@@ -55,18 +63,65 @@
       <file leaf-file-name="StoryStep.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3196">
+            <state relative-caret-position="0">
               <caret line="287" column="0" lean-forward="false" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="docComment;class#StoryStep#0" expanded="false" />
                 <element signature="method#StoryStep#0;class#StoryStep#0" expanded="false" />
                 <element signature="method#StoryStep#1;class#StoryStep#0" expanded="false" />
                 <element signature="method#StoryStep#2;class#StoryStep#0" expanded="false" />
+                <element signature="e#2907#2908#0" expanded="false" />
+                <element signature="e#2950#2951#0" expanded="false" />
+                <element signature="e#3003#3004#0" expanded="false" />
+                <element signature="e#3047#3048#0" expanded="false" />
+                <element signature="e#3103#3104#0" expanded="false" />
+                <element signature="e#3153#3154#0" expanded="false" />
+                <element signature="e#3207#3208#0" expanded="false" />
+                <element signature="e#3255#3256#0" expanded="false" />
                 <element signature="method#compareTo#0;class#StoryStep#0" expanded="false" />
+                <element signature="e#3659#3660#0" expanded="false" />
+                <element signature="e#3691#3692#0" expanded="false" />
+                <element signature="e#3750#3751#0" expanded="false" />
+                <element signature="e#3784#3785#0" expanded="false" />
+                <element signature="e#3842#3843#0" expanded="false" />
+                <element signature="e#3877#3878#0" expanded="false" />
+                <element signature="e#3915#3916#0" expanded="false" />
+                <element signature="e#3945#3946#0" expanded="false" />
+                <element signature="e#3995#3996#0" expanded="false" />
+                <element signature="e#4033#4034#0" expanded="false" />
+                <element signature="e#4072#4073#0" expanded="false" />
+                <element signature="e#4102#4103#0" expanded="false" />
+                <element signature="e#4153#4154#0" expanded="false" />
+                <element signature="e#4191#4192#0" expanded="false" />
+                <element signature="e#4224#4225#0" expanded="false" />
+                <element signature="e#4251#4252#0" expanded="false" />
+                <element signature="e#4296#4297#0" expanded="false" />
+                <element signature="e#4328#4329#0" expanded="false" />
+                <element signature="e#4394#4395#0" expanded="false" />
+                <element signature="e#4442#4443#0" expanded="false" />
+                <element signature="e#4511#4512#0" expanded="false" />
+                <element signature="e#4562#4563#0" expanded="false" />
+                <element signature="e#7168#7169#0" expanded="false" />
+                <element signature="e#7198#7199#0" expanded="false" />
                 <element signature="method#addCondition#0;class#StoryStep#0" expanded="false" />
+                <element signature="e#7584#7585#0" expanded="false" />
+                <element signature="e#7617#7618#0" expanded="false" />
+                <element signature="e#7674#7675#0" expanded="false" />
+                <element signature="e#7709#7710#0" expanded="false" />
                 <element signature="method#addConsequence#0;class#StoryStep#0" expanded="false" />
                 <element signature="method#invokeConsequences#0;class#StoryStep#0" expanded="false" />
+                <element signature="e#8619#8620#0" expanded="false" />
+                <element signature="e#8664#8665#0" expanded="false" />
+                <element signature="e#8715#8716#0" expanded="false" />
+                <element signature="e#8761#8762#0" expanded="false" />
+                <element signature="e#8798#8799#0" expanded="false" />
+                <element signature="e#8830#8831#0" expanded="false" />
+                <element signature="e#8881#8882#0" expanded="false" />
+                <element signature="e#8923#8924#0" expanded="false" />
                 <element signature="method#setHint#0;class#StoryStep#0" expanded="false" />
+                <element signature="e#9138#9139#0" expanded="false" />
+                <element signature="e#9165#9166#0" expanded="false" />
                 <element signature="method#getHint#0;class#StoryStep#0" expanded="false" />
               </folding>
             </state>
@@ -76,28 +131,8 @@
       <file leaf-file-name="NLPparser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="835">
+            <state relative-caret-position="-8">
               <caret line="87" column="23" lean-forward="false" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pair.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Pair.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="58" column="25" lean-forward="false" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ItemLocation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/ItemLocation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -106,9 +141,13 @@
       <file leaf-file-name="FinalCompleter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/FinalCompleter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="0">
               <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1601#1602#0" expanded="false" />
+                <element signature="e#1663#1664#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,8 +155,8 @@
       <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Command.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1887">
-              <caret line="280" column="1" lean-forward="false" selection-start-line="280" selection-start-column="1" selection-end-line="280" selection-end-column="1" />
+            <state relative-caret-position="22">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding>
                 <element signature="method#Command#5;class#Command#0" expanded="false" />
               </folding>
@@ -128,8 +167,8 @@
       <file leaf-file-name="ExperimentExecutor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/runnable/ExperimentExecutor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="132" column="21" lean-forward="true" selection-start-line="132" selection-start-column="21" selection-end-line="132" selection-end-column="21" />
+            <state relative-caret-position="104">
+              <caret line="132" column="21" lean-forward="false" selection-start-line="132" selection-start-column="21" selection-end-line="132" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -137,11 +176,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="MainExecutor.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1277">
+              <caret line="90" column="57" lean-forward="false" selection-start-line="90" selection-start-column="57" selection-end-line="90" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="final_story.game" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/final_story.game">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
+            <state relative-caret-position="226">
+              <caret line="514" column="11" lean-forward="true" selection-start-line="514" selection-start-column="11" selection-end-line="514" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -150,12 +199,14 @@
       <file leaf-file-name="Utility.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Utility.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="182" column="55" lean-forward="true" selection-start-line="182" selection-start-column="55" selection-end-line="182" selection-end-column="55" />
+            <state relative-caret-position="417">
+              <caret line="180" column="134" lean-forward="false" selection-start-line="180" selection-start-column="134" selection-end-line="180" selection-end-column="134" />
               <folding>
+                <element signature="method#setOrderedTwoArgumentSynonyms#0;class#Utility#0" expanded="false" />
+                <element signature="method#addSynonym#0;class#Utility#0" expanded="false" />
                 <element signature="method#rememberExtraSynonymConditionLink#0;class#Utility#0" expanded="false" />
                 <element signature="method#commandUsesSynonymCorrectly#0;class#Utility#0" expanded="false" />
-                <element signature="method#wasImportant#0;class#Utility#0" expanded="false" />
+                <element signature="method#getHelpMessage#0;class#Utility#0" expanded="false" />
                 <element signature="method#getTipMessage#0;class#Utility#0" expanded="false" />
                 <element signature="method#removeWhiteSpace#0;class#Utility#0" expanded="false" />
                 <element signature="method#pre_tokenise#0;class#Utility#0" expanded="false" />
@@ -164,13 +215,43 @@
                 <element signature="method#addThe#0;class#Utility#0" expanded="false" />
                 <element signature="method#addAorAn#0;class#Utility#0" expanded="false" />
                 <element signature="method#isSingular#0;class#Utility#0" expanded="false" />
+                <element signature="method#isAre#0;class#Utility#0" expanded="false" />
+                <element signature="method#capitalise#0;class#Utility#0" expanded="false" />
                 <element signature="method#charLineOfLength#0;class#Utility#0" expanded="false" />
+                <element signature="method#padBothSidesWithChar#0;class#Utility#0" expanded="false" />
                 <element signature="method#getAllLines#0;class#Utility#0" expanded="false" />
                 <element signature="method#lastIndexBefore#0;class#Utility#0" expanded="false" />
                 <element signature="method#chopToFitWidth#0;class#Utility#0" expanded="false" />
+                <element signature="method#getMaxLineWidth#0;class#Utility#0" expanded="false" />
+                <element signature="method#executeTextOverride#0;class#Utility#0" expanded="false" />
+                <element signature="method#stripCentering#0;class#Utility#0" expanded="false" />
+                <element signature="method#fixCentering#0;class#Utility#0" expanded="false" />
+                <element signature="method#performCentering#0;class#Utility#0" expanded="false" />
+                <element signature="method#volumeChangeMessage#0;class#Utility#0" expanded="false" />
                 <element signature="method#joinArrays#0;class#Utility#0" expanded="false" />
+                <element signature="method#currTime#0;class#Utility#0" expanded="false" />
+                <element signature="method#currDate#0;class#Utility#0" expanded="false" />
+                <element signature="method#getForamttedDate#0;class#Utility#0" expanded="false" />
+                <element signature="method#getThinkTimeAverage#0;class#Utility#0" expanded="false" />
+                <element signature="method#newLineTheList#0;class#Utility#0" expanded="false" />
+                <element signature="method#write#0;class#Utility#0" expanded="false" />
                 <element signature="method#readLn#0;class#Utility#0" expanded="false" />
                 <element signature="method#hasWord#0;class#Utility#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImportantCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/ImportantCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+              <folding>
+                <element signature="e#622#623#0" expanded="true" />
+                <element signature="e#655#656#0" expanded="true" />
+                <element signature="e#688#689#0" expanded="true" />
+                <element signature="e#720#721#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -187,18 +268,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>removepa</find>
-      <find>OPEN_PAREN_CURLY</find>
-      <find>date</find>
-      <find>relevant e</find>
-      <find>extraSynonymOriginConditions</find>
-      <find>setOrde</find>
-      <find>useon</find>
-      <find>understand</find>
-      <find>response</find>
-      <find>fixCente</find>
-      <find>helpMessageAddition</find>
-      <find>padBothSidesWithChar</find>
       <find>charLineOfLength</find>
       <find>win</find>
       <find>kill</find>
@@ -217,12 +286,25 @@
       <find>think</find>
       <find>thinkTimes</find>
       <find>exit</find>
+      <find>item</find>
+      <find>silver</find>
+      <find>scale</find>
+      <find>plate</find>
+      <find>fireplace</find>
+      <find>importantCommands</find>
+      <find>percentageThreshold</find>
+      <find>wasI</find>
+      <find>was</find>
+      <find>wasTriggered</find>
+      <find>important</find>
+      <find>askForEvaluation</find>
     </findStrings>
     <replaceStrings>
       <replace>warm</replace>
       <replace>hot</replace>
       <replace>\r\n</replace>
       <replace>gaseous</replace>
+      <replace>scale</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -271,7 +353,6 @@
         <option value="$PROJECT_DIR$/src/main/java/test/java/FinalCompleter.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java" />
-        <option value="$PROJECT_DIR$/src/main/java/standard/engine/ImportantCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Command.java" />
         <option value="$PROJECT_DIR$/src/main/java/test/java/NLPtest.java" />
         <option value="$PROJECT_DIR$/src/main/java/story/parser/StoryGrammarParser.java" />
@@ -289,9 +370,10 @@
         <option value="$PROJECT_DIR$/src/main/java/story/compiler/StoryTreeVisitor.java" />
         <option value="$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java" />
         <option value="$PROJECT_DIR$/src/main/java/story/compiler/StoryCompiler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
-        <option value="$PROJECT_DIR$/res/final_story.game" />
         <option value="$PROJECT_DIR$/src/main/java/runnable/ExperimentExecutor.java" />
+        <option value="$PROJECT_DIR$/res/final_story.game" />
+        <option value="$PROJECT_DIR$/src/main/java/standard/engine/ImportantCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/standard/engine/Engine.java" />
         <option value="$PROJECT_DIR$/src/main/java/standard/engine/Utility.java" />
       </list>
     </option>
@@ -308,6 +390,22 @@
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -445,10 +543,6 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="story" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -548,8 +642,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="D:/!!!M/!MILOS/Cambridge/Part II project Interactive Fiction/Jars/Experiment" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
-    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.14746094" />
     <property name="project.structure.side.proportion" value="0.36197022" />
@@ -950,29 +1043,30 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18526544" sideWeight="0.4914712" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1744312" sideWeight="0.47974414" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17768148" sideWeight="0.52025586" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23726977" sideWeight="0.48987207" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49573562" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2249467" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
       <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5915493" sideWeight="0.5042644" order="12" side_tool="false" content_ui="tabs" x="-237" y="994" width="1876" height="300" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3163597" sideWeight="0.4914712" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1744312" sideWeight="0.47974414" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23726977" sideWeight="0.48987207" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49573562" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2249467" sideWeight="0.49532712" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.4946695" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18976545" sideWeight="0.5046729" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3163597" sideWeight="0.4914712" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -980,7 +1074,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.4946695" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1015,7 +1108,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="193" />
+      <option name="time" value="197" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1186,22 +1279,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/ImportantCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="33" column="24" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#475#476#0" expanded="false" />
-            <element signature="e#501#502#0" expanded="false" />
-            <element signature="e#554#555#0" expanded="false" />
-            <element signature="e#587#588#0" expanded="false" />
-            <element signature="e#693#694#0" expanded="false" />
-            <element signature="e#725#726#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_71/src.zip!/java/util/Comparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1271,14 +1348,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
-          <caret line="90" column="57" lean-forward="false" selection-start-line="90" selection-start-column="57" selection-end-line="90" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_71/src.zip!/java/io/Reader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="884">
@@ -1318,15 +1387,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Pair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
+        <state relative-caret-position="0">
           <caret line="58" column="25" lean-forward="false" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="e#0#4093#0" expanded="false" />
+            <element signature="e#2350#2351#0" expanded="false" />
+            <element signature="e#2390#2391#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/ItemLocation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="0">
           <caret line="5" column="22" lean-forward="false" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding />
         </state>
@@ -1334,34 +1407,143 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/FinalCompleter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="0">
           <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1601#1602#0" expanded="false" />
+            <element signature="e#1663#1664#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="287" column="0" lean-forward="false" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="docComment;class#StoryStep#0" expanded="false" />
+            <element signature="method#StoryStep#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#StoryStep#1;class#StoryStep#0" expanded="false" />
+            <element signature="method#StoryStep#2;class#StoryStep#0" expanded="false" />
+            <element signature="e#2907#2908#0" expanded="false" />
+            <element signature="e#2950#2951#0" expanded="false" />
+            <element signature="e#3003#3004#0" expanded="false" />
+            <element signature="e#3047#3048#0" expanded="false" />
+            <element signature="e#3103#3104#0" expanded="false" />
+            <element signature="e#3153#3154#0" expanded="false" />
+            <element signature="e#3207#3208#0" expanded="false" />
+            <element signature="e#3255#3256#0" expanded="false" />
+            <element signature="method#compareTo#0;class#StoryStep#0" expanded="false" />
+            <element signature="e#3659#3660#0" expanded="false" />
+            <element signature="e#3691#3692#0" expanded="false" />
+            <element signature="e#3750#3751#0" expanded="false" />
+            <element signature="e#3784#3785#0" expanded="false" />
+            <element signature="e#3842#3843#0" expanded="false" />
+            <element signature="e#3877#3878#0" expanded="false" />
+            <element signature="e#3915#3916#0" expanded="false" />
+            <element signature="e#3945#3946#0" expanded="false" />
+            <element signature="e#3995#3996#0" expanded="false" />
+            <element signature="e#4033#4034#0" expanded="false" />
+            <element signature="e#4072#4073#0" expanded="false" />
+            <element signature="e#4102#4103#0" expanded="false" />
+            <element signature="e#4153#4154#0" expanded="false" />
+            <element signature="e#4191#4192#0" expanded="false" />
+            <element signature="e#4224#4225#0" expanded="false" />
+            <element signature="e#4251#4252#0" expanded="false" />
+            <element signature="e#4296#4297#0" expanded="false" />
+            <element signature="e#4328#4329#0" expanded="false" />
+            <element signature="e#4394#4395#0" expanded="false" />
+            <element signature="e#4442#4443#0" expanded="false" />
+            <element signature="e#4511#4512#0" expanded="false" />
+            <element signature="e#4562#4563#0" expanded="false" />
+            <element signature="e#7168#7169#0" expanded="false" />
+            <element signature="e#7198#7199#0" expanded="false" />
+            <element signature="method#addCondition#0;class#StoryStep#0" expanded="false" />
+            <element signature="e#7584#7585#0" expanded="false" />
+            <element signature="e#7617#7618#0" expanded="false" />
+            <element signature="e#7674#7675#0" expanded="false" />
+            <element signature="e#7709#7710#0" expanded="false" />
+            <element signature="method#addConsequence#0;class#StoryStep#0" expanded="false" />
+            <element signature="method#invokeConsequences#0;class#StoryStep#0" expanded="false" />
+            <element signature="e#8619#8620#0" expanded="false" />
+            <element signature="e#8664#8665#0" expanded="false" />
+            <element signature="e#8715#8716#0" expanded="false" />
+            <element signature="e#8761#8762#0" expanded="false" />
+            <element signature="e#8798#8799#0" expanded="false" />
+            <element signature="e#8830#8831#0" expanded="false" />
+            <element signature="e#8881#8882#0" expanded="false" />
+            <element signature="e#8923#8924#0" expanded="false" />
+            <element signature="method#setHint#0;class#StoryStep#0" expanded="false" />
+            <element signature="e#9138#9139#0" expanded="false" />
+            <element signature="e#9165#9166#0" expanded="false" />
+            <element signature="method#getHint#0;class#StoryStep#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="87" column="23" lean-forward="false" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="32" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/final_story.game">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="514" column="11" lean-forward="true" selection-start-line="514" selection-start-column="11" selection-end-line="514" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/runnable/MainExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1277">
+          <caret line="90" column="57" lean-forward="false" selection-start-line="90" selection-start-column="57" selection-end-line="90" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/runnable/ExperimentExecutor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="132" column="21" lean-forward="false" selection-start-line="132" selection-start-column="21" selection-end-line="132" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Command.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1887">
-          <caret line="280" column="1" lean-forward="false" selection-start-line="280" selection-start-column="1" selection-end-line="280" selection-end-column="1" />
+        <state relative-caret-position="22">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
             <element signature="method#Command#5;class#Command#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/final_story.game">
+    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/ImportantCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="1" lean-forward="false" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="306">
+          <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+          <folding>
+            <element signature="e#622#623#0" expanded="true" />
+            <element signature="e#655#656#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Engine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="1479">
+          <caret line="100" column="82" lean-forward="true" selection-start-line="100" selection-start-column="82" selection-end-line="100" selection-end-column="82" />
           <folding>
             <element signature="docComment;class#Engine#0" expanded="false" />
             <element signature="method#setWelcome#0;class#Engine#0" expanded="false" />
@@ -1370,51 +1552,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/StoryStep.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3196">
-          <caret line="287" column="0" lean-forward="false" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#StoryStep#0" expanded="false" />
-            <element signature="method#StoryStep#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#StoryStep#1;class#StoryStep#0" expanded="false" />
-            <element signature="method#StoryStep#2;class#StoryStep#0" expanded="false" />
-            <element signature="method#compareTo#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#addCondition#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#addConsequence#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#invokeConsequences#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#setHint#0;class#StoryStep#0" expanded="false" />
-            <element signature="method#getHint#0;class#StoryStep#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/runnable/ExperimentExecutor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="132" column="21" lean-forward="true" selection-start-line="132" selection-start-column="21" selection-end-line="132" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/input/parser/NLPparser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="835">
-          <caret line="87" column="23" lean-forward="false" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/standard/engine/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="182" column="55" lean-forward="true" selection-start-line="182" selection-start-column="55" selection-end-line="182" selection-end-column="55" />
+        <state relative-caret-position="417">
+          <caret line="180" column="134" lean-forward="false" selection-start-line="180" selection-start-column="134" selection-end-line="180" selection-end-column="134" />
           <folding>
+            <element signature="method#setOrderedTwoArgumentSynonyms#0;class#Utility#0" expanded="false" />
+            <element signature="method#addSynonym#0;class#Utility#0" expanded="false" />
             <element signature="method#rememberExtraSynonymConditionLink#0;class#Utility#0" expanded="false" />
             <element signature="method#commandUsesSynonymCorrectly#0;class#Utility#0" expanded="false" />
-            <element signature="method#wasImportant#0;class#Utility#0" expanded="false" />
+            <element signature="method#getHelpMessage#0;class#Utility#0" expanded="false" />
             <element signature="method#getTipMessage#0;class#Utility#0" expanded="false" />
             <element signature="method#removeWhiteSpace#0;class#Utility#0" expanded="false" />
             <element signature="method#pre_tokenise#0;class#Utility#0" expanded="false" />
@@ -1423,11 +1570,26 @@
             <element signature="method#addThe#0;class#Utility#0" expanded="false" />
             <element signature="method#addAorAn#0;class#Utility#0" expanded="false" />
             <element signature="method#isSingular#0;class#Utility#0" expanded="false" />
+            <element signature="method#isAre#0;class#Utility#0" expanded="false" />
+            <element signature="method#capitalise#0;class#Utility#0" expanded="false" />
             <element signature="method#charLineOfLength#0;class#Utility#0" expanded="false" />
+            <element signature="method#padBothSidesWithChar#0;class#Utility#0" expanded="false" />
             <element signature="method#getAllLines#0;class#Utility#0" expanded="false" />
             <element signature="method#lastIndexBefore#0;class#Utility#0" expanded="false" />
             <element signature="method#chopToFitWidth#0;class#Utility#0" expanded="false" />
+            <element signature="method#getMaxLineWidth#0;class#Utility#0" expanded="false" />
+            <element signature="method#executeTextOverride#0;class#Utility#0" expanded="false" />
+            <element signature="method#stripCentering#0;class#Utility#0" expanded="false" />
+            <element signature="method#fixCentering#0;class#Utility#0" expanded="false" />
+            <element signature="method#performCentering#0;class#Utility#0" expanded="false" />
+            <element signature="method#volumeChangeMessage#0;class#Utility#0" expanded="false" />
             <element signature="method#joinArrays#0;class#Utility#0" expanded="false" />
+            <element signature="method#currTime#0;class#Utility#0" expanded="false" />
+            <element signature="method#currDate#0;class#Utility#0" expanded="false" />
+            <element signature="method#getForamttedDate#0;class#Utility#0" expanded="false" />
+            <element signature="method#getThinkTimeAverage#0;class#Utility#0" expanded="false" />
+            <element signature="method#newLineTheList#0;class#Utility#0" expanded="false" />
+            <element signature="method#write#0;class#Utility#0" expanded="false" />
             <element signature="method#readLn#0;class#Utility#0" expanded="false" />
             <element signature="method#hasWord#0;class#Utility#0" expanded="false" />
           </folding>
@@ -1519,6 +1681,17 @@
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
           <last-edited>stanford-corenlp-3.6.0-models</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.36197022" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
