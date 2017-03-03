@@ -110,7 +110,7 @@ public class ExperimentExecutor
                 writer.flush();
 
                 String testUsername = "";
-                writer.write("Please validate your username to start your " + playthrough_id + " playthrough:\n");
+                writer.write("Once instructed, please validate your username to start your " + playthrough_id + " playthrough:\n");
                 writer.flush();
                 testUsername = reader.readLine();
                 while (!testUsername.equals(username))
@@ -143,8 +143,14 @@ public class ExperimentExecutor
                 }
                 reader.setPrompt("~ ");
                 writer.println(Utility.capitalise(playthrough_id) + " playthrough complete...\n");
+                writer.println(Utility.centerToScreenWidth("Please fill out:\n\\center\r\n" +
+                        "\u001B[32;1mInteractive Fiction Comparative Study - Questionnaire ("+playthrough_id+" play-through)\u001B[0m" +
+                        "\r\n\\endcenter\nbefore continuing..."));
                 writer.flush();
                 startEnhanced = !startEnhanced;
+                // recompile the story from zero
+                story_stream = classLoader.getResourceAsStream(story_location);
+                eng = StoryCompiler.complieStory(story_stream);
             }
             String exit = "";
             writer.write("Playthrough part complete. Please type 'exit' to finish:\n");

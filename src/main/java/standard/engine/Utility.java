@@ -193,7 +193,6 @@ public class Utility
         twoArgumentMasterSynonyms.put("combine", "combine");
         twoArgumentMasterSynonyms.put("merge", "combine");
         twoArgumentMasterSynonyms.put("mix", "combine");
-        twoArgumentMasterSynonyms.put("fuse", "combine");
         twoArgumentMasterSynonyms.put("meld", "combine");
         twoArgumentMasterSynonyms.put("compound", "combine");
         twoArgumentMasterSynonyms.put("put", "put");
@@ -220,10 +219,10 @@ public class Utility
         twoArgumentConnectors.put("combine", new ArrayList<>(Arrays.asList("with", "and")));
         twoArgumentConnectors.put("merge", new ArrayList<>(Arrays.asList("with", "and")));
         twoArgumentConnectors.put("mix", new ArrayList<>(Arrays.asList("with", "and")));
-        twoArgumentConnectors.put("fuse", new ArrayList<>(Arrays.asList("with", "and")));
         twoArgumentConnectors.put("meld", new ArrayList<>(Arrays.asList("with", "and")));
         twoArgumentConnectors.put("compound", new ArrayList<>(Arrays.asList("with", "and")));
         twoArgumentConnectors.put("put", new ArrayList<>(Arrays.asList("in", "into", "on")));
+        twoArgumentConnectors.put("insert", new ArrayList<>(Arrays.asList("in", "into")));
         twoArgumentConnectors.put("place", new ArrayList<>(Arrays.asList("in", "into", "on")));
         twoArgumentConnectors.put("position", new ArrayList<>(Arrays.asList("in", "on")));
         twoArgumentConnectors.put("remove", new ArrayList<>(Arrays.asList("from")));
