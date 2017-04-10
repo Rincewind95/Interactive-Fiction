@@ -2,8 +2,9 @@ package test.java;
 
 import com.google.common.io.Files;
 
+import engine.*;
+import engine.utility.Utility;
 import input.parser.NLPparser;
-import standard.engine.*;
 
 import java.io.File;
 import java.io.IOException;

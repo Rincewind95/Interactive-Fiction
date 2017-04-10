@@ -1,24 +1,13 @@
 package runnable;
 
-import jline.Terminal;
-import jline.TerminalFactory;
 import jline.console.ConsoleReader;
-import jline.console.completer.Completer;
-import standard.engine.Engine;
-import standard.engine.FinalCompleter;
-import standard.engine.Utility;
+import engine.Engine;
+import engine.utility.Utility;
 import story.compiler.StoryCompiler;
 
-import javax.rmi.CORBA.Util;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
-/**
- * Created by Milos on 09/11/2016.
- */
 public class MainExecutor
 {
     public static void main(String[] args)

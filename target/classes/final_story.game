@@ -216,7 +216,7 @@ _step
 	_additr [open fireplace] [devastated main room];
 "
 
-You feel the ground shaking, as if an earthquake is happening right now. Coincidence? You think not! Well either way, you believe that it had something to do with your experimentation with the lever. Suddenly, while you were mid-thought, a more violent shake hits the manor and you hear a very loud shattering noise coming from the other room. You wait for the shock-waves to stop and consider going back to the main room through the stairs the south, to investigate the damage.";
+You feel the ground shaking, as if an earthquake is happening right now. Coincidence? You think not! Well either way, you believe that it had something to do with your experimentation with the lever. Suddenly, while you were mid-thought, a more violent shake hits the manor and you hear a very loud shattering noise coming from the other room. You wait for the shock-waves to stop and consider going back to the main room through the stairs to the south, to investigate the damage.";
 "Don't look at me like that, I thought that would work too. Maybe you could try a different approach? Waiting is also not a bad idea...";
 }
 

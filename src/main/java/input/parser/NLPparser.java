@@ -7,10 +7,10 @@ import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.semgraph.SemanticGraph;
 import edu.stanford.nlp.semgraph.SemanticGraphCoreAnnotations;
 import edu.stanford.nlp.util.CoreMap;
-import standard.engine.Command;
-import standard.engine.Engine;
-import standard.engine.Room;
-import standard.engine.Utility;
+import engine.Command;
+import engine.Engine;
+import engine.Room;
+import engine.utility.Utility;
 
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -18,9 +18,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.*;
 
-/**
- * Created by Milos on 25/11/2016.
- */
 public class NLPparser
 {
     private ArrayList<String> item_compounds;

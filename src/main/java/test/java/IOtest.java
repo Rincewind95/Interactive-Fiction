@@ -1,9 +1,8 @@
 package test.java;
 
 import jline.console.ConsoleReader;
-import jline.console.completer.CandidateListCompletionHandler;
 import jline.console.completer.Completer;
-import standard.engine.FinalCompleter;
+import engine.utility.FinalCompleter;
 
 import java.io.IOException;
 import java.io.PrintWriter;

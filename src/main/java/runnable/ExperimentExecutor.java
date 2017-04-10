@@ -1,17 +1,13 @@
 package runnable;
 
 import jline.console.ConsoleReader;
-import standard.engine.Engine;
-import standard.engine.Utility;
+import engine.Engine;
+import engine.utility.Utility;
 import story.compiler.StoryCompiler;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-/**
- * Created by Milos on 02/03/2017.
- */
 public class ExperimentExecutor
 {
     public static void main(String[] args)
