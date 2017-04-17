@@ -95,17 +95,16 @@ public class Engine
             reader.addCompleter(completer);
             reader.setPrompt("> ");
 
-            // log the tipe of engine and current date
-            logWriter.write("ENGINE: " + (enhanced ? "ENHANCED" : "STANDARD") + "\r\n");
-            logWriter.write("DATE: [" + Utility.currDate() + "]\r\n");
-            logWriter.write("ENGINE INIT TIME: [" + Utility.currTime() + "]\r\n");
-            logWriter.write(Utility.charLineOfLength("-", 40));
-            logWriter.flush();
-
             // reset the think times
             thinkTimes = new ArrayList<>();
             if(doEvaluation)
             {
+                // log the tipe of engine and current date
+                logWriter.write("ENGINE: " + (enhanced ? "ENHANCED" : "STANDARD") + "\r\n");
+                logWriter.write("DATE: [" + Utility.currDate() + "]\r\n");
+                logWriter.write("ENGINE INIT TIME: [" + Utility.currTime() + "]\r\n");
+                logWriter.write(Utility.charLineOfLength("-", 40));
+                logWriter.flush();
                 // this is just for logging
                 thinkTimes.add(System.currentTimeMillis());
                 // reset the important commands
@@ -280,7 +279,7 @@ public class Engine
                         {
                             if(!final_out_to_user.equals(""))
                                 final_out_to_user += "\r\n";
-                            final_out_to_user += "-- " + findItem(item).getIDWithTempAndState(enhanced) + ":\r\n";
+                            final_out_to_user += "-- " + findItem(item).getFullID(enhanced) + ":\r\n";
                         }
                         String needsCentering = executeCommand(curr).getValue();
 
@@ -470,7 +469,7 @@ public class Engine
                     if(toTake.isTakeable() && flag == flag.inroom && (toTake.getLocation()) == player.getLocation())
                     {
                         // if the player is in the same room as the item, and does not have the item he can take it
-                        out = "You take " + Utility.addThe(toTake.getIDWithTempAndState(enhanced)) + ".";
+                        out = "You take " + Utility.addThe(toTake.getFullID(enhanced)) + ".";
                         toTake.moveItem(flag.inv, null, this);
                     }
                     else if(toTake.isTakeable() && flag == flag.incont &&
@@ -478,12 +477,12 @@ public class Engine
                                     player.hasItem((Item)toTake.getLocation())))
                     {
                         // if the player is in the same room as the items container, or has it, he can take the item
-                        out = "You remove " + Utility.addThe(toTake.getIDWithTempAndState(enhanced)) + " from " + Utility.addThe(((Item)toTake.getLocation()).getIDWithTempAndState(enhanced)) + ".";
+                        out = "You remove " + Utility.addThe(toTake.getFullID(enhanced)) + " from " + Utility.addThe(((Item)toTake.getLocation()).getFullID(enhanced)) + ".";
                         toTake.moveItem(flag.inv, null, this);
                     }
                     else if (!toTake.isTakeable())
                     {
-                        out = "You cannot take " + Utility.addThe(toTake.getIDWithTempAndState(enhanced)) + ".";
+                        out = "You cannot take " + Utility.addThe(toTake.getFullID(enhanced)) + ".";
                     }
                     else
                     {
@@ -507,7 +506,7 @@ public class Engine
                     if (player.hasItem(toDrop))
                     {
                         // if the player has the item
-                        out = "You drop " + Utility.addThe(toDrop.getIDWithTempAndState(enhanced));
+                        out = "You drop " + Utility.addThe(toDrop.getFullID(enhanced));
                         toDrop.moveItem(Item.flag.inroom, player.getLocation(), this);
                         // all rooms are at room temperature, so items dropped in them are set to room temperature
                         if (enhanced)
@@ -577,7 +576,7 @@ public class Engine
                         // require for us to have the first item in inventory
                         if(enhanced)
                         {
-                            out = "You do not have " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) +" in your inventory.";
+                            out = "You do not have " + Utility.addThe(fir.getFullID(enhanced)) +" in your inventory.";
                         }
                         else
                             resp = response.badinput;
@@ -586,7 +585,7 @@ public class Engine
                     {
                         if(enhanced)
                         {
-                            out = "You cannot "+ verb + " " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) + " " + connector + " itself.";
+                            out = "You cannot "+ verb + " " + Utility.addThe(fir.getFullID(enhanced)) + " " + connector + " itself.";
                         }
                         else
                         {
@@ -599,7 +598,7 @@ public class Engine
                         {
                             if (!fir.isTakeable())
                             {
-                                out = "You cannot move " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) + ".";
+                                out = "You cannot move " + Utility.addThe(fir.getFullID(enhanced)) + ".";
                             }
                             else
                             {
@@ -609,10 +608,10 @@ public class Engine
                                     fitsvol = false;
                                     if (enhanced)
                                     {
-                                        out += Utility.capitalise(Utility.addThe(fir.getIDWithTempAndState(enhanced))) + " " +
+                                        out += Utility.capitalise(Utility.addThe(fir.getFullID(enhanced))) + " " +
                                                 (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is" : "are") +
                                                 " too big to fit " + connector + " " +
-                                                Utility.addThe(sec.getIDWithTempAndState(enhanced)) + ".";
+                                                Utility.addThe(sec.getFullID(enhanced)) + ".";
                                     }
                                     else
                                     {
@@ -631,7 +630,7 @@ public class Engine
                                         if(!fitsvol)
                                             out += " It ";
                                         else
-                                            out += "There is no point doing that, " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) + " ";
+                                            out += "There is no point doing that, " + Utility.addThe(fir.getFullID(enhanced)) + " ";
                                         out += (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "is " : "are ") +
                                                 massOutput;
                                         if(!fitsvol)
@@ -642,7 +641,7 @@ public class Engine
                                                /* + "for you to " + verb + " " +
                                                 (Utility.isSingular(fir.getItem_id(), parser.getPipeline()) ? "it" : "them")
                                                 + " " + connector + " " +
-                                                Utility.addThe(sec.getIDWithTempAndState(enhanced)) + ".";*/
+                                                Utility.addThe(sec.getFullID(enhanced)) + ".";*/
                                     }
                                     else
                                     {
@@ -655,8 +654,8 @@ public class Engine
                                     if(fitsvol && massfits)
                                     {
                                         fir.moveItem(Item.flag.incont, sec, this);
-                                        out = "You " + verb + " " + Utility.addThe(fir.getIDWithTempAndState(enhanced))
-                                                + " " + connector + " " + Utility.addThe(sec.getIDWithTempAndState(enhanced));
+                                        out = "You " + verb + " " + Utility.addThe(fir.getFullID(enhanced))
+                                                + " " + connector + " " + Utility.addThe(sec.getFullID(enhanced));
 
                                         Item.State oldfir = fir.getTmpToState().get(fir.getTemperature());
                                         Item.State oldsec = fir.getTmpToState().get(sec.getTemperature());
@@ -686,7 +685,7 @@ public class Engine
                         {
                             if (enhanced)
                             {
-                                out = Utility.capitalise(Utility.addThe(sec.getIDWithTempAndState(enhanced))) + " is not a container.";
+                                out = Utility.capitalise(Utility.addThe(sec.getFullID(enhanced))) + " is not a container.";
                                 resp = response.good;
                             }
                             else
@@ -708,7 +707,7 @@ public class Engine
                     if(fir.isTakeable() && sec.contains(fir) && (player.hasItem(sec) || player.getLocation().containsItem(sec)))
                     {
                         fir.moveItem(Item.flag.inv, null, this);
-                        out = "You remove " + Utility.addThe(fir.getIDWithTempAndState(enhanced)) + " from " + Utility.addThe(sec.getIDWithTempAndState(enhanced)) + ".";
+                        out = "You remove " + Utility.addThe(fir.getFullID(enhanced)) + " from " + Utility.addThe(sec.getFullID(enhanced)) + ".";
                     }
                 }
                 else if(args.get(0).equals("all") && finditem.containsKey(args.get(1)) &&
@@ -917,13 +916,13 @@ public class Engine
         ArrayList<String> itemsPresent = current.listAllItems(this);
         for(String itemId : itemsPresent)
         {
-            item_suggestions.add(findItem(itemId).getIDWithTempAndState(enhanced));
+            item_suggestions.add(findItem(itemId).getFullID(enhanced));
         }
 
         ArrayList<String> itemsInv = player.listAllItems(this);
         for(String itemId : itemsInv)
         {
-            item_suggestions.add(findItem(itemId).getIDWithTempAndState(enhanced));
+            item_suggestions.add(findItem(itemId).getFullID(enhanced));
         }
 
         ArrayList<String> extras = new ArrayList<>();

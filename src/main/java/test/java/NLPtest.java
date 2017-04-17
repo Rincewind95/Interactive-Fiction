@@ -75,7 +75,8 @@ public class NLPtest
             if(doOut)
                 System.out.print(out);
         }
-        System.out.println("Test completed with " + errorcnt + " errors!");
+        System.out.println(sentences.length + " tests completed with " + errorcnt + " errors!");
+
     }
 
 }

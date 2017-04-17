@@ -408,7 +408,7 @@ public class Item extends ItemLocation implements Comparable
         }
     }
 
-    public String getIDWithTempAndState(boolean enhanced)
+    public String getFullID(boolean enhanced)
     {
         if(!enhanced)
             return item_id;
@@ -443,7 +443,7 @@ public class Item extends ItemLocation implements Comparable
 
     public String listContents(Engine eng, String prefix)
     {
-        String res = "\n" + prefix + "- " + getIDWithTempAndState(eng.isEnhanced());
+        String res = "\n" + prefix + "- " + getFullID(eng.isEnhanced());
         for (String child : contained.keySet())
         {
             res += eng.findItem(child).listContents(eng, prefix + "   ");

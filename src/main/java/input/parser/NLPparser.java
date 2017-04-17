@@ -452,13 +452,13 @@ public class NLPparser
         {
             for (String itemId : itemsPresent)
             {
-                String item = eng.findItem(itemId).getIDWithTempAndState(eng.isEnhanced());
+                String item = eng.findItem(itemId).getFullID(eng.isEnhanced());
                 item_compounds.add(item);
                 item_originals.put(item, itemId);
             }
             for (String itemId : itemsInv)
             {
-                String item = eng.findItem(itemId).getIDWithTempAndState(eng.isEnhanced());
+                String item = eng.findItem(itemId).getFullID(eng.isEnhanced());
                 item_compounds.add(item);
                 item_originals.put(item, itemId);
             }
