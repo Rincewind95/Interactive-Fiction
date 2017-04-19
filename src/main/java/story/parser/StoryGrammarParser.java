@@ -1,4 +1,4 @@
-// Generated from C:/Users/Milos/Dropbox/Part II project Interactive Fiction/InteractiveFiction/src/main/java/story/grammars\StoryGrammar.g4 by ANTLR 4.6
+// Generated from C:/Users/Milos/Dropbox/Part II project Interactive Fiction/InteractiveFiction/src/main/java/story/grammars\StoryGrammar.g4 by ANTLR 4.7
 package story.parser;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class StoryGrammarParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.6", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.7", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -3818,7 +3818,7 @@ public class StoryGrammarParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3b\u01c7\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3b\u01c7\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
@@ -3852,13 +3852,13 @@ public class StoryGrammarParser extends Parser {
 		":\3:\2\2;\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\66"+
 		"8:<>@BDFHJLNPRTVXZ\\^`bdfhjlnpr\2\17\3\2\25\30\3\2\31\32\3\2,.\3\2$(\3"+
 		"\2)*\3\2\61\63\7\2\668;<?HJKNN\7\29:=>IILLOO\4\2PPTU\3\2QS\3\2VW\3\2X"+
-		"Y\3\2\64\65\u01b3\2t\3\2\2\2\4v\3\2\2\2\6x\3\2\2\2\bz\3\2\2\2\n|\3\2\2"+
-		"\2\f~\3\2\2\2\16\u0089\3\2\2\2\20\u0093\3\2\2\2\22\u009b\3\2\2\2\24\u00a9"+
-		"\3\2\2\2\26\u00b8\3\2\2\2\30\u00ba\3\2\2\2\32\u00be\3\2\2\2\34\u00c2\3"+
-		"\2\2\2\36\u00c4\3\2\2\2 \u00d1\3\2\2\2\"\u00d9\3\2\2\2$\u00e2\3\2\2\2"+
-		"&\u00e8\3\2\2\2(\u0102\3\2\2\2*\u0105\3\2\2\2,\u0107\3\2\2\2.\u010e\3"+
-		"\2\2\2\60\u0110\3\2\2\2\62\u0115\3\2\2\2\64\u0117\3\2\2\2\66\u0119\3\2"+
-		"\2\28\u0125\3\2\2\2:\u012b\3\2\2\2<\u012d\3\2\2\2>\u012f\3\2\2\2@\u0135"+
+		"Y\3\2\64\65\2\u01b3\2t\3\2\2\2\4v\3\2\2\2\6x\3\2\2\2\bz\3\2\2\2\n|\3\2"+
+		"\2\2\f~\3\2\2\2\16\u0089\3\2\2\2\20\u0093\3\2\2\2\22\u009b\3\2\2\2\24"+
+		"\u00a9\3\2\2\2\26\u00b8\3\2\2\2\30\u00ba\3\2\2\2\32\u00be\3\2\2\2\34\u00c2"+
+		"\3\2\2\2\36\u00c4\3\2\2\2 \u00d1\3\2\2\2\"\u00d9\3\2\2\2$\u00e2\3\2\2"+
+		"\2&\u00e8\3\2\2\2(\u0102\3\2\2\2*\u0105\3\2\2\2,\u0107\3\2\2\2.\u010e"+
+		"\3\2\2\2\60\u0110\3\2\2\2\62\u0115\3\2\2\2\64\u0117\3\2\2\2\66\u0119\3"+
+		"\2\2\28\u0125\3\2\2\2:\u012b\3\2\2\2<\u012d\3\2\2\2>\u012f\3\2\2\2@\u0135"+
 		"\3\2\2\2B\u0137\3\2\2\2D\u0139\3\2\2\2F\u014f\3\2\2\2H\u0152\3\2\2\2J"+
 		"\u015a\3\2\2\2L\u0166\3\2\2\2N\u0168\3\2\2\2P\u016c\3\2\2\2R\u016e\3\2"+
 		"\2\2T\u017c\3\2\2\2V\u017e\3\2\2\2X\u0183\3\2\2\2Z\u0185\3\2\2\2\\\u0187"+
