@@ -267,7 +267,12 @@ single_arg_cnd_type: PLAYER_IN_ROOM
                    | ITEM_IS_NOT_WARM
                    | ITEM_IS_NOT_HOT;
 command: SYNONYM;
-extra_synonyms_single: (command | OPEN_PAREN_CURLY command (COMMA command)+ CLOS_PAREN_CURLY | );
+extra_synonyms_single: (command
+                      | OPEN_PAREN_CURLY
+                            command
+                            (COMMA command)+
+                        CLOS_PAREN_CURLY
+                      | );
 
 double_arg_cnd: double_arg_cnd_type extra_synonyms_double item_id room_id;
 double_arg_cnd_type: ITEM_IN_ROOM
@@ -280,7 +285,12 @@ double_arg_cnd_type: ITEM_IN_ROOM
 
 connector: SYNONYM;
 double_command: OPEN_PAREN_ROUND command (COMMA connector)+ CLOS_PAREN_ROUND;
-extra_synonyms_double: (double_command | OPEN_PAREN_CURLY double_command (COMMA double_command)+ CLOS_PAREN_CURLY | );
+extra_synonyms_double: (double_command
+                      | OPEN_PAREN_CURLY
+                            double_command
+                            (COMMA double_command)+
+                        CLOS_PAREN_CURLY
+                      | );
 
 consequences: consequence (COMMA consequence)*;
 
